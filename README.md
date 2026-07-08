@@ -71,7 +71,7 @@ Minimum Android version: 8.0 (API 26).
 
 If this app is useful to you, consider buying me a coffee ☕
 
-<a href="https://buymeacoffee.com/williamoz"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=williamoz&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" height="40"></a>
+<a href="https://buymeacoffee.com/williamoz"><img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-%E2%98%95%20support-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy Me A Coffee"></a>
 
 ## License
 
