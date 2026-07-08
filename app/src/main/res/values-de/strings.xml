@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Echte Ladeleistung</string>
+    <string name="reading_battery">Akku wird gelesen…</string>
+
+    <string name="source_wired_ac">Kabel • AC</string>
+    <string name="source_wired_usb">Kabel • USB</string>
+    <string name="source_wireless">Kabellos</string>
+    <string name="source_dock">Dock</string>
+    <string name="source_on_battery">Im Akkubetrieb</string>
+
+    <string name="into_battery">in den Akku</string>
+    <string name="battery_drain">Akkuverbrauch</string>
+
+    <string name="stat_voltage">Spannung</string>
+    <string name="stat_current">Strom</string>
+    <string name="stat_temp">Temp.</string>
+    <string name="stat_peak_in">Spitze rein</string>
+    <string name="stat_peak_out">Spitze raus</string>
+
+    <string name="language_title">Sprache</string>
+    <string name="language_system">Systemstandard</string>
+</resources>

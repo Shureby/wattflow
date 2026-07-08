@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Daya Pengisian Nyata</string>
+    <string name="reading_battery">Membaca baterai…</string>
+
+    <string name="source_wired_ac">Kabel • AC</string>
+    <string name="source_wired_usb">Kabel • USB</string>
+    <string name="source_wireless">Nirkabel</string>
+    <string name="source_dock">Dok</string>
+    <string name="source_on_battery">Pakai baterai</string>
+
+    <string name="into_battery">masuk ke baterai</string>
+    <string name="battery_drain">pemakaian baterai</string>
+
+    <string name="stat_voltage">Tegangan</string>
+    <string name="stat_current">Arus</string>
+    <string name="stat_temp">Suhu</string>
+    <string name="stat_peak_in">Puncak masuk</string>
+    <string name="stat_peak_out">Puncak keluar</string>
+
+    <string name="language_title">Bahasa</string>
+    <string name="language_system">Bawaan sistem</string>
+</resources>

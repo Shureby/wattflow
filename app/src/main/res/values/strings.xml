@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Real Charging Power</string>
+    <string name="reading_battery">Reading battery…</string>
+
+    <string name="source_wired_ac">Wired • AC</string>
+    <string name="source_wired_usb">Wired • USB</string>
+    <string name="source_wireless">Wireless</string>
+    <string name="source_dock">Dock</string>
+    <string name="source_on_battery">On Battery</string>
+
+    <string name="into_battery">into battery</string>
+    <string name="battery_drain">battery drain</string>
+
+    <string name="stat_voltage">Voltage</string>
+    <string name="stat_current">Current</string>
+    <string name="stat_temp">Temp</string>
+    <string name="stat_peak_in">Peak In</string>
+    <string name="stat_peak_out">Peak Out</string>
+
+    <string name="language_title">Language</string>
+    <string name="language_system">System default</string>
+</resources>

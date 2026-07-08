@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">قدرة الشحن الحقيقية</string>
+    <string name="reading_battery">جارٍ قراءة البطارية…</string>
+
+    <string name="source_wired_ac">سلكي • AC</string>
+    <string name="source_wired_usb">سلكي • USB</string>
+    <string name="source_wireless">لاسلكي</string>
+    <string name="source_dock">قاعدة</string>
+    <string name="source_on_battery">على البطارية</string>
+
+    <string name="into_battery">إلى البطارية</string>
+    <string name="battery_drain">استنزاف البطارية</string>
+
+    <string name="stat_voltage">الجهد</string>
+    <string name="stat_current">التيار</string>
+    <string name="stat_temp">الحرارة</string>
+    <string name="stat_peak_in">ذروة الدخل</string>
+    <string name="stat_peak_out">ذروة الخرج</string>
+
+    <string name="language_title">اللغة</string>
+    <string name="language_system">افتراضي النظام</string>
+</resources>

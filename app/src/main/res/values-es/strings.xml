@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Potencia de Carga Real</string>
+    <string name="reading_battery">Leyendo batería…</string>
+
+    <string name="source_wired_ac">Cable • AC</string>
+    <string name="source_wired_usb">Cable • USB</string>
+    <string name="source_wireless">Inalámbrica</string>
+    <string name="source_dock">Base</string>
+    <string name="source_on_battery">Con batería</string>
+
+    <string name="into_battery">hacia la batería</string>
+    <string name="battery_drain">descarga de batería</string>
+
+    <string name="stat_voltage">Voltaje</string>
+    <string name="stat_current">Corriente</string>
+    <string name="stat_temp">Temp</string>
+    <string name="stat_peak_in">Pico entrada</string>
+    <string name="stat_peak_out">Pico salida</string>
+
+    <string name="language_title">Idioma</string>
+    <string name="language_system">Predeterminado del sistema</string>
+</resources>

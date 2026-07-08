@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">リアル充電電力</string>
+    <string name="reading_battery">バッテリー読み取り中…</string>
+
+    <string name="source_wired_ac">有線 • AC</string>
+    <string name="source_wired_usb">有線 • USB</string>
+    <string name="source_wireless">ワイヤレス</string>
+    <string name="source_dock">ドック</string>
+    <string name="source_on_battery">バッテリー駆動</string>
+
+    <string name="into_battery">バッテリーへ入力</string>
+    <string name="battery_drain">バッテリー消費</string>
+
+    <string name="stat_voltage">電圧</string>
+    <string name="stat_current">電流</string>
+    <string name="stat_temp">温度</string>
+    <string name="stat_peak_in">最大入力</string>
+    <string name="stat_peak_out">最大出力</string>
+
+    <string name="language_title">言語</string>
+    <string name="language_system">システムに従う</string>
+</resources>
