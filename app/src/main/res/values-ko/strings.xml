@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">실제 충전 전력</string>
+    <string name="app_name">WattFlow</string>
     <string name="reading_battery">배터리 읽는 중…</string>
 
     <string name="source_wired_ac">유선 • AC</string>

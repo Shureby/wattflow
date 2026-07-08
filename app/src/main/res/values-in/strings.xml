@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Daya Pengisian Nyata</string>
+    <string name="app_name">WattFlow</string>
     <string name="reading_battery">Membaca baterai…</string>
 
     <string name="source_wired_ac">Kabel • AC</string>

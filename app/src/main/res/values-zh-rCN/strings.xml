@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">真实充电功率</string>
+    <string name="app_name">WattFlow</string>
     <string name="reading_battery">正在读取电池…</string>
 
     <string name="source_wired_ac">有线 • AC</string>

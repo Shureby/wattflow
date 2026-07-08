@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">قدرة الشحن الحقيقية</string>
+    <string name="app_name">WattFlow</string>
     <string name="reading_battery">جارٍ قراءة البطارية…</string>
 
     <string name="source_wired_ac">سلكي • AC</string>

@@ -1,4 +1,4 @@
-package com.ezyapp.chargingpower
+package com.ezyapp.wattflow
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

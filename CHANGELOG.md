@@ -2,7 +2,7 @@
 
 ## [1.0] - 2026-07-08
 
-First stable release.
+First stable release of WattFlow.
 
 - Real-time battery power monitoring (1s polling) via `BatteryManager`
 - Wired (AC / USB / Dock) and wireless charging source detection

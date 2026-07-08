@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Potência Real de Carga</string>
+    <string name="app_name">WattFlow</string>
     <string name="reading_battery">Lendo bateria…</string>
 
     <string name="source_wired_ac">Com fio • AC</string>

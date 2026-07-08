@@ -1,10 +1,10 @@
-# ⚡ 真实充电功率 (Real Charging Power)
+# ⚡ WattFlow
 
 [![Platform](https://img.shields.io/badge/platform-Android%208.0%2B-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-**实时显示流入电池的真实瓦数 — 有线无线都支持。**
+**实时显示电池真实的充放电瓦数 — 有线无线都支持。**
 
 [English](README.md)
 

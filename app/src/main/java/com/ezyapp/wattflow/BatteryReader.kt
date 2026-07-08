@@ -1,4 +1,4 @@
-package com.ezyapp.chargingpower
+package com.ezyapp.wattflow
 
 import android.content.Context
 import android.content.Intent

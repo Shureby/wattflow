@@ -1,11 +1,11 @@
-# ⚡ Real Charging Power
+# ⚡ WattFlow
 
 [![Platform](https://img.shields.io/badge/platform-Android%208.0%2B-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/YOUR_USERNAME)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/williamoz)
 
-**See the real watts flowing into your battery — wired or wireless, in real time.**
+**See the real watts flowing in and out of your battery — wired or wireless, in real time.**
 
 [简体中文](README.zh-CN.md)
 
@@ -71,7 +71,7 @@ Minimum Android version: 8.0 (API 26).
 
 If this app is useful to you, consider buying me a coffee ☕
 
-<a href="https://buymeacoffee.com/YOUR_USERNAME"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=YOUR_USERNAME&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" height="40"></a>
+<a href="https://buymeacoffee.com/williamoz"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=williamoz&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" alt="Buy Me A Coffee" height="40"></a>
 
 ## License
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.ezyapp.chargingpower"
+    namespace = "com.ezyapp.wattflow"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.ezyapp.chargingpower"
+        applicationId = "com.ezyapp.wattflow"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
