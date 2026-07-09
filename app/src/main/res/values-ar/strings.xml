@@ -57,4 +57,5 @@
     <string name="version_label">الإصدار %1$s</string>
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="history_empty_discharge">لا توجد جلسات بطارية بعد — تُسجَّل أثناء فتح التطبيق أو تفعيل التسجيل في الخلفية.</string>
+    <string name="monitor_toggle_hint">عند الإيقاف، تُسجَّل الجلسات فقط أثناء فتح التطبيق.</string>
 </resources>

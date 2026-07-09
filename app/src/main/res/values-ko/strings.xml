@@ -57,4 +57,5 @@
     <string name="version_label">버전 %1$s</string>
     <string name="privacy_policy">개인정보 처리방침</string>
     <string name="history_empty_discharge">아직 배터리 사용 기록이 없습니다 — 앱이 열려 있거나 백그라운드 기록이 켜져 있을 때 기록됩니다.</string>
+    <string name="monitor_toggle_hint">꺼져 있으면 앱이 열려 있는 동안에만 기록됩니다.</string>
 </resources>

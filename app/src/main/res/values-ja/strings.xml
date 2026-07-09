@@ -57,4 +57,5 @@
     <string name="version_label">バージョン %1$s</string>
     <string name="privacy_policy">プライバシーポリシー</string>
     <string name="history_empty_discharge">放電記録はまだありません — アプリ起動中またはバックグラウンド記録が有効な間に記録されます。</string>
+    <string name="monitor_toggle_hint">オフの場合、アプリを開いている間のみ記録されます。</string>
 </resources>

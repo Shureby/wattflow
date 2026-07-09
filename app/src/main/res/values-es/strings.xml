@@ -57,4 +57,5 @@
     <string name="version_label">Versión %1$s</string>
     <string name="privacy_policy">Política de privacidad</string>
     <string name="history_empty_discharge">Aún no hay sesiones de batería — se registran con la app abierta o el registro en segundo plano activado.</string>
+    <string name="monitor_toggle_hint">Desactivado, las sesiones solo se registran con la app abierta.</string>
 </resources>

@@ -57,4 +57,5 @@
     <string name="version_label">Version %1$s</string>
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="history_empty_discharge">"Aucune session batterie — elles sont enregistrées quand l'app est ouverte ou l'enregistrement en arrière-plan actif."</string>
+    <string name="monitor_toggle_hint">"Désactivé, les sessions ne sont enregistrées que lorsque l'app est ouverte."</string>
 </resources>

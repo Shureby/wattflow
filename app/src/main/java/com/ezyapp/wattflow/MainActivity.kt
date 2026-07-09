@@ -683,10 +683,17 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(
-            text = stringResource(R.string.monitor_toggle),
-            style = MaterialTheme.typography.bodyLarge,
-        )
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = stringResource(R.string.monitor_toggle),
+                style = MaterialTheme.typography.bodyLarge,
+            )
+            Text(
+                text = stringResource(R.string.monitor_toggle_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
         Switch(
             checked = running,
             onCheckedChange = { on ->
@@ -1398,7 +1405,11 @@ private fun formatSessionTime(s: ChargeSession): String {
 
 private fun formatDuration(ms: Long): String {
     val minutes = ms / 60_000
-    return if (minutes >= 60) "${minutes / 60}h ${minutes % 60}m" else "${minutes}m"
+    return when {
+        minutes >= 60 -> "${minutes / 60}h ${minutes % 60}m"
+        minutes < 1 -> "<1m"
+        else -> "${minutes}m"
+    }
 }
 
 private fun sourceLabelRes(plugged: Int): Int = when (plugged) {

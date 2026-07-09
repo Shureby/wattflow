@@ -57,4 +57,5 @@
     <string name="version_label">Version %1$s</string>
     <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="history_empty_discharge">Noch keine Akku-Sitzungen — sie werden aufgezeichnet, solange die App offen ist oder die Hintergrundaufzeichnung läuft.</string>
+    <string name="monitor_toggle_hint">Wenn aus, werden Sitzungen nur bei geöffneter App aufgezeichnet.</string>
 </resources>

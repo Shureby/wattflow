@@ -57,4 +57,5 @@
     <string name="version_label">Versi %1$s</string>
     <string name="privacy_policy">Kebijakan privasi</string>
     <string name="history_empty_discharge">Belum ada sesi baterai — direkam saat aplikasi terbuka atau perekaman latar belakang aktif.</string>
+    <string name="monitor_toggle_hint">Saat mati, sesi hanya direkam ketika aplikasi terbuka.</string>
 </resources>

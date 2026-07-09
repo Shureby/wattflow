@@ -57,4 +57,5 @@
     <string name="version_label">版本 %1$s</string>
     <string name="privacy_policy">隱私政策</string>
     <string name="history_empty_discharge">還沒有放電記錄 — app 開啟或背景記錄開啟時才會記錄用電池的時段。</string>
+    <string name="monitor_toggle_hint">關閉時僅在 app 開啟期間記錄。</string>
 </resources>
