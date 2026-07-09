@@ -53,4 +53,8 @@
     <string name="health_body">تتقادم بطاريات الليثيوم أسرع عند الأطراف. إبقاء الشحن بين 20% و80% يقلل إجهاد الجهد والحرارة — السببين الرئيسيين لفقدان السعة الدائم. الشحن الكامل أحياناً لا بأس به (يساعد على معايرة المقياس)، لكن البقاء عند 100% أو التفريغ إلى 0% يومياً يقصّر عمر البطارية. لذلك ينبّه WattFlow افتراضياً عند 80% و20%.</string>
     <string name="widget_desc">قدرة البطارية المباشرة بلمحة</string>
     <string name="export_csv">تصدير CSV</string>
+    <string name="settings_title">الإعدادات</string>
+    <string name="version_label">الإصدار %1$s</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="history_empty_discharge">لا توجد جلسات بطارية بعد — تُسجَّل أثناء فتح التطبيق أو تفعيل التسجيل في الخلفية.</string>
 </resources>

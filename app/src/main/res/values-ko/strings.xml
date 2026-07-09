@@ -53,4 +53,8 @@
     <string name="health_body">리튬 배터리는 양 극단에서 가장 빨리 노화됩니다. 20%–80% 사이를 유지하면 전압 스트레스와 발열 — 영구 용량 손실의 두 가지 주요 원인 — 을 줄일 수 있습니다. 가끔 완충은 괜찮지만(잔량계 보정에 도움), 매일 100% 유지나 0% 방전은 수명을 확실히 단축합니다. 그래서 WattFlow는 기본값으로 80%와 20%에서 알립니다.</string>
     <string name="widget_desc">배터리 전력을 한눈에</string>
     <string name="export_csv">CSV 내보내기</string>
+    <string name="settings_title">설정</string>
+    <string name="version_label">버전 %1$s</string>
+    <string name="privacy_policy">개인정보 처리방침</string>
+    <string name="history_empty_discharge">아직 배터리 사용 기록이 없습니다 — 앱이 열려 있거나 백그라운드 기록이 켜져 있을 때 기록됩니다.</string>
 </resources>

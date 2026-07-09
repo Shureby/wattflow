@@ -53,4 +53,8 @@
     <string name="health_body">リチウム電池は両極端で最も早く劣化します。残量を 20%–80% に保つと電圧ストレスと発熱 — 容量永久劣化の二大要因 — を減らせます。たまの満充電は問題ありません（残量計の校正にも役立ちます）が、毎日 100% のまま置いたり 0% まで使い切ると寿命が確実に縮みます。そのため WattFlow は既定で 80% と 20% に通知します。</string>
     <string name="widget_desc">バッテリー電力をひと目で</string>
     <string name="export_csv">CSV エクスポート</string>
+    <string name="settings_title">設定</string>
+    <string name="version_label">バージョン %1$s</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="history_empty_discharge">放電記録はまだありません — アプリ起動中またはバックグラウンド記録が有効な間に記録されます。</string>
 </resources>

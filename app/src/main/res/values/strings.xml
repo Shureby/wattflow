@@ -53,4 +53,8 @@
     <string name="health_body">Lithium batteries age fastest at the extremes. Staying roughly between 20% and 80% reduces voltage stress and heat — the two main causes of permanent capacity loss. An occasional full charge is fine (it helps the gauge calibrate), but sitting at 100% or draining to 0% every day measurably shortens battery lifespan. That\'s why WattFlow defaults to alerts at 80% and 20%.</string>
     <string name="widget_desc">Live battery power at a glance</string>
     <string name="export_csv">Export CSV</string>
+    <string name="settings_title">Settings</string>
+    <string name="version_label">Version %1$s</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="history_empty_discharge">No battery sessions yet — they record while the app is open or background recording is on.</string>
 </resources>

@@ -53,4 +53,8 @@
     <string name="health_body">Lithium-Akkus altern an den Extremen am schnellsten. Ein Ladestand zwischen 20% und 80% reduziert Spannungsstress und Hitze — die zwei Hauptursachen für dauerhaften Kapazitätsverlust. Gelegentliches Vollladen ist okay (kalibriert die Anzeige), aber täglich 100% oder 0% verkürzt die Lebensdauer messbar. Deshalb warnt WattFlow standardmäßig bei 80% und 20%.</string>
     <string name="widget_desc">Akkuleistung live auf einen Blick</string>
     <string name="export_csv">CSV exportieren</string>
+    <string name="settings_title">Einstellungen</string>
+    <string name="version_label">Version %1$s</string>
+    <string name="privacy_policy">Datenschutzerklärung</string>
+    <string name="history_empty_discharge">Noch keine Akku-Sitzungen — sie werden aufgezeichnet, solange die App offen ist oder die Hintergrundaufzeichnung läuft.</string>
 </resources>

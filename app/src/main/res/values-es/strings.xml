@@ -53,4 +53,8 @@
     <string name="health_body">Las baterías de litio envejecen más rápido en los extremos. Mantener la carga entre 20% y 80% reduce el estrés de voltaje y el calor, las dos causas principales de pérdida permanente de capacidad. Una carga completa ocasional está bien (ayuda a calibrar el medidor), pero vivir al 100% o agotar al 0% a diario acorta la vida útil. Por eso WattFlow avisa por defecto al 80% y al 20%.</string>
     <string name="widget_desc">Potencia de batería en vivo de un vistazo</string>
     <string name="export_csv">Exportar CSV</string>
+    <string name="settings_title">Ajustes</string>
+    <string name="version_label">Versión %1$s</string>
+    <string name="privacy_policy">Política de privacidad</string>
+    <string name="history_empty_discharge">Aún no hay sesiones de batería — se registran con la app abierta o el registro en segundo plano activado.</string>
 </resources>

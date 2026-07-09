@@ -7,6 +7,7 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -34,6 +35,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Share
@@ -69,6 +71,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -120,11 +123,22 @@ class MainActivity : ComponentActivity() {
 fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     val state by viewModel.uiState.collectAsState()
     val sample = state.sample
-    val context = LocalContext.current
-    var showLanguageDialog by remember { mutableStateOf(false) }
     var showPaywall by remember { mutableStateOf(false) }
+    var showSettings by rememberSaveable { mutableStateOf(false) }
     var tab by rememberSaveable { mutableIntStateOf(0) }
     val isPro by Pro.isPro.collectAsState()
+
+    if (showSettings) {
+        BackHandler { showSettings = false }
+        SettingsScreen(
+            onBack = { showSettings = false },
+            onLockedFeature = { showPaywall = true },
+        )
+        if (showPaywall) {
+            PaywallDialog(onDismiss = { showPaywall = false })
+        }
+        return
+    }
 
     Scaffold(
         bottomBar = {
@@ -165,12 +179,14 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                 .padding(innerPadding),
         ) {
             if (tab == 0) {
+                // Scrollable so small/odd aspect screens never overlap content.
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(24.dp),
+                        .verticalScroll(rememberScrollState())
+                        .padding(horizontal = 24.dp)
+                        .padding(top = 48.dp, bottom = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
                 ) {
                     if (sample == null) {
                         Text(
@@ -178,11 +194,7 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                             style = MaterialTheme.typography.titleMedium,
                         )
                     } else {
-                        ChargingContent(
-                            sample = sample,
-                            state = state,
-                            onLockedFeature = { showPaywall = true },
-                        )
+                        ChargingContent(sample = sample, state = state)
                     }
                 }
             } else {
@@ -190,14 +202,14 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
             }
 
             IconButton(
-                onClick = { showLanguageDialog = true },
+                onClick = { showSettings = true },
                 modifier = Modifier
                     .align(Alignment.TopEnd)
                     .padding(8.dp),
             ) {
                 Icon(
                     imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(R.string.language_title),
+                    contentDescription = stringResource(R.string.settings_title),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
@@ -207,10 +219,106 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     if (showPaywall) {
         PaywallDialog(onDismiss = { showPaywall = false })
     }
+}
+
+@Composable
+private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
+    val context = LocalContext.current
+    val uriHandler = LocalUriHandler.current
+    var showLanguageDialog by remember { mutableStateOf(false) }
+
+    val currentTag = LocalePrefs.get(context)
+    val currentLanguageName = SUPPORTED_LANGUAGES.firstOrNull { it.first == currentTag }
+        ?.second ?: stringResource(R.string.language_system)
+    val versionName = remember {
+        runCatching {
+            context.packageManager.getPackageInfo(context.packageName, 0).versionName
+        }.getOrNull() ?: "?"
+    }
+
+    Scaffold { innerPadding ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .padding(horizontal = 16.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = onBack) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = null,
+                    )
+                }
+                Text(
+                    text = stringResource(R.string.settings_title),
+                    style = MaterialTheme.typography.titleLarge,
+                )
+            }
+            Spacer(Modifier.height(8.dp))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { showLanguageDialog = true }
+                    .padding(vertical = 14.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Text(
+                    text = stringResource(R.string.language_title),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                Text(
+                    text = currentLanguageName,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+            Spacer(Modifier.height(6.dp))
+            MonitorToggle(onLockedFeature)
+            Spacer(Modifier.height(6.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+            Spacer(Modifier.height(6.dp))
+            AlertsCard(onLockedFeature)
+            Spacer(Modifier.height(6.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+            Spacer(Modifier.height(16.dp))
+            Text(
+                text = stringResource(R.string.version_label, versionName),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(vertical = 6.dp),
+            )
+            Text(
+                text = "GitHub",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .clickable { uriHandler.openUri("https://github.com/Shureby/wattflow") }
+                    .padding(vertical = 6.dp),
+            )
+            Text(
+                text = stringResource(R.string.privacy_policy),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .clickable {
+                        uriHandler.openUri("https://shureby.github.io/wattflow/privacy.html")
+                    }
+                    .padding(vertical = 6.dp),
+            )
+            Spacer(Modifier.height(24.dp))
+        }
+    }
 
     if (showLanguageDialog) {
         LanguageDialog(
-            current = LocalePrefs.get(context),
+            current = currentTag,
             onSelect = { tag ->
                 showLanguageDialog = false
                 LocalePrefs.set(context, tag)
@@ -308,11 +416,7 @@ private fun PaywallDialog(onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun ChargingContent(
-    sample: BatterySample,
-    state: ChargingUiState,
-    onLockedFeature: () -> Unit,
-) {
+private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -406,14 +510,6 @@ private fun ChargingContent(
                 .fillMaxWidth()
                 .height(160.dp),
         )
-
-        Spacer(Modifier.height(16.dp))
-
-        MonitorToggle(onLockedFeature)
-
-        Spacer(Modifier.height(8.dp))
-
-        AlertsCard(onLockedFeature)
     }
 }
 
@@ -1051,7 +1147,10 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
         if (sessions.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
-                    text = stringResource(R.string.history_empty),
+                    text = stringResource(
+                        if (direction == DIRECTION_CHARGE) R.string.history_empty
+                        else R.string.history_empty_discharge
+                    ),
                     style = MaterialTheme.typography.bodyLarge,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.padding(32.dp),

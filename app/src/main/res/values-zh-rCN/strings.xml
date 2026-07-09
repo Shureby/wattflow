@@ -53,4 +53,8 @@
     <string name="health_body">锂电池在两个极端老化最快。电量保持在 20%–80% 之间可以减少电压应力和发热 — 这是容量永久损失的两大主因。偶尔充满没问题（还能帮助电量计校准），但天天满电存放或耗到 0% 会明显缩短电池寿命。所以 WattFlow 默认在 80% 和 20% 提醒。</string>
     <string name="widget_desc">一眼看到实时电池功率</string>
     <string name="export_csv">导出 CSV</string>
+    <string name="settings_title">设置</string>
+    <string name="version_label">版本 %1$s</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="history_empty_discharge">还没有放电记录 — app 打开或后台记录开启时才会记录用电池的时段。</string>
 </resources>
