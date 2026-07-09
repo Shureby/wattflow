@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1] - 2026-07-09
+
+- **Charge history & statistics** — sessions logged to a local database:
+  time range, level change, average/peak watts, energy (Wh); summary card
+  and 7-day energy chart
+- **Background recording** (opt-in) — foreground service keeps recording
+  while the app is closed, with live watts in the notification
+- **"Why lower than the charger says?"** info dialog and README FAQ
+- Split builds: **FOSS** (GitHub, everything free) and **Play**
+  (Pro features via one-time in-app purchase)
+- Privacy policy page; target SDK 35 (Android 15)
+
 ## [1.0] - 2026-07-08
 
 First stable release of WattFlow.

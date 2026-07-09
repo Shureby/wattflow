@@ -56,6 +56,16 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.1
+
+- **Charge history & statistics**: session log, summary, 7-day energy chart
+- **Background recording** (opt-in) with live watts in the notification
+- **ⓘ info dialog**: why the number is lower than your charger's display
+- **FOSS build** (GitHub): everything free. Play build funds development
+  with a one-time Pro purchase.
+
+Full history in [CHANGELOG.md](CHANGELOG.md).
+
 ## FAQ
 
 **Why is the number lower than what my charger shows?**
