@@ -49,6 +49,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -475,6 +476,7 @@ private fun AlertsCard(onLockedFeature: () -> Unit) {
                 label = stringResource(R.string.alert_charge_label),
                 value = chargeTh,
                 range = 50f..95f,
+                accent = MaterialTheme.colorScheme.primary,
                 isPro = isPro,
                 onChange = {
                     chargeTh = it
@@ -486,6 +488,7 @@ private fun AlertsCard(onLockedFeature: () -> Unit) {
                 label = stringResource(R.string.alert_low_label),
                 value = lowTh,
                 range = 5f..40f,
+                accent = MaterialTheme.colorScheme.error,
                 isPro = isPro,
                 onChange = {
                     lowTh = it
@@ -515,33 +518,52 @@ private fun ThresholdRow(
     label: String,
     value: Int,
     range: ClosedFloatingPointRange<Float>,
+    accent: Color,
     isPro: Boolean,
     onChange: (Int) -> Unit,
     onLocked: () -> Unit,
+    step: Int = 5,
 ) {
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
-            text = "$label  $value%",
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.weight(1f),
-        )
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = label,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = "$value%",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = accent,
+                )
+                if (!isPro) {
+                    Text(
+                        text = " 🔒",
+                        modifier = Modifier
+                            .clickable(onClick = onLocked)
+                            .padding(4.dp),
+                    )
+                }
+            }
+        }
         if (isPro) {
             Slider(
                 value = value.toFloat(),
-                onValueChange = { onChange(it.toInt()) },
+                onValueChange = {
+                    onChange((it / step).toInt() * step)
+                },
                 valueRange = range,
-                modifier = Modifier.weight(1.4f),
-            )
-        } else {
-            Text(
-                text = "🔒",
-                modifier = Modifier
-                    .clickable(onClick = onLocked)
-                    .padding(8.dp),
+                steps = ((range.endInclusive - range.start) / step).toInt() - 1,
+                colors = SliderDefaults.colors(
+                    thumbColor = accent,
+                    activeTrackColor = accent,
+                ),
             )
         }
     }
