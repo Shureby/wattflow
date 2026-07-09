@@ -3,3 +3,7 @@ build/
 local.properties
 .idea/
 *.iml
+
+# Release signing — never commit. Back these up somewhere safe!
+keystore.properties
+*.keystore

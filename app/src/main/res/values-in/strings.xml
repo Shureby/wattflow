@@ -36,4 +36,7 @@
 
     <string name="info_title">Mengapa lebih rendah dari tampilan charger?</string>
     <string name="info_body">WattFlow mengukur daya sisi baterai — yang benar-benar masuk ke baterai. Charger menampilkan output-nya sendiri. Di antaranya: rugi konversi (~10% kabel, 30–40% nirkabel) dan konsumsi layar serta sistem saat mengisi daya. Selain itu, ponsel hanya menarik daya sesuai negosiasi protokol pada level baterai saat ini.</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">Riwayat pengisian, statistik, dan perekaman latar belakang. Sekali beli, milik Anda selamanya.</string>
+    <string name="pro_buy">Buka</string>
 </resources>

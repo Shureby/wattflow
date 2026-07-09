@@ -36,4 +36,7 @@
 
     <string name="info_title">Why lower than the charger says?</string>
     <string name="info_body">WattFlow measures battery-side power — what actually enters the battery. Chargers display their own output. In between: conversion losses (~10% wired, 30–40% wireless) and the power your screen and system consume while charging. Phones also only draw what their charging protocol negotiates at the current battery level, no matter how powerful the charger is.</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">Charge history, statistics and background recording. One-time purchase, yours forever.</string>
+    <string name="pro_buy">Unlock</string>
 </resources>

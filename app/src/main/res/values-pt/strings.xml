@@ -36,4 +36,7 @@
 
     <string name="info_title">Por que é menor do que o carregador mostra?</string>
     <string name="info_body">O WattFlow mede a potência do lado da bateria — o que realmente entra nela. O carregador mostra a própria saída. No meio: perdas de conversão (~10% com fio, 30–40% sem fio) e o consumo direto de tela e sistema durante a carga. Além disso, o telefone só puxa o que o protocolo de carga negocia no nível de bateria atual.</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">Histórico de carga, estatísticas e gravação em segundo plano. Compra única, seu para sempre.</string>
+    <string name="pro_buy">Desbloquear</string>
 </resources>

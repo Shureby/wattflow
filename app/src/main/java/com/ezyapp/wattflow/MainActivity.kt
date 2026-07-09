@@ -96,6 +96,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Pro.init(applicationContext)
         setContent {
             val colorScheme =
                 if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
@@ -112,7 +113,9 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     val sample = state.sample
     val context = LocalContext.current
     var showLanguageDialog by remember { mutableStateOf(false) }
+    var showPaywall by remember { mutableStateOf(false) }
     var tab by rememberSaveable { mutableIntStateOf(0) }
+    val isPro by Pro.isPro.collectAsState()
 
     Scaffold(
         bottomBar = {
@@ -130,14 +133,19 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                 )
                 NavigationBarItem(
                     selected = tab == 1,
-                    onClick = { tab = 1 },
+                    onClick = { if (isPro) tab = 1 else showPaywall = true },
                     icon = {
                         Icon(
                             painterResource(R.drawable.ic_tab_history), null,
                             modifier = Modifier.size(24.dp),
                         )
                     },
-                    label = { Text(stringResource(R.string.tab_history)) },
+                    label = {
+                        Text(
+                            (if (isPro) "" else "🔒 ") +
+                                stringResource(R.string.tab_history)
+                        )
+                    },
                 )
             }
         },
@@ -161,7 +169,11 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                             style = MaterialTheme.typography.titleMedium,
                         )
                     } else {
-                        ChargingContent(sample = sample, state = state)
+                        ChargingContent(
+                            sample = sample,
+                            state = state,
+                            onLockedFeature = { showPaywall = true },
+                        )
                     }
                 }
             } else {
@@ -181,6 +193,10 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                 )
             }
         }
+    }
+
+    if (showPaywall) {
+        PaywallDialog(onDismiss = { showPaywall = false })
     }
 
     if (showLanguageDialog) {
@@ -256,7 +272,38 @@ private fun LanguageOption(
 }
 
 @Composable
-private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
+private fun PaywallDialog(onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    val price by Pro.priceText.collectAsState()
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.pro_title)) },
+        text = {
+            Text(
+                stringResource(R.string.pro_desc) +
+                    (price?.let { "\n\n$it" } ?: "")
+            )
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                (context as? ComponentActivity)?.let { Pro.launchPurchase(it) }
+                onDismiss()
+            }) { Text(stringResource(R.string.pro_buy)) }
+        },
+        dismissButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        },
+    )
+}
+
+@Composable
+private fun ChargingContent(
+    sample: BatterySample,
+    state: ChargingUiState,
+    onLockedFeature: () -> Unit,
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -342,14 +389,15 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
 
         Spacer(Modifier.height(16.dp))
 
-        MonitorToggle()
+        MonitorToggle(onLockedFeature)
     }
 }
 
 @Composable
-private fun MonitorToggle() {
+private fun MonitorToggle(onLockedFeature: () -> Unit) {
     val context = LocalContext.current
     val running by ChargeMonitorService.isRunning.collectAsState()
+    val isPro by Pro.isPro.collectAsState()
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) {
@@ -370,7 +418,9 @@ private fun MonitorToggle() {
         Switch(
             checked = running,
             onCheckedChange = { on ->
-                if (on) {
+                if (on && !isPro) {
+                    onLockedFeature()
+                } else if (on) {
                     val needsPermission = Build.VERSION.SDK_INT >= 33 &&
                             context.checkSelfPermission(
                                 android.Manifest.permission.POST_NOTIFICATIONS

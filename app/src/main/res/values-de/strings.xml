@@ -36,4 +36,7 @@
 
     <string name="info_title">Warum niedriger als am Ladegerät angezeigt?</string>
     <string name="info_body">WattFlow misst die Leistung auf Akkuseite — was tatsächlich in den Akku fließt. Das Ladegerät zeigt seine eigene Ausgabe. Dazwischen: Wandlungsverluste (~10 % kabelgebunden, 30–40 % kabellos) und der direkte Verbrauch von Display und System beim Laden. Zudem zieht das Handy nur, was das Ladeprotokoll beim aktuellen Akkustand aushandelt.</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">Ladeverlauf, Statistiken und Hintergrundaufzeichnung. Einmalkauf, für immer.</string>
+    <string name="pro_buy">Freischalten</string>
 </resources>

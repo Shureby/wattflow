@@ -36,4 +36,7 @@
 
     <string name="info_title">為什麼比充電器顯示的低？</string>
     <string name="info_body">WattFlow 測量的是電池側功率 — 真正進入電池的部分。充電器顯示的是它自己的輸出。中間隔著轉換損耗（有線約 10%，無線 30–40%）和充電時螢幕、系統的直接耗電。另外，手機只按目前電量下充電協議協商的檔位取電，充電器再強也不會多充。</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">充電歷史、統計與背景記錄。一次性買斷，永久有效。</string>
+    <string name="pro_buy">解鎖</string>
 </resources>

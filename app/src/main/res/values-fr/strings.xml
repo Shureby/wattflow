@@ -36,4 +36,7 @@
 
     <string name="info_title">Pourquoi moins que ce qu\'affiche le chargeur ?</string>
     <string name="info_body">WattFlow mesure la puissance côté batterie — ce qui y entre réellement. Le chargeur affiche sa propre sortie. Entre les deux : pertes de conversion (~10 % filaire, 30–40 % sans fil) et la consommation directe de l\'écran et du système pendant la charge. De plus, le téléphone ne tire que ce que son protocole négocie selon le niveau de batterie actuel.</string>
+    <string name="pro_title">WattFlow Pro</string>
+    <string name="pro_desc">Historique de charge, statistiques et enregistrement en arrière-plan. Achat unique, à vous pour toujours.</string>
+    <string name="pro_buy">Débloquer</string>
 </resources>
