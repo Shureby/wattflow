@@ -33,4 +33,7 @@
     <string name="history_last7">최근 7일</string>
     <string name="label_avg">평균</string>
     <string name="label_peak">최대</string>
+
+    <string name="info_title">충전기 표시보다 낮은 이유는?</string>
+    <string name="info_body">WattFlow는 배터리 측 전력 — 실제로 배터리에 들어가는 양을 측정합니다. 충전기는 자체 출력을 표시합니다. 그 사이에는 변환 손실(유선 약 10%, 무선 30–40%)과 충전 중 화면·시스템의 직접 소비가 있습니다. 또한 폰은 현재 배터리 잔량에서 충전 프로토콜이 협상한 만큼만 전력을 받습니다.</string>
 </resources>

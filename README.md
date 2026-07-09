@@ -56,9 +56,21 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## FAQ
+
+**Why is the number lower than what my charger shows?**
+
+Three real reasons — not a bug:
+
+1. **Different measurement points.** WattFlow shows battery-side power (what actually enters the battery). Your charger shows its own output, upstream of the whole conversion chain.
+2. **Conversion losses.** ~10% wired, 30–40% wireless (coil coupling turns into heat). A 40 W wireless pad delivering ~25 W into the battery is completely normal.
+3. **The system eats first.** Screen, SoC and radios draw power directly from the charge path while you watch the app — that share never reaches the battery.
+
+Bonus: a 100 W charger doesn't force 100 W. The phone draws only what its charging protocol negotiates at the current battery level, and tapers hard past ~70%.
+
 ## Build
 
-Requirements: JDK 17+, Android SDK 34.
+Requirements: JDK 17+, Android SDK 35.
 
 ```bash
 ./gradlew assembleDebug

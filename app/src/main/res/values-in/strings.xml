@@ -33,4 +33,7 @@
     <string name="history_last7">7 hari terakhir</string>
     <string name="label_avg">rata</string>
     <string name="label_peak">puncak</string>
+
+    <string name="info_title">Mengapa lebih rendah dari tampilan charger?</string>
+    <string name="info_body">WattFlow mengukur daya sisi baterai — yang benar-benar masuk ke baterai. Charger menampilkan output-nya sendiri. Di antaranya: rugi konversi (~10% kabel, 30–40% nirkabel) dan konsumsi layar serta sistem saat mengisi daya. Selain itu, ponsel hanya menarik daya sesuai negosiasi protokol pada level baterai saat ini.</string>
 </resources>

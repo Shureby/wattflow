@@ -33,4 +33,7 @@
     <string name="history_last7">Últimos 7 días</string>
     <string name="label_avg">med</string>
     <string name="label_peak">pico</string>
+
+    <string name="info_title">¿Por qué es menor que lo que indica el cargador?</string>
+    <string name="info_body">WattFlow mide la potencia del lado de la batería — lo que realmente entra en ella. El cargador muestra su propia salida. Entre medias: pérdidas de conversión (~10% con cable, 30–40% inalámbrica) y el consumo directo de pantalla y sistema durante la carga. Además, el teléfono solo toma la potencia que negocia su protocolo según el nivel de batería actual.</string>
 </resources>

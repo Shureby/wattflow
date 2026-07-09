@@ -33,4 +33,7 @@
     <string name="history_last7">Letzte 7 Tage</string>
     <string name="label_avg">Ø</string>
     <string name="label_peak">max</string>
+
+    <string name="info_title">Warum niedriger als am Ladegerät angezeigt?</string>
+    <string name="info_body">WattFlow misst die Leistung auf Akkuseite — was tatsächlich in den Akku fließt. Das Ladegerät zeigt seine eigene Ausgabe. Dazwischen: Wandlungsverluste (~10 % kabelgebunden, 30–40 % kabellos) und der direkte Verbrauch von Display und System beim Laden. Zudem zieht das Handy nur, was das Ladeprotokoll beim aktuellen Akkustand aushandelt.</string>
 </resources>

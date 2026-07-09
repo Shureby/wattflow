@@ -34,6 +34,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
@@ -288,13 +289,39 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
             },
         )
 
-        Text(
-            text = stringResource(
-                if (sample.isCharging) R.string.into_battery else R.string.battery_drain
-            ),
-            style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
+        var showInfoDialog by remember { mutableStateOf(false) }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = stringResource(
+                    if (sample.isCharging) R.string.into_battery else R.string.battery_drain
+                ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            IconButton(
+                onClick = { showInfoDialog = true },
+                modifier = Modifier.size(28.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = stringResource(R.string.info_title),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(16.dp),
+                )
+            }
+        }
+        if (showInfoDialog) {
+            AlertDialog(
+                onDismissRequest = { showInfoDialog = false },
+                title = { Text(stringResource(R.string.info_title)) },
+                text = { Text(stringResource(R.string.info_body)) },
+                confirmButton = {
+                    TextButton(onClick = { showInfoDialog = false }) {
+                        Text(stringResource(android.R.string.ok))
+                    }
+                },
+            )
+        }
 
         Spacer(Modifier.height(24.dp))
 

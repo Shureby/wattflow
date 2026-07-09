@@ -33,4 +33,7 @@
     <string name="history_last7">آخر 7 أيام</string>
     <string name="label_avg">متوسط</string>
     <string name="label_peak">ذروة</string>
+
+    <string name="info_title">لماذا الرقم أقل مما يعرضه الشاحن؟</string>
+    <string name="info_body">يقيس WattFlow القدرة عند البطارية — ما يدخل إليها فعلاً. الشاحن يعرض خرجه هو. بينهما: خسائر التحويل (~10% سلكي، 30–40% لاسلكي) واستهلاك الشاشة والنظام أثناء الشحن. كما أن الهاتف يسحب فقط ما يتفاوض عليه بروتوكول الشحن حسب مستوى البطارية الحالي.</string>
 </resources>

@@ -33,4 +33,7 @@
     <string name="history_last7">過去7日間</string>
     <string name="label_avg">平均</string>
     <string name="label_peak">最大</string>
+
+    <string name="info_title">充電器の表示より低いのはなぜ？</string>
+    <string name="info_body">WattFlow はバッテリー側の電力 — 実際にバッテリーへ入る分を測定します。充電器は自身の出力を表示します。その間には変換損失（有線約10%、ワイヤレス30–40%）と、充電中の画面やシステムの直接消費があります。また、スマホは現在の電池残量で充電プロトコルが交渉した分しか受け取りません。</string>
 </resources>

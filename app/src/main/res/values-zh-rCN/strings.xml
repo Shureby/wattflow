@@ -33,4 +33,7 @@
     <string name="history_last7">最近 7 天</string>
     <string name="label_avg">平均</string>
     <string name="label_peak">峰值</string>
+
+    <string name="info_title">为什么比充电器显示的低？</string>
+    <string name="info_body">WattFlow 测量的是电池侧功率 — 真正进入电池的部分。充电器显示的是它自己的输出。中间隔着转换损耗（有线约 10%，无线 30–40%）和充电时屏幕、系统的直接耗电。另外，手机只按当前电量下充电协议协商的档位取电，充电器再强也不会多充。</string>
 </resources>
