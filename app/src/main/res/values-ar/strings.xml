@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">سجل الشحن والإحصاءات والتسجيل في الخلفية. شراء لمرة واحدة، لك للأبد.</string>
     <string name="pro_buy">فتح</string>
+    <string name="filter_charge">الشحن</string>
+    <string name="filter_discharge">على البطارية</string>
+    <string name="eta_to_full">≈ %1$s حتى الامتلاء</string>
+    <string name="eta_left">≈ %1$s متبقٍ</string>
+    <string name="alerts_toggle">تنبيهات البطارية</string>
+    <string name="alert_charge_label">تنبيه الشحن</string>
+    <string name="alert_low_label">تنبيه انخفاض البطارية</string>
+    <string name="alerts_channel_name">تنبيهات البطارية</string>
+    <string name="notif_charge_alert">البطارية عند %1$d%% — افصل الشاحن لحماية البطارية</string>
+    <string name="notif_low_alert">البطارية عند %1$d%% — حان وقت الشحن</string>
+    <string name="health_title">لماذا 80% / 20%؟</string>
+    <string name="health_body">تتقادم بطاريات الليثيوم أسرع عند الأطراف. إبقاء الشحن بين 20% و80% يقلل إجهاد الجهد والحرارة — السببين الرئيسيين لفقدان السعة الدائم. الشحن الكامل أحياناً لا بأس به (يساعد على معايرة المقياس)، لكن البقاء عند 100% أو التفريغ إلى 0% يومياً يقصّر عمر البطارية. لذلك ينبّه WattFlow افتراضياً عند 80% و20%.</string>
+    <string name="widget_desc">قدرة البطارية المباشرة بلمحة</string>
+    <string name="export_csv">تصدير CSV</string>
 </resources>

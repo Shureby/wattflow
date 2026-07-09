@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">충전 기록, 통계, 백그라운드 기록. 한 번 구매로 평생 사용.</string>
     <string name="pro_buy">잠금 해제</string>
+    <string name="filter_charge">충전 중</string>
+    <string name="filter_discharge">배터리 사용</string>
+    <string name="eta_to_full">≈ 완충까지 %1$s</string>
+    <string name="eta_left">≈ %1$s 남음</string>
+    <string name="alerts_toggle">배터리 알림</string>
+    <string name="alert_charge_label">충전 알림</string>
+    <string name="alert_low_label">배터리 부족 알림</string>
+    <string name="alerts_channel_name">배터리 알림</string>
+    <string name="notif_charge_alert">배터리 %1$d%% — 배터리 보호를 위해 충전기를 분리하세요</string>
+    <string name="notif_low_alert">배터리 %1$d%% — 충전할 시간입니다</string>
+    <string name="health_title">왜 80% / 20%인가요?</string>
+    <string name="health_body">리튬 배터리는 양 극단에서 가장 빨리 노화됩니다. 20%–80% 사이를 유지하면 전압 스트레스와 발열 — 영구 용량 손실의 두 가지 주요 원인 — 을 줄일 수 있습니다. 가끔 완충은 괜찮지만(잔량계 보정에 도움), 매일 100% 유지나 0% 방전은 수명을 확실히 단축합니다. 그래서 WattFlow는 기본값으로 80%와 20%에서 알립니다.</string>
+    <string name="widget_desc">배터리 전력을 한눈에</string>
+    <string name="export_csv">CSV 내보내기</string>
 </resources>

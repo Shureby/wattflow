@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">充电历史、统计与后台记录。一次性买断，永久有效。</string>
     <string name="pro_buy">解锁</string>
+    <string name="filter_charge">充电</string>
+    <string name="filter_discharge">用电池</string>
+    <string name="eta_to_full">≈ %1$s 充满</string>
+    <string name="eta_left">≈ 还能用 %1$s</string>
+    <string name="alerts_toggle">电池提醒</string>
+    <string name="alert_charge_label">充电提醒</string>
+    <string name="alert_low_label">低电量提醒</string>
+    <string name="alerts_channel_name">电池提醒</string>
+    <string name="notif_charge_alert">电量已到 %1$d%% — 拔掉充电器保护电池</string>
+    <string name="notif_low_alert">电量仅剩 %1$d%% — 该充电了</string>
+    <string name="health_title">为什么是 80% / 20%？</string>
+    <string name="health_body">锂电池在两个极端老化最快。电量保持在 20%–80% 之间可以减少电压应力和发热 — 这是容量永久损失的两大主因。偶尔充满没问题（还能帮助电量计校准），但天天满电存放或耗到 0% 会明显缩短电池寿命。所以 WattFlow 默认在 80% 和 20% 提醒。</string>
+    <string name="widget_desc">一眼看到实时电池功率</string>
+    <string name="export_csv">导出 CSV</string>
 </resources>

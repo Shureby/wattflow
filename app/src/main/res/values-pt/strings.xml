@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Histórico de carga, estatísticas e gravação em segundo plano. Compra única, seu para sempre.</string>
     <string name="pro_buy">Desbloquear</string>
+    <string name="filter_charge">Carregando</string>
+    <string name="filter_discharge">Na bateria</string>
+    <string name="eta_to_full">≈ %1$s até encher</string>
+    <string name="eta_left">≈ %1$s restante</string>
+    <string name="alerts_toggle">Alertas de bateria</string>
+    <string name="alert_charge_label">Alerta de carga</string>
+    <string name="alert_low_label">Alerta de bateria fraca</string>
+    <string name="alerts_channel_name">Alertas de bateria</string>
+    <string name="notif_charge_alert">Bateria em %1$d%% — desconecte para proteger a bateria</string>
+    <string name="notif_low_alert">Bateria em %1$d%% — hora de carregar</string>
+    <string name="health_title">Por que 80% / 20%?</string>
+    <string name="health_body">Baterias de lítio envelhecem mais rápido nos extremos. Manter a carga entre 20% e 80% reduz o estresse de tensão e o calor — as duas principais causas de perda permanente de capacidade. Uma carga completa ocasional é ok (ajuda a calibrar o medidor), mas ficar em 100% ou esgotar a 0% todo dia encurta a vida útil. Por isso o WattFlow alerta por padrão em 80% e 20%.</string>
+    <string name="widget_desc">Potência da bateria ao vivo num relance</string>
+    <string name="export_csv">Exportar CSV</string>
 </resources>

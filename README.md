@@ -56,13 +56,15 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
-## What's New — v1.1
+## What's New — v1.2
 
-- **Charge history & statistics**: session log, summary, 7-day energy chart
-- **Background recording** (opt-in) with live watts in the notification
-- **ⓘ info dialog**: why the number is lower than your charger's display
-- **FOSS build** (GitHub): everything free. Play build funds development
-  with a one-time Pro purchase.
+- **Battery alerts**: charge-full (80%) and low-battery (20%) notifications,
+  with adjustable thresholds in Pro — and an explainer on why 80/20 keeps
+  your battery healthy
+- **Runtime estimate**: time to full / time left, right on the live screen
+- **Discharge history** and per-session power curves
+- **Home screen widget**: watts, level and temperature at a glance
+- **CSV export** (Pro)
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 

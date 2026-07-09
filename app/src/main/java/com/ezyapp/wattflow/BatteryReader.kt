@@ -14,6 +14,7 @@ data class BatterySample(
     val levelPercent: Int,
     val temperatureC: Double,
     val isCharging: Boolean,
+    val chargeCounterUah: Long, // remaining charge in µAh, -1 when unsupported
 )
 
 class BatteryReader(private val context: Context) {
@@ -46,6 +47,11 @@ class BatteryReader(private val context: Context) {
         val voltageV = voltageMv / 1000.0
         val currentA = currentUa / 1_000_000.0
 
+        val rawCounter =
+            batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+        val chargeCounterUah =
+            if (rawCounter == Int.MIN_VALUE || rawCounter <= 0) -1L else rawCounter.toLong()
+
         return BatterySample(
             watts = voltageV * currentA,
             voltageV = voltageV,
@@ -54,6 +60,7 @@ class BatteryReader(private val context: Context) {
             levelPercent = if (level >= 0) level * 100 / scale else -1,
             temperatureC = tempTenths / 10.0,
             isCharging = isCharging,
+            chargeCounterUah = chargeCounterUah,
         )
     }
 

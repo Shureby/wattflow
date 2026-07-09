@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">История зарядки, статистика и фоновая запись. Разовая покупка, навсегда.</string>
     <string name="pro_buy">Разблокировать</string>
+    <string name="filter_charge">Зарядка</string>
+    <string name="filter_discharge">От батареи</string>
+    <string name="eta_to_full">≈ %1$s до полной</string>
+    <string name="eta_left">≈ осталось %1$s</string>
+    <string name="alerts_toggle">Оповещения батареи</string>
+    <string name="alert_charge_label">Оповещение о заряде</string>
+    <string name="alert_low_label">Оповещение о низком заряде</string>
+    <string name="alerts_channel_name">Оповещения батареи</string>
+    <string name="notif_charge_alert">Батарея %1$d%% — отключите зарядку для защиты батареи</string>
+    <string name="notif_low_alert">Батарея %1$d%% — пора заряжать</string>
+    <string name="health_title">Почему 80% / 20%?</string>
+    <string name="health_body">Литиевые батареи быстрее всего стареют на крайних уровнях. Диапазон 20%–80% снижает напряжение и нагрев — две главные причины необратимой потери ёмкости. Изредка заряжать до 100% можно (это калибрует индикатор), но ежедневные 100% или разряд в 0% заметно сокращают срок службы. Поэтому WattFlow по умолчанию предупреждает на 80% и 20%.</string>
+    <string name="widget_desc">Мощность батареи одним взглядом</string>
+    <string name="export_csv">Экспорт CSV</string>
 </resources>

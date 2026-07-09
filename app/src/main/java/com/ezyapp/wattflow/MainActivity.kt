@@ -36,8 +36,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -46,6 +48,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -53,11 +56,13 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -82,6 +87,9 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -370,6 +378,17 @@ private fun ChargingContent(
             )
         }
 
+        state.etaMinutes?.let { minutes ->
+            Text(
+                text = stringResource(
+                    if (sample.isCharging) R.string.eta_to_full else R.string.eta_left,
+                    formatDuration(minutes * 60_000L),
+                ),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+
         Spacer(Modifier.height(24.dp))
 
         StatsRow(
@@ -390,6 +409,141 @@ private fun ChargingContent(
         Spacer(Modifier.height(16.dp))
 
         MonitorToggle(onLockedFeature)
+
+        Spacer(Modifier.height(8.dp))
+
+        AlertsCard(onLockedFeature)
+    }
+}
+
+@Composable
+private fun AlertsCard(onLockedFeature: () -> Unit) {
+    val context = LocalContext.current
+    var enabled by remember { mutableStateOf(AlertPrefs.enabled(context)) }
+    var chargeTh by remember { mutableIntStateOf(AlertPrefs.chargeThreshold(context)) }
+    var lowTh by remember { mutableIntStateOf(AlertPrefs.lowThreshold(context)) }
+    var showHealthInfo by remember { mutableStateOf(false) }
+    val isPro by Pro.isPro.collectAsState()
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.alerts_toggle),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                IconButton(
+                    onClick = { showHealthInfo = true },
+                    modifier = Modifier.size(28.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = stringResource(R.string.health_title),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
+            Switch(
+                checked = enabled,
+                onCheckedChange = { on ->
+                    enabled = on
+                    AlertPrefs.setEnabled(context, on)
+                    if (on) {
+                        val needsPermission = Build.VERSION.SDK_INT >= 33 &&
+                                context.checkSelfPermission(
+                                    android.Manifest.permission.POST_NOTIFICATIONS
+                                ) != PackageManager.PERMISSION_GRANTED
+                        if (needsPermission) {
+                            permissionLauncher.launch(
+                                android.Manifest.permission.POST_NOTIFICATIONS
+                            )
+                        }
+                    }
+                },
+            )
+        }
+        if (enabled) {
+            ThresholdRow(
+                label = stringResource(R.string.alert_charge_label),
+                value = chargeTh,
+                range = 50f..95f,
+                isPro = isPro,
+                onChange = {
+                    chargeTh = it
+                    AlertPrefs.setChargeThreshold(context, it)
+                },
+                onLocked = onLockedFeature,
+            )
+            ThresholdRow(
+                label = stringResource(R.string.alert_low_label),
+                value = lowTh,
+                range = 5f..40f,
+                isPro = isPro,
+                onChange = {
+                    lowTh = it
+                    AlertPrefs.setLowThreshold(context, it)
+                },
+                onLocked = onLockedFeature,
+            )
+        }
+    }
+
+    if (showHealthInfo) {
+        AlertDialog(
+            onDismissRequest = { showHealthInfo = false },
+            title = { Text(stringResource(R.string.health_title)) },
+            text = { Text(stringResource(R.string.health_body)) },
+            confirmButton = {
+                TextButton(onClick = { showHealthInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun ThresholdRow(
+    label: String,
+    value: Int,
+    range: ClosedFloatingPointRange<Float>,
+    isPro: Boolean,
+    onChange: (Int) -> Unit,
+    onLocked: () -> Unit,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = "$label  $value%",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(1f),
+        )
+        if (isPro) {
+            Slider(
+                value = value.toFloat(),
+                onValueChange = { onChange(it.toInt()) },
+                valueRange = range,
+                modifier = Modifier.weight(1.4f),
+            )
+        } else {
+            Text(
+                text = "🔒",
+                modifier = Modifier
+                    .clickable(onClick = onLocked)
+                    .padding(8.dp),
+            )
+        }
     }
 }
 
@@ -806,36 +960,175 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
 
 @Composable
 private fun HistoryTab(viewModel: ChargingViewModel) {
-    val sessions by viewModel.sessions.collectAsState()
+    val allSessions by viewModel.sessions.collectAsState()
+    var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
+    var detailSession by remember { mutableStateOf<ChargeSession?>(null) }
+    val sessions = allSessions.filter { it.direction == direction }
 
-    if (sessions.isEmpty()) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(
-                text = stringResource(R.string.history_empty),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(32.dp),
-            )
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp)
+            .padding(top = 56.dp),
+    ) {
+        val context = LocalContext.current
+        val isPro by Pro.isPro.collectAsState()
+        var showPaywall by remember { mutableStateOf(false) }
+        val scope = rememberCoroutineScope()
+        val exportLauncher = rememberLauncherForActivityResult(
+            ActivityResultContracts.CreateDocument("text/csv")
+        ) { uri ->
+            if (uri != null) {
+                scope.launch {
+                    val csv = viewModel.sessionsCsv()
+                    withContext(Dispatchers.IO) {
+                        context.contentResolver.openOutputStream(uri)?.use {
+                            it.write(csv.toByteArray())
+                        }
+                    }
+                }
+            }
         }
-    } else {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp)
-                .padding(top = 56.dp),
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
+            FilterChip(
+                selected = direction == DIRECTION_CHARGE,
+                onClick = { direction = DIRECTION_CHARGE },
+                label = { Text(stringResource(R.string.filter_charge)) },
+            )
+            FilterChip(
+                selected = direction == DIRECTION_DISCHARGE,
+                onClick = { direction = DIRECTION_DISCHARGE },
+                label = { Text(stringResource(R.string.filter_discharge)) },
+            )
+            Spacer(Modifier.weight(1f))
+            IconButton(onClick = {
+                if (isPro) {
+                    exportLauncher.launch("wattflow-sessions.csv")
+                } else {
+                    showPaywall = true
+                }
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.Share,
+                    contentDescription = stringResource(R.string.export_csv),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+        }
+
+        if (showPaywall) {
+            PaywallDialog(onDismiss = { showPaywall = false })
+        }
+        Spacer(Modifier.height(12.dp))
+
+        if (sessions.isEmpty()) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(
+                    text = stringResource(R.string.history_empty),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(32.dp),
+                )
+            }
+        } else {
             HistorySummary(sessions)
             Spacer(Modifier.height(16.dp))
             WeekChart(sessions)
             Spacer(Modifier.height(16.dp))
             LazyColumn {
                 items(sessions, key = { it.id }) { session ->
-                    SessionRow(session)
+                    SessionRow(session, onClick = { detailSession = session })
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 }
             }
         }
     }
+
+    detailSession?.let { session ->
+        SessionDetailDialog(
+            session = session,
+            viewModel = viewModel,
+            onDismiss = { detailSession = null },
+        )
+    }
+}
+
+@Composable
+private fun SessionDetailDialog(
+    session: ChargeSession,
+    viewModel: ChargingViewModel,
+    onDismiss: () -> Unit,
+) {
+    var curve by remember { mutableStateOf<List<SessionSample>>(emptyList()) }
+    LaunchedEffect(session.id) { curve = viewModel.curveFor(session.id) }
+
+    val lineColor = MaterialTheme.colorScheme.primary
+    val gridColor = MaterialTheme.colorScheme.outlineVariant
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(formatSessionTime(session)) },
+        text = {
+            Column {
+                Text(
+                    text = "${session.startLevel}% → ${session.endLevel}%  •  " +
+                        formatDuration(session.endTs - session.startTs),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = String.format(
+                        Locale.US, "%.1f W %s • %.1f W %s • %.2f Wh",
+                        session.avgWatts, stringResource(R.string.label_avg),
+                        session.peakWatts, stringResource(R.string.label_peak),
+                        session.energyWh,
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(16.dp))
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(160.dp),
+                    shape = MaterialTheme.shapes.medium,
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                ) {
+                    Canvas(Modifier.fillMaxSize().padding(12.dp)) {
+                        if (curve.size >= 2) {
+                            val maxW = max(curve.maxOf { it.watts }, 0.1)
+                            val t0 = curve.first().ts
+                            val span = (curve.last().ts - t0).coerceAtLeast(1)
+                            for (frac in listOf(0.25f, 0.5f, 0.75f)) {
+                                drawLine(
+                                    color = gridColor,
+                                    start = Offset(0f, size.height * frac),
+                                    end = Offset(size.width, size.height * frac),
+                                    strokeWidth = 1.dp.toPx(),
+                                )
+                            }
+                            val path = Path()
+                            curve.forEachIndexed { i, s ->
+                                val x = size.width * (s.ts - t0) / span.toFloat()
+                                val y = size.height *
+                                    (1f - (s.watts / maxW).toFloat() * 0.92f)
+                                if (i == 0) path.moveTo(x, y) else path.lineTo(x, y)
+                            }
+                            drawPath(path, lineColor, style = Stroke(2.dp.toPx()))
+                        }
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) { Text(stringResource(android.R.string.ok)) }
+        },
+    )
 }
 
 @Composable
@@ -934,9 +1227,11 @@ private fun WeekChart(sessions: List<ChargeSession>, modifier: Modifier = Modifi
 }
 
 @Composable
-private fun SessionRow(session: ChargeSession) {
+private fun SessionRow(session: ChargeSession, onClick: () -> Unit) {
+    val delta = session.endLevel - session.startLevel
     Column(modifier = Modifier
         .fillMaxWidth()
+        .clickable(onClick = onClick)
         .padding(vertical = 10.dp)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -950,7 +1245,11 @@ private fun SessionRow(session: ChargeSession) {
             Text(
                 text = "${session.startLevel}% → ${session.endLevel}%",
                 style = MaterialTheme.typography.titleSmall,
-                color = MaterialTheme.colorScheme.primary,
+                color = if (delta >= 0) {
+                    MaterialTheme.colorScheme.primary
+                } else {
+                    MaterialTheme.colorScheme.error
+                },
             )
         }
         Spacer(Modifier.height(2.dp))

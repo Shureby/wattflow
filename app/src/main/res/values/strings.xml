@@ -39,4 +39,18 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Charge history, statistics and background recording. One-time purchase, yours forever.</string>
     <string name="pro_buy">Unlock</string>
+    <string name="filter_charge">Charging</string>
+    <string name="filter_discharge">On battery</string>
+    <string name="eta_to_full">≈ %1$s to full</string>
+    <string name="eta_left">≈ %1$s left</string>
+    <string name="alerts_toggle">Battery alerts</string>
+    <string name="alert_charge_label">Charge alert</string>
+    <string name="alert_low_label">Low battery alert</string>
+    <string name="alerts_channel_name">Battery alerts</string>
+    <string name="notif_charge_alert">Battery at %1$d%% — unplug to protect battery life</string>
+    <string name="notif_low_alert">Battery at %1$d%% — time to charge</string>
+    <string name="health_title">Why 80% / 20%?</string>
+    <string name="health_body">Lithium batteries age fastest at the extremes. Staying roughly between 20% and 80% reduces voltage stress and heat — the two main causes of permanent capacity loss. An occasional full charge is fine (it helps the gauge calibrate), but sitting at 100% or draining to 0% every day measurably shortens battery lifespan. That\'s why WattFlow defaults to alerts at 80% and 20%.</string>
+    <string name="widget_desc">Live battery power at a glance</string>
+    <string name="export_csv">Export CSV</string>
 </resources>

@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2] - 2026-07-09
+
+- **Battery alerts** — charge-full (80%) and low-battery (20%) notifications;
+  thresholds adjustable in Pro; ⓘ explains why 80/20 protects battery health
+- **Runtime estimate** — time to full while charging, time left while draining
+- **Discharge history** — sessions now recorded in both directions, with a
+  charging / on-battery filter
+- **Session detail** — tap any session for its full power curve
+- **Home screen widget** — watts, level and temperature at a glance
+- **CSV export** (Pro)
+- Full-charge baseline logging (groundwork for battery health trend)
+
 ## [1.1] - 2026-07-09
 
 - **Charge history & statistics** — sessions logged to a local database:
