@@ -20,4 +20,17 @@
 
     <string name="language_title">언어</string>
     <string name="language_system">시스템 기본값</string>
+
+    <string name="tab_live">실시간</string>
+    <string name="tab_history">기록</string>
+    <string name="monitor_toggle">백그라운드 기록</string>
+    <string name="notif_channel_name">충전 모니터</string>
+    <string name="notif_waiting">충전기 대기 중…</string>
+    <string name="history_empty">아직 충전 기록이 없습니다 — 1분 이상 충전해 보세요.</string>
+    <string name="history_sessions">세션</string>
+    <string name="history_total_energy">에너지</string>
+    <string name="history_avg_power">평균 전력</string>
+    <string name="history_last7">최근 7일</string>
+    <string name="label_avg">평균</string>
+    <string name="label_peak">최대</string>
 </resources>

@@ -20,4 +20,17 @@
 
     <string name="language_title">Язык</string>
     <string name="language_system">Системный по умолчанию</string>
+
+    <string name="tab_live">Сейчас</string>
+    <string name="tab_history">История</string>
+    <string name="monitor_toggle">Фоновая запись</string>
+    <string name="notif_channel_name">Монитор зарядки</string>
+    <string name="notif_waiting">Ожидание зарядки…</string>
+    <string name="history_empty">Пока нет сессий зарядки — подключите зарядку хотя бы на минуту.</string>
+    <string name="history_sessions">Сессии</string>
+    <string name="history_total_energy">Энергия</string>
+    <string name="history_avg_power">Средняя мощность</string>
+    <string name="history_last7">Последние 7 дней</string>
+    <string name="label_avg">средн</string>
+    <string name="label_peak">пик</string>
 </resources>

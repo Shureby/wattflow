@@ -20,4 +20,17 @@
 
     <string name="language_title">اللغة</string>
     <string name="language_system">افتراضي النظام</string>
+
+    <string name="tab_live">مباشر</string>
+    <string name="tab_history">السجل</string>
+    <string name="monitor_toggle">التسجيل في الخلفية</string>
+    <string name="notif_channel_name">مراقب الشحن</string>
+    <string name="notif_waiting">في انتظار الشاحن…</string>
+    <string name="history_empty">لا توجد جلسات شحن بعد — وصّل الشاحن لدقيقة على الأقل.</string>
+    <string name="history_sessions">الجلسات</string>
+    <string name="history_total_energy">الطاقة</string>
+    <string name="history_avg_power">متوسط القدرة</string>
+    <string name="history_last7">آخر 7 أيام</string>
+    <string name="label_avg">متوسط</string>
+    <string name="label_peak">ذروة</string>
 </resources>

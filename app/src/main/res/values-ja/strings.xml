@@ -20,4 +20,17 @@
 
     <string name="language_title">言語</string>
     <string name="language_system">システムに従う</string>
+
+    <string name="tab_live">ライブ</string>
+    <string name="tab_history">履歴</string>
+    <string name="monitor_toggle">バックグラウンド記録</string>
+    <string name="notif_channel_name">充電モニター</string>
+    <string name="notif_waiting">充電器を待機中…</string>
+    <string name="history_empty">充電記録はまだありません — 1分以上充電してください。</string>
+    <string name="history_sessions">回数</string>
+    <string name="history_total_energy">総電力量</string>
+    <string name="history_avg_power">平均電力</string>
+    <string name="history_last7">過去7日間</string>
+    <string name="label_avg">平均</string>
+    <string name="label_peak">最大</string>
 </resources>

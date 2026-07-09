@@ -20,4 +20,17 @@
 
     <string name="language_title">Language</string>
     <string name="language_system">System default</string>
+
+    <string name="tab_live">Live</string>
+    <string name="tab_history">History</string>
+    <string name="monitor_toggle">Background recording</string>
+    <string name="notif_channel_name">Charging monitor</string>
+    <string name="notif_waiting">Waiting for charger…</string>
+    <string name="history_empty">No charge sessions yet — plug in and charge for at least a minute.</string>
+    <string name="history_sessions">Sessions</string>
+    <string name="history_total_energy">Energy</string>
+    <string name="history_avg_power">Avg power</string>
+    <string name="history_last7">Last 7 days</string>
+    <string name="label_avg">avg</string>
+    <string name="label_peak">peak</string>
 </resources>

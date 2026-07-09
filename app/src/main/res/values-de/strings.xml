@@ -20,4 +20,17 @@
 
     <string name="language_title">Sprache</string>
     <string name="language_system">Systemstandard</string>
+
+    <string name="tab_live">Live</string>
+    <string name="tab_history">Verlauf</string>
+    <string name="monitor_toggle">Hintergrundaufzeichnung</string>
+    <string name="notif_channel_name">Lademonitor</string>
+    <string name="notif_waiting">Warte auf Ladegerät…</string>
+    <string name="history_empty">Noch keine Ladesitzungen — mindestens eine Minute laden.</string>
+    <string name="history_sessions">Sitzungen</string>
+    <string name="history_total_energy">Energie</string>
+    <string name="history_avg_power">Ø Leistung</string>
+    <string name="history_last7">Letzte 7 Tage</string>
+    <string name="label_avg">Ø</string>
+    <string name="label_peak">max</string>
 </resources>

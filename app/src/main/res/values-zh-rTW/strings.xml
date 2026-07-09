@@ -20,4 +20,17 @@
 
     <string name="language_title">語言</string>
     <string name="language_system">跟隨系統</string>
+
+    <string name="tab_live">即時</string>
+    <string name="tab_history">歷史</string>
+    <string name="monitor_toggle">背景記錄</string>
+    <string name="notif_channel_name">充電監控</string>
+    <string name="notif_waiting">等待充電…</string>
+    <string name="history_empty">還沒有充電記錄 — 插上充電至少一分鐘。</string>
+    <string name="history_sessions">次數</string>
+    <string name="history_total_energy">總電量</string>
+    <string name="history_avg_power">平均功率</string>
+    <string name="history_last7">最近 7 天</string>
+    <string name="label_avg">平均</string>
+    <string name="label_peak">峰值</string>
 </resources>

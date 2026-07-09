@@ -20,4 +20,17 @@
 
     <string name="language_title">Bahasa</string>
     <string name="language_system">Bawaan sistem</string>
+
+    <string name="tab_live">Langsung</string>
+    <string name="tab_history">Riwayat</string>
+    <string name="monitor_toggle">Perekaman latar belakang</string>
+    <string name="notif_channel_name">Monitor pengisian</string>
+    <string name="notif_waiting">Menunggu pengisi daya…</string>
+    <string name="history_empty">Belum ada sesi pengisian — colokkan dan isi daya minimal satu menit.</string>
+    <string name="history_sessions">Sesi</string>
+    <string name="history_total_energy">Energi</string>
+    <string name="history_avg_power">Daya rata-rata</string>
+    <string name="history_last7">7 hari terakhir</string>
+    <string name="label_avg">rata</string>
+    <string name="label_peak">puncak</string>
 </resources>

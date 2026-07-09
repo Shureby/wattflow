@@ -20,4 +20,17 @@
 
     <string name="language_title">Langue</string>
     <string name="language_system">Par défaut du système</string>
+
+    <string name="tab_live">En direct</string>
+    <string name="tab_history">Historique</string>
+    <string name="monitor_toggle">Enregistrement en arrière-plan</string>
+    <string name="notif_channel_name">Moniteur de charge</string>
+    <string name="notif_waiting">En attente du chargeur…</string>
+    <string name="history_empty">Aucune session de charge — branchez et chargez au moins une minute.</string>
+    <string name="history_sessions">Sessions</string>
+    <string name="history_total_energy">Énergie</string>
+    <string name="history_avg_power">Puissance moy.</string>
+    <string name="history_last7">7 derniers jours</string>
+    <string name="label_avg">moy</string>
+    <string name="label_peak">pic</string>
 </resources>

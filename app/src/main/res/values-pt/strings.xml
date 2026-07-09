@@ -20,4 +20,17 @@
 
     <string name="language_title">Idioma</string>
     <string name="language_system">Padrão do sistema</string>
+
+    <string name="tab_live">Ao vivo</string>
+    <string name="tab_history">Histórico</string>
+    <string name="monitor_toggle">Gravação em segundo plano</string>
+    <string name="notif_channel_name">Monitor de carga</string>
+    <string name="notif_waiting">Aguardando carregador…</string>
+    <string name="history_empty">Ainda não há sessões de carga — conecte e carregue por pelo menos um minuto.</string>
+    <string name="history_sessions">Sessões</string>
+    <string name="history_total_energy">Energia</string>
+    <string name="history_avg_power">Potência média</string>
+    <string name="history_last7">Últimos 7 dias</string>
+    <string name="label_avg">méd</string>
+    <string name="label_peak">pico</string>
 </resources>

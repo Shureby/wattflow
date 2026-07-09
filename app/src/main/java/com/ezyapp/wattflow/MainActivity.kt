@@ -1,10 +1,15 @@
 package com.ezyapp.wattflow
 
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.BatteryManager
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -23,18 +28,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.darkColorScheme
@@ -42,12 +54,15 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -66,6 +81,9 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.max
@@ -93,28 +111,60 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     val sample = state.sample
     val context = LocalContext.current
     var showLanguageDialog by remember { mutableStateOf(false) }
+    var tab by rememberSaveable { mutableIntStateOf(0) }
 
-    Scaffold { innerPadding ->
+    Scaffold(
+        bottomBar = {
+            NavigationBar {
+                NavigationBarItem(
+                    selected = tab == 0,
+                    onClick = { tab = 0 },
+                    icon = {
+                        Icon(
+                            painterResource(R.drawable.ic_stat_bolt), null,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    },
+                    label = { Text(stringResource(R.string.tab_live)) },
+                )
+                NavigationBarItem(
+                    selected = tab == 1,
+                    onClick = { tab = 1 },
+                    icon = {
+                        Icon(
+                            painterResource(R.drawable.ic_tab_history), null,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    },
+                    label = { Text(stringResource(R.string.tab_history)) },
+                )
+            }
+        },
+    ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center,
-            ) {
-                if (sample == null) {
-                    Text(
-                        text = stringResource(R.string.reading_battery),
-                        style = MaterialTheme.typography.titleMedium,
-                    )
-                } else {
-                    ChargingContent(sample = sample, state = state)
+            if (tab == 0) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(24.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                ) {
+                    if (sample == null) {
+                        Text(
+                            text = stringResource(R.string.reading_battery),
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                    } else {
+                        ChargingContent(sample = sample, state = state)
+                    }
                 }
+            } else {
+                HistoryTab(viewModel)
             }
 
             IconButton(
@@ -262,7 +312,62 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
                 .fillMaxWidth()
                 .height(160.dp),
         )
+
+        Spacer(Modifier.height(16.dp))
+
+        MonitorToggle()
     }
+}
+
+@Composable
+private fun MonitorToggle() {
+    val context = LocalContext.current
+    val running by ChargeMonitorService.isRunning.collectAsState()
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) {
+        // Service runs either way; without the permission the
+        // notification is just hidden on Android 13+.
+        startMonitor(context)
+    }
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = stringResource(R.string.monitor_toggle),
+            style = MaterialTheme.typography.bodyLarge,
+        )
+        Switch(
+            checked = running,
+            onCheckedChange = { on ->
+                if (on) {
+                    val needsPermission = Build.VERSION.SDK_INT >= 33 &&
+                            context.checkSelfPermission(
+                                android.Manifest.permission.POST_NOTIFICATIONS
+                            ) != PackageManager.PERMISSION_GRANTED
+                    if (needsPermission) {
+                        permissionLauncher.launch(
+                            android.Manifest.permission.POST_NOTIFICATIONS
+                        )
+                    } else {
+                        startMonitor(context)
+                    }
+                } else {
+                    context.startService(
+                        Intent(context, ChargeMonitorService::class.java)
+                            .setAction(ChargeMonitorService.ACTION_STOP)
+                    )
+                }
+            },
+        )
+    }
+}
+
+private fun startMonitor(context: Context) {
+    context.startForegroundService(Intent(context, ChargeMonitorService::class.java))
 }
 
 // ---------------------------------------------------------------------------
@@ -616,6 +721,187 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
             )
         }
     }
+}
+
+// ---------------------------------------------------------------------------
+// History tab
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun HistoryTab(viewModel: ChargingViewModel) {
+    val sessions by viewModel.sessions.collectAsState()
+
+    if (sessions.isEmpty()) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(
+                text = stringResource(R.string.history_empty),
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(32.dp),
+            )
+        }
+    } else {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp)
+                .padding(top = 56.dp),
+        ) {
+            HistorySummary(sessions)
+            Spacer(Modifier.height(16.dp))
+            WeekChart(sessions)
+            Spacer(Modifier.height(16.dp))
+            LazyColumn {
+                items(sessions, key = { it.id }) { session ->
+                    SessionRow(session)
+                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun HistorySummary(sessions: List<ChargeSession>) {
+    val totalWh = sessions.sumOf { it.energyWh }
+    val totalHours = sessions.sumOf { (it.endTs - it.startTs) / 3_600_000.0 }
+    val avgW = if (totalHours > 0) totalWh / totalHours else 0.0
+
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly,
+        ) {
+            StatItem(stringResource(R.string.history_sessions), "${sessions.size}")
+            StatItem(
+                stringResource(R.string.history_total_energy),
+                String.format(Locale.US, "%.1f Wh", totalWh),
+            )
+            StatItem(
+                stringResource(R.string.history_avg_power),
+                String.format(Locale.US, "%.1f W", avgW),
+            )
+        }
+    }
+}
+
+@Composable
+private fun WeekChart(sessions: List<ChargeSession>, modifier: Modifier = Modifier) {
+    val barColor = MaterialTheme.colorScheme.primary
+    val labelColor = MaterialTheme.colorScheme.onSurfaceVariant
+    val textMeasurer = rememberTextMeasurer()
+    val labelStyle = TextStyle(fontSize = 10.sp, color = labelColor)
+
+    // Bucket energy by day: index 0 = 6 days ago … 6 = today.
+    val cal = Calendar.getInstance().apply {
+        set(Calendar.HOUR_OF_DAY, 0)
+        set(Calendar.MINUTE, 0)
+        set(Calendar.SECOND, 0)
+        set(Calendar.MILLISECOND, 0)
+    }
+    val todayStart = cal.timeInMillis
+    val dayMs = 86_400_000L
+    val buckets = DoubleArray(7)
+    sessions.forEach { s ->
+        val idx = ((s.startTs - (todayStart - 6 * dayMs)) / dayMs).toInt()
+        if (idx in 0..6) buckets[idx] += s.energyWh
+    }
+    val dayFormat = SimpleDateFormat("EEE", Locale.getDefault())
+    val labels = (0..6).map { i -> dayFormat.format(Date(todayStart - (6 - i) * dayMs)) }
+    val maxWh = max(buckets.max(), 0.1)
+
+    Column(modifier = modifier.fillMaxWidth()) {
+        Text(
+            text = stringResource(R.string.history_last7),
+            style = MaterialTheme.typography.labelMedium,
+            color = labelColor,
+        )
+        Spacer(Modifier.height(8.dp))
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(120.dp),
+            shape = MaterialTheme.shapes.medium,
+            color = MaterialTheme.colorScheme.surfaceVariant,
+        ) {
+            Canvas(modifier = Modifier.fillMaxSize().padding(12.dp)) {
+                val labelH = 16.dp.toPx()
+                val chartH = size.height - labelH
+                val slot = size.width / 7
+                val barW = slot * 0.5f
+                for (i in 0..6) {
+                    val h = (buckets[i] / maxWh).toFloat() * chartH * 0.92f
+                    val x = slot * i + (slot - barW) / 2
+                    if (h > 0f) {
+                        drawRoundRect(
+                            color = barColor,
+                            topLeft = Offset(x, chartH - h),
+                            size = Size(barW, h),
+                            cornerRadius = CornerRadius(barW * 0.25f),
+                        )
+                    }
+                    val layout = textMeasurer.measure(labels[i], labelStyle)
+                    drawText(
+                        textLayoutResult = layout,
+                        topLeft = Offset(
+                            slot * i + (slot - layout.size.width) / 2,
+                            size.height - layout.size.height,
+                        ),
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun SessionRow(session: ChargeSession) {
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(vertical = 10.dp)) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(
+                text = formatSessionTime(session),
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = "${session.startLevel}% → ${session.endLevel}%",
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+        Spacer(Modifier.height(2.dp))
+        Text(
+            text = String.format(
+                Locale.US,
+                "%s • %.1f W %s • %.1f W %s • %.1f Wh • %s",
+                stringResource(sourceLabelRes(session.plugged)),
+                session.avgWatts, stringResource(R.string.label_avg),
+                session.peakWatts, stringResource(R.string.label_peak),
+                session.energyWh,
+                formatDuration(session.endTs - session.startTs),
+            ),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+private fun formatSessionTime(s: ChargeSession): String {
+    val startFormat = SimpleDateFormat("M/d HH:mm", Locale.getDefault())
+    val endFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return startFormat.format(Date(s.startTs)) + " – " + endFormat.format(Date(s.endTs))
+}
+
+private fun formatDuration(ms: Long): String {
+    val minutes = ms / 60_000
+    return if (minutes >= 60) "${minutes / 60}h ${minutes % 60}m" else "${minutes}m"
 }
 
 private fun sourceLabelRes(plugged: Int): Int = when (plugged) {

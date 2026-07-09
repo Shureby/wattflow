@@ -6,8 +6,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,11 +28,16 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
     private val _uiState = MutableStateFlow(ChargingUiState())
     val uiState: StateFlow<ChargingUiState> = _uiState.asStateFlow()
 
+    val sessions: StateFlow<List<ChargeSession>> =
+        AppDatabase.get(app).sessionDao().recent()
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
     init {
         viewModelScope.launch {
             while (isActive) {
                 val sample = withContext(Dispatchers.IO) { reader.read() }
                 if (sample != null) {
+                    SessionRecorder.onSample(getApplication(), sample)
                     _uiState.value = _uiState.value.let { s ->
                         s.copy(
                             sample = sample,
