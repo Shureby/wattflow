@@ -9,7 +9,7 @@ plugins {
 
 // Release signing: keystore.properties is gitignored; release builds fall
 // back to unsigned when it's absent (e.g. CI, contributor machines).
-val keystorePropsFile = rootProject.file("keystore.properties")
+val keystorePropsFile = rootProject.file("playstore/private/keystore.properties")
 val keystoreProps = Properties().apply {
     if (keystorePropsFile.exists()) load(FileInputStream(keystorePropsFile))
 }
