@@ -3,7 +3,7 @@
 ## One-time Console setup (needs developer account)
 
 1. [Play Console](https://play.google.com/console) → Create app
-   - Name: WattFlow: Real Charging Power · free app with in-app purchases
+   - Name: WattFlow: Real Battery Power · free app with in-app purchases
 2. Monetize → In-app products → Create: product ID **`wattflow_pro`**,
    one-time, price ~US$2.99 (must match `PRODUCT_ID` in
    `app/src/play/java/com/ezyapp/wattflow/ProGateFactory.kt`)

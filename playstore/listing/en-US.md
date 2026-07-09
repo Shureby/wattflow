@@ -2,11 +2,11 @@
 
 ## Title (max 30 chars)
 
-WattFlow: Real Charging Power
+WattFlow: Real Battery Power
 
 ## Short description (max 80 chars)
 
-See the real watts flowing into your battery. Wired & wireless. No ads.
+See the real watts flowing in and out of your battery. Live, private, no ads.
 
 ## Full description (max 4000 chars)
 
@@ -14,8 +14,11 @@ See the real watts flowing into your battery. Wired & wireless. No ads.
 
 A worn cable, a dusty port, a misaligned wireless pad or a hot battery can silently cut your charging speed by 90%. Your phone still says "charging". WattFlow shows you what's actually happening.
 
-REAL-TIME POWER
-• Live watts, refreshed every second — wired (AC / USB / dock) and wireless
+WattFlow is an honest, real-time meter for every watt that flows in or out of your battery.
+
+REAL-TIME POWER, BOTH DIRECTIONS
+• Live watts refreshed every second — charging in, draining out
+• Wired (AC / USB / dock) and wireless, detected automatically
 • Voltage, current, temperature and battery level at a glance
 • Peak In / Peak Out tracking and a live 60-second power graph
 • Animated charge flow — watch the current move
@@ -23,16 +26,16 @@ REAL-TIME POWER
 FIND THE PROBLEMS
 • Compare chargers, cables and wireless pads in seconds
 • Catch slow charging before you wake up to a 12% battery
-• See how much power your screen and apps burn while charging
-• Watch the drain when reverse-charging other devices
+• See how much power your screen and apps burn — while charging or on battery
+• Watch the real drain when reverse-charging your earbuds or watch
 
 WATTFLOW PRO — one-time purchase, yours forever
-• Charge history: every session logged — duration, % gained, average and peak watts, energy in Wh
+• Battery history: every charge session logged — duration, % gained, average and peak watts, energy in Wh
 • 7-day energy chart and statistics
 • Background recording with live watts in the notification
 
 THE HONEST NUMBER
-WattFlow shows battery-side power — what actually reaches your battery, not the marketing number on the charger brick. That's why it can read lower than the charger's own display: conversion losses and system drain are real, and knowing the difference is the whole point.
+WattFlow shows battery-side power — what actually reaches (or leaves) your battery, not the marketing number on the charger brick. That's why it can read lower than the charger's own display: conversion losses and system drain are real, and knowing the difference is the whole point.
 
 PRIVATE BY DESIGN
 • Zero permissions, no ads, no analytics, no network access
