@@ -39,8 +39,8 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">충전 기록, 통계, 백그라운드 기록. 한 번 구매로 평생 사용.</string>
     <string name="pro_buy">잠금 해제</string>
-    <string name="filter_charge">충전 중</string>
-    <string name="filter_discharge">배터리 사용</string>
+    <string name="filter_charge">충전</string>
+    <string name="filter_discharge">방전</string>
     <string name="eta_to_full">≈ 완충까지 %1$s</string>
     <string name="eta_left">≈ %1$s 남음</string>
     <string name="alerts_toggle">배터리 알림</string>

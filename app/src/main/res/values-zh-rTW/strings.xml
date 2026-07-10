@@ -40,7 +40,7 @@
     <string name="pro_desc">充電歷史、統計與背景記錄。一次性買斷，永久有效。</string>
     <string name="pro_buy">解鎖</string>
     <string name="filter_charge">充電</string>
-    <string name="filter_discharge">用電池</string>
+    <string name="filter_discharge">放電</string>
     <string name="eta_to_full">≈ %1$s 充滿</string>
     <string name="eta_left">≈ 還能用 %1$s</string>
     <string name="alerts_toggle">電池提醒</string>

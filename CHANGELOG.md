@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.1] - 2026-07-10
+
+Fixes from v1.2 field testing:
+
+- History filter now uses proper charge/discharge terminology in all
+  12 languages (was "On battery" phrasing, awkward in most)
+- Settings moved to a dedicated screen (gear icon); alert sliders
+  redesigned — full width, 5% detents, live bold percentage, purple
+  charge / red low-battery
+- Live tab is scrollable: no more overlapping content on tall screens
+- Direction-specific empty state in history
+- "Background recording" toggle explains foreground recording
+- Sub-minute session durations show as <1m
+
 ## [1.2] - 2026-07-09
 
 - **Battery alerts** — charge-full (80%) and low-battery (20%) notifications;

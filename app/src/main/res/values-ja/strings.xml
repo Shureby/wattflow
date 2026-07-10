@@ -39,8 +39,8 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">充電履歴、統計、バックグラウンド記録。買い切り、ずっと使えます。</string>
     <string name="pro_buy">解除</string>
-    <string name="filter_charge">充電中</string>
-    <string name="filter_discharge">バッテリー使用中</string>
+    <string name="filter_charge">充電</string>
+    <string name="filter_discharge">放電</string>
     <string name="eta_to_full">≈ 満充電まで %1$s</string>
     <string name="eta_left">≈ 残り %1$s</string>
     <string name="alerts_toggle">バッテリー通知</string>

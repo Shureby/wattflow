@@ -40,7 +40,7 @@
     <string name="pro_desc">充电历史、统计与后台记录。一次性买断，永久有效。</string>
     <string name="pro_buy">解锁</string>
     <string name="filter_charge">充电</string>
-    <string name="filter_discharge">用电池</string>
+    <string name="filter_discharge">放电</string>
     <string name="eta_to_full">≈ %1$s 充满</string>
     <string name="eta_left">≈ 还能用 %1$s</string>
     <string name="alerts_toggle">电池提醒</string>

@@ -40,7 +40,7 @@
     <string name="pro_desc">История зарядки, статистика и фоновая запись. Разовая покупка, навсегда.</string>
     <string name="pro_buy">Разблокировать</string>
     <string name="filter_charge">Зарядка</string>
-    <string name="filter_discharge">От батареи</string>
+    <string name="filter_discharge">Разрядка</string>
     <string name="eta_to_full">≈ %1$s до полной</string>
     <string name="eta_left">≈ осталось %1$s</string>
     <string name="alerts_toggle">Оповещения батареи</string>

@@ -39,8 +39,8 @@
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Histórico de carga, estatísticas e gravação em segundo plano. Compra única, seu para sempre.</string>
     <string name="pro_buy">Desbloquear</string>
-    <string name="filter_charge">Carregando</string>
-    <string name="filter_discharge">Na bateria</string>
+    <string name="filter_charge">Carga</string>
+    <string name="filter_discharge">Descarga</string>
     <string name="eta_to_full">≈ %1$s até encher</string>
     <string name="eta_left">≈ %1$s restante</string>
     <string name="alerts_toggle">Alertas de bateria</string>
