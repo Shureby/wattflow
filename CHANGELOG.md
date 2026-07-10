@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.2] - 2026-07-10
+
+- **Session merging** — same-direction sessions separated by sampling gaps
+  under 5 minutes now display as one (with a ×N segment badge). Screen-off
+  power saving fragments sampling; a continuous drain no longer shows as
+  a confusing pile of short rows. Stored data stays raw.
+- **Raw sessions (strict)** geek toggle in Settings restores exact
+  60-second-gap segmentation — presentation-only, switch anytime
+- **Uninterrupted background sampling** (shown in geek mode): optional
+  battery-optimization exemption with clear side-effect disclosure;
+  declining it is fully respected
+- Fixed energy over-counting across short sampling gaps
+
 ## [1.2.1] - 2026-07-10
 
 Fixes from v1.2 field testing:

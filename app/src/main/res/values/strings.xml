@@ -58,4 +58,11 @@
     <string name="privacy_policy">Privacy policy</string>
     <string name="history_empty_discharge">No battery sessions yet — they record while the app is open or background recording is on.</string>
     <string name="monitor_toggle_hint">When off, sessions record only while the app is open.</string>
+    <string name="geek_toggle">Raw sessions (strict)</string>
+    <string name="geek_info_body">Screen-off power saving briefly pauses sampling. By default, WattFlow merges same-direction sessions separated by gaps under 5 minutes — closer to how you think about one charge or one drain. Turn this on to see every raw segment exactly as sampled, split at every gap over 60 seconds.</string>
+    <string name="doze_row">Uninterrupted background sampling</string>
+    <string name="doze_info_body">Exempts WattFlow from battery optimization so background sampling is not paused while the screen is off. Recording becomes more complete, at the cost of slightly higher standby drain (~0.5-1% per hour). On MIUI/HyperOS and similar systems you may also need to allow autostart in system settings.</string>
+    <string name="doze_denied_note">WattFlow works fine without this permission — screen-off periods may briefly lack samples, shown as separate segments in raw mode.</string>
+    <string name="status_granted">Allowed</string>
+    <string name="status_not_granted">Not allowed</string>
 </resources>

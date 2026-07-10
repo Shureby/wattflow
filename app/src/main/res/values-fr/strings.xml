@@ -58,4 +58,11 @@
     <string name="privacy_policy">Politique de confidentialité</string>
     <string name="history_empty_discharge">"Aucune session batterie — elles sont enregistrées quand l'app est ouverte ou l'enregistrement en arrière-plan actif."</string>
     <string name="monitor_toggle_hint">"Désactivé, les sessions ne sont enregistrées que lorsque l'app est ouverte."</string>
+    <string name="geek_toggle">Sessions brutes (strict)</string>
+    <string name="geek_info_body">Écran éteint, le mode économie suspend brièvement les mesures. Par défaut, WattFlow fusionne les sessions de même direction séparées de moins de 5 minutes. Activez pour voir chaque segment brut tel que mesuré, découpé à chaque pause de plus de 60 secondes.</string>
+    <string name="doze_row">Mesures en arrière-plan sans interruption</string>
+    <string name="doze_info_body">"Exempte WattFlow des optimisations de batterie pour que les mesures ne soient pas suspendues écran éteint. Enregistrement plus complet, au prix d'une veille légèrement plus gourmande (~0,5-1% par heure). Sur MIUI/HyperOS, un démarrage automatique peut aussi être requis."</string>
+    <string name="doze_denied_note">WattFlow fonctionne bien sans cette autorisation — les périodes écran éteint peuvent manquer de mesures, affichées comme segments séparés en mode strict.</string>
+    <string name="status_granted">Autorisé</string>
+    <string name="status_not_granted">Non autorisé</string>
 </resources>

@@ -58,4 +58,11 @@
     <string name="privacy_policy">Datenschutzerklärung</string>
     <string name="history_empty_discharge">Noch keine Akku-Sitzungen — sie werden aufgezeichnet, solange die App offen ist oder die Hintergrundaufzeichnung läuft.</string>
     <string name="monitor_toggle_hint">Wenn aus, werden Sitzungen nur bei geöffneter App aufgezeichnet.</string>
+    <string name="geek_toggle">Rohsitzungen (strikt)</string>
+    <string name="geek_info_body">Der Energiesparmodus bei ausgeschaltetem Display pausiert die Messung kurzzeitig. Standardmäßig verschmilzt WattFlow gleichgerichtete Sitzungen mit Lücken unter 5 Minuten. Aktivieren, um jedes Rohsegment exakt wie gemessen zu sehen, getrennt bei jeder Lücke über 60 Sekunden.</string>
+    <string name="doze_row">Unterbrechungsfreie Hintergrundmessung</string>
+    <string name="doze_info_body">Nimmt WattFlow von der Akku-Optimierung aus, damit die Messung bei ausgeschaltetem Display nicht pausiert. Vollständigere Aufzeichnung, dafür etwas höherer Standby-Verbrauch (~0,5-1% pro Stunde). Auf MIUI/HyperOS muss ggf. auch Autostart erlaubt werden.</string>
+    <string name="doze_denied_note">WattFlow funktioniert auch ohne diese Berechtigung — bei ausgeschaltetem Display können Messlücken entstehen, im strikten Modus als separate Segmente sichtbar.</string>
+    <string name="status_granted">Erlaubt</string>
+    <string name="status_not_granted">Nicht erlaubt</string>
 </resources>

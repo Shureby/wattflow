@@ -58,4 +58,11 @@
     <string name="privacy_policy">개인정보 처리방침</string>
     <string name="history_empty_discharge">아직 배터리 사용 기록이 없습니다 — 앱이 열려 있거나 백그라운드 기록이 켜져 있을 때 기록됩니다.</string>
     <string name="monitor_toggle_hint">꺼져 있으면 앱이 열려 있는 동안에만 기록됩니다.</string>
+    <string name="geek_toggle">원본 세션 (엄격)</string>
+    <string name="geek_info_body">화면이 꺼지면 절전 기능이 샘플링을 잠시 중단합니다. 기본적으로 5분 미만 간격의 같은 방향 기록을 하나로 병합합니다. 켜면 60초 이상 중단될 때마다 나뉜 원본 세그먼트를 그대로 표시합니다.</string>
+    <string name="doze_row">백그라운드 샘플링 중단 없음</string>
+    <string name="doze_info_body">WattFlow를 배터리 최적화에서 제외하여 화면이 꺼져도 샘플링이 중단되지 않습니다. 기록이 더 완전해지지만 대기 전력 소모가 약간 늘어납니다(시간당 약 0.5-1%). MIUI/HyperOS에서는 자동 시작 허용도 필요할 수 있습니다.</string>
+    <string name="doze_denied_note">이 권한 없이도 잘 작동합니다 — 화면 꺼짐 구간에 샘플이 부족할 수 있으며 엄격 모드에서 별도 세그먼트로 표시됩니다.</string>
+    <string name="status_granted">허용됨</string>
+    <string name="status_not_granted">허용 안 됨</string>
 </resources>

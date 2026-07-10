@@ -287,6 +287,11 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
             Spacer(Modifier.height(6.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
+            Spacer(Modifier.height(6.dp))
+            GeekSection()
+            Spacer(Modifier.height(6.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
             Spacer(Modifier.height(16.dp))
             Text(
                 text = stringResource(R.string.version_label, versionName),
@@ -509,6 +514,159 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(160.dp),
+        )
+    }
+}
+
+@Composable
+private fun GeekSection() {
+    val context = LocalContext.current
+    var rawEnabled by remember { mutableStateOf(RawModePrefs.enabled(context)) }
+    var showRawInfo by remember { mutableStateOf(false) }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.geek_toggle),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                IconButton(
+                    onClick = { showRawInfo = true },
+                    modifier = Modifier.size(28.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = stringResource(R.string.geek_toggle),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
+            Switch(
+                checked = rawEnabled,
+                onCheckedChange = { on ->
+                    rawEnabled = on
+                    RawModePrefs.setEnabled(context, on)
+                },
+            )
+        }
+        if (rawEnabled) {
+            DozeExemptionRow()
+        }
+    }
+
+    if (showRawInfo) {
+        AlertDialog(
+            onDismissRequest = { showRawInfo = false },
+            title = { Text(stringResource(R.string.geek_toggle)) },
+            text = { Text(stringResource(R.string.geek_info_body)) },
+            confirmButton = {
+                TextButton(onClick = { showRawInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
+    }
+}
+
+@Composable
+private fun DozeExemptionRow() {
+    val context = LocalContext.current
+    val powerManager = remember {
+        context.getSystemService(android.os.PowerManager::class.java)
+    }
+    fun isExempt() = powerManager.isIgnoringBatteryOptimizations(context.packageName)
+
+    var granted by remember { mutableStateOf(isExempt()) }
+    var requested by remember { mutableStateOf(false) }
+    var showDeniedNote by remember { mutableStateOf(false) }
+    var showDozeInfo by remember { mutableStateOf(false) }
+
+    // Re-check when returning from the system dialog / settings.
+    val lifecycleOwner = androidx.compose.ui.platform.LocalLifecycleOwner.current
+    androidx.compose.runtime.DisposableEffect(lifecycleOwner) {
+        val observer = androidx.lifecycle.LifecycleEventObserver { _, event ->
+            if (event == androidx.lifecycle.Lifecycle.Event.ON_RESUME) {
+                val now = isExempt()
+                if (requested && !now) showDeniedNote = true
+                requested = false
+                granted = now
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(enabled = !granted) {
+                requested = true
+                context.startActivity(
+                    Intent(
+                        android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                        android.net.Uri.parse("package:${context.packageName}"),
+                    )
+                )
+            }
+            .padding(top = 10.dp, bottom = 4.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = stringResource(R.string.doze_row),
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            IconButton(
+                onClick = { showDozeInfo = true },
+                modifier = Modifier.size(28.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = stringResource(R.string.doze_row),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(16.dp),
+                )
+            }
+        }
+        Text(
+            text = stringResource(
+                if (granted) R.string.status_granted else R.string.status_not_granted
+            ),
+            style = MaterialTheme.typography.bodyMedium,
+            color = if (granted) MaterialTheme.colorScheme.primary
+            else MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+
+    if (showDozeInfo) {
+        AlertDialog(
+            onDismissRequest = { showDozeInfo = false },
+            title = { Text(stringResource(R.string.doze_row)) },
+            text = { Text(stringResource(R.string.doze_info_body)) },
+            confirmButton = {
+                TextButton(onClick = { showDozeInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
+    }
+
+    if (showDeniedNote) {
+        AlertDialog(
+            onDismissRequest = { showDeniedNote = false },
+            text = { Text(stringResource(R.string.doze_denied_note)) },
+            confirmButton = {
+                TextButton(onClick = { showDeniedNote = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
         )
     }
 }
@@ -1087,8 +1245,12 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
 private fun HistoryTab(viewModel: ChargingViewModel) {
     val allSessions by viewModel.sessions.collectAsState()
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
-    var detailSession by remember { mutableStateOf<ChargeSession?>(null) }
-    val sessions = allSessions.filter { it.direction == direction }
+    var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
+    val rawMode = RawModePrefs.enabled(LocalContext.current)
+    val sessions = mergeSessions(
+        allSessions.filter { it.direction == direction },
+        raw = rawMode,
+    )
 
     Column(
         modifier = Modifier
@@ -1169,7 +1331,7 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
             WeekChart(sessions)
             Spacer(Modifier.height(16.dp))
             LazyColumn {
-                items(sessions, key = { it.id }) { session ->
+                items(sessions, key = { it.ids.first() }) { session ->
                     SessionRow(session, onClick = { detailSession = session })
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                 }
@@ -1188,12 +1350,12 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
 
 @Composable
 private fun SessionDetailDialog(
-    session: ChargeSession,
+    session: DisplaySession,
     viewModel: ChargingViewModel,
     onDismiss: () -> Unit,
 ) {
     var curve by remember { mutableStateOf<List<SessionSample>>(emptyList()) }
-    LaunchedEffect(session.id) { curve = viewModel.curveFor(session.id) }
+    LaunchedEffect(session.ids) { curve = viewModel.curveFor(session.ids) }
 
     val lineColor = MaterialTheme.colorScheme.primary
     val gridColor = MaterialTheme.colorScheme.outlineVariant
@@ -1260,7 +1422,7 @@ private fun SessionDetailDialog(
 }
 
 @Composable
-private fun HistorySummary(sessions: List<ChargeSession>) {
+private fun HistorySummary(sessions: List<DisplaySession>) {
     val totalWh = sessions.sumOf { it.energyWh }
     val totalHours = sessions.sumOf { (it.endTs - it.startTs) / 3_600_000.0 }
     val avgW = if (totalHours > 0) totalWh / totalHours else 0.0
@@ -1286,7 +1448,7 @@ private fun HistorySummary(sessions: List<ChargeSession>) {
 }
 
 @Composable
-private fun WeekChart(sessions: List<ChargeSession>, modifier: Modifier = Modifier) {
+private fun WeekChart(sessions: List<DisplaySession>, modifier: Modifier = Modifier) {
     val barColor = MaterialTheme.colorScheme.primary
     val labelColor = MaterialTheme.colorScheme.onSurfaceVariant
     val textMeasurer = rememberTextMeasurer()
@@ -1355,7 +1517,7 @@ private fun WeekChart(sessions: List<ChargeSession>, modifier: Modifier = Modifi
 }
 
 @Composable
-private fun SessionRow(session: ChargeSession, onClick: () -> Unit) {
+private fun SessionRow(session: DisplaySession, onClick: () -> Unit) {
     val delta = session.endLevel - session.startLevel
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -1390,14 +1552,14 @@ private fun SessionRow(session: ChargeSession, onClick: () -> Unit) {
                 session.peakWatts, stringResource(R.string.label_peak),
                 session.energyWh,
                 formatDuration(session.endTs - session.startTs),
-            ),
+            ) + if (session.segments > 1) " • ×${session.segments}" else "",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 }
 
-private fun formatSessionTime(s: ChargeSession): String {
+private fun formatSessionTime(s: DisplaySession): String {
     val startFormat = SimpleDateFormat("M/d HH:mm", Locale.getDefault())
     val endFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
     return startFormat.format(Date(s.startTs)) + " – " + endFormat.format(Date(s.endTs))

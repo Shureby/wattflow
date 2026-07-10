@@ -58,4 +58,11 @@
     <string name="privacy_policy">隱私政策</string>
     <string name="history_empty_discharge">還沒有放電記錄 — app 開啟或背景記錄開啟時才會記錄用電池的時段。</string>
     <string name="monitor_toggle_hint">關閉時僅在 app 開啟期間記錄。</string>
+    <string name="geek_toggle">嚴格分段（極客）</string>
+    <string name="geek_info_body">熄屏省電會短暫中斷取樣。預設將間隔小於 5 分鐘的同方向記錄合併為一段，更符合對一次充電/放電的直覺。開啟後按原始取樣嚴格展示，每次超過 60 秒的中斷都單獨成段。</string>
+    <string name="doze_row">背景取樣不中斷</string>
+    <string name="doze_info_body">將 WattFlow 加入電池最佳化白名單，熄屏時背景取樣不被暫停，記錄更完整，代價是待機耗電略增（約每小時 0.5-1%）。小米/HyperOS 等系統可能還需在系統設定中允許自啟動。</string>
+    <string name="doze_denied_note">沒有此權限也能正常使用 — 熄屏期間可能出現短暫取樣缺口，嚴格分段模式下會如實顯示為多段。</string>
+    <string name="status_granted">已允許</string>
+    <string name="status_not_granted">未允許</string>
 </resources>

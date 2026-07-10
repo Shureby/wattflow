@@ -58,4 +58,11 @@
     <string name="privacy_policy">Kebijakan privasi</string>
     <string name="history_empty_discharge">Belum ada sesi baterai — direkam saat aplikasi terbuka atau perekaman latar belakang aktif.</string>
     <string name="monitor_toggle_hint">Saat mati, sesi hanya direkam ketika aplikasi terbuka.</string>
+    <string name="geek_toggle">Sesi mentah (ketat)</string>
+    <string name="geek_info_body">Penghemat daya saat layar mati menjeda pengambilan sampel sejenak. Secara default, WattFlow menggabungkan sesi searah yang terpisah kurang dari 5 menit. Aktifkan untuk melihat setiap segmen mentah apa adanya, terbagi di setiap jeda lebih dari 60 detik.</string>
+    <string name="doze_row">Pengambilan sampel latar belakang tanpa gangguan</string>
+    <string name="doze_info_body">Mengecualikan WattFlow dari optimalisasi baterai agar pengambilan sampel tidak dijeda saat layar mati. Perekaman lebih lengkap dengan konsumsi siaga sedikit lebih tinggi (~0,5-1% per jam). Di MIUI/HyperOS mungkin perlu mengizinkan mulai otomatis.</string>
+    <string name="doze_denied_note">WattFlow tetap berfungsi tanpa izin ini — periode layar mati mungkin kekurangan sampel dan tampil sebagai segmen terpisah dalam mode ketat.</string>
+    <string name="status_granted">Diizinkan</string>
+    <string name="status_not_granted">Tidak diizinkan</string>
 </resources>

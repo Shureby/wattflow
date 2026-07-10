@@ -58,4 +58,11 @@
     <string name="privacy_policy">Política de privacidade</string>
     <string name="history_empty_discharge">Ainda não há sessões de bateria — são registradas com o app aberto ou a gravação em segundo plano ativada.</string>
     <string name="monitor_toggle_hint">Desativado, as sessões só são registradas com o app aberto.</string>
+    <string name="geek_toggle">Sessões brutas (estrito)</string>
+    <string name="geek_info_body">A economia de energia com tela apagada pausa brevemente a amostragem. Por padrão, o WattFlow mescla sessões da mesma direção separadas por menos de 5 minutos. Ative para ver cada segmento bruto como amostrado, dividido a cada pausa acima de 60 segundos.</string>
+    <string name="doze_row">Amostragem em segundo plano sem interrupções</string>
+    <string name="doze_info_body">Isenta o WattFlow da otimização de bateria para que a amostragem não pause com a tela apagada. O registro fica mais completo, ao custo de consumo em espera um pouco maior (~0,5-1% por hora). Em MIUI/HyperOS talvez seja preciso permitir o início automático.</string>
+    <string name="doze_denied_note">O WattFlow funciona bem sem essa permissão — períodos de tela apagada podem ficar sem amostras, exibidos como segmentos separados no modo estrito.</string>
+    <string name="status_granted">Permitido</string>
+    <string name="status_not_granted">Não permitido</string>
 </resources>

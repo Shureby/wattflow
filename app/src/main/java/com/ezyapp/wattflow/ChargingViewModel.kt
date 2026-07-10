@@ -35,7 +35,8 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
         dao.recent()
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    suspend fun curveFor(sessionId: Long): List<SessionSample> = dao.samplesFor(sessionId)
+    suspend fun curveFor(sessionIds: List<Long>): List<SessionSample> =
+        sessionIds.flatMap { dao.samplesFor(it) }.sortedBy { it.ts }
 
     /** All sessions as CSV, oldest first. */
     suspend fun sessionsCsv(): String {

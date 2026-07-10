@@ -75,7 +75,12 @@ object SessionRecorder {
         }
 
         val magnitude = abs(sample.watts)
-        a.energyWh += magnitude * (now - a.lastTs) / 3_600_000.0
+        // Energy only over continuously sampled intervals — never extrapolate
+        // instantaneous watts across a sampling gap.
+        val dtMs = now - a.lastTs
+        if (dtMs <= 10_000) {
+            a.energyWh += magnitude * dtMs / 3_600_000.0
+        }
         a.lastTs = now
         a.lastLevel = sample.levelPercent
         if (sample.chargeCounterUah > 0) a.lastChargeCounter = sample.chargeCounterUah

@@ -31,3 +31,19 @@ object LocalePrefs {
         return base.createConfigurationContext(config)
     }
 }
+
+/**
+ * Geek mode: show raw 60-second-granularity session segments instead of the
+ * default display-time merging (same direction, gaps under 5 minutes).
+ * Presentation-only — stored data is always raw.
+ */
+object RawModePrefs {
+    fun enabled(context: Context): Boolean =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getBoolean("raw_sessions", false)
+
+    fun setEnabled(context: Context, on: Boolean) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit().putBoolean("raw_sessions", on).apply()
+    }
+}

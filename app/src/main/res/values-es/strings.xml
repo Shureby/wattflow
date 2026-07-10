@@ -58,4 +58,11 @@
     <string name="privacy_policy">Política de privacidad</string>
     <string name="history_empty_discharge">Aún no hay sesiones de batería — se registran con la app abierta o el registro en segundo plano activado.</string>
     <string name="monitor_toggle_hint">Desactivado, las sesiones solo se registran con la app abierta.</string>
+    <string name="geek_toggle">Sesiones sin procesar (estricto)</string>
+    <string name="geek_info_body">El ahorro de energía con pantalla apagada pausa brevemente el muestreo. Por defecto, WattFlow fusiona sesiones de la misma dirección separadas por menos de 5 minutos. Activa esto para ver cada segmento tal como fue muestreado, dividido en cada pausa de más de 60 segundos.</string>
+    <string name="doze_row">Muestreo en segundo plano sin interrupciones</string>
+    <string name="doze_info_body">Exime a WattFlow de la optimización de batería para que el muestreo no se pause con la pantalla apagada. El registro es más completo, a costa de un consumo en espera algo mayor (~0,5-1% por hora). En MIUI/HyperOS puede que también debas permitir el autoarranque.</string>
+    <string name="doze_denied_note">WattFlow funciona bien sin este permiso — los periodos con pantalla apagada pueden carecer de muestras, mostrados como segmentos separados en modo estricto.</string>
+    <string name="status_granted">Permitido</string>
+    <string name="status_not_granted">No permitido</string>
 </resources>

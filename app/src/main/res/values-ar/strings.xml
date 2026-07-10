@@ -58,4 +58,11 @@
     <string name="privacy_policy">سياسة الخصوصية</string>
     <string name="history_empty_discharge">لا توجد جلسات بطارية بعد — تُسجَّل أثناء فتح التطبيق أو تفعيل التسجيل في الخلفية.</string>
     <string name="monitor_toggle_hint">عند الإيقاف، تُسجَّل الجلسات فقط أثناء فتح التطبيق.</string>
+    <string name="geek_toggle">جلسات خام (صارم)</string>
+    <string name="geek_info_body">توفير الطاقة عند إطفاء الشاشة يوقف أخذ العينات مؤقتاً. افتراضياً يدمج WattFlow الجلسات ذات الاتجاه نفسه المفصولة بأقل من 5 دقائق. فعّل هذا لرؤية كل مقطع خام كما سُجّل، مقسوماً عند كل انقطاع يتجاوز 60 ثانية.</string>
+    <string name="doze_row">أخذ عينات دون انقطاع في الخلفية</string>
+    <string name="doze_info_body">يعفي WattFlow من تحسين البطارية حتى لا يتوقف أخذ العينات عند إطفاء الشاشة. يصبح التسجيل أكثر اكتمالاً مقابل زيادة طفيفة في استهلاك الاستعداد (~0.5-1% في الساعة). قد تحتاج أيضاً للسماح بالتشغيل التلقائي في أنظمة MIUI/HyperOS.</string>
+    <string name="doze_denied_note">يعمل WattFlow جيداً بدون هذا الإذن — قد تفتقر فترات إطفاء الشاشة للعينات وتظهر كمقاطع منفصلة في الوضع الصارم.</string>
+    <string name="status_granted">مسموح</string>
+    <string name="status_not_granted">غير مسموح</string>
 </resources>
