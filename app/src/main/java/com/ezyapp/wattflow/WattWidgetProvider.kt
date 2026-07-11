@@ -26,6 +26,14 @@ class WattWidgetProvider : AppWidgetProvider() {
         update(context)
     }
 
+    override fun onEnabled(context: Context) {
+        WidgetRefreshWorker.schedule(context)
+    }
+
+    override fun onDisabled(context: Context) {
+        WidgetRefreshWorker.cancel(context)
+    }
+
     companion object {
         private var lastUpdateTs = 0L
 

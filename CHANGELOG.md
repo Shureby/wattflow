@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+- Widget freshness bounded at ~15 minutes via a periodic refresher that
+  runs only while a widget exists (was up to 30 minutes stale for users
+  without background recording)
+- Widget size locked until the responsive multi-size widget ships in
+  v1.3 — stretching it only revealed empty space
+
 - Monitor notification channel no longer shows a launcher badge dot: it
   is a status indicator the user cannot clear, which read as a chronic
   nag on stock-Android launchers. Alert notifications keep their badge.

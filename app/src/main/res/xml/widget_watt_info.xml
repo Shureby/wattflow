@@ -5,7 +5,7 @@
     android:targetCellWidth="2"
     android:targetCellHeight="1"
     android:updatePeriodMillis="1800000"
-    android:resizeMode="horizontal|vertical"
+    android:resizeMode="none"
     android:widgetCategory="home_screen"
     android:initialLayout="@layout/widget_watt"
     android:description="@string/widget_desc" />
