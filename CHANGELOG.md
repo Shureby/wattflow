@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+- CSV export filename now carries the export date
+  (wattflow-sessions-2026-07-11.csv) — SAF never overwrites, so a fixed
+  name only accumulated " (1)" suffixes
+
 ## [1.2.7] - 2026-07-11
 
 - History header consolidated to one row: filter chips, a
