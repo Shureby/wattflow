@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.6] - 2026-07-11
+
+- Landscape fixed: live screen content is width-capped (the charge
+  visual no longer scales off screen), and the history page is one
+  scrollable list — headers used to consume the whole viewport leaving
+  the session list invisible
+
 ## [1.2.5] - 2026-07-11
 
 - Battery-optimization exemption row is now Pro-gated: it only benefits

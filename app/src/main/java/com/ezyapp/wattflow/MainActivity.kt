@@ -22,12 +22,14 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -428,7 +430,11 @@ private fun PaywallDialog(onDismiss: () -> Unit) {
 @Composable
 private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        // Cap width so landscape/tablets don't blow up the width-scaled
+        // charge visual and push the watts off screen.
+        modifier = Modifier
+            .widthIn(max = 480.dp)
+            .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ChargeVisual(
@@ -1279,119 +1285,133 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
         raw = rawMode,
     )
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp)
-            .padding(top = 56.dp),
-    ) {
-        val context = LocalContext.current
-        val isPro by Pro.isPro.collectAsState()
-        var showPaywall by remember { mutableStateOf(false) }
-        val scope = rememberCoroutineScope()
-        val exportLauncher = rememberLauncherForActivityResult(
-            ActivityResultContracts.CreateDocument("text/csv")
-        ) { uri ->
-            if (uri != null) {
-                scope.launch {
-                    val csv = viewModel.sessionsCsv()
-                    withContext(Dispatchers.IO) {
-                        context.contentResolver.openOutputStream(uri)?.use {
-                            it.write(csv.toByteArray())
-                        }
+    val context = LocalContext.current
+    val isPro by Pro.isPro.collectAsState()
+    var showPaywall by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
+    val exportLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.CreateDocument("text/csv")
+    ) { uri ->
+        if (uri != null) {
+            scope.launch {
+                val csv = viewModel.sessionsCsv()
+                withContext(Dispatchers.IO) {
+                    context.contentResolver.openOutputStream(uri)?.use {
+                        it.write(csv.toByteArray())
                     }
                 }
             }
         }
+    }
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            FilterChip(
-                selected = direction == DIRECTION_CHARGE,
-                onClick = { direction = DIRECTION_CHARGE },
-                label = { Text(stringResource(R.string.filter_charge)) },
-            )
-            FilterChip(
-                selected = direction == DIRECTION_DISCHARGE,
-                onClick = { direction = DIRECTION_DISCHARGE },
-                label = { Text(stringResource(R.string.filter_discharge)) },
-            )
-            Spacer(Modifier.weight(1f))
-            IconButton(onClick = {
-                if (isPro) {
-                    exportLauncher.launch("wattflow-sessions.csv")
-                } else {
-                    showPaywall = true
-                }
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Share,
-                    contentDescription = stringResource(R.string.export_csv),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-        }
+    if (showPaywall) {
+        PaywallDialog(onDismiss = { showPaywall = false })
+    }
 
-        if (showPaywall) {
-            PaywallDialog(onDismiss = { showPaywall = false })
-        }
-        Spacer(Modifier.height(12.dp))
-
-        if (!isPro) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { showPaywall = true },
+    // One LazyColumn for the whole page: header sections are items too, so
+    // everything scrolls together — critical in landscape where the fixed
+    // header alone used to eat the entire viewport.
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        contentPadding = PaddingValues(top = 56.dp, bottom = 16.dp),
+    ) {
+        item {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(R.string.free_history_banner),
-                        style = MaterialTheme.typography.bodySmall,
-                        modifier = Modifier.weight(1f),
-                    )
-                    Text(
-                        text = stringResource(R.string.pro_buy),
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier.padding(start = 8.dp),
+                FilterChip(
+                    selected = direction == DIRECTION_CHARGE,
+                    onClick = { direction = DIRECTION_CHARGE },
+                    label = { Text(stringResource(R.string.filter_charge)) },
+                )
+                FilterChip(
+                    selected = direction == DIRECTION_DISCHARGE,
+                    onClick = { direction = DIRECTION_DISCHARGE },
+                    label = { Text(stringResource(R.string.filter_discharge)) },
+                )
+                Spacer(Modifier.weight(1f))
+                IconButton(onClick = {
+                    if (isPro) {
+                        exportLauncher.launch("wattflow-sessions.csv")
+                    } else {
+                        showPaywall = true
+                    }
+                }) {
+                    Icon(
+                        imageVector = Icons.Filled.Share,
+                        contentDescription = stringResource(R.string.export_csv),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
             Spacer(Modifier.height(12.dp))
         }
 
+        if (!isPro) {
+            item {
+                Card(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { showPaywall = true },
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(12.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(R.string.free_history_banner),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.weight(1f),
+                        )
+                        Text(
+                            text = stringResource(R.string.pro_buy),
+                            style = MaterialTheme.typography.labelLarge,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(start = 8.dp),
+                        )
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+            }
+        }
+
         if (sessions.isEmpty()) {
-            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                Text(
-                    text = stringResource(
-                        if (direction == DIRECTION_CHARGE) R.string.history_empty
-                        else R.string.history_empty_discharge
-                    ),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.padding(32.dp),
-                )
+            item {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 64.dp),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Text(
+                        text = stringResource(
+                            if (direction == DIRECTION_CHARGE) R.string.history_empty
+                            else R.string.history_empty_discharge
+                        ),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(horizontal = 32.dp),
+                    )
+                }
             }
         } else {
-            HistorySummary(sessions)
-            Spacer(Modifier.height(16.dp))
-            WeekChart(sessions)
-            Spacer(Modifier.height(16.dp))
-            LazyColumn {
-                items(sessions, key = { it.ids.first() }) { session ->
-                    SessionRow(session, onClick = { detailSession = session })
-                    HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-                }
+            item {
+                HistorySummary(sessions)
+                Spacer(Modifier.height(16.dp))
+                WeekChart(sessions)
+                Spacer(Modifier.height(16.dp))
+            }
+            items(sessions, key = { it.ids.first() }) { session ->
+                SessionRow(session, onClick = { detailSession = session })
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             }
         }
     }
