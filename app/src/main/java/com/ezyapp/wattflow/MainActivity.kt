@@ -283,7 +283,7 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
             Spacer(Modifier.height(6.dp))
-            GeekSection()
+            GeekSection(onLockedFeature)
             Spacer(Modifier.height(6.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
@@ -524,10 +524,11 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
 }
 
 @Composable
-private fun GeekSection() {
+private fun GeekSection(onLockedFeature: () -> Unit) {
     val context = LocalContext.current
     var rawEnabled by remember { mutableStateOf(RawModePrefs.enabled(context)) }
     var showRawInfo by remember { mutableStateOf(false) }
+    val isPro by Pro.isPro.collectAsState()
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
@@ -561,7 +562,28 @@ private fun GeekSection() {
             )
         }
         if (rawEnabled) {
-            DozeExemptionRow()
+            // The exemption only benefits background recording — a Pro
+            // feature. Granting it on Free would mislead users into
+            // expecting recording that never happens.
+            if (isPro) {
+                DozeExemptionRow()
+            } else {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable(onClick = onLockedFeature)
+                        .padding(top = 10.dp, bottom = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(R.string.doze_row),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Text(text = "🔒", modifier = Modifier.padding(4.dp))
+                }
+            }
         }
     }
 

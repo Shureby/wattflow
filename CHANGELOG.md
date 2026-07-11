@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.5] - 2026-07-11
+
+- Battery-optimization exemption row is now Pro-gated: it only benefits
+  background recording, so letting free users grant it was misleading
+
 ## [1.2.4] - 2026-07-11
 
 - History tab is now open to everyone: free users see their
