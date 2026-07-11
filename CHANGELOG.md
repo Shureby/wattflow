@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.2.8] - 2026-07-11
 
 - Widget freshness bounded at ~15 minutes via a periodic refresher that
   runs only while a widget exists (was up to 30 minutes stale for users
