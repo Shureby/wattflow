@@ -67,4 +67,5 @@
     <string name="status_not_granted">Not allowed</string>
     <string name="free_history_banner">Only records while you use the app — unlock Pro for complete background recording.</string>
     <string name="billing_unavailable">Store unavailable</string>
+    <string name="monitor_permission_rationale">Background recording shows an ongoing notification with the live wattage — Android requires notification permission for it to be visible. Recording works either way; without permission the notification is simply hidden.</string>
 </resources>

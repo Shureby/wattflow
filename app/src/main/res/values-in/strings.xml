@@ -67,4 +67,5 @@
     <string name="status_not_granted">Tidak diizinkan</string>
     <string name="free_history_banner">Hanya merekam saat aplikasi digunakan — buka Pro untuk perekaman latar belakang lengkap.</string>
     <string name="billing_unavailable">Toko tidak tersedia</string>
+    <string name="monitor_permission_rationale">Perekaman latar belakang menampilkan notifikasi tetap berisi watt langsung — Android memerlukan izin notifikasi agar terlihat. Perekaman tetap berjalan; tanpa izin, notifikasinya hanya tersembunyi.</string>
 </resources>

@@ -130,6 +130,17 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     var tab by rememberSaveable { mutableIntStateOf(0) }
     val isPro by Pro.isPro.collectAsState()
 
+    // Self-heal: if the user wants background recording but the service was
+    // killed (install, swipe, vendor task manager), restart it on app open.
+    val appContext = LocalContext.current.applicationContext
+    LaunchedEffect(isPro) {
+        if (isPro && MonitorPrefs.enabled(appContext) &&
+            !ChargeMonitorService.isRunning.value
+        ) {
+            startMonitor(appContext)
+        }
+    }
+
     if (showSettings) {
         BackHandler { showSettings = false }
         SettingsScreen(
@@ -858,7 +869,11 @@ private fun ThresholdRow(
 @Composable
 private fun MonitorToggle(onLockedFeature: () -> Unit) {
     val context = LocalContext.current
-    val running by ChargeMonitorService.isRunning.collectAsState()
+    // The switch reflects the persisted INTENT, not the service's live
+    // state — installs, swipes and vendor task killers stop the service,
+    // but the user's choice survives and the app self-heals on open.
+    var wanted by remember { mutableStateOf(MonitorPrefs.enabled(context)) }
+    var showRationale by remember { mutableStateOf(false) }
     val isPro by Pro.isPro.collectAsState()
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -866,6 +881,20 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
         // Service runs either way; without the permission the
         // notification is just hidden on Android 13+.
         startMonitor(context)
+    }
+
+    fun enable() {
+        wanted = true
+        MonitorPrefs.setEnabled(context, true)
+        val needsPermission = Build.VERSION.SDK_INT >= 33 &&
+                context.checkSelfPermission(
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+        if (needsPermission) {
+            showRationale = true
+        } else {
+            startMonitor(context)
+        }
     }
 
     Row(
@@ -885,28 +914,39 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
             )
         }
         Switch(
-            checked = running,
+            checked = wanted,
             onCheckedChange = { on ->
                 if (on && !isPro) {
                     onLockedFeature()
                 } else if (on) {
-                    val needsPermission = Build.VERSION.SDK_INT >= 33 &&
-                            context.checkSelfPermission(
-                                android.Manifest.permission.POST_NOTIFICATIONS
-                            ) != PackageManager.PERMISSION_GRANTED
-                    if (needsPermission) {
-                        permissionLauncher.launch(
-                            android.Manifest.permission.POST_NOTIFICATIONS
-                        )
-                    } else {
-                        startMonitor(context)
-                    }
+                    enable()
                 } else {
+                    wanted = false
+                    MonitorPrefs.setEnabled(context, false)
                     context.startService(
                         Intent(context, ChargeMonitorService::class.java)
                             .setAction(ChargeMonitorService.ACTION_STOP)
                     )
                 }
+            },
+        )
+    }
+
+    if (showRationale) {
+        AlertDialog(
+            onDismissRequest = {
+                showRationale = false
+                startMonitor(context)
+            },
+            title = { Text(stringResource(R.string.monitor_toggle)) },
+            text = { Text(stringResource(R.string.monitor_permission_rationale)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showRationale = false
+                    permissionLauncher.launch(
+                        android.Manifest.permission.POST_NOTIFICATIONS
+                    )
+                }) { Text(stringResource(android.R.string.ok)) }
             },
         )
     }

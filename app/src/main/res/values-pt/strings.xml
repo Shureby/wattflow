@@ -67,4 +67,5 @@
     <string name="status_not_granted">Não permitido</string>
     <string name="free_history_banner">Só registra enquanto você usa o app — desbloqueie o Pro para gravação completa em segundo plano.</string>
     <string name="billing_unavailable">Loja indisponível</string>
+    <string name="monitor_permission_rationale">A gravação em segundo plano mostra uma notificação fixa com a potência ao vivo — o Android exige a permissão de notificações para ela ficar visível. A gravação funciona de qualquer forma; sem permissão a notificação fica apenas oculta.</string>
 </resources>

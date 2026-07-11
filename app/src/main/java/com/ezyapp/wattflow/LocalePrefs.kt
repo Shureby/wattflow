@@ -37,6 +37,22 @@ object LocalePrefs {
  * default display-time merging (same direction, gaps under 5 minutes).
  * Presentation-only — stored data is always raw.
  */
+/**
+ * The user's INTENT to record in the background — persisted, unlike the
+ * service's live state. The service can be killed by installs, vendor task
+ * managers or swipes; on next app open the intent restarts it.
+ */
+object MonitorPrefs {
+    fun enabled(context: Context): Boolean =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getBoolean("monitor_enabled", false)
+
+    fun setEnabled(context: Context, on: Boolean) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit().putBoolean("monitor_enabled", on).apply()
+    }
+}
+
 object RawModePrefs {
     fun enabled(context: Context): Boolean =
         context.getSharedPreferences("settings", Context.MODE_PRIVATE)

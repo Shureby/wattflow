@@ -67,4 +67,5 @@
     <string name="status_not_granted">غير مسموح</string>
     <string name="free_history_banner">يسجل فقط أثناء استخدام التطبيق — افتح Pro للتسجيل الكامل في الخلفية.</string>
     <string name="billing_unavailable">المتجر غير متاح</string>
+    <string name="monitor_permission_rationale">يعرض التسجيل في الخلفية إشعاراً دائماً بالقدرة اللحظية — يتطلب أندرويد إذن الإشعارات ليكون مرئياً. التسجيل يعمل في كل الأحوال؛ بدون الإذن يبقى الإشعار مخفياً فقط.</string>
 </resources>

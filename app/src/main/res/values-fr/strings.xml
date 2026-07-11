@@ -67,4 +67,5 @@
     <string name="status_not_granted">Non autorisé</string>
     <string name="free_history_banner">"N'enregistre que pendant l'utilisation de l'app — débloquez Pro pour un enregistrement complet en arrière-plan."</string>
     <string name="billing_unavailable">Boutique indisponible</string>
+    <string name="monitor_permission_rationale">"L'enregistrement en arrière-plan affiche une notification permanente avec la puissance en direct — Android exige l'autorisation de notifications pour la rendre visible. L'enregistrement fonctionne dans tous les cas ; sans autorisation, la notification est simplement masquée."</string>
 </resources>

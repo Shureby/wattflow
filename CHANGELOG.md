@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+- Background recording setting now persists: the switch stores your
+  intent and the app restarts the service on open if a task killer,
+  install or swipe stopped it (the switch previously mirrored the
+  service's live state and "forgot" whenever the process died)
+- Enabling background recording now explains WHY notification
+  permission is requested before the system dialog appears
+
 ## [1.2.8] - 2026-07-11
 
 - Widget freshness bounded at ~15 minutes via a periodic refresher that
