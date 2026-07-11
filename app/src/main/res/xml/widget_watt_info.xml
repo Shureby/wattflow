@@ -4,8 +4,10 @@
     android:minHeight="40dp"
     android:targetCellWidth="2"
     android:targetCellHeight="1"
+    android:maxResizeWidth="360dp"
+    android:maxResizeHeight="220dp"
     android:updatePeriodMillis="1800000"
-    android:resizeMode="none"
+    android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:initialLayout="@layout/widget_watt"
     android:description="@string/widget_desc" />

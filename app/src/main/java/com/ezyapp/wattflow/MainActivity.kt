@@ -1740,7 +1740,7 @@ private fun formatSessionTime(s: DisplaySession): String {
     return startFormat.format(Date(s.startTs)) + " – " + endFormat.format(Date(s.endTs))
 }
 
-private fun formatDuration(ms: Long): String {
+internal fun formatDuration(ms: Long): String {
     val minutes = ms / 60_000
     return when {
         minutes >= 60 -> "${minutes / 60}h ${minutes % 60}m"
@@ -1749,7 +1749,7 @@ private fun formatDuration(ms: Long): String {
     }
 }
 
-private fun sourceLabelRes(plugged: Int): Int = when (plugged) {
+internal fun sourceLabelRes(plugged: Int): Int = when (plugged) {
     BatteryManager.BATTERY_PLUGGED_AC -> R.string.source_wired_ac
     BatteryManager.BATTERY_PLUGGED_USB -> R.string.source_wired_usb
     BatteryManager.BATTERY_PLUGGED_WIRELESS -> R.string.source_wireless

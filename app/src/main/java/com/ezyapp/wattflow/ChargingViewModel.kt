@@ -88,7 +88,7 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
                             history = (s.history + sample.watts).takeLast(HISTORY_SIZE),
                             peakInWatts = maxOf(peakIn, sample.watts),
                             peakOutWatts = maxOf(peakOut, -sample.watts),
-                            etaMinutes = etaMinutes(sample, emaCurrentA),
+                            etaMinutes = batteryEtaMinutes(sample, emaCurrentA),
                         )
                     }
                 }
@@ -97,27 +97,27 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    /**
-     * Charging: time until full, from the coulomb counter and level-implied
-     * full capacity. Discharging: time until empty. Null when the device has
-     * no coulomb counter or the estimate would be nonsense.
-     */
-    private fun etaMinutes(s: BatterySample, avgA: Double): Int? {
-        if (s.chargeCounterUah <= 0 || avgA < 0.01 || s.levelPercent !in 1..100) return null
-        val remainAh = s.chargeCounterUah / 1_000_000.0
-        val hours = if (s.isCharging) {
-            if (s.levelPercent >= 100) return null
-            val fullAh = remainAh * 100.0 / s.levelPercent
-            (fullAh - remainAh) / avgA
-        } else {
-            remainAh / avgA
-        }
-        if (hours <= 0 || hours > 99) return null
-        return (hours * 60).toInt()
-    }
-
     companion object {
         const val HISTORY_SIZE = 60
         const val POLL_MS = 1000L
     }
+}
+
+/**
+ * Charging: time until full, from the coulomb counter and level-implied
+ * full capacity. Discharging: time until empty. Null when the device has
+ * no coulomb counter or the estimate would be nonsense.
+ */
+internal fun batteryEtaMinutes(s: BatterySample, avgA: Double): Int? {
+    if (s.chargeCounterUah <= 0 || avgA < 0.01 || s.levelPercent !in 1..100) return null
+    val remainAh = s.chargeCounterUah / 1_000_000.0
+    val hours = if (s.isCharging) {
+        if (s.levelPercent >= 100) return null
+        val fullAh = remainAh * 100.0 / s.levelPercent
+        (fullAh - remainAh) / avgA
+    } else {
+        remainAh / avgA
+    }
+    if (hours <= 0 || hours > 99) return null
+    return (hours * 60).toInt()
 }

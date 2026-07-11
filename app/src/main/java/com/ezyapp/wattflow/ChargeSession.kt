@@ -70,6 +70,9 @@ interface ChargeSessionDao {
     @Query("SELECT * FROM charge_sessions ORDER BY startTs")
     suspend fun allSessions(): List<ChargeSession>
 
+    @Query("SELECT * FROM charge_sessions WHERE endTs >= :since ORDER BY startTs")
+    suspend fun sessionsSince(since: Long): List<ChargeSession>
+
     @Query("SELECT * FROM full_charge_log ORDER BY ts")
     suspend fun fullChargeHistory(): List<FullChargeEvent>
 }

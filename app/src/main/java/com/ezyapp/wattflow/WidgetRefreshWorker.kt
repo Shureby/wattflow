@@ -20,7 +20,7 @@ class WidgetRefreshWorker(
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        WattWidgetProvider.update(applicationContext)
+        WattWidgetProvider.updateNow(applicationContext)
         return Result.success()
     }
 
