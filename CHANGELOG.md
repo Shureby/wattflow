@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Live power graph and session detail curve now label their peak value
+  (dot + wattage) — auto-scaled charts had no numeric reference before
+
 - Monitor notification now shows live power in both directions
   ("Charging / Discharging • X.X W") with a second line of level, temp
   and ETA — replaces the useless "Waiting for charger" text when unplugged

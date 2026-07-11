@@ -1267,6 +1267,8 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
     val lineColor = MaterialTheme.colorScheme.primary
     val gridColor = MaterialTheme.colorScheme.outlineVariant
     val zeroColor = MaterialTheme.colorScheme.onSurfaceVariant
+    val labelColor = MaterialTheme.colorScheme.onSurface
+    val textMeasurer = rememberTextMeasurer()
 
     Surface(
         modifier = modifier,
@@ -1305,8 +1307,38 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
                 color = lineColor,
                 style = Stroke(width = 3.dp.toPx()),
             )
+
+            // Annotate the extreme point (peak magnitude, either direction).
+            val peakIdx = history.indices.maxByOrNull { abs(history[it]) } ?: return@Canvas
+            annotatePeak(
+                textMeasurer, points[peakIdx], abs(history[peakIdx]),
+                lineColor, labelColor,
+            )
         }
     }
+}
+
+/**
+ * Mark a chart's extreme point with a dot + value label, kept inside bounds.
+ */
+private fun DrawScope.annotatePeak(
+    textMeasurer: androidx.compose.ui.text.TextMeasurer,
+    point: Offset,
+    watts: Double,
+    dotColor: Color,
+    labelColor: Color,
+) {
+    drawCircle(color = dotColor, radius = 3.dp.toPx(), center = point)
+    val layout = textMeasurer.measure(
+        text = String.format(Locale.US, "%.1f W", watts),
+        style = TextStyle(fontSize = 11.sp, fontWeight = FontWeight.SemiBold, color = labelColor),
+    )
+    val tx = (point.x - layout.size.width / 2f)
+        .coerceIn(0f, size.width - layout.size.width)
+    // Prefer above the point; flip below if it would clip the top.
+    val above = point.y - layout.size.height - 6.dp.toPx()
+    val ty = if (above < 0f) point.y + 6.dp.toPx() else above
+    drawText(layout, topLeft = Offset(tx, ty))
 }
 
 // ---------------------------------------------------------------------------
@@ -1490,6 +1522,8 @@ private fun SessionDetailDialog(
 
     val lineColor = MaterialTheme.colorScheme.primary
     val gridColor = MaterialTheme.colorScheme.outlineVariant
+    val labelColor = MaterialTheme.colorScheme.onSurface
+    val textMeasurer = rememberTextMeasurer()
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -1534,13 +1568,23 @@ private fun SessionDetailDialog(
                                 )
                             }
                             val path = Path()
+                            var peakIdx = 0
                             curve.forEachIndexed { i, s ->
                                 val x = size.width * (s.ts - t0) / span.toFloat()
                                 val y = size.height *
                                     (1f - (s.watts / maxW).toFloat() * 0.92f)
                                 if (i == 0) path.moveTo(x, y) else path.lineTo(x, y)
+                                if (s.watts > curve[peakIdx].watts) peakIdx = i
                             }
                             drawPath(path, lineColor, style = Stroke(2.dp.toPx()))
+
+                            val ps = curve[peakIdx]
+                            val px = size.width * (ps.ts - t0) / span.toFloat()
+                            val py = size.height * (1f - (ps.watts / maxW).toFloat() * 0.92f)
+                            annotatePeak(
+                                textMeasurer, Offset(px, py), ps.watts,
+                                lineColor, labelColor,
+                            )
                         }
                     }
                 }
