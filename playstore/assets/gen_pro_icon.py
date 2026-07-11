@@ -1,55 +1,56 @@
 """Generate the in-app product icon for wattflow_pro (512x512, no text/branding).
-A simple crown mark on the brand indigo — signals 'premium unlock'.
+Gold crown on brand indigo. The three band gems echo the app icon's flow
+dots: left->right growing larger and deeper purple.
 """
 from PIL import Image, ImageDraw
 
 BG = (30, 27, 51)        # #1E1B33 brand indigo
-GOLD = (255, 213, 79)    # warm premium accent
+GOLD = (255, 213, 79)    # premium gold
+
+# Flow-dot echo: light -> heavy purple, small -> large (mirrors app icon).
+# (color, radius, x-offset) all as fraction of icon size. Group centered,
+# dots fully separated, 1-2 gap slightly tighter than 2-3.
+DOTS = [
+    ((199, 184, 245), 0.026, -0.088),  # light lavender
+    ((139, 110, 232), 0.033, -0.008),  # mid purple
+    ((110, 85, 180), 0.041, 0.088),    # deep-but-lighter purple
+]
 
 
 def make():
     s = 4
     size = 512 * s
-    img = Image.new("RGB", (size, size), BG)
+    img = Image.new("RGBA", (size, size), BG + (255,))
     d = ImageDraw.Draw(img)
 
     cx = size / 2
-    w = size * 0.44          # crown width
-    base_y = size * 0.62
-    top_y = size * 0.40
-    mid_y = size * 0.30      # center spike reaches higher
+    w = size * 0.44
+    base_y, top_y, mid_y = size * 0.60, size * 0.38, size * 0.28
+    left, right = cx - w / 2, cx + w / 2
 
-    left = cx - w / 2
-    right = cx + w / 2
-
-    # crown outline: 5 points up (peaks) + band
     crown = [
-        (left, base_y),
-        (left, top_y),
-        (cx - w * 0.25, base_y - (base_y - top_y) * 0.45),
-        (cx, mid_y),
-        (cx + w * 0.25, base_y - (base_y - top_y) * 0.45),
-        (right, top_y),
+        (left, base_y), (left, top_y),
+        (cx - w * 0.25, base_y - (base_y - top_y) * 0.45), (cx, mid_y),
+        (cx + w * 0.25, base_y - (base_y - top_y) * 0.45), (right, top_y),
         (right, base_y),
     ]
     d.polygon(crown, fill=GOLD)
 
-    # crown band
-    band_h = size * 0.10
-    d.rounded_rectangle(
-        [left, base_y - band_h * 0.2, right, base_y + band_h],
-        radius=band_h * 0.3, fill=GOLD,
-    )
+    band_h = size * 0.11
+    band_top = base_y - band_h * 0.2
+    band_bot = base_y + band_h
+    d.rounded_rectangle([left, band_top, right, band_bot],
+                        radius=band_h * 0.3, fill=GOLD)
 
-    # three gem dots on the band (cut-outs in bg colour)
-    for fx in (0.5 - 0.22, 0.5, 0.5 + 0.22):
-        gx = left + (right - left) * fx
-        r = size * 0.028
-        d.ellipse([gx - r, base_y + band_h * 0.25 - r,
-                   gx + r, base_y + band_h * 0.25 + r], fill=BG)
+    # three gems on the band, growing + deepening left->right, middle under
+    # the crown's center spike
+    gem_cy = (band_top + band_bot) / 2
+    for color, rf, xoff in DOTS:
+        gx = cx + size * xoff
+        r = size * rf
+        d.ellipse([gx - r, gem_cy - r, gx + r, gem_cy + r], fill=color)
 
-    img = img.resize((512, 512), Image.LANCZOS)
-    img.save("pro-icon-512.png")
+    img.resize((512, 512), Image.LANCZOS).save("pro-icon-512.png")
     print("pro-icon-512.png")
 
 
