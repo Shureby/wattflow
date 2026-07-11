@@ -108,7 +108,12 @@ class ChargeMonitorService : Service() {
             CHANNEL_ID,
             getString(R.string.notif_channel_name),
             NotificationManager.IMPORTANCE_LOW,
-        )
+        ).apply {
+            // Status notification, not an attention request: a launcher badge
+            // dot the user can never clear reads as a chronic nag. Alert
+            // notifications keep their badge — those are actionable.
+            setShowBadge(false)
+        }
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 

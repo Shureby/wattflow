@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Monitor notification channel no longer shows a launcher badge dot: it
+  is a status indicator the user cannot clear, which read as a chronic
+  nag on stock-Android launchers. Alert notifications keep their badge.
 - CSV export filename now carries the export date
   (wattflow-sessions-2026-07-11.csv) — SAF never overwrites, so a fixed
   name only accumulated " (1)" suffixes
