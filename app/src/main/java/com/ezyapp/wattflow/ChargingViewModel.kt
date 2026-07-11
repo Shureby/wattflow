@@ -64,6 +64,7 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
     // Exponential moving average of |current| smooths the ETA against
     // per-second charge controller jitter.
     private var emaCurrentA = 0.0
+    private var lastPlugged = Int.MIN_VALUE
 
     init {
         viewModelScope.launch {
@@ -74,12 +75,19 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
                     val absA = kotlin.math.abs(sample.currentA)
                     emaCurrentA = if (emaCurrentA == 0.0) absA
                     else 0.85 * emaCurrentA + 0.15 * absA
+                    // Power source changed (plug/unplug/swap): peaks belong to
+                    // the previous source — start fresh.
+                    val sourceChanged =
+                        lastPlugged != Int.MIN_VALUE && sample.plugged != lastPlugged
+                    lastPlugged = sample.plugged
                     _uiState.value = _uiState.value.let { s ->
+                        val peakIn = if (sourceChanged) 0.0 else s.peakInWatts
+                        val peakOut = if (sourceChanged) 0.0 else s.peakOutWatts
                         s.copy(
                             sample = sample,
                             history = (s.history + sample.watts).takeLast(HISTORY_SIZE),
-                            peakInWatts = maxOf(s.peakInWatts, sample.watts),
-                            peakOutWatts = maxOf(s.peakOutWatts, -sample.watts),
+                            peakInWatts = maxOf(peakIn, sample.watts),
+                            peakOutWatts = maxOf(peakOut, -sample.watts),
                             etaMinutes = etaMinutes(sample, emaCurrentA),
                         )
                     }
