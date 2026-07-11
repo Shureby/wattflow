@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7] - 2026-07-11
+
+- History header consolidated to one row: filter chips, a
+  self-explanatory "CSV" export chip (was an ambiguous share icon),
+  and the settings gear — which now lives in each tab instead of
+  floating over content
+
 ## [1.2.6] - 2026-07-11
 
 - Landscape fixed: live screen content is width-capped (the charge

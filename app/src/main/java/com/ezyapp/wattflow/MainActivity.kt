@@ -40,8 +40,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.filled.Share
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Card
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
@@ -182,9 +182,21 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                         .fillMaxSize()
                         .verticalScroll(rememberScrollState())
                         .padding(horizontal = 24.dp)
-                        .padding(top = 48.dp, bottom = 24.dp),
+                        .padding(top = 4.dp, bottom = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End,
+                    ) {
+                        IconButton(onClick = { showSettings = true }) {
+                            Icon(
+                                imageVector = Icons.Filled.Settings,
+                                contentDescription = stringResource(R.string.settings_title),
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
                     if (sample == null) {
                         Text(
                             text = stringResource(R.string.reading_battery),
@@ -195,20 +207,7 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                     }
                 }
             } else {
-                HistoryTab(viewModel)
-            }
-
-            IconButton(
-                onClick = { showSettings = true },
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(8.dp),
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(R.string.settings_title),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
+                HistoryTab(viewModel, onOpenSettings = { showSettings = true })
             }
         }
     }
@@ -1275,7 +1274,7 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
 // ---------------------------------------------------------------------------
 
 @Composable
-private fun HistoryTab(viewModel: ChargingViewModel) {
+private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit) {
     val allSessions by viewModel.sessions.collectAsState()
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
@@ -1315,7 +1314,7 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp),
-        contentPadding = PaddingValues(top = 56.dp, bottom = 16.dp),
+        contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp),
     ) {
         item {
             Row(
@@ -1334,16 +1333,27 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
                     label = { Text(stringResource(R.string.filter_discharge)) },
                 )
                 Spacer(Modifier.weight(1f))
-                IconButton(onClick = {
-                    if (isPro) {
-                        exportLauncher.launch("wattflow-sessions.csv")
-                    } else {
-                        showPaywall = true
-                    }
-                }) {
+                AssistChip(
+                    onClick = {
+                        if (isPro) {
+                            exportLauncher.launch("wattflow-sessions.csv")
+                        } else {
+                            showPaywall = true
+                        }
+                    },
+                    label = { Text("CSV") },
+                    leadingIcon = {
+                        Icon(
+                            painterResource(R.drawable.ic_download),
+                            contentDescription = stringResource(R.string.export_csv),
+                            modifier = Modifier.size(16.dp),
+                        )
+                    },
+                )
+                IconButton(onClick = onOpenSettings) {
                     Icon(
-                        imageVector = Icons.Filled.Share,
-                        contentDescription = stringResource(R.string.export_csv),
+                        imageVector = Icons.Filled.Settings,
+                        contentDescription = stringResource(R.string.settings_title),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
