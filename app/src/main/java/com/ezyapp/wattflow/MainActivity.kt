@@ -1336,7 +1336,11 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                 AssistChip(
                     onClick = {
                         if (isPro) {
-                            exportLauncher.launch("wattflow-sessions.csv")
+                            exportLauncher.launch(
+                            "wattflow-sessions-" + SimpleDateFormat(
+                                "yyyy-MM-dd", Locale.US
+                            ).format(Date()) + ".csv"
+                        )
                         } else {
                             showPaywall = true
                         }
