@@ -88,19 +88,72 @@ class ChargeMonitorService : Service() {
             Intent(this, MainActivity::class.java),
             PendingIntent.FLAG_IMMUTABLE,
         )
-        val text = if (sample == null || !sample.isCharging) {
-            getString(R.string.notif_waiting)
+        val stopIntent = PendingIntent.getService(
+            this, 1,
+            Intent(this, ChargeMonitorService::class.java).setAction(ACTION_STOP),
+            PendingIntent.FLAG_IMMUTABLE,
+        )
+
+        // Live power in both directions — "Charging • 5.5 W" /
+        // "Discharging • 5.5 W" — instead of a useless "waiting" line.
+        val title: String
+        val subLine: String
+        if (sample == null) {
+            title = getString(R.string.reading_battery)
+            subLine = ""
         } else {
-            String.format(Locale.US, "%.1f W", sample.watts)
+            val direction = getString(
+                if (sample.isCharging) R.string.filter_charge
+                else R.string.filter_discharge
+            )
+            title = String.format(
+                Locale.US, "%s • %.1f W", direction, kotlin.math.abs(sample.watts)
+            )
+            // Second line reuses data we already have: level, temp, and the
+            // matching ETA (to full / time left).
+            val parts = mutableListOf(
+                "${sample.levelPercent}%",
+                String.format(Locale.US, "%.0f°C", sample.temperatureC),
+            )
+            monitorEta(sample)?.let { parts.add(it) }
+            subLine = parts.joinToString(" • ")
         }
-        return Notification.Builder(this, CHANNEL_ID)
+
+        val builder = Notification.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_stat_bolt)
-            .setContentTitle(getString(R.string.app_name))
-            .setContentText(text)
+            .setContentTitle(title)
             .setContentIntent(tapIntent)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
-            .build()
+            .addAction(
+                Notification.Action.Builder(
+                    null, getString(R.string.notif_stop), stopIntent
+                ).build()
+            )
+        if (subLine.isNotEmpty()) {
+            builder.setContentText(subLine)
+        }
+        return builder.build()
+    }
+
+    /** Rough ETA for the notification's second line; null when not derivable. */
+    private fun monitorEta(s: BatterySample): String? {
+        if (s.chargeCounterUah <= 0 || s.levelPercent !in 1..100) return null
+        val amps = kotlin.math.abs(s.currentA)
+        if (amps < 0.05) return null
+        val remainAh = s.chargeCounterUah / 1_000_000.0
+        val hours = if (s.isCharging) {
+            if (s.levelPercent >= 100) return null
+            (remainAh * 100.0 / s.levelPercent - remainAh) / amps
+        } else {
+            remainAh / amps
+        }
+        if (hours <= 0 || hours > 99) return null
+        val mins = (hours * 60).toInt()
+        val dur = if (mins >= 60) "${mins / 60}h ${mins % 60}m" else "${mins}m"
+        return getString(
+            if (s.isCharging) R.string.eta_to_full else R.string.eta_left, dur
+        )
     }
 
     private fun createChannel() {

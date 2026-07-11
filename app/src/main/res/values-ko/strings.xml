@@ -68,4 +68,5 @@
     <string name="free_history_banner">앱 사용 중에만 기록 — Pro를 해제하면 백그라운드 완전 기록.</string>
     <string name="billing_unavailable">스토어를 사용할 수 없음</string>
     <string name="monitor_permission_rationale">백그라운드 기록은 실시간 전력을 보여주는 상시 알림을 표시합니다 — 표시하려면 Android 알림 권한이 필요합니다. 권한이 없어도 기록은 작동하며, 알림만 숨겨질 뿐입니다.</string>
+    <string name="notif_stop">중지</string>
 </resources>

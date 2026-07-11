@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased]
+
+- Monitor notification now shows live power in both directions
+  ("Charging / Discharging • X.X W") with a second line of level, temp
+  and ETA — replaces the useless "Waiting for charger" text when unplugged
+- Monitor notification gains a Stop action to end background recording
+  without opening the app
+
 ## [1.2.9] - 2026-07-11
 
 - Background recording setting now persists: the switch stores your

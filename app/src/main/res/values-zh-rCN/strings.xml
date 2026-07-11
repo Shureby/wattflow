@@ -68,4 +68,5 @@
     <string name="free_history_banner">仅记录 app 使用期间的数据 — 解锁 Pro 获得后台完整记录。</string>
     <string name="billing_unavailable">商店暂不可用</string>
     <string name="monitor_permission_rationale">后台记录会显示一条常驻通知来展示实时瓦数 — Android 要求先授予通知权限它才可见。不授权也能记录，只是看不到这条通知。</string>
+    <string name="notif_stop">停止</string>
 </resources>

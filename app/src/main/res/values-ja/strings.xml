@@ -68,4 +68,5 @@
     <string name="free_history_banner">アプリ使用中のみ記録 — Pro でバックグラウンド完全記録を解除。</string>
     <string name="billing_unavailable">ストアを利用できません</string>
     <string name="monitor_permission_rationale">バックグラウンド記録はリアルタイム電力を示す常駐通知を表示します — 表示には Android の通知権限が必要です。権限がなくても記録は動作し、通知が見えなくなるだけです。</string>
+    <string name="notif_stop">停止</string>
 </resources>

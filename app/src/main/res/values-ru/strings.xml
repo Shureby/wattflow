@@ -68,4 +68,5 @@
     <string name="free_history_banner">Запись только при открытом приложении — Pro даёт полную фоновую запись.</string>
     <string name="billing_unavailable">Магазин недоступен</string>
     <string name="monitor_permission_rationale">Фоновая запись показывает постоянное уведомление с текущей мощностью — Android требует разрешение на уведомления, чтобы оно было видно. Запись работает в любом случае; без разрешения уведомление просто скрыто.</string>
+    <string name="notif_stop">Стоп</string>
 </resources>

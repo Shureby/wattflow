@@ -68,4 +68,5 @@
     <string name="free_history_banner">僅記錄 app 使用期間的資料 — 解鎖 Pro 獲得背景完整記錄。</string>
     <string name="billing_unavailable">商店暫不可用</string>
     <string name="monitor_permission_rationale">背景記錄會顯示一條常駐通知來展示即時瓦數 — Android 要求先授予通知權限它才可見。不授權也能記錄，只是看不到這條通知。</string>
+    <string name="notif_stop">停止</string>
 </resources>

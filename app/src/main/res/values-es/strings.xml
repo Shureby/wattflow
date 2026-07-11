@@ -68,4 +68,5 @@
     <string name="free_history_banner">Solo registra mientras usas la app — desbloquea Pro para un registro completo en segundo plano.</string>
     <string name="billing_unavailable">Tienda no disponible</string>
     <string name="monitor_permission_rationale">La grabación en segundo plano muestra una notificación fija con los vatios en vivo; Android requiere el permiso de notificaciones para que sea visible. La grabación funciona igualmente; sin permiso la notificación simplemente queda oculta.</string>
+    <string name="notif_stop">Detener</string>
 </resources>

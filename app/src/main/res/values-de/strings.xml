@@ -68,4 +68,5 @@
     <string name="free_history_banner">Zeichnet nur bei geöffneter App auf — Pro schaltet vollständige Hintergrundaufzeichnung frei.</string>
     <string name="billing_unavailable">Store nicht verfügbar</string>
     <string name="monitor_permission_rationale">Die Hintergrundaufzeichnung zeigt eine dauerhafte Benachrichtigung mit der Live-Leistung — Android verlangt dafür die Benachrichtigungsberechtigung. Aufgezeichnet wird trotzdem; ohne Berechtigung bleibt die Benachrichtigung nur unsichtbar.</string>
+    <string name="notif_stop">Stopp</string>
 </resources>
