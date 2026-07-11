@@ -65,4 +65,6 @@
     <string name="doze_denied_note">WattFlow fonctionne bien sans cette autorisation — les périodes écran éteint peuvent manquer de mesures, affichées comme segments séparés en mode strict.</string>
     <string name="status_granted">Autorisé</string>
     <string name="status_not_granted">Non autorisé</string>
+    <string name="free_history_banner">"N'enregistre que pendant l'utilisation de l'app — débloquez Pro pour un enregistrement complet en arrière-plan."</string>
+    <string name="billing_unavailable">Boutique indisponible</string>
 </resources>

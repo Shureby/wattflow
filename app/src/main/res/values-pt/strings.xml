@@ -65,4 +65,6 @@
     <string name="doze_denied_note">O WattFlow funciona bem sem essa permissão — períodos de tela apagada podem ficar sem amostras, exibidos como segmentos separados no modo estrito.</string>
     <string name="status_granted">Permitido</string>
     <string name="status_not_granted">Não permitido</string>
+    <string name="free_history_banner">Só registra enquanto você usa o app — desbloqueie o Pro para gravação completa em segundo plano.</string>
+    <string name="billing_unavailable">Loja indisponível</string>
 </resources>

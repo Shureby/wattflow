@@ -65,4 +65,6 @@
     <string name="doze_denied_note">WattFlow funktioniert auch ohne diese Berechtigung — bei ausgeschaltetem Display können Messlücken entstehen, im strikten Modus als separate Segmente sichtbar.</string>
     <string name="status_granted">Erlaubt</string>
     <string name="status_not_granted">Nicht erlaubt</string>
+    <string name="free_history_banner">Zeichnet nur bei geöffneter App auf — Pro schaltet vollständige Hintergrundaufzeichnung frei.</string>
+    <string name="billing_unavailable">Store nicht verfügbar</string>
 </resources>

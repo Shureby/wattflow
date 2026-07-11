@@ -65,4 +65,6 @@
     <string name="doze_denied_note">WattFlow tetap berfungsi tanpa izin ini — periode layar mati mungkin kekurangan sampel dan tampil sebagai segmen terpisah dalam mode ketat.</string>
     <string name="status_granted">Diizinkan</string>
     <string name="status_not_granted">Tidak diizinkan</string>
+    <string name="free_history_banner">Hanya merekam saat aplikasi digunakan — buka Pro untuk perekaman latar belakang lengkap.</string>
+    <string name="billing_unavailable">Toko tidak tersedia</string>
 </resources>

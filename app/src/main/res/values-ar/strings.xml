@@ -65,4 +65,6 @@
     <string name="doze_denied_note">يعمل WattFlow جيداً بدون هذا الإذن — قد تفتقر فترات إطفاء الشاشة للعينات وتظهر كمقاطع منفصلة في الوضع الصارم.</string>
     <string name="status_granted">مسموح</string>
     <string name="status_not_granted">غير مسموح</string>
+    <string name="free_history_banner">يسجل فقط أثناء استخدام التطبيق — افتح Pro للتسجيل الكامل في الخلفية.</string>
+    <string name="billing_unavailable">المتجر غير متاح</string>
 </resources>

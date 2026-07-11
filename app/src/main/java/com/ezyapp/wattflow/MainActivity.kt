@@ -156,19 +156,14 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                 )
                 NavigationBarItem(
                     selected = tab == 1,
-                    onClick = { if (isPro) tab = 1 else showPaywall = true },
+                    onClick = { tab = 1 },
                     icon = {
                         Icon(
                             painterResource(R.drawable.ic_tab_history), null,
                             modifier = Modifier.size(24.dp),
                         )
                     },
-                    label = {
-                        Text(
-                            (if (isPro) "" else "🔒 ") +
-                                stringResource(R.string.tab_history)
-                        )
-                    },
+                    label = { Text(stringResource(R.string.tab_history)) },
                 )
             }
         },
@@ -407,10 +402,20 @@ private fun PaywallDialog(onDismiss: () -> Unit) {
             )
         },
         confirmButton = {
-            TextButton(onClick = {
-                (context as? ComponentActivity)?.let { Pro.launchPurchase(it) }
-                onDismiss()
-            }) { Text(stringResource(R.string.pro_buy)) }
+            TextButton(
+                enabled = price != null,
+                onClick = {
+                    (context as? ComponentActivity)?.let { Pro.launchPurchase(it) }
+                    onDismiss()
+                },
+            ) {
+                Text(
+                    stringResource(
+                        if (price != null) R.string.pro_buy
+                        else R.string.billing_unavailable
+                    )
+                )
+            }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
@@ -1312,6 +1317,36 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
             PaywallDialog(onDismiss = { showPaywall = false })
         }
         Spacer(Modifier.height(12.dp))
+
+        if (!isPro) {
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { showPaywall = true },
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(R.string.free_history_banner),
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.weight(1f),
+                    )
+                    Text(
+                        text = stringResource(R.string.pro_buy),
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary,
+                        modifier = Modifier.padding(start = 8.dp),
+                    )
+                }
+            }
+            Spacer(Modifier.height(12.dp))
+        }
 
         if (sessions.isEmpty()) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.4] - 2026-07-11
+
+- History tab is now open to everyone: free users see their
+  foreground-recorded sessions with a banner explaining that complete
+  background recording is a Pro feature (was a fully locked tab)
+- Paywall Unlock button disables with a "Store unavailable" note when
+  Google Play billing can't load the product
+
 ## [1.2.3] - 2026-07-11
 
 - Peak In / Peak Out now reset when the power source changes — no more

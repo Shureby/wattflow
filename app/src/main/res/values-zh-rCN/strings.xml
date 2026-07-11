@@ -65,4 +65,6 @@
     <string name="doze_denied_note">没有此权限也能正常使用 — 息屏期间可能出现短暂采样缺口，严格分段模式下会如实显示为多段。</string>
     <string name="status_granted">已允许</string>
     <string name="status_not_granted">未允许</string>
+    <string name="free_history_banner">仅记录 app 使用期间的数据 — 解锁 Pro 获得后台完整记录。</string>
+    <string name="billing_unavailable">商店暂不可用</string>
 </resources>

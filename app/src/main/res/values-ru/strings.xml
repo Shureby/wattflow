@@ -65,4 +65,6 @@
     <string name="doze_denied_note">WattFlow отлично работает и без этого разрешения — в периоды выключенного экрана возможны пропуски замеров, отображаемые отдельными сегментами в строгом режиме.</string>
     <string name="status_granted">Разрешено</string>
     <string name="status_not_granted">Не разрешено</string>
+    <string name="free_history_banner">Запись только при открытом приложении — Pro даёт полную фоновую запись.</string>
+    <string name="billing_unavailable">Магазин недоступен</string>
 </resources>

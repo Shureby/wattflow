@@ -65,4 +65,6 @@
     <string name="doze_denied_note">この権限がなくても問題なく使えます — 画面オフ中はサンプルが欠けることがあり、厳密モードでは別々のセグメントとして表示されます。</string>
     <string name="status_granted">許可済み</string>
     <string name="status_not_granted">未許可</string>
+    <string name="free_history_banner">アプリ使用中のみ記録 — Pro でバックグラウンド完全記録を解除。</string>
+    <string name="billing_unavailable">ストアを利用できません</string>
 </resources>

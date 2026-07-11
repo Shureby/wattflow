@@ -65,4 +65,6 @@
     <string name="doze_denied_note">沒有此權限也能正常使用 — 熄屏期間可能出現短暫取樣缺口，嚴格分段模式下會如實顯示為多段。</string>
     <string name="status_granted">已允許</string>
     <string name="status_not_granted">未允許</string>
+    <string name="free_history_banner">僅記錄 app 使用期間的資料 — 解鎖 Pro 獲得背景完整記錄。</string>
+    <string name="billing_unavailable">商店暫不可用</string>
 </resources>

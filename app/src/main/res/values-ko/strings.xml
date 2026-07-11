@@ -65,4 +65,6 @@
     <string name="doze_denied_note">이 권한 없이도 잘 작동합니다 — 화면 꺼짐 구간에 샘플이 부족할 수 있으며 엄격 모드에서 별도 세그먼트로 표시됩니다.</string>
     <string name="status_granted">허용됨</string>
     <string name="status_not_granted">허용 안 됨</string>
+    <string name="free_history_banner">앱 사용 중에만 기록 — Pro를 해제하면 백그라운드 완전 기록.</string>
+    <string name="billing_unavailable">스토어를 사용할 수 없음</string>
 </resources>

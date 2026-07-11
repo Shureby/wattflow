@@ -65,4 +65,6 @@
     <string name="doze_denied_note">WattFlow works fine without this permission — screen-off periods may briefly lack samples, shown as separate segments in raw mode.</string>
     <string name="status_granted">Allowed</string>
     <string name="status_not_granted">Not allowed</string>
+    <string name="free_history_banner">Only records while you use the app — unlock Pro for complete background recording.</string>
+    <string name="billing_unavailable">Store unavailable</string>
 </resources>
