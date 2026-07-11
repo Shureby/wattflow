@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.2.3] - 2026-07-11
+
+- Peak In / Peak Out now reset when the power source changes — no more
+  stale wired peak lingering on the wireless screen
+
 ## [1.2.2] - 2026-07-10
 
 - **Session merging** — same-direction sessions separated by sampling gaps
