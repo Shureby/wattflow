@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.2.9] - 2026-07-11
 
 - Background recording setting now persists: the switch stores your
   intent and the app restarts the service on open if a task killer,
