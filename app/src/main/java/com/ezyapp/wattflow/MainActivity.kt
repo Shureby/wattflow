@@ -1560,6 +1560,8 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
             annotatePeak(
                 textMeasurer, points[peakIdx], abs(history[peakIdx]),
                 lineColor, labelColor,
+                // Discharge spikes point down; their empty side is below.
+                labelBelow = history[peakIdx] < 0,
             )
         }
     }
@@ -1574,6 +1576,7 @@ private fun DrawScope.annotatePeak(
     watts: Double,
     dotColor: Color,
     labelColor: Color,
+    labelBelow: Boolean = false,
 ) {
     drawCircle(color = dotColor, radius = 3.dp.toPx(), center = point)
     val layout = textMeasurer.measure(
@@ -1582,9 +1585,16 @@ private fun DrawScope.annotatePeak(
     )
     val tx = (point.x - layout.size.width / 2f)
         .coerceIn(0f, size.width - layout.size.width)
-    // Prefer above the point; flip below if it would clip the top.
+    // The label sits on the empty side of the extremum — above a crest,
+    // below a trough — where the line cannot be. Flip only when that
+    // side would clip the chart edge.
     val above = point.y - layout.size.height - 6.dp.toPx()
-    val ty = if (above < 0f) point.y + 6.dp.toPx() else above
+    val below = point.y + 6.dp.toPx()
+    val ty = if (labelBelow) {
+        if (below + layout.size.height > size.height) above else below
+    } else {
+        if (above < 0f) below else above
+    }
     drawText(layout, topLeft = Offset(tx, ty))
 }
 
