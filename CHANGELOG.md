@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+- Dual-cell (2S) battery correction: phones that report per-cell
+  readings (most 100W+ fast-charge designs) showed half the real watts.
+  Auto-detected via a known-device list plus a session heuristic;
+  Settings offers Auto/On/Off and a privacy-safe device report
+  (pre-filled GitHub issue or email you review and send yourself)
+- Landscape now uses a two-pane layout: charge visual left, stats and
+  graph right
+- Charger benchmark: 60-second test grades your charger + cable combo
+  (avg / peak watts, stability, A-F). Pro saves named results and
+  compares chargers
+- Floating watts overlay (Pro): draggable live-watts pill over other
+  apps while background recording is on; requires the optional
+  display-over-apps permission
+- Home screen widget now adapts to size: small (watts / % / temp),
+  medium (+ source and ETA), large (+ 7-day energy chart)
+
 - Live power graph and session detail curve now label their peak value
   (dot + wattage) — auto-scaled charts had no numeric reference before
 
