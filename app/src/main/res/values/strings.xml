@@ -81,4 +81,18 @@
     <string name="dual_cell_report">Is the auto setting wrong for your phone? Report your device — it opens a pre-filled page that you review and send yourself.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">Email</string>
+    <string name="bench_open">⚡ Charger benchmark</string>
+    <string name="bench_title">Charger benchmark</string>
+    <string name="bench_intro">Measures this charger + cable combo for 60 seconds and grades it. For comparable results: same battery level range, screen on, phone idle.</string>
+    <string name="bench_plug_first">Plug in a charger to start.</string>
+    <string name="bench_running">Measuring… %1$d s left. Keep the phone idle.</string>
+    <string name="bench_aborted">Test stopped — charging was interrupted.</string>
+    <string name="bench_start">Start</string>
+    <string name="bench_again">Test again</string>
+    <string name="bench_stability">Stability</string>
+    <string name="bench_name_hint">Charger name (e.g. 65W GaN + braided cable)</string>
+    <string name="bench_save">Save result</string>
+    <string name="bench_save_pro">Save and compare chargers with Pro</string>
+    <string name="bench_saved_title">Saved results</string>
+    <string name="bench_unnamed">Unnamed charger</string>
 </resources>

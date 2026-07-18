@@ -81,4 +81,18 @@
     <string name="dual_cell_report">Setelan otomatis salah untuk ponsel Anda? Laporkan perangkat Anda — hanya membuka halaman terisi otomatis yang Anda tinjau dan kirim sendiri.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">Email</string>
+    <string name="bench_open">⚡ Uji charger</string>
+    <string name="bench_title">Uji charger</string>
+    <string name="bench_intro">Mengukur kombinasi charger + kabel ini selama 60 detik dan memberi nilai. Agar hasil sebanding: rentang baterai sama, layar menyala, ponsel tidak dipakai.</string>
+    <string name="bench_plug_first">Colokkan charger untuk mulai.</string>
+    <string name="bench_running">Mengukur… %1$d dtk tersisa. Biarkan ponsel diam.</string>
+    <string name="bench_aborted">Uji dihentikan — pengisian terputus.</string>
+    <string name="bench_start">Mulai</string>
+    <string name="bench_again">Uji lagi</string>
+    <string name="bench_stability">Stabilitas</string>
+    <string name="bench_name_hint">Nama charger (mis. GaN 65W + kabel kepang)</string>
+    <string name="bench_save">Simpan hasil</string>
+    <string name="bench_save_pro">Simpan dan bandingkan charger dengan Pro</string>
+    <string name="bench_saved_title">Hasil tersimpan</string>
+    <string name="bench_unnamed">Charger tanpa nama</string>
 </resources>

@@ -81,4 +81,18 @@
     <string name="dual_cell_report">هل الإعداد التلقائي غير صحيح لهاتفك؟ أبلغ عن جهازك — ستُفتح صفحة معبأة مسبقًا تراجعها وترسلها بنفسك.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">البريد الإلكتروني</string>
+    <string name="bench_open">⚡ اختبار الشاحن</string>
+    <string name="bench_title">اختبار الشاحن</string>
+    <string name="bench_intro">يقيس هذا الشاحن مع الكابل لمدة 60 ثانية ويمنحه تقييمًا. لنتائج قابلة للمقارنة: نفس نطاق البطارية، الشاشة مضاءة، الهاتف خامل.</string>
+    <string name="bench_plug_first">وصّل شاحنًا للبدء.</string>
+    <string name="bench_running">جارٍ القياس… %1$d ث متبقية. أبقِ الهاتف خاملًا.</string>
+    <string name="bench_aborted">توقف الاختبار — انقطع الشحن.</string>
+    <string name="bench_start">ابدأ</string>
+    <string name="bench_again">اختبر مجددًا</string>
+    <string name="bench_stability">الاستقرار</string>
+    <string name="bench_name_hint">اسم الشاحن (مثال: GaN 65W مع كابل مضفور)</string>
+    <string name="bench_save">حفظ النتيجة</string>
+    <string name="bench_save_pro">احفظ وقارن الشواحن مع Pro</string>
+    <string name="bench_saved_title">النتائج المحفوظة</string>
+    <string name="bench_unnamed">شاحن بلا اسم</string>
 </resources>

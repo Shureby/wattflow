@@ -81,4 +81,18 @@
     <string name="dual_cell_report">自動判定が合っていない場合は端末を報告してください。事前入力されたページが開くだけで、内容を確認して自分で送信します。</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">メール</string>
+    <string name="bench_open">⚡ 充電器ベンチマーク</string>
+    <string name="bench_title">充電器ベンチマーク</string>
+    <string name="bench_intro">この充電器＋ケーブルの組み合わせを60秒間測定して評価します。比較可能な結果のために：同じ電池残量帯、画面オン、端末は操作しないでください。</string>
+    <string name="bench_plug_first">充電器を接続すると開始できます。</string>
+    <string name="bench_running">測定中… 残り %1$d 秒。端末を操作しないでください。</string>
+    <string name="bench_aborted">テスト中断 — 充電が中断されました。</string>
+    <string name="bench_start">開始</string>
+    <string name="bench_again">もう一度</string>
+    <string name="bench_stability">安定性</string>
+    <string name="bench_name_hint">充電器名（例：65W GaN + 編組ケーブル）</string>
+    <string name="bench_save">結果を保存</string>
+    <string name="bench_save_pro">Pro で結果を保存して比較</string>
+    <string name="bench_saved_title">保存済みの結果</string>
+    <string name="bench_unnamed">名称未設定の充電器</string>
 </resources>

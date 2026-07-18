@@ -40,6 +40,20 @@ data class SessionSample(
     val watts: Double,
 )
 
+/** One 60-second charger benchmark run. */
+@Entity(tableName = "benchmark_results")
+data class BenchmarkResult(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val ts: Long,
+    val label: String,         // user-given charger name, may be blank
+    val plugged: Int,          // BatteryManager.BATTERY_PLUGGED_* during the run
+    val avgWatts: Double,
+    val peakWatts: Double,
+    val stabilityPct: Double,  // 100 = perfectly steady
+    val startLevel: Int,
+    val endLevel: Int,
+)
+
 /** Logged when a charge session reaches 100% — baseline for battery health trend. */
 @Entity(tableName = "full_charge_log")
 data class FullChargeEvent(
@@ -75,11 +89,23 @@ interface ChargeSessionDao {
 
     @Query("SELECT * FROM full_charge_log ORDER BY ts")
     suspend fun fullChargeHistory(): List<FullChargeEvent>
+
+    @Insert
+    suspend fun insertBenchmark(result: BenchmarkResult): Long
+
+    @Query("SELECT * FROM benchmark_results ORDER BY avgWatts DESC")
+    fun benchmarks(): Flow<List<BenchmarkResult>>
+
+    @Query("DELETE FROM benchmark_results WHERE id = :id")
+    suspend fun deleteBenchmark(id: Long)
 }
 
 @Database(
-    entities = [ChargeSession::class, SessionSample::class, FullChargeEvent::class],
-    version = 2,
+    entities = [
+        ChargeSession::class, SessionSample::class, FullChargeEvent::class,
+        BenchmarkResult::class,
+    ],
+    version = 3,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -109,13 +135,26 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS benchmark_results (" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                        "ts INTEGER NOT NULL, label TEXT NOT NULL, " +
+                        "plugged INTEGER NOT NULL, avgWatts REAL NOT NULL, " +
+                        "peakWatts REAL NOT NULL, stabilityPct REAL NOT NULL, " +
+                        "startLevel INTEGER NOT NULL, endLevel INTEGER NOT NULL)"
+                )
+            }
+        }
+
         @Volatile
         private var instance: AppDatabase? = null
 
         fun get(context: Context): AppDatabase = instance ?: synchronized(this) {
             instance ?: Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java, "wattflow.db"
-            ).addMigrations(MIGRATION_1_2).build().also { instance = it }
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
         }
     }
 }

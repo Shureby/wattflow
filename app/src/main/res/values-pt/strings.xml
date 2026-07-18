@@ -81,4 +81,18 @@
     <string name="dual_cell_report">A configuração automática está errada para o seu telefone? Informe seu dispositivo — abre apenas uma página pré-preenchida que você revisa e envia.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">E-mail</string>
+    <string name="bench_open">⚡ Teste de carregador</string>
+    <string name="bench_title">Teste de carregador</string>
+    <string name="bench_intro">Mede esta combinação de carregador + cabo por 60 segundos e atribui uma nota. Para resultados comparáveis: mesma faixa de bateria, tela ligada, telefone em repouso.</string>
+    <string name="bench_plug_first">Conecte um carregador para começar.</string>
+    <string name="bench_running">Medindo… faltam %1$d s. Mantenha o telefone em repouso.</string>
+    <string name="bench_aborted">Teste interrompido — o carregamento parou.</string>
+    <string name="bench_start">Iniciar</string>
+    <string name="bench_again">Testar de novo</string>
+    <string name="bench_stability">Estabilidade</string>
+    <string name="bench_name_hint">Nome do carregador (ex.: GaN 65W + cabo trançado)</string>
+    <string name="bench_save">Salvar resultado</string>
+    <string name="bench_save_pro">Salve e compare carregadores com o Pro</string>
+    <string name="bench_saved_title">Resultados salvos</string>
+    <string name="bench_unnamed">Carregador sem nome</string>
 </resources>

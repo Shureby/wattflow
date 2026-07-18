@@ -81,4 +81,18 @@
     <string name="dual_cell_report">自動判斷不適合你的手機？回報你的裝置——僅會開啟一個預填頁面，由你自行確認並送出。</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">電子郵件</string>
+    <string name="bench_open">⚡ 充電器測評</string>
+    <string name="bench_title">充電器測評</string>
+    <string name="bench_intro">對目前充電器+線材組合進行 60 秒測量並評級。為確保結果可比：電量區間相近、螢幕常亮、手機靜置。</string>
+    <string name="bench_plug_first">請先插入充電器。</string>
+    <string name="bench_running">測量中……剩餘 %1$d 秒。請保持手機靜置。</string>
+    <string name="bench_aborted">測試已停止——充電中斷。</string>
+    <string name="bench_start">開始</string>
+    <string name="bench_again">再測一次</string>
+    <string name="bench_stability">穩定性</string>
+    <string name="bench_name_hint">充電器名稱（例如 65W 氮化鎵 + 編織線）</string>
+    <string name="bench_save">儲存結果</string>
+    <string name="bench_save_pro">解鎖 Pro 以儲存並比較充電器</string>
+    <string name="bench_saved_title">已儲存結果</string>
+    <string name="bench_unnamed">未命名充電器</string>
 </resources>

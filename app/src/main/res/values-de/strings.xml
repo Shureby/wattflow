@@ -81,4 +81,18 @@
     <string name="dual_cell_report">Stimmt die Automatik für dein Gerät nicht? Melde dein Gerät — es öffnet sich nur eine vorausgefüllte Seite, die du selbst prüfst und absendest.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">E-Mail</string>
+    <string name="bench_open">⚡ Ladegerät-Benchmark</string>
+    <string name="bench_title">Ladegerät-Benchmark</string>
+    <string name="bench_intro">Misst diese Ladegerät-Kabel-Kombination 60 Sekunden lang und benotet sie. Für vergleichbare Ergebnisse: gleicher Akkubereich, Bildschirm an, Telefon nicht benutzen.</string>
+    <string name="bench_plug_first">Zum Starten ein Ladegerät anschließen.</string>
+    <string name="bench_running">Messung läuft… noch %1$d s. Telefon nicht benutzen.</string>
+    <string name="bench_aborted">Test abgebrochen — Ladevorgang unterbrochen.</string>
+    <string name="bench_start">Start</string>
+    <string name="bench_again">Erneut testen</string>
+    <string name="bench_stability">Stabilität</string>
+    <string name="bench_name_hint">Name des Ladegeräts (z. B. 65W GaN + Textilkabel)</string>
+    <string name="bench_save">Ergebnis speichern</string>
+    <string name="bench_save_pro">Mit Pro Ladegeräte speichern und vergleichen</string>
+    <string name="bench_saved_title">Gespeicherte Ergebnisse</string>
+    <string name="bench_unnamed">Unbenanntes Ladegerät</string>
 </resources>

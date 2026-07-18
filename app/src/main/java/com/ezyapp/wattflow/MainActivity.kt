@@ -139,6 +139,7 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     var showDualCellNotice by remember {
         mutableStateOf(DualCell.noticePending(appContext))
     }
+    var showBenchmark by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(isPro) {
         if (isPro && MonitorPrefs.enabled(appContext) &&
             !ChargeMonitorService.isRunning.value
@@ -221,6 +222,10 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                         )
                     } else {
                         ChargingContent(sample = sample, state = state)
+                        Spacer(Modifier.height(12.dp))
+                        TextButton(onClick = { showBenchmark = true }) {
+                            Text(stringResource(R.string.bench_open))
+                        }
                     }
                 }
             } else {
@@ -231,6 +236,15 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
 
     if (showPaywall) {
         PaywallDialog(onDismiss = { showPaywall = false })
+    }
+
+    if (showBenchmark) {
+        BenchmarkDialog(
+            isCharging = sample?.isCharging == true && sample.plugged != 0,
+            isPro = isPro,
+            onLockedFeature = { showPaywall = true },
+            onDismiss = { showBenchmark = false },
+        )
     }
 
     if (showDualCellNotice) {

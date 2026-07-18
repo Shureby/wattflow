@@ -81,4 +81,18 @@
     <string name="dual_cell_report">자동 설정이 내 기기에 맞지 않나요? 기기를 제보하세요. 미리 채워진 페이지가 열리며 직접 확인 후 전송합니다.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">이메일</string>
+    <string name="bench_open">⚡ 충전기 벤치마크</string>
+    <string name="bench_title">충전기 벤치마크</string>
+    <string name="bench_intro">이 충전기+케이블 조합을 60초간 측정하고 등급을 매깁니다. 비교 가능한 결과를 위해: 비슷한 배터리 구간, 화면 켜짐, 기기 미사용 상태를 유지하세요.</string>
+    <string name="bench_plug_first">시작하려면 충전기를 연결하세요.</string>
+    <string name="bench_running">측정 중… %1$d초 남음. 기기를 사용하지 마세요.</string>
+    <string name="bench_aborted">테스트 중단 — 충전이 끊겼습니다.</string>
+    <string name="bench_start">시작</string>
+    <string name="bench_again">다시 테스트</string>
+    <string name="bench_stability">안정성</string>
+    <string name="bench_name_hint">충전기 이름(예: 65W GaN + 직조 케이블)</string>
+    <string name="bench_save">결과 저장</string>
+    <string name="bench_save_pro">Pro로 충전기 저장·비교</string>
+    <string name="bench_saved_title">저장된 결과</string>
+    <string name="bench_unnamed">이름 없는 충전기</string>
 </resources>

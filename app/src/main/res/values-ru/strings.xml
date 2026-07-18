@@ -81,4 +81,18 @@
     <string name="dual_cell_report">Автоопределение ошибается на вашем телефоне? Сообщите об устройстве — откроется предзаполненная страница, которую вы проверите и отправите сами.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">Эл. почта</string>
+    <string name="bench_open">⚡ Тест зарядного устройства</string>
+    <string name="bench_title">Тест зарядного устройства</string>
+    <string name="bench_intro">Измеряет связку зарядка + кабель в течение 60 секунд и выставляет оценку. Для сопоставимых результатов: одинаковый диапазон заряда, экран включён, телефон не используется.</string>
+    <string name="bench_plug_first">Подключите зарядное устройство, чтобы начать.</string>
+    <string name="bench_running">Измерение… осталось %1$d с. Не пользуйтесь телефоном.</string>
+    <string name="bench_aborted">Тест остановлен — зарядка прервалась.</string>
+    <string name="bench_start">Старт</string>
+    <string name="bench_again">Повторить</string>
+    <string name="bench_stability">Стабильность</string>
+    <string name="bench_name_hint">Название зарядки (напр. GaN 65 Вт + плетёный кабель)</string>
+    <string name="bench_save">Сохранить результат</string>
+    <string name="bench_save_pro">Сохраняйте и сравнивайте зарядки с Pro</string>
+    <string name="bench_saved_title">Сохранённые результаты</string>
+    <string name="bench_unnamed">Зарядка без названия</string>
 </resources>
