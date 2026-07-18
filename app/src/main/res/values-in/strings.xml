@@ -105,4 +105,9 @@
     <string name="sleep_intro">Konsumsi baterai antara 23.00 dan 07.00. Cakupan menunjukkan berapa banyak tiap malam yang benar-benar terekam — aktifkan perekaman latar belakang untuk malam penuh.</string>
     <string name="sleep_coverage">%1$d%% tercakup</string>
     <string name="sleep_empty">Belum ada pengurasan malam yang terekam. Aktifkan perekaman latar belakang dan biarkan ponsel tidak dicas semalaman.</string>
+    <string name="health_chip">Kesehatan</string>
+    <string name="health_trend_title">Tren kesehatan baterai</string>
+    <string name="health_trend_intro">Setiap pengisian penuh mencatat pembacaan fuel gauge sistem pada 100%. Nilai absolut berbeda tiap perangkat — yang penting perubahannya dari bulan ke bulan. Pengisian penuh sesekali menjaga kalibrasi.</string>
+    <string name="health_trend_delta">Kapasitas vs pembacaan pertama: %1$s</string>
+    <string name="health_trend_empty">Belum ada pengisian penuh tercatat. Isi hingga 100% sesekali — setiap kali menambah titik kalibrasi.</string>
 </resources>

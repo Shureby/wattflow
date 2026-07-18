@@ -105,4 +105,9 @@
     <string name="sleep_intro">Akkuverbrauch zwischen 23:00 und 07:00. Die Abdeckung zeigt, wie viel jeder Nacht tatsächlich aufgezeichnet wurde — für volle Nächte die Hintergrundaufzeichnung aktivieren.</string>
     <string name="sleep_coverage">%1$d %% erfasst</string>
     <string name="sleep_empty">Noch keine nächtliche Entladung aufgezeichnet. Hintergrundaufzeichnung aktivieren und das Telefon über Nacht nicht laden.</string>
+    <string name="health_chip">Zustand</string>
+    <string name="health_trend_title">Akkuzustands-Trend</string>
+    <string name="health_trend_intro">Bei jeder Vollladung wird der Systemwert bei 100 % protokolliert. Der Absolutwert variiert je Gerät — entscheidend ist die Veränderung über Monate. Gelegentliche Vollladungen halten die Kalibrierung aktuell.</string>
+    <string name="health_trend_delta">Kapazität vs. erste Messung: %1$s</string>
+    <string name="health_trend_empty">Noch keine Vollladungen protokolliert. Gelegentlich auf 100 % laden — jede fügt einen Kalibrierpunkt hinzu.</string>
 </resources>

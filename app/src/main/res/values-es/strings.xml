@@ -105,4 +105,9 @@
     <string name="sleep_intro">Consumo de batería entre las 23:00 y las 07:00. La cobertura muestra cuánto de cada noche se registró realmente; activa la grabación en segundo plano para noches completas.</string>
     <string name="sleep_coverage">%1$d%% cubierto</string>
     <string name="sleep_empty">Aún no hay descargas nocturnas registradas. Activa la grabación en segundo plano y deja el teléfono desenchufado por la noche.</string>
+    <string name="health_chip">Salud</string>
+    <string name="health_trend_title">Tendencia de salud de la batería</string>
+    <string name="health_trend_intro">Cada carga completa registra la lectura del medidor del sistema al 100%. El valor absoluto varía según el dispositivo; lo que importa es su evolución en meses. Cargas completas ocasionales lo mantienen calibrado.</string>
+    <string name="health_trend_delta">Capacidad vs primera lectura: %1$s</string>
+    <string name="health_trend_empty">Aún no hay cargas completas registradas. Carga al 100% de vez en cuando: cada una añade un punto de calibración.</string>
 </resources>

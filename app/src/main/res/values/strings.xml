@@ -105,4 +105,9 @@
     <string name="sleep_intro">Battery drain between 23:00 and 07:00. Coverage shows how much of each night was actually recorded — turn on background recording for complete nights.</string>
     <string name="sleep_coverage">%1$d%% covered</string>
     <string name="sleep_empty">No night-time discharge recorded yet. Enable background recording and leave the phone unplugged overnight.</string>
+    <string name="health_chip">Health</string>
+    <string name="health_trend_title">Battery health trend</string>
+    <string name="health_trend_intro">Each full charge logs the system fuel gauge reading at 100%. The absolute number varies by device — what matters is how it changes over months. Occasional full charges keep this calibrated.</string>
+    <string name="health_trend_delta">Capacity vs first reading: %1$s</string>
+    <string name="health_trend_empty">No full charges logged yet. Charge to 100% now and then — each one adds a calibration point.</string>
 </resources>

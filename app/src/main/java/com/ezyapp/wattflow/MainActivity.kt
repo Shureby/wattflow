@@ -1618,6 +1618,7 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
     var showLedger by remember { mutableStateOf(false) }
     var showSleep by remember { mutableStateOf(false) }
+    var showHealth by remember { mutableStateOf(false) }
     val rawMode = RawModePrefs.enabled(LocalContext.current)
     val sessions = mergeSessions(
         allSessions.filter { it.direction == direction },
@@ -1705,6 +1706,12 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                     },
                     label = { Text(stringResource(R.string.sleep_chip)) },
                 )
+                AssistChip(
+                    onClick = {
+                        if (isPro) showHealth = true else showPaywall = true
+                    },
+                    label = { Text(stringResource(R.string.health_chip)) },
+                )
                 IconButton(onClick = onOpenSettings) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
@@ -1787,6 +1794,10 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
 
     if (showSleep) {
         SleepDrainDialog(onDismiss = { showSleep = false })
+    }
+
+    if (showHealth) {
+        HealthTrendDialog(onDismiss = { showHealth = false })
     }
 
     detailSession?.let { session ->

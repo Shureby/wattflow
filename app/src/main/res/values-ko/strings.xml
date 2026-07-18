@@ -105,4 +105,9 @@
     <string name="sleep_intro">23:00~07:00 사이 배터리 소모입니다. 커버리지는 각 밤 중 실제 기록된 비율을 나타냅니다. 완전한 기록을 위해 백그라운드 기록을 켜세요.</string>
     <string name="sleep_coverage">%1$d%% 기록됨</string>
     <string name="sleep_empty">야간 방전 기록이 아직 없습니다. 백그라운드 기록을 켜고 밤새 충전하지 않은 상태로 두세요.</string>
+    <string name="health_chip">건강</string>
+    <string name="health_trend_title">배터리 건강 추세</string>
+    <string name="health_trend_intro">완전 충전할 때마다 100% 시점의 시스템 전량계 값을 기록합니다. 절대값은 기기마다 다르며, 중요한 것은 수개월에 걸친 변화입니다. 가끔 완전 충전하면 보정이 유지됩니다.</string>
+    <string name="health_trend_delta">첫 기록 대비 용량: %1$s</string>
+    <string name="health_trend_empty">아직 완전 충전 기록이 없습니다. 가끔 100%까지 충전하세요. 매번 보정 지점이 추가됩니다.</string>
 </resources>

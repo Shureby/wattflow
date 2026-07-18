@@ -105,4 +105,9 @@
     <string name="sleep_intro">23:00 至 07:00 的电池消耗。覆盖率表示每晚实际有记录的时长比例——开启后台记录可获得完整数据。</string>
     <string name="sleep_coverage">覆盖 %1$d%%</string>
     <string name="sleep_empty">尚无夜间放电记录。开启后台记录并让手机整夜不充电。</string>
+    <string name="health_chip">健康</string>
+    <string name="health_trend_title">电池健康趋势</string>
+    <string name="health_trend_intro">每次充满时记录系统电量计在 100% 的读数。绝对值因设备而异——重要的是数月间的变化。偶尔充满一次可保持校准。</string>
+    <string name="health_trend_delta">容量相对首次读数：%1$s</string>
+    <string name="health_trend_empty">尚无充满记录。偶尔充到 100%——每次都会增加一个校准点。</string>
 </resources>

@@ -105,4 +105,9 @@
     <string name="sleep_intro">Consommation de batterie entre 23 h et 7 h. La couverture indique la part de chaque nuit réellement enregistrée — activez l’enregistrement en arrière-plan pour des nuits complètes.</string>
     <string name="sleep_coverage">%1$d %% couvert</string>
     <string name="sleep_empty">Aucune décharge nocturne enregistrée. Activez l’enregistrement en arrière-plan et laissez le téléphone débranché la nuit.</string>
+    <string name="health_chip">Santé</string>
+    <string name="health_trend_title">Tendance de santé de la batterie</string>
+    <string name="health_trend_intro">Chaque charge complète enregistre la lecture de la jauge système à 100 %. La valeur absolue varie selon l’appareil — c’est son évolution sur des mois qui compte. Des charges complètes occasionnelles maintiennent le calibrage.</string>
+    <string name="health_trend_delta">Capacité vs première lecture : %1$s</string>
+    <string name="health_trend_empty">Aucune charge complète enregistrée. Chargez à 100 % de temps en temps — chacune ajoute un point de calibrage.</string>
 </resources>

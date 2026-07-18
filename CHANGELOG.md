@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Battery health trend (Pro): every full charge logs the fuel-gauge
+  reading at 100%; the dialog shows readings over time and percent
+  change vs the first baseline (data accumulates since v1.2)
 - Sleep drain report (Pro): battery drain per night (23:00-07:00) for
   the last 7 nights, with a coverage figure showing how much of each
   night was actually recorded

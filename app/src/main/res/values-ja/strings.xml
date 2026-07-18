@@ -105,4 +105,9 @@
     <string name="sleep_intro">23:00〜07:00 のバッテリー消費。カバー率は各夜のうち実際に記録できた割合です。完全な記録にはバックグラウンド記録をオンにしてください。</string>
     <string name="sleep_coverage">%1$d%% 記録</string>
     <string name="sleep_empty">夜間の放電記録はまだありません。バックグラウンド記録をオンにし、夜間は充電せずに置いてください。</string>
+    <string name="health_chip">健康</string>
+    <string name="health_trend_title">バッテリー健康度の推移</string>
+    <string name="health_trend_intro">満充電のたびにシステム電池計の100%時の読みを記録します。絶対値は端末により異なります。重要なのは数か月での変化です。ときどき満充電すると校正が保たれます。</string>
+    <string name="health_trend_delta">初回比の容量：%1$s</string>
+    <string name="health_trend_empty">満充電の記録はまだありません。ときどき100%まで充電してください。そのたびに校正点が追加されます。</string>
 </resources>
