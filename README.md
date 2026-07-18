@@ -67,6 +67,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 - **Landscape two-pane layout**, size-adaptive widget, settings tab,
   readable chart peak labels
 
+- **1.3.1–1.3.2**: in-app language now works on Play-installed builds;
+  widget picker offers three preset sizes with previews
+
 Full history in [CHANGELOG.md](CHANGELOG.md).
 
 ## FAQ

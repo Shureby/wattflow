@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.3.2] - 2026-07-18
 
 - Widget picker now offers three preset sizes (2×1, 4×1, 4×2) with
   real previews instead of a single 2×1 entry that hid the larger
