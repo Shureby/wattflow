@@ -1,6 +1,7 @@
 package com.ezyapp.wattflow
 
 import android.content.Context
+import android.content.res.Configuration
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.BatteryManager
@@ -29,6 +30,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -72,6 +74,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -591,12 +594,50 @@ private fun PaywallDialog(onDismiss: () -> Unit) {
 
 @Composable
 private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
+    val isLandscape = LocalConfiguration.current.orientation ==
+            Configuration.ORIENTATION_LANDSCAPE
+    if (isLandscape) {
+        // Two panes: charge visual left, stats and graph right.
+        Row(
+            modifier = Modifier
+                .widthIn(max = 960.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                VisualPane(sample, state)
+            }
+            Spacer(Modifier.width(24.dp))
+            Column(
+                modifier = Modifier.weight(1f),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                StatsPane(sample, state)
+            }
+        }
+    } else {
+        Column(
+            // Cap width so tablets don't blow up the width-scaled charge
+            // visual and push the watts off screen.
+            modifier = Modifier
+                .widthIn(max = 480.dp)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            VisualPane(sample, state)
+            Spacer(Modifier.height(24.dp))
+            StatsPane(sample, state)
+        }
+    }
+}
+
+@Composable
+private fun VisualPane(sample: BatterySample, state: ChargingUiState) {
     Column(
-        // Cap width so landscape/tablets don't blow up the width-scaled
-        // charge visual and push the watts off screen.
-        modifier = Modifier
-            .widthIn(max = 480.dp)
-            .fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         ChargeVisual(
@@ -671,9 +712,15 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
                 color = MaterialTheme.colorScheme.primary,
             )
         }
+    }
+}
 
-        Spacer(Modifier.height(24.dp))
-
+@Composable
+private fun StatsPane(sample: BatterySample, state: ChargingUiState) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
         StatsRow(
             sample = sample,
             peakInWatts = state.peakInWatts,
