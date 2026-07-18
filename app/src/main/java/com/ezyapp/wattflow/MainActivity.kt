@@ -346,7 +346,7 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
             Spacer(Modifier.height(6.dp))
-            GeekSection(onLockedFeature)
+            GeekSection()
             Spacer(Modifier.height(6.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
@@ -805,11 +805,10 @@ private fun StatsPane(sample: BatterySample, state: ChargingUiState) {
 }
 
 @Composable
-private fun GeekSection(onLockedFeature: () -> Unit) {
+private fun GeekSection() {
     val context = LocalContext.current
     var rawEnabled by remember { mutableStateOf(RawModePrefs.enabled(context)) }
     var showRawInfo by remember { mutableStateOf(false) }
-    val isPro by Pro.isPro.collectAsState()
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
@@ -841,30 +840,6 @@ private fun GeekSection(onLockedFeature: () -> Unit) {
                     RawModePrefs.setEnabled(context, on)
                 },
             )
-        }
-        if (rawEnabled) {
-            // The exemption only benefits background recording — a Pro
-            // feature. Granting it on Free would mislead users into
-            // expecting recording that never happens.
-            if (isPro) {
-                DozeExemptionRow()
-            } else {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable(onClick = onLockedFeature)
-                        .padding(top = 10.dp, bottom = 4.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(R.string.doze_row),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Text(text = "🔒", modifier = Modifier.padding(4.dp))
-                }
-            }
         }
     }
 
@@ -1162,39 +1137,46 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
         }
     }
 
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = stringResource(R.string.monitor_toggle),
-                style = MaterialTheme.typography.bodyLarge,
-            )
-            Text(
-                text = stringResource(R.string.monitor_toggle_hint),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.monitor_toggle),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                Text(
+                    text = stringResource(R.string.monitor_toggle_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Switch(
+                checked = wanted,
+                onCheckedChange = { on ->
+                    if (on && !isPro) {
+                        onLockedFeature()
+                    } else if (on) {
+                        enable()
+                    } else {
+                        wanted = false
+                        MonitorPrefs.setEnabled(context, false)
+                        context.startService(
+                            Intent(context, ChargeMonitorService::class.java)
+                                .setAction(ChargeMonitorService.ACTION_STOP)
+                        )
+                    }
+                },
             )
         }
-        Switch(
-            checked = wanted,
-            onCheckedChange = { on ->
-                if (on && !isPro) {
-                    onLockedFeature()
-                } else if (on) {
-                    enable()
-                } else {
-                    wanted = false
-                    MonitorPrefs.setEnabled(context, false)
-                    context.startService(
-                        Intent(context, ChargeMonitorService::class.java)
-                            .setAction(ChargeMonitorService.ACTION_STOP)
-                    )
-                }
-            },
-        )
+        // Doze exemption lives here because it only improves background
+        // recording completeness; raw sessions is a pure display toggle.
+        if (wanted && isPro) {
+            DozeExemptionRow()
+        }
     }
 
     if (showRationale) {

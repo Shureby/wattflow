@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Settings: the uninterrupted-background-sampling (doze exemption) row
+  moved from Raw sessions to Background recording, where it belongs
 - Battery health trend (Pro): every full charge logs the fuel-gauge
   reading at 100%; the dialog shows readings over time and percent
   change vs the first baseline (data accumulates since v1.2)
