@@ -9,20 +9,16 @@ import android.os.Build
 /**
  * Dual-cell (2S) battery correction.
  *
- * Phones with two cells in series (most 100W+ fast-charge designs) expose
- * per-cell voltage through the fuel gauge while current is the true pack
- * current, so battery-side watts read at half the real value. When active,
- * [factor] doubles the computed watts at the single choke point in
- * [BatteryReader]. Voltage/current tiles keep showing raw gauge values.
- *
- * Mode AUTO applies the correction when the device is on the known-2S list
- * or the session heuristic has fired; ON/OFF override both signals.
+ * Phones with two cells in series often under-report power 2x — but only
+ * in some charge modes: field data from the Redmi K70 Pro shows halved
+ * readings during 120W direct charge yet true readings on an 11W brick.
+ * A static multiplier is therefore never applied automatically. The
+ * known-device list and the session heuristic only produce an advisory
+ * "likely dual-cell" hint; the user flips [setEnabled] after comparing
+ * against their charger, and [factor] doubles watts at the single choke
+ * point in [BatteryReader]. Voltage/current tiles keep raw gauge values.
  */
 object DualCell {
-
-    const val MODE_AUTO = 0
-    const val MODE_ON = 1
-    const val MODE_OFF = 2
 
     /**
      * Build.DEVICE values (lowercase) of phones community-confirmed to
@@ -53,9 +49,10 @@ object DualCell {
     private fun prefs(c: Context) =
         c.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
-    fun mode(c: Context) = prefs(c).getInt("dual_cell_mode", MODE_AUTO)
-    fun setMode(c: Context, m: Int) =
-        prefs(c).edit().putInt("dual_cell_mode", m).apply()
+    /** User-controlled x2 switch. Off by default on every device. */
+    fun enabled(c: Context) = prefs(c).getBoolean("dual_cell_x2", false)
+    fun setEnabled(c: Context, on: Boolean) =
+        prefs(c).edit().putBoolean("dual_cell_x2", on).apply()
 
     /** Set once the device list or the session heuristic says 2S. */
     fun detected(c: Context) =
@@ -71,13 +68,7 @@ object DualCell {
 
     fun deviceListed() = Build.DEVICE.lowercase() in KNOWN_2S
 
-    fun active(c: Context): Boolean = when (mode(c)) {
-        MODE_ON -> true
-        MODE_OFF -> false
-        else -> detected(c)
-    }
-
-    fun factor(c: Context): Double = if (active(c)) 2.0 else 1.0
+    fun factor(c: Context): Double = if (enabled(c)) 2.0 else 1.0
 
     /**
      * Called by [SessionRecorder] when a charging session ends and the
@@ -103,16 +94,10 @@ object DualCell {
         return """
             Device: ${Build.MANUFACTURER} ${Build.MODEL} (${Build.DEVICE})
             Android: ${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})
-            App mode chosen: ${modeName(mode(c))}
-            Auto verdict: listed=${deviceListed()}, detected=${detected(c)}
+            x2 correction enabled by user: ${enabled(c)}
+            Advisory verdict: listed=${deviceListed()}, detected=${detected(c)}
             Charge counter now: $counter uAh
         """.trimIndent()
-    }
-
-    private fun modeName(m: Int) = when (m) {
-        MODE_ON -> "forced ON"
-        MODE_OFF -> "forced OFF"
-        else -> "auto"
     }
 
     fun gitHubReportIntent(c: Context): Intent {

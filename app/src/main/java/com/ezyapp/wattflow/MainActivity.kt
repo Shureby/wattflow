@@ -432,21 +432,9 @@ private fun OverlayToggle(onLockedFeature: () -> Unit) {
 @Composable
 private fun DualCellSection() {
     val context = LocalContext.current
-    var mode by remember { mutableIntStateOf(DualCell.mode(context)) }
+    var enabled by remember { mutableStateOf(DualCell.enabled(context)) }
     var showDialog by remember { mutableStateOf(false) }
     val detected = remember { DualCell.detected(context) }
-
-    val valueText = when (mode) {
-        DualCell.MODE_ON -> stringResource(R.string.dual_cell_mode_on)
-        DualCell.MODE_OFF -> stringResource(R.string.dual_cell_mode_off)
-        else -> stringResource(
-            R.string.dual_cell_mode_auto_status,
-            stringResource(
-                if (detected) R.string.dual_cell_detected_yes
-                else R.string.dual_cell_detected_no
-            ),
-        )
-    }
 
     Row(
         modifier = Modifier
@@ -460,7 +448,9 @@ private fun DualCellSection() {
             style = MaterialTheme.typography.bodyLarge,
         )
         Text(
-            text = valueText,
+            text = stringResource(
+                if (enabled) R.string.dual_cell_x2_on else R.string.dual_cell_x2_off
+            ),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -468,11 +458,11 @@ private fun DualCellSection() {
 
     if (showDialog) {
         DualCellDialog(
-            mode = mode,
+            enabled = enabled,
             detected = detected,
-            onSelect = { m ->
-                mode = m
-                DualCell.setMode(context, m)
+            onToggle = { on ->
+                enabled = on
+                DualCell.setEnabled(context, on)
             },
             onDismiss = { showDialog = false },
         )
@@ -481,9 +471,9 @@ private fun DualCellSection() {
 
 @Composable
 private fun DualCellDialog(
-    mode: Int,
+    enabled: Boolean,
     detected: Boolean,
-    onSelect: (Int) -> Unit,
+    onToggle: (Boolean) -> Unit,
     onDismiss: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -496,33 +486,31 @@ private fun DualCellDialog(
                     text = stringResource(R.string.dual_cell_info),
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                Spacer(Modifier.height(12.dp))
-                listOf(
-                    DualCell.MODE_AUTO to stringResource(
-                        R.string.dual_cell_mode_auto_status,
+                Spacer(Modifier.height(8.dp))
+                Text(
+                    text = stringResource(
+                        R.string.dual_cell_likely,
                         stringResource(
                             if (detected) R.string.dual_cell_detected_yes
                             else R.string.dual_cell_detected_no
                         ),
                     ),
-                    DualCell.MODE_ON to stringResource(R.string.dual_cell_mode_on),
-                    DualCell.MODE_OFF to stringResource(R.string.dual_cell_mode_off),
-                ).forEach { (value, label) ->
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onSelect(value) }
-                            .padding(vertical = 6.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
-                        RadioButton(
-                            selected = mode == value,
-                            onClick = { onSelect(value) },
-                        )
-                        Text(text = label, style = MaterialTheme.typography.bodyLarge)
-                    }
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+                Spacer(Modifier.height(4.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(R.string.dual_cell_x2_switch),
+                        style = MaterialTheme.typography.bodyLarge,
+                    )
+                    Switch(checked = enabled, onCheckedChange = onToggle)
                 }
-                Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(8.dp))
                 Text(
                     text = stringResource(R.string.dual_cell_report),
                     style = MaterialTheme.typography.bodyMedium,

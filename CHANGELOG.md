@@ -18,11 +18,13 @@
   night was actually recorded
 - Energy ledger (Pro): daily battery in/out/net Wh for the last 14
   days, opened from the History tab
-- Dual-cell (2S) battery correction: phones that report per-cell
-  readings (most 100W+ fast-charge designs) showed half the real watts.
-  Auto-detected via a known-device list plus a session heuristic;
-  Settings offers Auto/On/Off and a privacy-safe device report
-  (pre-filled GitHub issue or email you review and send yourself)
+- Dual-cell (2S) battery correction: many fast-charge phones report
+  only half the real power, but field data shows this varies by charge
+  mode even on one device, so WattFlow never adjusts automatically.
+  Detection (device list + session heuristic) only shows a "likely
+  dual-cell" hint; a manual x2 switch (default off) applies the
+  correction, plus a privacy-safe device report (pre-filled GitHub
+  issue or email you review and send yourself)
 - Landscape now uses a two-pane layout: charge visual left, stats and
   graph right
 - Charger benchmark: 60-second test grades your charger + cable combo
