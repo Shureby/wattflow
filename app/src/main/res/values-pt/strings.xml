@@ -81,6 +81,8 @@
     <string name="dual_cell_report">A configuração automática está errada para o seu telefone? Informe seu dispositivo — abre apenas uma página pré-preenchida que você revisa e envia.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">E-mail</string>
+    <string name="overlay_toggle">Sobreposição de watts</string>
+    <string name="overlay_toggle_hint">Pílula arrastável com watts ao vivo sobre outros apps enquanto a gravação em segundo plano está ativa. Requer a permissão de exibir sobre outros apps — a única permissão opcional que o WattFlow pede.</string>
     <string name="bench_open">⚡ Teste de carregador</string>
     <string name="bench_title">Teste de carregador</string>
     <string name="bench_intro">Mede esta combinação de carregador + cabo por 60 segundos e atribui uma nota. Para resultados comparáveis: mesma faixa de bateria, tela ligada, telefone em repouso.</string>

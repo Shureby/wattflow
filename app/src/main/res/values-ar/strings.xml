@@ -81,6 +81,8 @@
     <string name="dual_cell_report">هل الإعداد التلقائي غير صحيح لهاتفك؟ أبلغ عن جهازك — ستُفتح صفحة معبأة مسبقًا تراجعها وترسلها بنفسك.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">البريد الإلكتروني</string>
+    <string name="overlay_toggle">نافذة الواط العائمة</string>
+    <string name="overlay_toggle_hint">شريط قابل للسحب يعرض الواط المباشر فوق التطبيقات الأخرى أثناء تشغيل التسجيل في الخلفية. يتطلب إذن العرض فوق التطبيقات — الإذن الاختياري الوحيد الذي يطلبه WattFlow.</string>
     <string name="bench_open">⚡ اختبار الشاحن</string>
     <string name="bench_title">اختبار الشاحن</string>
     <string name="bench_intro">يقيس هذا الشاحن مع الكابل لمدة 60 ثانية ويمنحه تقييمًا. لنتائج قابلة للمقارنة: نفس نطاق البطارية، الشاشة مضاءة، الهاتف خامل.</string>

@@ -329,6 +329,11 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
             Spacer(Modifier.height(6.dp))
+            OverlayToggle(onLockedFeature)
+            Spacer(Modifier.height(6.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+            Spacer(Modifier.height(6.dp))
             AlertsCard(onLockedFeature)
             Spacer(Modifier.height(6.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -400,6 +405,47 @@ private val SUPPORTED_LANGUAGES = listOf(
     "ru" to "Русский",
     "de" to "Deutsch",
 )
+
+@Composable
+private fun OverlayToggle(onLockedFeature: () -> Unit) {
+    val context = LocalContext.current
+    var enabled by remember { mutableStateOf(OverlayPrefs.enabled(context)) }
+    val isPro by Pro.isPro.collectAsState()
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = stringResource(R.string.overlay_toggle),
+                style = MaterialTheme.typography.bodyLarge,
+            )
+            Text(
+                text = stringResource(R.string.overlay_toggle_hint),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Switch(
+            checked = enabled,
+            onCheckedChange = { on ->
+                if (on && !isPro) {
+                    onLockedFeature()
+                } else {
+                    enabled = on
+                    OverlayPrefs.setEnabled(context, on)
+                    if (on && !OverlayPrefs.canDraw(context)) {
+                        runCatching {
+                            context.startActivity(OverlayPrefs.permissionIntent(context))
+                        }
+                    }
+                }
+            },
+        )
+    }
+}
 
 @Composable
 private fun DualCellSection() {

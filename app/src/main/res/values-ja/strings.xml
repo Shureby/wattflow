@@ -81,6 +81,8 @@
     <string name="dual_cell_report">自動判定が合っていない場合は端末を報告してください。事前入力されたページが開くだけで、内容を確認して自分で送信します。</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">メール</string>
+    <string name="overlay_toggle">フローティング表示</string>
+    <string name="overlay_toggle_hint">バックグラウンド記録中に、他のアプリの上にドラッグ可能なワット数ピルを表示します。「他のアプリの上に表示」権限が必要です。WattFlow が求める唯一のオプション権限です。</string>
     <string name="bench_open">⚡ 充電器ベンチマーク</string>
     <string name="bench_title">充電器ベンチマーク</string>
     <string name="bench_intro">この充電器＋ケーブルの組み合わせを60秒間測定して評価します。比較可能な結果のために：同じ電池残量帯、画面オン、端末は操作しないでください。</string>

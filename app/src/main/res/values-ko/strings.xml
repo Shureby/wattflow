@@ -81,6 +81,8 @@
     <string name="dual_cell_report">자동 설정이 내 기기에 맞지 않나요? 기기를 제보하세요. 미리 채워진 페이지가 열리며 직접 확인 후 전송합니다.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">이메일</string>
+    <string name="overlay_toggle">플로팅 와트 오버레이</string>
+    <string name="overlay_toggle_hint">백그라운드 기록 중 다른 앱 위에 드래그 가능한 실시간 와트 필을 표시합니다. 다른 앱 위에 표시 권한이 필요하며, WattFlow가 요청하는 유일한 선택 권한입니다.</string>
     <string name="bench_open">⚡ 충전기 벤치마크</string>
     <string name="bench_title">충전기 벤치마크</string>
     <string name="bench_intro">이 충전기+케이블 조합을 60초간 측정하고 등급을 매깁니다. 비교 가능한 결과를 위해: 비슷한 배터리 구간, 화면 켜짐, 기기 미사용 상태를 유지하세요.</string>

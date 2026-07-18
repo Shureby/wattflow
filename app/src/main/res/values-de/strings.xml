@@ -81,6 +81,8 @@
     <string name="dual_cell_report">Stimmt die Automatik für dein Gerät nicht? Melde dein Gerät — es öffnet sich nur eine vorausgefüllte Seite, die du selbst prüfst und absendest.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">E-Mail</string>
+    <string name="overlay_toggle">Schwebendes Watt-Overlay</string>
+    <string name="overlay_toggle_hint">Verschiebbare Pille mit Live-Watt über anderen Apps, solange die Hintergrundaufzeichnung läuft. Braucht die Berechtigung zum Anzeigen über anderen Apps — die einzige optionale Berechtigung von WattFlow.</string>
     <string name="bench_open">⚡ Ladegerät-Benchmark</string>
     <string name="bench_title">Ladegerät-Benchmark</string>
     <string name="bench_intro">Misst diese Ladegerät-Kabel-Kombination 60 Sekunden lang und benotet sie. Für vergleichbare Ergebnisse: gleicher Akkubereich, Bildschirm an, Telefon nicht benutzen.</string>

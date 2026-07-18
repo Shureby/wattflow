@@ -30,11 +30,13 @@ class ChargeMonitorService : Service() {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private lateinit var reader: BatteryReader
+    private lateinit var overlay: OverlayController
     private var loopStarted = false
 
     override fun onCreate() {
         super.onCreate()
         reader = BatteryReader(this)
+        overlay = OverlayController(applicationContext)
         createChannel()
         isRunning.value = true
     }
@@ -61,6 +63,7 @@ class ChargeMonitorService : Service() {
                     val sample = withContext(Dispatchers.IO) { reader.read() }
                     if (sample != null) {
                         SessionRecorder.onSample(applicationContext, sample)
+                        overlay.update(sample)
                         if (tick % 3 == 0) {
                             getSystemService(NotificationManager::class.java)
                                 .notify(NOTIF_ID, buildNotification(sample))
@@ -76,6 +79,7 @@ class ChargeMonitorService : Service() {
 
     override fun onDestroy() {
         scope.cancel()
+        overlay.hide()
         isRunning.value = false
         super.onDestroy()
     }

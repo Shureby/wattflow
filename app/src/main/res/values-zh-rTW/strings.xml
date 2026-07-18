@@ -81,6 +81,8 @@
     <string name="dual_cell_report">自動判斷不適合你的手機？回報你的裝置——僅會開啟一個預填頁面，由你自行確認並送出。</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">電子郵件</string>
+    <string name="overlay_toggle">懸浮功率窗</string>
+    <string name="overlay_toggle_hint">背景記錄開啟時，在其他應用上方顯示可拖曳的即時功率小窗。需要「顯示在其他應用上層」權限——這是 WattFlow 唯一的可選權限。</string>
     <string name="bench_open">⚡ 充電器測評</string>
     <string name="bench_title">充電器測評</string>
     <string name="bench_intro">對目前充電器+線材組合進行 60 秒測量並評級。為確保結果可比：電量區間相近、螢幕常亮、手機靜置。</string>

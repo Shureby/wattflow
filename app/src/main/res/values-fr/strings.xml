@@ -81,6 +81,8 @@
     <string name="dual_cell_report">Le réglage auto est faux pour votre téléphone ? Signalez votre appareil — cela ouvre simplement une page pré-remplie que vous vérifiez et envoyez vous-même.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">E-mail</string>
+    <string name="overlay_toggle">Superposition des watts</string>
+    <string name="overlay_toggle_hint">Pastille déplaçable affichant les watts en direct par-dessus les autres applis quand l’enregistrement en arrière-plan est actif. Nécessite la permission d’affichage par-dessus — la seule permission optionnelle demandée par WattFlow.</string>
     <string name="bench_open">⚡ Test du chargeur</string>
     <string name="bench_title">Test du chargeur</string>
     <string name="bench_intro">Mesure ce couple chargeur + câble pendant 60 secondes et lui attribue une note. Pour des résultats comparables : même plage de batterie, écran allumé, téléphone au repos.</string>

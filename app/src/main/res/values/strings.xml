@@ -81,6 +81,8 @@
     <string name="dual_cell_report">Is the auto setting wrong for your phone? Report your device — it opens a pre-filled page that you review and send yourself.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">Email</string>
+    <string name="overlay_toggle">Floating watts overlay</string>
+    <string name="overlay_toggle_hint">Draggable live-watts pill over other apps while background recording is on. Needs the display-over-apps permission — the only optional permission WattFlow ever asks for.</string>
     <string name="bench_open">⚡ Charger benchmark</string>
     <string name="bench_title">Charger benchmark</string>
     <string name="bench_intro">Measures this charger + cable combo for 60 seconds and grades it. For comparable results: same battery level range, screen on, phone idle.</string>

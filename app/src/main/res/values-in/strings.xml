@@ -81,6 +81,8 @@
     <string name="dual_cell_report">Setelan otomatis salah untuk ponsel Anda? Laporkan perangkat Anda — hanya membuka halaman terisi otomatis yang Anda tinjau dan kirim sendiri.</string>
     <string name="dual_cell_report_github">GitHub</string>
     <string name="dual_cell_report_email">Email</string>
+    <string name="overlay_toggle">Overlay watt mengambang</string>
+    <string name="overlay_toggle_hint">Pil watt langsung yang dapat digeser di atas aplikasi lain saat perekaman latar belakang aktif. Perlu izin tampil di atas aplikasi — satu-satunya izin opsional yang diminta WattFlow.</string>
     <string name="bench_open">⚡ Uji charger</string>
     <string name="bench_title">Uji charger</string>
     <string name="bench_intro">Mengukur kombinasi charger + kabel ini selama 60 detik dan memberi nilai. Agar hasil sebanding: rentang baterai sama, layar menyala, ponsel tidak dipakai.</string>
