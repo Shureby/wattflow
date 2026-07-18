@@ -56,15 +56,16 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
-## What's New — v1.2
+## What's New — v1.3
 
-- **Battery alerts**: charge-full (80%) and low-battery (20%) notifications,
-  with adjustable thresholds in Pro — and an explainer on why 80/20 keeps
-  your battery healthy
-- **Runtime estimate**: time to full / time left, right on the live screen
-- **Discharge history** and per-session power curves
-- **Home screen widget**: watts, level and temperature at a glance
-- **CSV export** (Pro)
+- **Charger benchmark**: 60-second test grades your charger + cable
+  (avg/peak watts, stability, A–F); Pro saves and compares results
+- **Floating watts overlay** (Pro): draggable live-watts pill over other apps
+- **Energy ledger, sleep drain report and battery health trend** (Pro)
+- **Dual-cell (2S) hint + manual ×2 correction** for phones that
+  under-report power during fast charging
+- **Landscape two-pane layout**, size-adaptive widget, settings tab,
+  readable chart peak labels
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 

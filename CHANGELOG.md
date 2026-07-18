@@ -1,6 +1,6 @@
 # Changelog
 
-## [Unreleased]
+## [1.3] - 2026-07-18
 
 - Settings is now a third bottom tab instead of a gear icon that
   floated in different corners per page; the Live tab reclaims the
