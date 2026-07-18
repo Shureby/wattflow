@@ -35,7 +35,7 @@ import kotlin.math.abs
  * every sampling path via [maybeUpdate] — live while the app is open or the
  * Pro monitor service runs.
  */
-class WattWidgetProvider : AppWidgetProvider() {
+open class WattWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(
         context: Context,
@@ -85,8 +85,14 @@ class WattWidgetProvider : AppWidgetProvider() {
 
         suspend fun updateNow(context: Context) {
             val manager = AppWidgetManager.getInstance(context)
-            val component = ComponentName(context, WattWidgetProvider::class.java)
-            val ids = manager.getAppWidgetIds(component)
+            // All picker entries share this implementation; collect every id.
+            val ids = listOf(
+                WattWidgetProvider::class.java,
+                WattWidgetProviderMedium::class.java,
+                WattWidgetProviderLarge::class.java,
+            ).flatMap { cls ->
+                manager.getAppWidgetIds(ComponentName(context, cls)).toList()
+            }.toIntArray()
             if (ids.isEmpty()) return
 
             val sample = BatteryReader(context).read() ?: return
@@ -282,3 +288,8 @@ class WattWidgetProvider : AppWidgetProvider() {
         }
     }
 }
+
+/** Separate picker entries so each preset size is discoverable. */
+class WattWidgetProviderMedium : WattWidgetProvider()
+
+class WattWidgetProviderLarge : WattWidgetProvider()

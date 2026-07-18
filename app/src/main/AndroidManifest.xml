@@ -25,6 +25,7 @@
 
         <receiver
             android:name=".WattWidgetProvider"
+            android:label="@string/widget_name_s"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -32,6 +33,28 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_watt_info" />
+        </receiver>
+        <receiver
+            android:name=".WattWidgetProviderMedium"
+            android:label="@string/widget_name_m"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_watt_info_m" />
+        </receiver>
+        <receiver
+            android:name=".WattWidgetProviderLarge"
+            android:label="@string/widget_name_l"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_watt_info_l" />
         </receiver>
 
         <receiver

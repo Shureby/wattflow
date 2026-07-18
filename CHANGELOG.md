@@ -1,5 +1,11 @@
 # Changelog
 
+## [Unreleased]
+
+- Widget picker now offers three preset sizes (2×1, 4×1, 4×2) with
+  real previews instead of a single 2×1 entry that hid the larger
+  layouts behind manual resizing
+
 ## [1.3.1] - 2026-07-18
 
 - Fixed: the in-app language choice was ignored on Play-installed
