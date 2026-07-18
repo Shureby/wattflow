@@ -69,4 +69,16 @@
     <string name="billing_unavailable">Store unavailable</string>
     <string name="monitor_permission_rationale">Background recording shows an ongoing notification with the live wattage — Android requires notification permission for it to be visible. Recording works either way; without permission the notification is simply hidden.</string>
     <string name="notif_stop">Stop</string>
+    <string name="dual_cell_title">Dual-cell battery (2S)</string>
+    <string name="dual_cell_info">Many fast-charging phones use two battery cells in series but report per-cell readings, so watts show at half the real value. When active, WattFlow doubles the wattage. Voltage and current tiles keep the raw sensor values.</string>
+    <string name="dual_cell_mode_auto_status">Auto (%1$s)</string>
+    <string name="dual_cell_mode_on">On (×2)</string>
+    <string name="dual_cell_mode_off">Off</string>
+    <string name="dual_cell_detected_yes">detected</string>
+    <string name="dual_cell_detected_no">not detected</string>
+    <string name="dual_cell_notice_title">Dual-cell battery detected</string>
+    <string name="dual_cell_notice_body">This phone appears to report battery power at half the real value, a common trait of dual-cell fast-charging designs. WattFlow now corrects the wattage ×2. You can change this anytime in Settings.</string>
+    <string name="dual_cell_report">Is the auto setting wrong for your phone? Report your device — it opens a pre-filled page that you review and send yourself.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">Email</string>
 </resources>

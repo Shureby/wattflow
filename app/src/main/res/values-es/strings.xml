@@ -69,4 +69,16 @@
     <string name="billing_unavailable">Tienda no disponible</string>
     <string name="monitor_permission_rationale">La grabación en segundo plano muestra una notificación fija con los vatios en vivo; Android requiere el permiso de notificaciones para que sea visible. La grabación funciona igualmente; sin permiso la notificación simplemente queda oculta.</string>
     <string name="notif_stop">Detener</string>
+    <string name="dual_cell_title">Batería de doble celda (2S)</string>
+    <string name="dual_cell_info">Muchos teléfonos de carga rápida usan dos celdas en serie pero informan valores por celda, por lo que los vatios se muestran a la mitad del valor real. Cuando está activo, WattFlow duplica la potencia. Los mosaicos de voltaje y corriente mantienen los valores brutos del sensor.</string>
+    <string name="dual_cell_mode_auto_status">Auto (%1$s)</string>
+    <string name="dual_cell_mode_on">Activado (×2)</string>
+    <string name="dual_cell_mode_off">Desactivado</string>
+    <string name="dual_cell_detected_yes">detectada</string>
+    <string name="dual_cell_detected_no">no detectada</string>
+    <string name="dual_cell_notice_title">Batería de doble celda detectada</string>
+    <string name="dual_cell_notice_body">Este teléfono parece informar la potencia de la batería a la mitad del valor real, un rasgo común de los diseños de carga rápida de doble celda. WattFlow ahora corrige los vatios ×2. Puedes cambiarlo en Ajustes.</string>
+    <string name="dual_cell_report">¿El ajuste automático es incorrecto para tu teléfono? Informa de tu dispositivo: solo abre una página precompletada que tú revisas y envías.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">Correo</string>
 </resources>

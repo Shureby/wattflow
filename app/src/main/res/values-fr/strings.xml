@@ -69,4 +69,16 @@
     <string name="billing_unavailable">Boutique indisponible</string>
     <string name="monitor_permission_rationale">"L'enregistrement en arrière-plan affiche une notification permanente avec la puissance en direct — Android exige l'autorisation de notifications pour la rendre visible. L'enregistrement fonctionne dans tous les cas ; sans autorisation, la notification est simplement masquée."</string>
     <string name="notif_stop">Arrêter</string>
+    <string name="dual_cell_title">Batterie double cellule (2S)</string>
+    <string name="dual_cell_info">Beaucoup de téléphones à charge rapide utilisent deux cellules en série mais rapportent des valeurs par cellule : la puissance affichée est alors la moitié de la valeur réelle. Une fois actif, WattFlow double les watts. Les tuiles tension et courant gardent les valeurs brutes du capteur.</string>
+    <string name="dual_cell_mode_auto_status">Auto (%1$s)</string>
+    <string name="dual_cell_mode_on">Activé (×2)</string>
+    <string name="dual_cell_mode_off">Désactivé</string>
+    <string name="dual_cell_detected_yes">détectée</string>
+    <string name="dual_cell_detected_no">non détectée</string>
+    <string name="dual_cell_notice_title">Batterie double cellule détectée</string>
+    <string name="dual_cell_notice_body">Ce téléphone semble rapporter la puissance de la batterie à la moitié de la valeur réelle, trait courant des designs à charge rapide double cellule. WattFlow corrige désormais les watts ×2. Modifiable à tout moment dans les Réglages.</string>
+    <string name="dual_cell_report">Le réglage auto est faux pour votre téléphone ? Signalez votre appareil — cela ouvre simplement une page pré-remplie que vous vérifiez et envoyez vous-même.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">E-mail</string>
 </resources>

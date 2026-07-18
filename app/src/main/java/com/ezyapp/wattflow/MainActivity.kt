@@ -133,6 +133,9 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     // Self-heal: if the user wants background recording but the service was
     // killed (install, swipe, vendor task manager), restart it on app open.
     val appContext = LocalContext.current.applicationContext
+    var showDualCellNotice by remember {
+        mutableStateOf(DualCell.noticePending(appContext))
+    }
     LaunchedEffect(isPro) {
         if (isPro && MonitorPrefs.enabled(appContext) &&
             !ChargeMonitorService.isRunning.value
@@ -226,6 +229,25 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     if (showPaywall) {
         PaywallDialog(onDismiss = { showPaywall = false })
     }
+
+    if (showDualCellNotice) {
+        AlertDialog(
+            onDismissRequest = {
+                showDualCellNotice = false
+                DualCell.clearNotice(appContext)
+            },
+            title = { Text(stringResource(R.string.dual_cell_notice_title)) },
+            text = { Text(stringResource(R.string.dual_cell_notice_body)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showDualCellNotice = false
+                        DualCell.clearNotice(appContext)
+                    }
+                ) { Text(stringResource(android.R.string.ok)) }
+            },
+        )
+    }
 }
 
 @Composable
@@ -295,6 +317,11 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
             Spacer(Modifier.height(6.dp))
+            DualCellSection()
+            Spacer(Modifier.height(6.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+            Spacer(Modifier.height(6.dp))
             GeekSection(onLockedFeature)
             Spacer(Modifier.height(6.dp))
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -356,6 +383,131 @@ private val SUPPORTED_LANGUAGES = listOf(
     "ru" to "Русский",
     "de" to "Deutsch",
 )
+
+@Composable
+private fun DualCellSection() {
+    val context = LocalContext.current
+    var mode by remember { mutableIntStateOf(DualCell.mode(context)) }
+    var showDialog by remember { mutableStateOf(false) }
+    val detected = remember { DualCell.detected(context) }
+
+    val valueText = when (mode) {
+        DualCell.MODE_ON -> stringResource(R.string.dual_cell_mode_on)
+        DualCell.MODE_OFF -> stringResource(R.string.dual_cell_mode_off)
+        else -> stringResource(
+            R.string.dual_cell_mode_auto_status,
+            stringResource(
+                if (detected) R.string.dual_cell_detected_yes
+                else R.string.dual_cell_detected_no
+            ),
+        )
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { showDialog = true }
+            .padding(vertical = 14.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+    ) {
+        Text(
+            text = stringResource(R.string.dual_cell_title),
+            style = MaterialTheme.typography.bodyLarge,
+        )
+        Text(
+            text = valueText,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+
+    if (showDialog) {
+        DualCellDialog(
+            mode = mode,
+            detected = detected,
+            onSelect = { m ->
+                mode = m
+                DualCell.setMode(context, m)
+            },
+            onDismiss = { showDialog = false },
+        )
+    }
+}
+
+@Composable
+private fun DualCellDialog(
+    mode: Int,
+    detected: Boolean,
+    onSelect: (Int) -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val context = LocalContext.current
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.dual_cell_title)) },
+        text = {
+            Column {
+                Text(
+                    text = stringResource(R.string.dual_cell_info),
+                    style = MaterialTheme.typography.bodyMedium,
+                )
+                Spacer(Modifier.height(12.dp))
+                listOf(
+                    DualCell.MODE_AUTO to stringResource(
+                        R.string.dual_cell_mode_auto_status,
+                        stringResource(
+                            if (detected) R.string.dual_cell_detected_yes
+                            else R.string.dual_cell_detected_no
+                        ),
+                    ),
+                    DualCell.MODE_ON to stringResource(R.string.dual_cell_mode_on),
+                    DualCell.MODE_OFF to stringResource(R.string.dual_cell_mode_off),
+                ).forEach { (value, label) ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onSelect(value) }
+                            .padding(vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        RadioButton(
+                            selected = mode == value,
+                            onClick = { onSelect(value) },
+                        )
+                        Text(text = label, style = MaterialTheme.typography.bodyLarge)
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = stringResource(R.string.dual_cell_report),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Row {
+                    TextButton(
+                        onClick = {
+                            runCatching {
+                                context.startActivity(DualCell.gitHubReportIntent(context))
+                            }
+                        }
+                    ) { Text(stringResource(R.string.dual_cell_report_github)) }
+                    TextButton(
+                        onClick = {
+                            runCatching {
+                                context.startActivity(DualCell.emailReportIntent(context))
+                            }
+                        }
+                    ) { Text(stringResource(R.string.dual_cell_report_email)) }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(android.R.string.ok))
+            }
+        },
+    )
+}
 
 @Composable
 private fun LanguageDialog(

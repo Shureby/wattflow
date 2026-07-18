@@ -69,4 +69,16 @@
     <string name="billing_unavailable">المتجر غير متاح</string>
     <string name="monitor_permission_rationale">يعرض التسجيل في الخلفية إشعاراً دائماً بالقدرة اللحظية — يتطلب أندرويد إذن الإشعارات ليكون مرئياً. التسجيل يعمل في كل الأحوال؛ بدون الإذن يبقى الإشعار مخفياً فقط.</string>
     <string name="notif_stop">إيقاف</string>
+    <string name="dual_cell_title">بطارية ثنائية الخلايا (2S)</string>
+    <string name="dual_cell_info">تستخدم كثير من هواتف الشحن السريع خليتين متصلتين على التوالي لكنها تُبلغ قراءات كل خلية على حدة، لذا تظهر القدرة بنصف قيمتها الحقيقية. عند التفعيل يضاعف WattFlow قيمة الواط. تبقى قيم الجهد والتيار كما يقرأها المستشعر.</string>
+    <string name="dual_cell_mode_auto_status">تلقائي (%1$s)</string>
+    <string name="dual_cell_mode_on">مفعّل (×2)</string>
+    <string name="dual_cell_mode_off">متوقف</string>
+    <string name="dual_cell_detected_yes">تم الاكتشاف</string>
+    <string name="dual_cell_detected_no">لم يتم الاكتشاف</string>
+    <string name="dual_cell_notice_title">تم اكتشاف بطارية ثنائية الخلايا</string>
+    <string name="dual_cell_notice_body">يبدو أن هذا الهاتف يُبلغ عن قدرة البطارية بنصف القيمة الحقيقية، وهي سمة شائعة في تصاميم الشحن السريع ثنائية الخلايا. يصحح WattFlow الآن القدرة ×2. يمكنك تغيير ذلك في الإعدادات في أي وقت.</string>
+    <string name="dual_cell_report">هل الإعداد التلقائي غير صحيح لهاتفك؟ أبلغ عن جهازك — ستُفتح صفحة معبأة مسبقًا تراجعها وترسلها بنفسك.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">البريد الإلكتروني</string>
 </resources>

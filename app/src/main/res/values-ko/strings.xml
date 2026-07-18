@@ -69,4 +69,16 @@
     <string name="billing_unavailable">스토어를 사용할 수 없음</string>
     <string name="monitor_permission_rationale">백그라운드 기록은 실시간 전력을 보여주는 상시 알림을 표시합니다 — 표시하려면 Android 알림 권한이 필요합니다. 권한이 없어도 기록은 작동하며, 알림만 숨겨질 뿐입니다.</string>
     <string name="notif_stop">중지</string>
+    <string name="dual_cell_title">듀얼 셀 배터리(2S)</string>
+    <string name="dual_cell_info">많은 고속 충전 폰이 배터리 셀 2개를 직렬로 사용하지만 셀 단위 값을 보고해 와트가 실제의 절반으로 표시됩니다. 활성화하면 WattFlow가 와트를 2배로 보정합니다. 전압·전류 타일은 센서 원시 값을 유지합니다.</string>
+    <string name="dual_cell_mode_auto_status">자동(%1$s)</string>
+    <string name="dual_cell_mode_on">켬(×2)</string>
+    <string name="dual_cell_mode_off">끔</string>
+    <string name="dual_cell_detected_yes">감지됨</string>
+    <string name="dual_cell_detected_no">감지되지 않음</string>
+    <string name="dual_cell_notice_title">듀얼 셀 배터리 감지됨</string>
+    <string name="dual_cell_notice_body">이 기기는 배터리 전력을 실제의 절반으로 보고하는 것으로 보입니다. 듀얼 셀 고속 충전 설계의 일반적인 특성입니다. WattFlow가 이제 와트를 ×2 보정합니다. 설정에서 언제든지 변경할 수 있습니다.</string>
+    <string name="dual_cell_report">자동 설정이 내 기기에 맞지 않나요? 기기를 제보하세요. 미리 채워진 페이지가 열리며 직접 확인 후 전송합니다.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">이메일</string>
 </resources>

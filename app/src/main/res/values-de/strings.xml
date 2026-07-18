@@ -69,4 +69,16 @@
     <string name="billing_unavailable">Store nicht verfügbar</string>
     <string name="monitor_permission_rationale">Die Hintergrundaufzeichnung zeigt eine dauerhafte Benachrichtigung mit der Live-Leistung — Android verlangt dafür die Benachrichtigungsberechtigung. Aufgezeichnet wird trotzdem; ohne Berechtigung bleibt die Benachrichtigung nur unsichtbar.</string>
     <string name="notif_stop">Stopp</string>
+    <string name="dual_cell_title">Dualzellen-Akku (2S)</string>
+    <string name="dual_cell_info">Viele Schnelllade-Smartphones nutzen zwei Zellen in Reihe, melden aber Werte pro Zelle — die Watt-Anzeige zeigt dann nur die Hälfte des realen Werts. Wenn aktiv, verdoppelt WattFlow die Wattzahl. Spannungs- und Stromkacheln behalten die Sensor-Rohwerte.</string>
+    <string name="dual_cell_mode_auto_status">Auto (%1$s)</string>
+    <string name="dual_cell_mode_on">Ein (×2)</string>
+    <string name="dual_cell_mode_off">Aus</string>
+    <string name="dual_cell_detected_yes">erkannt</string>
+    <string name="dual_cell_detected_no">nicht erkannt</string>
+    <string name="dual_cell_notice_title">Dualzellen-Akku erkannt</string>
+    <string name="dual_cell_notice_body">Dieses Telefon meldet die Akkuleistung offenbar mit der Hälfte des realen Werts — typisch für Dualzellen-Schnellladedesigns. WattFlow korrigiert die Watt jetzt ×2. Jederzeit in den Einstellungen änderbar.</string>
+    <string name="dual_cell_report">Stimmt die Automatik für dein Gerät nicht? Melde dein Gerät — es öffnet sich nur eine vorausgefüllte Seite, die du selbst prüfst und absendest.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">E-Mail</string>
 </resources>

@@ -69,4 +69,16 @@
     <string name="billing_unavailable">Toko tidak tersedia</string>
     <string name="monitor_permission_rationale">Perekaman latar belakang menampilkan notifikasi tetap berisi watt langsung — Android memerlukan izin notifikasi agar terlihat. Perekaman tetap berjalan; tanpa izin, notifikasinya hanya tersembunyi.</string>
     <string name="notif_stop">Hentikan</string>
+    <string name="dual_cell_title">Baterai sel ganda (2S)</string>
+    <string name="dual_cell_info">Banyak ponsel fast charging memakai dua sel baterai secara seri tetapi melaporkan pembacaan per sel, sehingga watt tampil setengah dari nilai sebenarnya. Saat aktif, WattFlow menggandakan nilai watt. Ubin tegangan dan arus tetap menampilkan nilai sensor mentah.</string>
+    <string name="dual_cell_mode_auto_status">Otomatis (%1$s)</string>
+    <string name="dual_cell_mode_on">Aktif (×2)</string>
+    <string name="dual_cell_mode_off">Nonaktif</string>
+    <string name="dual_cell_detected_yes">terdeteksi</string>
+    <string name="dual_cell_detected_no">tidak terdeteksi</string>
+    <string name="dual_cell_notice_title">Baterai sel ganda terdeteksi</string>
+    <string name="dual_cell_notice_body">Ponsel ini tampaknya melaporkan daya baterai setengah dari nilai sebenarnya, ciri umum desain fast charging sel ganda. WattFlow kini mengoreksi watt ×2. Anda dapat mengubahnya kapan saja di Setelan.</string>
+    <string name="dual_cell_report">Setelan otomatis salah untuk ponsel Anda? Laporkan perangkat Anda — hanya membuka halaman terisi otomatis yang Anda tinjau dan kirim sendiri.</string>
+    <string name="dual_cell_report_github">GitHub</string>
+    <string name="dual_cell_report_email">Email</string>
 </resources>

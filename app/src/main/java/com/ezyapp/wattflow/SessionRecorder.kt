@@ -36,6 +36,7 @@ object SessionRecorder {
         var wattSum = 0.0
         var sampleCount = 0
         var lastCurveTs = 0L
+        var corrected = false   // any sample had the dual-cell factor applied
         val curve = ArrayList<Pair<Long, Double>>()   // (ts, |watts|)
     }
 
@@ -86,6 +87,7 @@ object SessionRecorder {
         if (sample.chargeCounterUah > 0) a.lastChargeCounter = sample.chargeCounterUah
         a.wattSum += magnitude
         a.sampleCount++
+        if (sample.watts != sample.rawWatts) a.corrected = true
         if (magnitude > a.peakW) a.peakW = magnitude
 
         if (now - a.lastCurveTs >= CURVE_INTERVAL_MS && a.curve.size < MAX_CURVE_POINTS) {
@@ -97,6 +99,15 @@ object SessionRecorder {
     private fun finish(context: Context, a: ActiveSession) {
         val durationMs = a.lastTs - a.startTs
         if (durationMs < MIN_SESSION_MS || a.sampleCount == 0) return
+        // 2S heuristic needs raw energy, so only sessions recorded entirely
+        // without the correction count as evidence.
+        if (a.direction == DIRECTION_CHARGE && !a.corrected) {
+            DualCell.onRawChargeSession(
+                context,
+                gainPercent = a.lastLevel - a.startLevel,
+                energyWh = a.energyWh,
+            )
+        }
         val session = ChargeSession(
             startTs = a.startTs,
             endTs = a.lastTs,
