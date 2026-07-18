@@ -97,4 +97,7 @@
     <string name="bench_save_pro">Salve e compare carregadores com o Pro</string>
     <string name="bench_saved_title">Resultados salvos</string>
     <string name="bench_unnamed">Carregador sem nome</string>
+    <string name="ledger_chip">Registro</string>
+    <string name="ledger_title">Registro de energia — últimos 14 dias</string>
+    <string name="ledger_empty">Sem sessões nos últimos 14 dias.</string>
 </resources>

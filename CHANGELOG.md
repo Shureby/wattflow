@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Energy ledger (Pro): daily battery in/out/net Wh for the last 14
+  days, opened from the History tab
 - Dual-cell (2S) battery correction: phones that report per-cell
   readings (most 100W+ fast-charge designs) showed half the real watts.
   Auto-detected via a known-device list plus a session heuristic;

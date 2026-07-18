@@ -97,4 +97,7 @@
     <string name="bench_save_pro">解锁 Pro 以保存并对比充电器</string>
     <string name="bench_saved_title">已保存结果</string>
     <string name="bench_unnamed">未命名充电器</string>
+    <string name="ledger_chip">账本</string>
+    <string name="ledger_title">能量账本——最近 14 天</string>
+    <string name="ledger_empty">最近 14 天没有记录。</string>
 </resources>

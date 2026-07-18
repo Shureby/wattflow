@@ -97,4 +97,7 @@
     <string name="bench_save_pro">Pro で結果を保存して比較</string>
     <string name="bench_saved_title">保存済みの結果</string>
     <string name="bench_unnamed">名称未設定の充電器</string>
+    <string name="ledger_chip">台帳</string>
+    <string name="ledger_title">エネルギー台帳 — 過去14日</string>
+    <string name="ledger_empty">過去14日間の記録はありません。</string>
 </resources>

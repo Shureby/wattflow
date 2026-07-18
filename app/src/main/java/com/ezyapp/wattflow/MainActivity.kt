@@ -27,6 +27,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -1608,11 +1610,13 @@ private fun DrawScope.annotatePeak(
 // History tab
 // ---------------------------------------------------------------------------
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit) {
     val allSessions by viewModel.sessions.collectAsState()
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
+    var showLedger by remember { mutableStateOf(false) }
     val rawMode = RawModePrefs.enabled(LocalContext.current)
     val sessions = mergeSessions(
         allSessions.filter { it.direction == direction },
@@ -1652,10 +1656,10 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
         contentPadding = PaddingValues(top = 8.dp, bottom = 16.dp),
     ) {
         item {
-            Row(
+            FlowRow(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically,
+                verticalArrangement = Arrangement.spacedBy(0.dp),
             ) {
                 FilterChip(
                     selected = direction == DIRECTION_CHARGE,
@@ -1667,7 +1671,6 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                     onClick = { direction = DIRECTION_DISCHARGE },
                     label = { Text(stringResource(R.string.filter_discharge)) },
                 )
-                Spacer(Modifier.weight(1f))
                 AssistChip(
                     onClick = {
                         if (isPro) {
@@ -1688,6 +1691,12 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                             modifier = Modifier.size(16.dp),
                         )
                     },
+                )
+                AssistChip(
+                    onClick = {
+                        if (isPro) showLedger = true else showPaywall = true
+                    },
+                    label = { Text(stringResource(R.string.ledger_chip)) },
                 )
                 IconButton(onClick = onOpenSettings) {
                     Icon(
@@ -1763,6 +1772,10 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
             }
         }
+    }
+
+    if (showLedger) {
+        EnergyLedgerDialog(onDismiss = { showLedger = false })
     }
 
     detailSession?.let { session ->

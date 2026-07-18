@@ -97,4 +97,7 @@
     <string name="bench_save_pro">Simpan dan bandingkan charger dengan Pro</string>
     <string name="bench_saved_title">Hasil tersimpan</string>
     <string name="bench_unnamed">Charger tanpa nama</string>
+    <string name="ledger_chip">Buku</string>
+    <string name="ledger_title">Buku energi — 14 hari terakhir</string>
+    <string name="ledger_empty">Tidak ada sesi dalam 14 hari terakhir.</string>
 </resources>

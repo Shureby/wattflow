@@ -97,4 +97,7 @@
     <string name="bench_save_pro">Save and compare chargers with Pro</string>
     <string name="bench_saved_title">Saved results</string>
     <string name="bench_unnamed">Unnamed charger</string>
+    <string name="ledger_chip">Ledger</string>
+    <string name="ledger_title">Energy ledger — last 14 days</string>
+    <string name="ledger_empty">No sessions recorded in the last 14 days.</string>
 </resources>

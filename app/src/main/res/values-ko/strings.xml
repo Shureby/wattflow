@@ -97,4 +97,7 @@
     <string name="bench_save_pro">Pro로 충전기 저장·비교</string>
     <string name="bench_saved_title">저장된 결과</string>
     <string name="bench_unnamed">이름 없는 충전기</string>
+    <string name="ledger_chip">장부</string>
+    <string name="ledger_title">에너지 장부 — 최근 14일</string>
+    <string name="ledger_empty">최근 14일간 기록이 없습니다.</string>
 </resources>
