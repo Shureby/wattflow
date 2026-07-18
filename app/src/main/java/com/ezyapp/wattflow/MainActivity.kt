@@ -1515,12 +1515,13 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
     val gridColor = MaterialTheme.colorScheme.outlineVariant
     val zeroColor = MaterialTheme.colorScheme.onSurfaceVariant
     val labelColor = MaterialTheme.colorScheme.onSurface
+    val chartBg = MaterialTheme.colorScheme.surfaceVariant
     val textMeasurer = rememberTextMeasurer()
 
     Surface(
         modifier = modifier,
         shape = MaterialTheme.shapes.medium,
-        color = MaterialTheme.colorScheme.surfaceVariant,
+        color = chartBg,
     ) {
         Canvas(modifier = Modifier.fillMaxSize().padding(12.dp)) {
             if (history.size < 2) return@Canvas
@@ -1559,7 +1560,7 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
             val peakIdx = history.indices.maxByOrNull { abs(history[it]) } ?: return@Canvas
             annotatePeak(
                 textMeasurer, points[peakIdx], abs(history[peakIdx]),
-                lineColor, labelColor,
+                lineColor, labelColor, bgColor = chartBg,
                 // Discharge spikes point down; their empty side is below.
                 labelBelow = history[peakIdx] < 0,
             )
@@ -1576,6 +1577,7 @@ private fun DrawScope.annotatePeak(
     watts: Double,
     dotColor: Color,
     labelColor: Color,
+    bgColor: Color,
     labelBelow: Boolean = false,
 ) {
     drawCircle(color = dotColor, radius = 3.dp.toPx(), center = point)
@@ -1595,6 +1597,17 @@ private fun DrawScope.annotatePeak(
     } else {
         if (above < 0f) below else above
     }
+    // Auto-scaling maps the extremum near the chart edge, so overlap with
+    // the line cannot always be avoided by placement — a backing pill
+    // keeps the value readable regardless.
+    val pad = 3.dp.toPx()
+    drawRoundRect(
+        color = bgColor,
+        topLeft = Offset(tx - pad, ty - pad),
+        size = Size(layout.size.width + 2 * pad, layout.size.height + 2 * pad),
+        cornerRadius = CornerRadius(4.dp.toPx()),
+        alpha = 0.85f,
+    )
     drawText(layout, topLeft = Offset(tx, ty))
 }
 
@@ -1813,6 +1826,7 @@ private fun SessionDetailDialog(
     val lineColor = MaterialTheme.colorScheme.primary
     val gridColor = MaterialTheme.colorScheme.outlineVariant
     val labelColor = MaterialTheme.colorScheme.onSurface
+    val chartBg = MaterialTheme.colorScheme.surfaceVariant
     val textMeasurer = rememberTextMeasurer()
 
     AlertDialog(
@@ -1873,7 +1887,7 @@ private fun SessionDetailDialog(
                             val py = size.height * (1f - (ps.watts / maxW).toFloat() * 0.92f)
                             annotatePeak(
                                 textMeasurer, Offset(px, py), ps.watts,
-                                lineColor, labelColor,
+                                lineColor, labelColor, bgColor = chartBg,
                             )
                         }
                     }

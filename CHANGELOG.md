@@ -3,7 +3,8 @@
 ## [Unreleased]
 
 - Chart peak labels now sit on the empty side of the spike (above
-  crests, below troughs) instead of overlapping the line
+  crests, below troughs) and get a backing pill, so the value stays
+  readable even when auto-scaling pins the spike to the chart edge
 - Settings: the uninterrupted-background-sampling (doze exemption) row
   moved from Raw sessions to Background recording, where it belongs
 - Battery health trend (Pro): every full charge logs the fuel-gauge
