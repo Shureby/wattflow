@@ -8,7 +8,6 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -41,7 +40,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.AlertDialog
@@ -131,7 +129,6 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
     val state by viewModel.uiState.collectAsState()
     val sample = state.sample
     var showPaywall by remember { mutableStateOf(false) }
-    var showSettings by rememberSaveable { mutableStateOf(false) }
     var tab by rememberSaveable { mutableIntStateOf(0) }
     val isPro by Pro.isPro.collectAsState()
 
@@ -148,18 +145,6 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
         ) {
             startMonitor(appContext)
         }
-    }
-
-    if (showSettings) {
-        BackHandler { showSettings = false }
-        SettingsScreen(
-            onBack = { showSettings = false },
-            onLockedFeature = { showPaywall = true },
-        )
-        if (showPaywall) {
-            PaywallDialog(onDismiss = { showPaywall = false })
-        }
-        return
     }
 
     Scaffold(
@@ -187,6 +172,18 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                     },
                     label = { Text(stringResource(R.string.tab_history)) },
                 )
+                NavigationBarItem(
+                    selected = tab == 2,
+                    onClick = { tab = 2 },
+                    icon = {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = null,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    },
+                    label = { Text(stringResource(R.string.settings_title)) },
+                )
             }
         },
     ) { innerPadding ->
@@ -195,43 +192,33 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                 .fillMaxSize()
                 .padding(innerPadding),
         ) {
-            if (tab == 0) {
-                // Scrollable so small/odd aspect screens never overlap content.
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .verticalScroll(rememberScrollState())
-                        .padding(horizontal = 24.dp)
-                        .padding(top = 4.dp, bottom = 24.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End,
+            when (tab) {
+                0 -> {
+                    // Scrollable so small/odd aspect screens never overlap content.
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(rememberScrollState())
+                            .padding(horizontal = 24.dp)
+                            .padding(top = 16.dp, bottom = 24.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
-                        IconButton(onClick = { showSettings = true }) {
-                            Icon(
-                                imageVector = Icons.Filled.Settings,
-                                contentDescription = stringResource(R.string.settings_title),
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        if (sample == null) {
+                            Text(
+                                text = stringResource(R.string.reading_battery),
+                                style = MaterialTheme.typography.titleMedium,
                             )
-                        }
-                    }
-                    if (sample == null) {
-                        Text(
-                            text = stringResource(R.string.reading_battery),
-                            style = MaterialTheme.typography.titleMedium,
-                        )
-                    } else {
-                        ChargingContent(sample = sample, state = state)
-                        Spacer(Modifier.height(12.dp))
-                        TextButton(onClick = { showBenchmark = true }) {
-                            Text(stringResource(R.string.bench_open))
+                        } else {
+                            ChargingContent(sample = sample, state = state)
+                            Spacer(Modifier.height(12.dp))
+                            TextButton(onClick = { showBenchmark = true }) {
+                                Text(stringResource(R.string.bench_open))
+                            }
                         }
                     }
                 }
-            } else {
-                HistoryTab(viewModel, onOpenSettings = { showSettings = true })
+                1 -> HistoryTab(viewModel)
+                else -> SettingsScreen(onLockedFeature = { showPaywall = true })
             }
         }
     }
@@ -270,7 +257,7 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
 }
 
 @Composable
-private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
+private fun SettingsScreen(onLockedFeature: () -> Unit) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
     var showLanguageDialog by remember { mutableStateOf(false) }
@@ -292,18 +279,11 @@ private fun SettingsScreen(onBack: () -> Unit, onLockedFeature: () -> Unit) {
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 16.dp),
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                IconButton(onClick = onBack) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = null,
-                    )
-                }
-                Text(
-                    text = stringResource(R.string.settings_title),
-                    style = MaterialTheme.typography.titleLarge,
-                )
-            }
+            Text(
+                text = stringResource(R.string.settings_title),
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(top = 8.dp),
+            )
             Spacer(Modifier.height(8.dp))
 
             Row(
@@ -1617,7 +1597,7 @@ private fun DrawScope.annotatePeak(
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit) {
+private fun HistoryTab(viewModel: ChargingViewModel) {
     val allSessions by viewModel.sessions.collectAsState()
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
@@ -1717,13 +1697,6 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                     },
                     label = { Text(stringResource(R.string.health_chip)) },
                 )
-                IconButton(onClick = onOpenSettings) {
-                    Icon(
-                        imageVector = Icons.Filled.Settings,
-                        contentDescription = stringResource(R.string.settings_title),
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                }
             }
             Spacer(Modifier.height(12.dp))
         }

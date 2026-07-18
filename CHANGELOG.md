@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Settings is now a third bottom tab instead of a gear icon that
+  floated in different corners per page; the Live tab reclaims the
+  top row the gear used to occupy
 - Chart peak labels now sit on the empty side of the spike (above
   crests, below troughs) and get a backing pill, so the value stays
   readable even when auto-scaling pins the spike to the chart edge
