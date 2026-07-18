@@ -47,7 +47,10 @@ object AlertEngine {
     private const val NOTIF_LOW = 3
 
     /** Called from every sampling path (UI loop, monitor service, worker). */
-    fun onSample(context: Context, sample: BatterySample) {
+    fun onSample(rawContext: Context, sample: BatterySample) {
+        // Alert text must follow the in-app language choice regardless of
+        // which component sampled.
+        val context = LocalePrefs.wrap(rawContext)
         if (!AlertPrefs.enabled(context)) return
         val level = sample.levelPercent
         if (level !in 1..100) return

@@ -131,12 +131,14 @@ class WattWidgetProvider : AppWidgetProvider() {
         }
 
         private fun build(
-            context: Context,
+            rawContext: Context,
             layout: Int,
             sample: BatterySample,
             peaks: Pair<Double, Double>,
             chart: Bitmap?,
         ): RemoteViews {
+            // Resource strings must follow the in-app language choice.
+            val context = LocalePrefs.wrap(rawContext)
             val views = RemoteViews(context.packageName, layout)
             val sign = if (sample.isCharging) "+" else "−"
             views.setTextViewText(
@@ -212,7 +214,8 @@ class WattWidgetProvider : AppWidgetProvider() {
         }
 
         /** Bar chart of charged Wh per day, last 7 days (today rightmost). */
-        private suspend fun renderWeekChart(context: Context): Bitmap {
+        private suspend fun renderWeekChart(rawContext: Context): Bitmap {
+            val context = LocalePrefs.wrap(rawContext)
             val dayMs = 86_400_000L
             val cal = Calendar.getInstance()
             cal.set(Calendar.HOUR_OF_DAY, 0)

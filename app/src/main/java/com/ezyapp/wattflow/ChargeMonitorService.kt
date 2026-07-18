@@ -5,6 +5,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.os.Build
@@ -27,6 +28,11 @@ import java.util.Locale
  * watts in a low-priority ongoing notification.
  */
 class ChargeMonitorService : Service() {
+
+    override fun attachBaseContext(newBase: Context) {
+        // Notification strings must follow the in-app language choice.
+        super.attachBaseContext(LocalePrefs.wrap(newBase))
+    }
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     private lateinit var reader: BatteryReader

@@ -22,8 +22,8 @@ android {
         applicationId = "com.ezyapp.wattflow"
         minSdk = 26
         targetSdk = 35
-        versionCode = 13
-        versionName = "1.3"
+        versionCode = 14
+        versionName = "1.3.1"
     }
 
     flavorDimensions += "dist"
@@ -35,6 +35,14 @@ android {
         }
         create("play") {
             dimension = "dist"
+        }
+    }
+
+    bundle {
+        language {
+            // The in-app language picker needs every locale on device;
+            // Play's per-language splits only deliver the system languages.
+            enableSplit = false
         }
     }
 

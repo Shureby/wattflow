@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.1] - 2026-07-18
+
+- Fixed: the in-app language choice was ignored on Play-installed
+  builds — Play's per-language splits stripped unselected locales, so
+  the picker saved a language whose resources were absent. Language
+  splits are now disabled
+- Fixed: widget, monitor notification and alert texts now follow the
+  in-app language instead of mixing it with the system language
+
 ## [1.3] - 2026-07-18
 
 - Settings is now a third bottom tab instead of a gear icon that
