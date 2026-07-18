@@ -668,7 +668,7 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                VisualPane(sample, state)
+                VisualPane(sample, state, compact = true)
             }
             Spacer(Modifier.width(24.dp))
             Column(
@@ -695,7 +695,11 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
 }
 
 @Composable
-private fun VisualPane(sample: BatterySample, state: ChargingUiState) {
+private fun VisualPane(
+    sample: BatterySample,
+    state: ChargingUiState,
+    compact: Boolean = false,
+) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -704,10 +708,10 @@ private fun VisualPane(sample: BatterySample, state: ChargingUiState) {
             sample = sample,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(120.dp),
+                .height(if (compact) 80.dp else 120.dp),
         )
 
-        Spacer(Modifier.height(12.dp))
+        Spacer(Modifier.height(if (compact) 6.dp else 12.dp))
 
         Text(
             text = stringResource(sourceLabelRes(sample.plugged)),
@@ -715,11 +719,11 @@ private fun VisualPane(sample: BatterySample, state: ChargingUiState) {
             color = MaterialTheme.colorScheme.primary,
         )
 
-        Spacer(Modifier.height(8.dp))
+        Spacer(Modifier.height(if (compact) 4.dp else 8.dp))
 
         Text(
             text = String.format(Locale.US, "%.1f W", abs(sample.watts)),
-            fontSize = 72.sp,
+            fontSize = if (compact) 52.sp else 72.sp,
             fontWeight = FontWeight.Bold,
             color = if (sample.isCharging) {
                 MaterialTheme.colorScheme.primary
