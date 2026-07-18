@@ -100,4 +100,9 @@
     <string name="ledger_chip">Konto</string>
     <string name="ledger_title">Energiekonto — letzte 14 Tage</string>
     <string name="ledger_empty">Keine Sitzungen in den letzten 14 Tagen.</string>
+    <string name="sleep_chip">Schlaf</string>
+    <string name="sleep_title">Nachtverbrauch — letzte 7 Nächte</string>
+    <string name="sleep_intro">Akkuverbrauch zwischen 23:00 und 07:00. Die Abdeckung zeigt, wie viel jeder Nacht tatsächlich aufgezeichnet wurde — für volle Nächte die Hintergrundaufzeichnung aktivieren.</string>
+    <string name="sleep_coverage">%1$d %% erfasst</string>
+    <string name="sleep_empty">Noch keine nächtliche Entladung aufgezeichnet. Hintergrundaufzeichnung aktivieren und das Telefon über Nacht nicht laden.</string>
 </resources>

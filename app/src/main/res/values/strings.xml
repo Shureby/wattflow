@@ -100,4 +100,9 @@
     <string name="ledger_chip">Ledger</string>
     <string name="ledger_title">Energy ledger — last 14 days</string>
     <string name="ledger_empty">No sessions recorded in the last 14 days.</string>
+    <string name="sleep_chip">Sleep</string>
+    <string name="sleep_title">Sleep drain — last 7 nights</string>
+    <string name="sleep_intro">Battery drain between 23:00 and 07:00. Coverage shows how much of each night was actually recorded — turn on background recording for complete nights.</string>
+    <string name="sleep_coverage">%1$d%% covered</string>
+    <string name="sleep_empty">No night-time discharge recorded yet. Enable background recording and leave the phone unplugged overnight.</string>
 </resources>

@@ -1617,6 +1617,7 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
     var showLedger by remember { mutableStateOf(false) }
+    var showSleep by remember { mutableStateOf(false) }
     val rawMode = RawModePrefs.enabled(LocalContext.current)
     val sessions = mergeSessions(
         allSessions.filter { it.direction == direction },
@@ -1698,6 +1699,12 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
                     },
                     label = { Text(stringResource(R.string.ledger_chip)) },
                 )
+                AssistChip(
+                    onClick = {
+                        if (isPro) showSleep = true else showPaywall = true
+                    },
+                    label = { Text(stringResource(R.string.sleep_chip)) },
+                )
                 IconButton(onClick = onOpenSettings) {
                     Icon(
                         imageVector = Icons.Filled.Settings,
@@ -1776,6 +1783,10 @@ private fun HistoryTab(viewModel: ChargingViewModel, onOpenSettings: () -> Unit)
 
     if (showLedger) {
         EnergyLedgerDialog(onDismiss = { showLedger = false })
+    }
+
+    if (showSleep) {
+        SleepDrainDialog(onDismiss = { showSleep = false })
     }
 
     detailSession?.let { session ->

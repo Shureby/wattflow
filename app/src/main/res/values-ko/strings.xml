@@ -100,4 +100,9 @@
     <string name="ledger_chip">장부</string>
     <string name="ledger_title">에너지 장부 — 최근 14일</string>
     <string name="ledger_empty">최근 14일간 기록이 없습니다.</string>
+    <string name="sleep_chip">수면</string>
+    <string name="sleep_title">수면 소모 — 최근 7일 밤</string>
+    <string name="sleep_intro">23:00~07:00 사이 배터리 소모입니다. 커버리지는 각 밤 중 실제 기록된 비율을 나타냅니다. 완전한 기록을 위해 백그라운드 기록을 켜세요.</string>
+    <string name="sleep_coverage">%1$d%% 기록됨</string>
+    <string name="sleep_empty">야간 방전 기록이 아직 없습니다. 백그라운드 기록을 켜고 밤새 충전하지 않은 상태로 두세요.</string>
 </resources>

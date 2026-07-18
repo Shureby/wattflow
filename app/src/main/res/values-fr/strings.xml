@@ -100,4 +100,9 @@
     <string name="ledger_chip">Registre</string>
     <string name="ledger_title">Registre d’énergie — 14 derniers jours</string>
     <string name="ledger_empty">Aucune session sur les 14 derniers jours.</string>
+    <string name="sleep_chip">Nuit</string>
+    <string name="sleep_title">Décharge nocturne — 7 dernières nuits</string>
+    <string name="sleep_intro">Consommation de batterie entre 23 h et 7 h. La couverture indique la part de chaque nuit réellement enregistrée — activez l’enregistrement en arrière-plan pour des nuits complètes.</string>
+    <string name="sleep_coverage">%1$d %% couvert</string>
+    <string name="sleep_empty">Aucune décharge nocturne enregistrée. Activez l’enregistrement en arrière-plan et laissez le téléphone débranché la nuit.</string>
 </resources>

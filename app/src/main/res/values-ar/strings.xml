@@ -100,4 +100,9 @@
     <string name="ledger_chip">السجل</string>
     <string name="ledger_title">سجل الطاقة — آخر 14 يومًا</string>
     <string name="ledger_empty">لا جلسات مسجلة في آخر 14 يومًا.</string>
+    <string name="sleep_chip">النوم</string>
+    <string name="sleep_title">استنزاف النوم — آخر 7 ليالٍ</string>
+    <string name="sleep_intro">استهلاك البطارية بين 23:00 و07:00. تُظهر التغطية كم من كل ليلة سُجّل فعليًا — فعّل التسجيل في الخلفية لليالٍ كاملة.</string>
+    <string name="sleep_coverage">مغطى %1$d%%</string>
+    <string name="sleep_empty">لا تفريغ ليلي مسجّل بعد. فعّل التسجيل في الخلفية واترك الهاتف دون شحن طوال الليل.</string>
 </resources>

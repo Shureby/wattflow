@@ -100,4 +100,9 @@
     <string name="ledger_chip">台帳</string>
     <string name="ledger_title">エネルギー台帳 — 過去14日</string>
     <string name="ledger_empty">過去14日間の記録はありません。</string>
+    <string name="sleep_chip">睡眠</string>
+    <string name="sleep_title">睡眠中の消費 — 過去7晩</string>
+    <string name="sleep_intro">23:00〜07:00 のバッテリー消費。カバー率は各夜のうち実際に記録できた割合です。完全な記録にはバックグラウンド記録をオンにしてください。</string>
+    <string name="sleep_coverage">%1$d%% 記録</string>
+    <string name="sleep_empty">夜間の放電記録はまだありません。バックグラウンド記録をオンにし、夜間は充電せずに置いてください。</string>
 </resources>

@@ -100,4 +100,9 @@
     <string name="ledger_chip">Журнал</string>
     <string name="ledger_title">Журнал энергии — последние 14 дней</string>
     <string name="ledger_empty">Нет сессий за последние 14 дней.</string>
+    <string name="sleep_chip">Сон</string>
+    <string name="sleep_title">Ночной расход — последние 7 ночей</string>
+    <string name="sleep_intro">Расход батареи с 23:00 до 07:00. Покрытие показывает, какая часть ночи реально записана — включите фоновую запись для полных ночей.</string>
+    <string name="sleep_coverage">покрыто %1$d%%</string>
+    <string name="sleep_empty">Ночная разрядка пока не записана. Включите фоновую запись и оставьте телефон на ночь без зарядки.</string>
 </resources>

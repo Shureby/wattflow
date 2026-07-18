@@ -100,4 +100,9 @@
     <string name="ledger_chip">账本</string>
     <string name="ledger_title">能量账本——最近 14 天</string>
     <string name="ledger_empty">最近 14 天没有记录。</string>
+    <string name="sleep_chip">睡眠</string>
+    <string name="sleep_title">睡眠耗电——最近 7 晚</string>
+    <string name="sleep_intro">23:00 至 07:00 的电池消耗。覆盖率表示每晚实际有记录的时长比例——开启后台记录可获得完整数据。</string>
+    <string name="sleep_coverage">覆盖 %1$d%%</string>
+    <string name="sleep_empty">尚无夜间放电记录。开启后台记录并让手机整夜不充电。</string>
 </resources>

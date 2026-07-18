@@ -100,4 +100,9 @@
     <string name="ledger_chip">Buku</string>
     <string name="ledger_title">Buku energi — 14 hari terakhir</string>
     <string name="ledger_empty">Tidak ada sesi dalam 14 hari terakhir.</string>
+    <string name="sleep_chip">Tidur</string>
+    <string name="sleep_title">Pengurasan tidur — 7 malam terakhir</string>
+    <string name="sleep_intro">Konsumsi baterai antara 23.00 dan 07.00. Cakupan menunjukkan berapa banyak tiap malam yang benar-benar terekam — aktifkan perekaman latar belakang untuk malam penuh.</string>
+    <string name="sleep_coverage">%1$d%% tercakup</string>
+    <string name="sleep_empty">Belum ada pengurasan malam yang terekam. Aktifkan perekaman latar belakang dan biarkan ponsel tidak dicas semalaman.</string>
 </resources>
