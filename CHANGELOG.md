@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4] - 2026-07-19
+
+- Dual-cell (2S) device report now opens a structured GitHub issue form
+  with the fields pre-filled — the "dual-cell" label is applied by the
+  form itself, so it sticks for every reporter (the old URL label
+  parameter only worked for maintainers)
+
 ## [1.3.3] - 2026-07-19
 
 - Battery alerts now clear themselves once their advice is followed:

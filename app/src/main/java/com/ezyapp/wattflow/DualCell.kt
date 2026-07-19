@@ -101,14 +101,22 @@ object DualCell {
     }
 
     fun gitHubReportIntent(c: Context): Intent {
-        val title = Uri.encode("2S report: ${Build.MANUFACTURER} ${Build.MODEL}")
-        val body = Uri.encode(reportBody(c))
-        return Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse(
-                "https://github.com/Shureby/wattflow/issues/new?title=$title&body=$body&labels=dual-cell"
-            ),
-        )
+        // Prefills the dual-cell issue form by field id. The form (not the
+        // URL) applies the "dual-cell" label — GitHub ignores a labels= query
+        // parameter from users without triage permission.
+        val bm = c.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+        val counter = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CHARGE_COUNTER)
+        val url = Uri.parse("https://github.com/Shureby/wattflow/issues/new")
+            .buildUpon()
+            .appendQueryParameter("template", "dual-cell-report.yml")
+            .appendQueryParameter("title", "2S report: ${Build.MANUFACTURER} ${Build.MODEL}")
+            .appendQueryParameter("device", "${Build.MANUFACTURER} ${Build.MODEL} (${Build.DEVICE})")
+            .appendQueryParameter("android", "${Build.VERSION.RELEASE} (SDK ${Build.VERSION.SDK_INT})")
+            .appendQueryParameter("x2-enabled", enabled(c).toString())
+            .appendQueryParameter("verdict", "listed=${deviceListed()}, detected=${detected(c)}")
+            .appendQueryParameter("charge-counter", counter.toString())
+            .build()
+        return Intent(Intent.ACTION_VIEW, url)
     }
 
     fun emailReportIntent(c: Context): Intent {
