@@ -69,6 +69,11 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 - **1.3.1–1.3.2**: in-app language now works on Play-installed builds;
   widget picker offers three preset sizes with previews
+- **1.3.3–1.3.4**: battery alerts clear themselves once followed; widget
+  picker entries renamed Small/Medium/Large with clean transparent
+  previews; 4×1 widget squeezes to 3 columns; notification follows a
+  language switch instantly; dual-cell report opens a prefilled GitHub
+  issue form
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 
