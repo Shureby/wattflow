@@ -29,6 +29,10 @@ data class ChargeSession(
     val peakWatts: Double,
     val energyWh: Double,
     val direction: Int = DIRECTION_CHARGE,
+    // Recovered from a checkpoint after the process died mid-session (killed
+    // by the OS/OEM, or crashed) instead of ending normally — the tail past
+    // the last checkpoint is lost, so totals are a floor, not exact.
+    val interrupted: Boolean = false,
 )
 
 /** Downsampled watts curve for one session (~1 point / 10 s). */
@@ -105,7 +109,7 @@ interface ChargeSessionDao {
         ChargeSession::class, SessionSample::class, FullChargeEvent::class,
         BenchmarkResult::class,
     ],
-    version = 3,
+    version = 4,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -148,13 +152,23 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE charge_sessions ADD COLUMN interrupted " +
+                        "INTEGER NOT NULL DEFAULT 0"
+                )
+            }
+        }
+
         @Volatile
         private var instance: AppDatabase? = null
 
         fun get(context: Context): AppDatabase = instance ?: synchronized(this) {
             instance ?: Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java, "wattflow.db"
-            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+                .build().also { instance = it }
         }
     }
 }

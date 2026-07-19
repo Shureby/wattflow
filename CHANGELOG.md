@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.6] - 2026-07-20
+
+- A charge/discharge session interrupted by the process being killed
+  (OS/OEM background killer, OOM, crash) mid-recording no longer
+  vanishes silently. Progress is checkpointed every 15s; on next
+  launch, the leftover checkpoint is recovered and inserted as an
+  interrupted session — History flags it with a warning label instead
+  of the time gap simply disappearing
+
 ## [1.3.5] - 2026-07-19
 
 - Fixed: on a 4×1 widget squeezed to 3 columns, the level/temperature

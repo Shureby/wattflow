@@ -114,4 +114,5 @@
     <string name="health_trend_intro">Chaque charge complète enregistre la lecture de la jauge système à 100 %. La valeur absolue varie selon l’appareil — c’est son évolution sur des mois qui compte. Des charges complètes occasionnelles maintiennent le calibrage.</string>
     <string name="health_trend_delta">Capacité vs première lecture : %1$s</string>
     <string name="health_trend_empty">Aucune charge complète enregistrée. Chargez à 100 % de temps en temps — chacune ajoute un point de calibrage.</string>
+    <string name="session_interrupted">interrompue</string>
 </resources>

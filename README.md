@@ -74,6 +74,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
   previews; 4×1 widget squeezes to 3 columns (with a guaranteed gap
   between its text columns); notification follows a language switch
   instantly; dual-cell report opens a prefilled GitHub issue form
+- **1.3.6**: a session cut short by the process being killed
+  mid-recording is now recovered from a checkpoint and shown in
+  History as interrupted, instead of silently vanishing
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 

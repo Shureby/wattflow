@@ -18,6 +18,7 @@ data class DisplaySession(
     val energyWh: Double,      // sampled intervals only
     val sampledMs: Long,
     val segments: Int,
+    val interrupted: Boolean,  // recording stopped without a clean end (process killed)
 )
 
 private fun ChargeSession.toDisplay() = DisplaySession(
@@ -33,6 +34,7 @@ private fun ChargeSession.toDisplay() = DisplaySession(
     energyWh = energyWh,
     sampledMs = endTs - startTs,
     segments = 1,
+    interrupted = interrupted,
 )
 
 /**
@@ -66,6 +68,7 @@ fun mergeSessions(
                 energyWh = last.energyWh + s.energyWh,
                 sampledMs = totalSampled,
                 segments = last.segments + 1,
+                interrupted = s.interrupted,
             )
         } else {
             out += s.toDisplay()

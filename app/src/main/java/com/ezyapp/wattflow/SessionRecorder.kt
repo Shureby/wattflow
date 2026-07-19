@@ -21,6 +21,8 @@ object SessionRecorder {
     private const val MAX_GAP_MS = 60_000L
     private const val CURVE_INTERVAL_MS = 10_000L
     private const val MAX_CURVE_POINTS = 4000
+    private const val CHECKPOINT_INTERVAL_MS = 15_000L
+    private const val CHECKPOINT_PREFS = "session_checkpoint"
 
     private class ActiveSession(
         val direction: Int,
@@ -36,12 +38,14 @@ object SessionRecorder {
         var wattSum = 0.0
         var sampleCount = 0
         var lastCurveTs = 0L
+        var lastCheckpointTs = 0L
         var corrected = false   // any sample had the dual-cell factor applied
         val curve = ArrayList<Pair<Long, Double>>()   // (ts, |watts|)
     }
 
     private var active: ActiveSession? = null
     private var lastSampleTs = 0L
+    private var recovered = false
 
     // Fire-and-forget insert scope; losing one session on process death is fine.
     private val ioScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -51,6 +55,16 @@ object SessionRecorder {
         val now = System.currentTimeMillis()
         if (now - lastSampleTs < 500) return
         lastSampleTs = now
+
+        // Once per process lifetime: if the previous process incarnation was
+        // killed mid-session (MIUI/OEM background killer, OOM, crash) rather
+        // than ending normally, `active` was never persisted — it lived only
+        // in this singleton's memory. Recover whatever was checkpointed so
+        // the session shows up (marked interrupted) instead of vanishing.
+        if (!recovered) {
+            recovered = true
+            recoverCheckpoint(context)
+        }
 
         // Single choke point every sampling path goes through — alerts and
         // the home screen widget ride along.
@@ -94,9 +108,63 @@ object SessionRecorder {
             a.lastCurveTs = now
             a.curve.add(now to magnitude)
         }
+
+        if (now - a.lastCheckpointTs >= CHECKPOINT_INTERVAL_MS) {
+            a.lastCheckpointTs = now
+            saveCheckpoint(context, a)
+        }
+    }
+
+    private fun saveCheckpoint(context: Context, a: ActiveSession) {
+        context.getSharedPreferences(CHECKPOINT_PREFS, Context.MODE_PRIVATE).edit()
+            .putInt("direction", a.direction)
+            .putLong("startTs", a.startTs)
+            .putInt("startLevel", a.startLevel)
+            .putInt("plugged", a.plugged)
+            .putLong("lastTs", a.lastTs)
+            .putInt("lastLevel", a.lastLevel)
+            .putString("peakW", a.peakW.toString())
+            .putString("energyWh", a.energyWh.toString())
+            .putString("wattSum", a.wattSum.toString())
+            .putInt("sampleCount", a.sampleCount)
+            .apply()
+    }
+
+    private fun clearCheckpoint(context: Context) {
+        context.getSharedPreferences(CHECKPOINT_PREFS, Context.MODE_PRIVATE)
+            .edit().clear().apply()
+    }
+
+    /** Turns a leftover checkpoint from a killed process into an interrupted session. */
+    private fun recoverCheckpoint(context: Context) {
+        val prefs = context.getSharedPreferences(CHECKPOINT_PREFS, Context.MODE_PRIVATE)
+        val startTs = prefs.getLong("startTs", -1L)
+        if (startTs < 0) return
+        val lastTs = prefs.getLong("lastTs", startTs)
+        val sampleCount = prefs.getInt("sampleCount", 0)
+        if (lastTs - startTs >= MIN_SESSION_MS && sampleCount > 0) {
+            val startLevel = prefs.getInt("startLevel", 0)
+            val session = ChargeSession(
+                startTs = startTs,
+                endTs = lastTs,
+                startLevel = startLevel,
+                endLevel = prefs.getInt("lastLevel", startLevel),
+                plugged = prefs.getInt("plugged", 0),
+                avgWatts = (prefs.getString("wattSum", "0")?.toDoubleOrNull() ?: 0.0) /
+                    sampleCount,
+                peakWatts = prefs.getString("peakW", "0")?.toDoubleOrNull() ?: 0.0,
+                energyWh = prefs.getString("energyWh", "0")?.toDoubleOrNull() ?: 0.0,
+                direction = prefs.getInt("direction", DIRECTION_CHARGE),
+                interrupted = true,
+            )
+            val dao = AppDatabase.get(context).sessionDao()
+            ioScope.launch { dao.insert(session) }
+        }
+        clearCheckpoint(context)
     }
 
     private fun finish(context: Context, a: ActiveSession) {
+        clearCheckpoint(context)
         val durationMs = a.lastTs - a.startTs
         if (durationMs < MIN_SESSION_MS || a.sampleCount == 0) return
         // 2S heuristic needs raw energy, so only sessions recorded entirely

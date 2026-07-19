@@ -114,4 +114,5 @@
     <string name="health_trend_intro">Bei jeder Vollladung wird der Systemwert bei 100 % protokolliert. Der Absolutwert variiert je Gerät — entscheidend ist die Veränderung über Monate. Gelegentliche Vollladungen halten die Kalibrierung aktuell.</string>
     <string name="health_trend_delta">Kapazität vs. erste Messung: %1$s</string>
     <string name="health_trend_empty">Noch keine Vollladungen protokolliert. Gelegentlich auf 100 % laden — jede fügt einen Kalibrierpunkt hinzu.</string>
+    <string name="session_interrupted">unterbrochen</string>
 </resources>

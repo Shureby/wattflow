@@ -114,4 +114,5 @@
     <string name="health_trend_intro">Cada carga completa registra la lectura del medidor del sistema al 100%. El valor absoluto varía según el dispositivo; lo que importa es su evolución en meses. Cargas completas ocasionales lo mantienen calibrado.</string>
     <string name="health_trend_delta">Capacidad vs primera lectura: %1$s</string>
     <string name="health_trend_empty">Aún no hay cargas completas registradas. Carga al 100% de vez en cuando: cada una añade un punto de calibración.</string>
+    <string name="session_interrupted">interrumpida</string>
 </resources>

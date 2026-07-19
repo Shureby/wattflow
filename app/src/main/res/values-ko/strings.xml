@@ -114,4 +114,5 @@
     <string name="health_trend_intro">완전 충전할 때마다 100% 시점의 시스템 전량계 값을 기록합니다. 절대값은 기기마다 다르며, 중요한 것은 수개월에 걸친 변화입니다. 가끔 완전 충전하면 보정이 유지됩니다.</string>
     <string name="health_trend_delta">첫 기록 대비 용량: %1$s</string>
     <string name="health_trend_empty">아직 완전 충전 기록이 없습니다. 가끔 100%까지 충전하세요. 매번 보정 지점이 추가됩니다.</string>
+    <string name="session_interrupted">중단됨</string>
 </resources>

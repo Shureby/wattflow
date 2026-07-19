@@ -114,4 +114,5 @@
     <string name="health_trend_intro">عند كل شحن كامل يُسجَّل قياس عداد النظام عند 100%. القيمة المطلقة تختلف بين الأجهزة — المهم هو تغيرها عبر الأشهر. الشحن الكامل من حين لآخر يحافظ على المعايرة.</string>
     <string name="health_trend_delta">السعة مقارنة بأول قراءة: %1$s</string>
     <string name="health_trend_empty">لا شحنات كاملة مسجلة بعد. اشحن إلى 100% من حين لآخر — كل مرة تضيف نقطة معايرة.</string>
+    <string name="session_interrupted">متوقف</string>
 </resources>

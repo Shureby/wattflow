@@ -33,6 +33,9 @@
     <string name="history_last7">Last 7 days</string>
     <string name="label_avg">avg</string>
     <string name="label_peak">peak</string>
+    <!-- Recording stopped because the process was killed mid-session, not
+         because the user unplugged — totals for this entry are a floor. -->
+    <string name="session_interrupted">interrupted</string>
 
     <string name="info_title">Why lower than the charger says?</string>
     <string name="info_body">WattFlow measures battery-side power — what actually enters the battery. Chargers display their own output. In between: conversion losses (~10% wired, 30–40% wireless) and the power your screen and system consume while charging. Phones also only draw what their charging protocol negotiates at the current battery level, no matter how powerful the charger is.</string>

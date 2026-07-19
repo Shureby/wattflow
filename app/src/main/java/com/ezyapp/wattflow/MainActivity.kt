@@ -1996,6 +1996,13 @@ private fun SessionRow(session: DisplaySession, onClick: () -> Unit) {
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
+        if (session.interrupted) {
+            Text(
+                text = "⚠ " + stringResource(R.string.session_interrupted),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.error,
+            )
+        }
     }
 }
 

@@ -114,4 +114,5 @@
     <string name="health_trend_intro">Setiap pengisian penuh mencatat pembacaan fuel gauge sistem pada 100%. Nilai absolut berbeda tiap perangkat — yang penting perubahannya dari bulan ke bulan. Pengisian penuh sesekali menjaga kalibrasi.</string>
     <string name="health_trend_delta">Kapasitas vs pembacaan pertama: %1$s</string>
     <string name="health_trend_empty">Belum ada pengisian penuh tercatat. Isi hingga 100% sesekali — setiap kali menambah titik kalibrasi.</string>
+    <string name="session_interrupted">terhenti</string>
 </resources>

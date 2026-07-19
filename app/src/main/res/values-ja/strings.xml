@@ -114,4 +114,5 @@
     <string name="health_trend_intro">満充電のたびにシステム電池計の100%時の読みを記録します。絶対値は端末により異なります。重要なのは数か月での変化です。ときどき満充電すると校正が保たれます。</string>
     <string name="health_trend_delta">初回比の容量：%1$s</string>
     <string name="health_trend_empty">満充電の記録はまだありません。ときどき100%まで充電してください。そのたびに校正点が追加されます。</string>
+    <string name="session_interrupted">中断</string>
 </resources>

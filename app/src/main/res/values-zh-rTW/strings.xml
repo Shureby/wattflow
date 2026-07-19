@@ -114,4 +114,5 @@
     <string name="health_trend_intro">每次充滿時記錄系統電量計在 100% 的讀數。絕對值因裝置而異——重要的是數月間的變化。偶爾充滿一次可保持校準。</string>
     <string name="health_trend_delta">容量相對首次讀數：%1$s</string>
     <string name="health_trend_empty">尚無充滿記錄。偶爾充到 100%——每次都會增加一個校準點。</string>
+    <string name="session_interrupted">已中斷</string>
 </resources>
