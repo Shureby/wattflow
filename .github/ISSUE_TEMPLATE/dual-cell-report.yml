@@ -1,0 +1,52 @@
+name: Dual-cell (2S) battery report
+description: Report whether your device under- or over-reports charging power (dual-cell battery)
+title: "2S report: <manufacturer> <model>"
+labels: ["dual-cell"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        WattFlow pre-fills the fields below from your device — nothing is
+        sent until you review and submit. This data helps decide which
+        devices get a "likely dual-cell" hint.
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: Manufacturer, model and device codename
+      placeholder: "Xiaomi 2602EPTC0G (warhol)"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      placeholder: "16 (SDK 36)"
+    validations:
+      required: true
+  - type: dropdown
+    id: x2-enabled
+    attributes:
+      label: x2 correction enabled
+      description: Whether you switched on the manual x2 correction in WattFlow
+      options:
+        - "true"
+        - "false"
+    validations:
+      required: true
+  - type: input
+    id: verdict
+    attributes:
+      label: Advisory verdict
+      description: WattFlow's own detection state
+      placeholder: "listed=false, detected=true"
+  - type: input
+    id: charge-counter
+    attributes:
+      label: Charge counter (µAh)
+      placeholder: "3542000"
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Rated charger wattage, cable, wired/wireless, charge mode, what the wall meter says — anything that helps judge the real power
