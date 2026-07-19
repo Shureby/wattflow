@@ -51,6 +51,9 @@
     <string name="notif_low_alert">Baterai %1$d%% — waktunya mengisi daya</string>
     <string name="health_title">Mengapa 80% / 20%?</string>
     <string name="health_body">Baterai litium menua paling cepat di titik ekstrem. Menjaga daya antara 20%–80% mengurangi stres tegangan dan panas — dua penyebab utama hilangnya kapasitas permanen. Sesekali mengisi penuh tidak masalah (membantu kalibrasi), tetapi terus di 100% atau habis ke 0% setiap hari memperpendek umur baterai. Karena itu WattFlow default memberi peringatan di 80% dan 20%.</string>
+    <string name="widget_name_s">Kecil</string>
+    <string name="widget_name_m">Sedang</string>
+    <string name="widget_name_l">Besar</string>
     <string name="widget_desc">Daya baterai langsung sekilas</string>
     <string name="export_csv">Ekspor CSV</string>
     <string name="settings_title">Setelan</string>

@@ -51,6 +51,9 @@
     <string name="notif_low_alert">Batterie à %1$d%% — il est temps de charger</string>
     <string name="health_title">Pourquoi 80% / 20% ?</string>
     <string name="health_body">"Les batteries lithium vieillissent plus vite aux extrêmes. Rester entre 20% et 80% réduit le stress de tension et la chaleur — les deux causes principales de perte définitive de capacité. Une charge complète occasionnelle ne pose pas de problème (elle aide à calibrer la jauge), mais rester à 100% ou descendre à 0% chaque jour raccourcit la durée de vie. C'est pourquoi WattFlow alerte par défaut à 80% et 20%."</string>
+    <string name="widget_name_s">Petit</string>
+    <string name="widget_name_m">Moyen</string>
+    <string name="widget_name_l">Grand</string>
     <string name="widget_desc">"Puissance batterie en direct en un coup d'œil"</string>
     <string name="export_csv">Exporter CSV</string>
     <string name="settings_title">Paramètres</string>

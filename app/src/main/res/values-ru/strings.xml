@@ -51,6 +51,9 @@
     <string name="notif_low_alert">Батарея %1$d%% — пора заряжать</string>
     <string name="health_title">Почему 80% / 20%?</string>
     <string name="health_body">Литиевые батареи быстрее всего стареют на крайних уровнях. Диапазон 20%–80% снижает напряжение и нагрев — две главные причины необратимой потери ёмкости. Изредка заряжать до 100% можно (это калибрует индикатор), но ежедневные 100% или разряд в 0% заметно сокращают срок службы. Поэтому WattFlow по умолчанию предупреждает на 80% и 20%.</string>
+    <string name="widget_name_s">Маленький</string>
+    <string name="widget_name_m">Средний</string>
+    <string name="widget_name_l">Большой</string>
     <string name="widget_desc">Мощность батареи одним взглядом</string>
     <string name="export_csv">Экспорт CSV</string>
     <string name="settings_title">Настройки</string>

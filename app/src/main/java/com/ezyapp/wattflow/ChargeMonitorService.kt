@@ -43,7 +43,6 @@ class ChargeMonitorService : Service() {
         super.onCreate()
         reader = BatteryReader(this)
         overlay = OverlayController(applicationContext)
-        createChannel()
         isRunning.value = true
     }
 
@@ -93,6 +92,13 @@ class ChargeMonitorService : Service() {
     override fun onBind(intent: Intent?): IBinder? = null
 
     private fun buildNotification(sample: BatterySample?): Notification {
+        // The service's base context is wrapped once at creation, so a
+        // language switched while the service runs would keep the old locale.
+        // Re-wrap per build — the notification refreshes every 3 s, so it
+        // follows a language change within seconds. Recreating the channel
+        // with the same id just renames it.
+        val ctx = LocalePrefs.wrap(applicationContext)
+        createChannel(ctx)
         val tapIntent = PendingIntent.getActivity(
             this, 0,
             Intent(this, MainActivity::class.java),
@@ -109,10 +115,10 @@ class ChargeMonitorService : Service() {
         val title: String
         val subLine: String
         if (sample == null) {
-            title = getString(R.string.reading_battery)
+            title = ctx.getString(R.string.reading_battery)
             subLine = ""
         } else {
-            val direction = getString(
+            val direction = ctx.getString(
                 if (sample.isCharging) R.string.filter_charge
                 else R.string.filter_discharge
             )
@@ -125,7 +131,7 @@ class ChargeMonitorService : Service() {
                 "${sample.levelPercent}%",
                 String.format(Locale.US, "%.0f°C", sample.temperatureC),
             )
-            monitorEta(sample)?.let { parts.add(it) }
+            monitorEta(ctx, sample)?.let { parts.add(it) }
             subLine = parts.joinToString(" • ")
         }
 
@@ -137,7 +143,7 @@ class ChargeMonitorService : Service() {
             .setOnlyAlertOnce(true)
             .addAction(
                 Notification.Action.Builder(
-                    null, getString(R.string.notif_stop), stopIntent
+                    null, ctx.getString(R.string.notif_stop), stopIntent
                 ).build()
             )
         if (subLine.isNotEmpty()) {
@@ -147,7 +153,7 @@ class ChargeMonitorService : Service() {
     }
 
     /** Rough ETA for the notification's second line; null when not derivable. */
-    private fun monitorEta(s: BatterySample): String? {
+    private fun monitorEta(ctx: Context, s: BatterySample): String? {
         if (s.chargeCounterUah <= 0 || s.levelPercent !in 1..100) return null
         val amps = kotlin.math.abs(s.currentA)
         if (amps < 0.05) return null
@@ -161,15 +167,15 @@ class ChargeMonitorService : Service() {
         if (hours <= 0 || hours > 99) return null
         val mins = (hours * 60).toInt()
         val dur = if (mins >= 60) "${mins / 60}h ${mins % 60}m" else "${mins}m"
-        return getString(
+        return ctx.getString(
             if (s.isCharging) R.string.eta_to_full else R.string.eta_left, dur
         )
     }
 
-    private fun createChannel() {
+    private fun createChannel(ctx: Context) {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            getString(R.string.notif_channel_name),
+            ctx.getString(R.string.notif_channel_name),
             NotificationManager.IMPORTANCE_LOW,
         ).apply {
             // Status notification, not an attention request: a launcher badge

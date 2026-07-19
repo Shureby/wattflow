@@ -66,8 +66,10 @@ open class WattWidgetProvider : AppWidgetProvider() {
         private var lastUpdateTs = 0L
         private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
-        // dp thresholds matching the SizeF map below.
-        private const val WIDE_DP = 230
+        // dp thresholds matching the SizeF map below. WIDE_DP matches the
+        // 4x1 widget's minResizeWidth so a user-shrunk 3x1 still renders the
+        // M layout instead of falling back to S.
+        private const val WIDE_DP = 170
         private const val TALL_DP = 100
 
         /** Throttled: at most one refresh per 5 s. */

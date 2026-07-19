@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.3.3] - 2026-07-19
+
+- Battery alerts now clear themselves once their advice is followed:
+  plugging in dismisses the low-battery alert, unplugging dismisses the
+  80% alert — the two can no longer nag side by side with stale advice
+- Widget picker entries renamed to Small / Medium / Large (translated to
+  all 12 languages) — launchers already show the app name and grid size,
+  so the old "WattFlow 4×1"-style labels doubled both
+- Widget picker previews redone as transparent rounded cards: no more
+  wallpaper fragments in the corners or mismatched backing colors
+- 4×1 widget can be squeezed to 3 columns: resize floor lowered to
+  170 dp, layout switch threshold matched, peak line ellipsizes
+- Monitor notification switches language immediately when the in-app
+  language changes — no more restarting background recording
+
 ## [1.3.2] - 2026-07-18
 
 - Widget picker now offers three preset sizes (2×1, 4×1, 4×2) with

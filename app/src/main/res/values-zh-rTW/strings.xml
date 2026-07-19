@@ -51,6 +51,9 @@
     <string name="notif_low_alert">電量僅剩 %1$d%% — 該充電了</string>
     <string name="health_title">為什麼是 80% / 20%？</string>
     <string name="health_body">鋰電池在兩個極端老化最快。電量保持在 20%–80% 之間可以減少電壓應力和發熱 — 這是容量永久損失的兩大主因。偶爾充滿沒問題（還能幫助電量計校準），但天天滿電存放或耗到 0% 會明顯縮短電池壽命。所以 WattFlow 預設在 80% 和 20% 提醒。</string>
+    <string name="widget_name_s">小</string>
+    <string name="widget_name_m">中</string>
+    <string name="widget_name_l">大</string>
     <string name="widget_desc">一眼看到即時電池功率</string>
     <string name="export_csv">匯出 CSV</string>
     <string name="settings_title">設定</string>

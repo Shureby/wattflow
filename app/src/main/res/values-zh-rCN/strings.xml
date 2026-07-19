@@ -51,6 +51,9 @@
     <string name="notif_low_alert">电量仅剩 %1$d%% — 该充电了</string>
     <string name="health_title">为什么是 80% / 20%？</string>
     <string name="health_body">锂电池在两个极端老化最快。电量保持在 20%–80% 之间可以减少电压应力和发热 — 这是容量永久损失的两大主因。偶尔充满没问题（还能帮助电量计校准），但天天满电存放或耗到 0% 会明显缩短电池寿命。所以 WattFlow 默认在 80% 和 20% 提醒。</string>
+    <string name="widget_name_s">小</string>
+    <string name="widget_name_m">中</string>
+    <string name="widget_name_l">大</string>
     <string name="widget_desc">一眼看到实时电池功率</string>
     <string name="export_csv">导出 CSV</string>
     <string name="settings_title">设置</string>

@@ -51,6 +51,9 @@
     <string name="notif_low_alert">البطارية عند %1$d%% — حان وقت الشحن</string>
     <string name="health_title">لماذا 80% / 20%؟</string>
     <string name="health_body">تتقادم بطاريات الليثيوم أسرع عند الأطراف. إبقاء الشحن بين 20% و80% يقلل إجهاد الجهد والحرارة — السببين الرئيسيين لفقدان السعة الدائم. الشحن الكامل أحياناً لا بأس به (يساعد على معايرة المقياس)، لكن البقاء عند 100% أو التفريغ إلى 0% يومياً يقصّر عمر البطارية. لذلك ينبّه WattFlow افتراضياً عند 80% و20%.</string>
+    <string name="widget_name_s">صغير</string>
+    <string name="widget_name_m">متوسط</string>
+    <string name="widget_name_l">كبير</string>
     <string name="widget_desc">قدرة البطارية المباشرة بلمحة</string>
     <string name="export_csv">تصدير CSV</string>
     <string name="settings_title">الإعدادات</string>

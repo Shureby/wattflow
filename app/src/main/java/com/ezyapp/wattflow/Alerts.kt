@@ -55,8 +55,26 @@ object AlertEngine {
         val level = sample.levelPercent
         if (level !in 1..100) return
 
+        // Each alert carries one advice — "unplug" / "plug in" — so it is
+        // dismissed the moment the advice is followed: plugging in clears the
+        // low alert, unplugging clears the charge alert. Keyed to the plug
+        // state, not isCharging, so the charge alert survives status FULL
+        // while the charger stays connected. This also makes the two alerts
+        // mutually exclusive on screen.
+        val nm = context.getSystemService(NotificationManager::class.java)
+        if (sample.plugged != 0) {
+            if (AlertPrefs.lowFired(context)) {
+                AlertPrefs.setLowFired(context, false)
+                nm.cancel(NOTIF_LOW)
+            }
+        } else {
+            if (AlertPrefs.chargeFired(context)) {
+                AlertPrefs.setChargeFired(context, false)
+                nm.cancel(NOTIF_CHARGE)
+            }
+        }
+
         if (sample.isCharging) {
-            if (AlertPrefs.lowFired(context)) AlertPrefs.setLowFired(context, false)
             if (level >= AlertPrefs.chargeThreshold(context) &&
                 !AlertPrefs.chargeFired(context)
             ) {
@@ -67,7 +85,6 @@ object AlertEngine {
                 )
             }
         } else {
-            if (AlertPrefs.chargeFired(context)) AlertPrefs.setChargeFired(context, false)
             if (level <= AlertPrefs.lowThreshold(context) &&
                 !AlertPrefs.lowFired(context)
             ) {

@@ -51,6 +51,9 @@
     <string name="notif_low_alert">Bateria em %1$d%% — hora de carregar</string>
     <string name="health_title">Por que 80% / 20%?</string>
     <string name="health_body">Baterias de lítio envelhecem mais rápido nos extremos. Manter a carga entre 20% e 80% reduz o estresse de tensão e o calor — as duas principais causas de perda permanente de capacidade. Uma carga completa ocasional é ok (ajuda a calibrar o medidor), mas ficar em 100% ou esgotar a 0% todo dia encurta a vida útil. Por isso o WattFlow alerta por padrão em 80% e 20%.</string>
+    <string name="widget_name_s">Pequeno</string>
+    <string name="widget_name_m">Médio</string>
+    <string name="widget_name_l">Grande</string>
     <string name="widget_desc">Potência da bateria ao vivo num relance</string>
     <string name="export_csv">Exportar CSV</string>
     <string name="settings_title">Configurações</string>
