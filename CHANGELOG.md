@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.5] - 2026-07-19
+
+- Fixed: on a 4×1 widget squeezed to 3 columns, the level/temperature
+  text and the peak line could touch with no gap between the columns
+
 ## [1.3.4] - 2026-07-19
 
 - Dual-cell (2S) device report now opens a structured GitHub issue form
