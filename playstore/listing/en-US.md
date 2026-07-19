@@ -38,8 +38,7 @@ THE HONEST NUMBER
 WattFlow shows battery-side power — what actually reaches (or leaves) your battery, not the marketing number on the charger brick. That's why it can read lower than the charger's own display: conversion losses and system drain are real, and knowing the difference is the whole point.
 
 PRIVATE BY DESIGN
-• Zero permissions, no ads, no analytics, no network access
-• Everything stays on your device
+• No ads, no analytics — nothing about you ever leaves this device
 • Open source: github.com/Shureby/wattflow
 • Available in 12 languages
 

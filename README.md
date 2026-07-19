@@ -22,7 +22,7 @@
 - **Live graph** — last 60 seconds of power history, discharge shown below the zero line
 - **Battery stats** — voltage, current, temperature, and charge level inside the battery icon
 - **12 languages** — auto-follows system, with a manual override in settings
-- **Zero permissions** — no network, no ads, no tracking. Everything stays on your device.
+- **No ads, no analytics** — nothing about you ever leaves this device.
 
 ## How It Works
 
