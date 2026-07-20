@@ -8,6 +8,7 @@
     <string name="source_wireless">Sem fio</string>
     <string name="source_dock">Base</string>
     <string name="source_on_battery">Na bateria</string>
+    <string name="source_mixed">Misto</string>
 
     <string name="into_battery">para a bateria</string>
     <string name="battery_drain">consumo da bateria</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">Por que é menor do que o carregador mostra?</string>
     <string name="info_body">O WattFlow mede a potência do lado da bateria — o que realmente entra nela. O carregador mostra a própria saída. No meio: perdas de conversão (~10% com fio, 30–40% sem fio) e o consumo direto de tela e sistema durante a carga. Além disso, o telefone só puxa o que o protocolo de carga negocia no nível de bateria atual.</string>
+    <string name="peak_info_title">Pico aqui vs. no widget</string>
+    <string name="peak_info_body">Esses picos são reiniciados sempre que você desconecta, reconecta ou troca de fonte (por exemplo, de cabo para sem fio) — cobrem apenas o trecho atual. O widget da tela inicial mostra um número separado, \"Picos de hoje\", que cobre o dia inteiro.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Histórico de carga, estatísticas e gravação em segundo plano. Compra única, seu para sempre.</string>
     <string name="pro_buy">Desbloquear</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">Médio</string>
     <string name="widget_name_l">Grande</string>
     <string name="widget_desc">Potência da bateria ao vivo num relance</string>
+    <string name="widget_today_peaks">Picos de hoje</string>
     <string name="export_csv">Exportar CSV</string>
     <string name="settings_title">Configurações</string>
     <string name="version_label">Versão %1$s</string>

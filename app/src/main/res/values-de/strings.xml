@@ -8,6 +8,7 @@
     <string name="source_wireless">Kabellos</string>
     <string name="source_dock">Dock</string>
     <string name="source_on_battery">Im Akkubetrieb</string>
+    <string name="source_mixed">Gemischt</string>
 
     <string name="into_battery">in den Akku</string>
     <string name="battery_drain">Akkuverbrauch</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">Warum niedriger als am Ladegerät angezeigt?</string>
     <string name="info_body">WattFlow misst die Leistung auf Akkuseite — was tatsächlich in den Akku fließt. Das Ladegerät zeigt seine eigene Ausgabe. Dazwischen: Wandlungsverluste (~10 % kabelgebunden, 30–40 % kabellos) und der direkte Verbrauch von Display und System beim Laden. Zudem zieht das Handy nur, was das Ladeprotokoll beim aktuellen Akkustand aushandelt.</string>
+    <string name="peak_info_title">Spitzenwerte hier vs. im Widget</string>
+    <string name="peak_info_body">Diese Spitzenwerte werden jedes Mal zurückgesetzt, wenn du das Ladekabel abziehst, wieder einsteckst oder die Quelle wechselst (z. B. kabelgebunden zu kabellos) — sie decken nur die aktuelle Phase ab. Das Home-Widget zeigt stattdessen eine separate Zahl \"Heutige Spitzenwerte\", die den ganzen Tag abdeckt.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Ladeverlauf, Statistiken und Hintergrundaufzeichnung. Einmalkauf, für immer.</string>
     <string name="pro_buy">Freischalten</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">Mittel</string>
     <string name="widget_name_l">Groß</string>
     <string name="widget_desc">Akkuleistung live auf einen Blick</string>
+    <string name="widget_today_peaks">Heutige Spitzenwerte</string>
     <string name="export_csv">CSV exportieren</string>
     <string name="settings_title">Einstellungen</string>
     <string name="version_label">Version %1$s</string>

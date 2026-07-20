@@ -8,6 +8,7 @@
     <string name="source_wireless">無線充電</string>
     <string name="source_dock">底座</string>
     <string name="source_on_battery">使用電池</string>
+    <string name="source_mixed">混合</string>
 
     <string name="into_battery">輸入電池</string>
     <string name="battery_drain">電池放電</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">為什麼比充電器顯示的低？</string>
     <string name="info_body">WattFlow 測量的是電池側功率 — 真正進入電池的部分。充電器顯示的是它自己的輸出。中間隔著轉換損耗（有線約 10%，無線 30–40%）和充電時螢幕、系統的直接耗電。另外，手機只按目前電量下充電協議協商的檔位取電，充電器再強也不會多充。</string>
+    <string name="peak_info_title">這裡的峰值 vs 小工具</string>
+    <string name="peak_info_body">這裡的峰值每次拔插充電線或切換充電方式（比如有線換無線）都會歸零，只統計目前這一段。主畫面小工具顯示的是另一個「今日峰值」，統計的是一整天。</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">充電歷史、統計與背景記錄。一次性買斷，永久有效。</string>
     <string name="pro_buy">解鎖</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">中</string>
     <string name="widget_name_l">大</string>
     <string name="widget_desc">一眼看到即時電池功率</string>
+    <string name="widget_today_peaks">今日峰值</string>
     <string name="export_csv">匯出 CSV</string>
     <string name="settings_title">設定</string>
     <string name="version_label">版本 %1$s</string>

@@ -54,6 +54,16 @@
                 android:text="" />
 
             <TextView
+                android:id="@+id/widget_peak_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#A78BFA"
+                android:textSize="10sp"
+                android:maxLines="1"
+                android:text="" />
+
+            <TextView
                 android:id="@+id/widget_line2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

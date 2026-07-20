@@ -8,6 +8,7 @@
     <string name="source_wireless">Wireless</string>
     <string name="source_dock">Dock</string>
     <string name="source_on_battery">On Battery</string>
+    <string name="source_mixed">Mixed</string>
 
     <string name="into_battery">into battery</string>
     <string name="battery_drain">battery drain</string>
@@ -39,6 +40,8 @@
 
     <string name="info_title">Why lower than the charger says?</string>
     <string name="info_body">WattFlow measures battery-side power — what actually enters the battery. Chargers display their own output. In between: conversion losses (~10% wired, 30–40% wireless) and the power your screen and system consume while charging. Phones also only draw what their charging protocol negotiates at the current battery level, no matter how powerful the charger is.</string>
+    <string name="peak_info_title">Peak In/Out here vs. the widget</string>
+    <string name="peak_info_body">These peaks reset every time you unplug, plug back in, or switch source (e.g. wired to wireless) — they cover only the current streak. The home screen widget shows a separate \"Today\'s Peaks\" figure that covers the whole day instead.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Charge history, statistics and background recording. One-time purchase, yours forever.</string>
     <string name="pro_buy">Unlock</string>
@@ -60,6 +63,7 @@
     <string name="widget_name_m">Medium</string>
     <string name="widget_name_l">Large</string>
     <string name="widget_desc">Live battery power at a glance</string>
+    <string name="widget_today_peaks">Today\'s Peaks</string>
     <string name="export_csv">Export CSV</string>
     <string name="settings_title">Settings</string>
     <string name="version_label">Version %1$s</string>

@@ -8,6 +8,7 @@
     <string name="source_wireless">Sans fil</string>
     <string name="source_dock">Station</string>
     <string name="source_on_battery">Sur batterie</string>
+    <string name="source_mixed">Mixte</string>
 
     <string name="into_battery">vers la batterie</string>
     <string name="battery_drain">décharge batterie</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">Pourquoi moins que ce qu\'affiche le chargeur ?</string>
     <string name="info_body">WattFlow mesure la puissance côté batterie — ce qui y entre réellement. Le chargeur affiche sa propre sortie. Entre les deux : pertes de conversion (~10 % filaire, 30–40 % sans fil) et la consommation directe de l\'écran et du système pendant la charge. De plus, le téléphone ne tire que ce que son protocole négocie selon le niveau de batterie actuel.</string>
+    <string name="peak_info_title">Pic ici vs. dans le widget</string>
+    <string name="peak_info_body">"Ces pics repartent à zéro à chaque débranchement, rebranchement ou changement de source (par ex. filaire vers sans fil) — ils ne couvrent que la séquence en cours. Le widget de l'écran d'accueil affiche un chiffre séparé, « Pics du jour », qui couvre toute la journée."</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Historique de charge, statistiques et enregistrement en arrière-plan. Achat unique, à vous pour toujours.</string>
     <string name="pro_buy">Débloquer</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">Moyen</string>
     <string name="widget_name_l">Grand</string>
     <string name="widget_desc">"Puissance batterie en direct en un coup d'œil"</string>
+    <string name="widget_today_peaks">Pics du jour</string>
     <string name="export_csv">Exporter CSV</string>
     <string name="settings_title">Paramètres</string>
     <string name="version_label">Version %1$s</string>

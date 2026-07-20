@@ -1,5 +1,10 @@
 package com.ezyapp.wattflow
 
+/** Sentinel [DisplaySession.plugged] value: merged segments used different
+ *  charge sources (e.g. wired then wireless) — never a real BatteryManager
+ *  BATTERY_PLUGGED_* constant, all of which are >= 0. */
+const val PLUGGED_MIXED = -1
+
 /**
  * Presentation-layer session: one or more stored [ChargeSession] segments of
  * the same direction, merged across short sampling gaps. Stored data stays
@@ -61,6 +66,11 @@ fun mergeSessions(
                 ids = last.ids + s.id,
                 endTs = s.endTs,
                 endLevel = s.endLevel,
+                plugged = if (last.plugged == PLUGGED_MIXED || s.plugged == last.plugged) {
+                    last.plugged
+                } else {
+                    PLUGGED_MIXED
+                },
                 avgWatts = if (totalSampled > 0) {
                     (last.avgWatts * last.sampledMs + s.avgWatts * segMs) / totalSampled
                 } else last.avgWatts,

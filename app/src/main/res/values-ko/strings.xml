@@ -8,6 +8,7 @@
     <string name="source_wireless">무선</string>
     <string name="source_dock">도크</string>
     <string name="source_on_battery">배터리 사용 중</string>
+    <string name="source_mixed">혼합</string>
 
     <string name="into_battery">배터리로 입력</string>
     <string name="battery_drain">배터리 소모</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">충전기 표시보다 낮은 이유는?</string>
     <string name="info_body">WattFlow는 배터리 측 전력 — 실제로 배터리에 들어가는 양을 측정합니다. 충전기는 자체 출력을 표시합니다. 그 사이에는 변환 손실(유선 약 10%, 무선 30–40%)과 충전 중 화면·시스템의 직접 소비가 있습니다. 또한 폰은 현재 배터리 잔량에서 충전 프로토콜이 협상한 만큼만 전력을 받습니다.</string>
+    <string name="peak_info_title">여기 피크 vs 위젯</string>
+    <string name="peak_info_body">이 피크 값은 케이블을 뽑거나 다시 꽂거나 전원 방식을 바꿀 때마다(예: 유선에서 무선으로) 초기화되며, 현재 구간만 반영합니다. 홈 화면 위젯은 하루 전체를 다루는 별도의 \"오늘의 피크\" 수치를 보여줍니다.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">충전 기록, 통계, 백그라운드 기록. 한 번 구매로 평생 사용.</string>
     <string name="pro_buy">잠금 해제</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">중간</string>
     <string name="widget_name_l">큼</string>
     <string name="widget_desc">배터리 전력을 한눈에</string>
+    <string name="widget_today_peaks">오늘의 피크</string>
     <string name="export_csv">CSV 내보내기</string>
     <string name="settings_title">설정</string>
     <string name="version_label">버전 %1$s</string>

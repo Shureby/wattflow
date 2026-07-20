@@ -1430,34 +1430,62 @@ private fun DrawScope.drawOnBatteryVisual(
 
 @Composable
 private fun StatsRow(sample: BatterySample, peakInWatts: Double, peakOutWatts: Double) {
-    Card(modifier = Modifier.fillMaxWidth()) {
-        Row(
+    var showPeakInfo by remember { mutableStateOf(false) }
+    Box(modifier = Modifier.fillMaxWidth()) {
+        Card(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+            ) {
+                StatItem(
+                    stringResource(R.string.stat_voltage),
+                    String.format(Locale.US, "%.2f V", sample.voltageV),
+                )
+                StatItem(
+                    stringResource(R.string.stat_current),
+                    String.format(Locale.US, "%.2f A", sample.currentA),
+                )
+                StatItem(
+                    stringResource(R.string.stat_temp),
+                    String.format(Locale.US, "%.1f°C", sample.temperatureC),
+                )
+                StatItem(
+                    stringResource(R.string.stat_peak_in),
+                    String.format(Locale.US, "%.1f W", peakInWatts),
+                )
+                StatItem(
+                    stringResource(R.string.stat_peak_out),
+                    String.format(Locale.US, "%.1f W", peakOutWatts),
+                )
+            }
+        }
+        IconButton(
+            onClick = { showPeakInfo = true },
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
+                .align(Alignment.TopEnd)
+                .size(22.dp),
         ) {
-            StatItem(
-                stringResource(R.string.stat_voltage),
-                String.format(Locale.US, "%.2f V", sample.voltageV),
-            )
-            StatItem(
-                stringResource(R.string.stat_current),
-                String.format(Locale.US, "%.2f A", sample.currentA),
-            )
-            StatItem(
-                stringResource(R.string.stat_temp),
-                String.format(Locale.US, "%.1f°C", sample.temperatureC),
-            )
-            StatItem(
-                stringResource(R.string.stat_peak_in),
-                String.format(Locale.US, "%.1f W", peakInWatts),
-            )
-            StatItem(
-                stringResource(R.string.stat_peak_out),
-                String.format(Locale.US, "%.1f W", peakOutWatts),
+            Icon(
+                imageVector = Icons.Filled.Info,
+                contentDescription = stringResource(R.string.peak_info_title),
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.size(14.dp),
             )
         }
+    }
+    if (showPeakInfo) {
+        AlertDialog(
+            onDismissRequest = { showPeakInfo = false },
+            title = { Text(stringResource(R.string.peak_info_title)) },
+            text = { Text(stringResource(R.string.peak_info_body)) },
+            confirmButton = {
+                TextButton(onClick = { showPeakInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
     }
 }
 
@@ -2022,6 +2050,7 @@ internal fun formatDuration(ms: Long): String {
 }
 
 internal fun sourceLabelRes(plugged: Int): Int = when (plugged) {
+    PLUGGED_MIXED -> R.string.source_mixed
     BatteryManager.BATTERY_PLUGGED_AC -> R.string.source_wired_ac
     BatteryManager.BATTERY_PLUGGED_USB -> R.string.source_wired_usb
     BatteryManager.BATTERY_PLUGGED_WIRELESS -> R.string.source_wireless

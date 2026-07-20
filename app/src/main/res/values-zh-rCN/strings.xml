@@ -8,6 +8,7 @@
     <string name="source_wireless">无线充电</string>
     <string name="source_dock">底座</string>
     <string name="source_on_battery">使用电池</string>
+    <string name="source_mixed">混合</string>
 
     <string name="into_battery">输入电池</string>
     <string name="battery_drain">电池放电</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">为什么比充电器显示的低？</string>
     <string name="info_body">WattFlow 测量的是电池侧功率 — 真正进入电池的部分。充电器显示的是它自己的输出。中间隔着转换损耗（有线约 10%，无线 30–40%）和充电时屏幕、系统的直接耗电。另外，手机只按当前电量下充电协议协商的档位取电，充电器再强也不会多充。</string>
+    <string name="peak_info_title">这里的峰值 vs 小组件</string>
+    <string name="peak_info_body">这里的峰值每次拔插充电线或切换充电方式（比如有线换无线）都会清零，只统计当前这一段。主屏幕小组件显示的是另一个"今日峰值"，统计的是一整天。</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">充电历史、统计与后台记录。一次性买断，永久有效。</string>
     <string name="pro_buy">解锁</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">中</string>
     <string name="widget_name_l">大</string>
     <string name="widget_desc">一眼看到实时电池功率</string>
+    <string name="widget_today_peaks">今日峰值</string>
     <string name="export_csv">导出 CSV</string>
     <string name="settings_title">设置</string>
     <string name="version_label">版本 %1$s</string>

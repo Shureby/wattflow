@@ -173,6 +173,10 @@ open class WattWidgetProvider : AppWidgetProvider() {
                     if (eta != null) "$source • $eta" else source,
                 )
                 views.setTextViewText(
+                    R.id.widget_peak_header,
+                    context.getString(R.string.widget_today_peaks),
+                )
+                views.setTextViewText(
                     R.id.widget_line2,
                     String.format(
                         Locale.US, "%s %.1f W • %s %.1f W",

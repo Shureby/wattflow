@@ -80,6 +80,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 - **1.3.7**: a recovered checkpoint whose battery level moved the wrong
   way for its direction is discarded instead of recorded; any such
   sessions already recorded are purged on update
+- **1.3.8**: merged History sessions that span a source change now say
+  "Mixed" instead of guessing; Peak In/Out gets an ⓘ on the Live tab
+  and a "Today's Peaks" header on the widget to clarify it's two
+  different scopes (current streak vs. today), not a bug
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 

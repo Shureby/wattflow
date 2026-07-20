@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.3.8] - 2026-07-20
+
+- Fixed: a merged History session spanning a source change (e.g. wired
+  then wireless) silently showed only the first segment's source —
+  now shows "Mixed" when segments disagree
+- Clarified the difference between the Live tab's Peak In/Out (resets
+  every time you unplug, plug back in, or switch source) and the
+  widget's Peak In/Out (covers the whole day): Live tab gets an ⓘ
+  explaining the scope, widget (M/L sizes) gains a "Today's Peaks"
+  header above the figures
+
 ## [1.3.7] - 2026-07-20
 
 - Fixed: a stale checkpoint recovered after a process kill (see 1.3.6)

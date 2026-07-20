@@ -8,6 +8,7 @@
     <string name="source_wireless">لاسلكي</string>
     <string name="source_dock">قاعدة</string>
     <string name="source_on_battery">على البطارية</string>
+    <string name="source_mixed">مختلط</string>
 
     <string name="into_battery">إلى البطارية</string>
     <string name="battery_drain">استنزاف البطارية</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">لماذا الرقم أقل مما يعرضه الشاحن؟</string>
     <string name="info_body">يقيس WattFlow القدرة عند البطارية — ما يدخل إليها فعلاً. الشاحن يعرض خرجه هو. بينهما: خسائر التحويل (~10% سلكي، 30–40% لاسلكي) واستهلاك الشاشة والنظام أثناء الشحن. كما أن الهاتف يسحب فقط ما يتفاوض عليه بروتوكول الشحن حسب مستوى البطارية الحالي.</string>
+    <string name="peak_info_title">الذروة هنا مقابل الودجت</string>
+    <string name="peak_info_body">تُعاد هذه الذروات إلى الصفر في كل مرة تفصل فيها الشاحن أو تعيد توصيله أو تغيّر المصدر (مثلاً من سلكي إلى لاسلكي) — فهي تغطي فقط الفترة الحالية المتواصلة. أما الودجت على الشاشة الرئيسية فيعرض رقماً منفصلاً باسم "ذروات اليوم" يغطي اليوم كاملاً.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">سجل الشحن والإحصاءات والتسجيل في الخلفية. شراء لمرة واحدة، لك للأبد.</string>
     <string name="pro_buy">فتح</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">متوسط</string>
     <string name="widget_name_l">كبير</string>
     <string name="widget_desc">قدرة البطارية المباشرة بلمحة</string>
+    <string name="widget_today_peaks">ذروات اليوم</string>
     <string name="export_csv">تصدير CSV</string>
     <string name="settings_title">الإعدادات</string>
     <string name="version_label">الإصدار %1$s</string>

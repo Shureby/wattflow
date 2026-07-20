@@ -8,6 +8,7 @@
     <string name="source_wireless">ワイヤレス</string>
     <string name="source_dock">ドック</string>
     <string name="source_on_battery">バッテリー駆動</string>
+    <string name="source_mixed">混在</string>
 
     <string name="into_battery">バッテリーへ入力</string>
     <string name="battery_drain">バッテリー消費</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">充電器の表示より低いのはなぜ？</string>
     <string name="info_body">WattFlow はバッテリー側の電力 — 実際にバッテリーへ入る分を測定します。充電器は自身の出力を表示します。その間には変換損失（有線約10%、ワイヤレス30–40%）と、充電中の画面やシステムの直接消費があります。また、スマホは現在の電池残量で充電プロトコルが交渉した分しか受け取りません。</string>
+    <string name="peak_info_title">ここのピークとウィジェットの違い</string>
+    <string name="peak_info_body">これらのピーク値は、ケーブルを抜く、差し直す、電源方式を切り替える（有線⇔ワイヤレスなど）たびにリセットされ、直近の連続区間のみを対象とします。ホーム画面のウィジェットは「本日のピーク」という別の数値で、1日全体を対象に表示します。</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">充電履歴、統計、バックグラウンド記録。買い切り、ずっと使えます。</string>
     <string name="pro_buy">解除</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">中</string>
     <string name="widget_name_l">大</string>
     <string name="widget_desc">バッテリー電力をひと目で</string>
+    <string name="widget_today_peaks">本日のピーク</string>
     <string name="export_csv">CSV エクスポート</string>
     <string name="settings_title">設定</string>
     <string name="version_label">バージョン %1$s</string>

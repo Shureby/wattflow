@@ -8,6 +8,7 @@
     <string name="source_wireless">Беспроводная</string>
     <string name="source_dock">Док</string>
     <string name="source_on_battery">От батареи</string>
+    <string name="source_mixed">Смешанно</string>
 
     <string name="into_battery">в батарею</string>
     <string name="battery_drain">разряд батареи</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">Почему меньше, чем показывает зарядка?</string>
     <string name="info_body">WattFlow измеряет мощность со стороны батареи — то, что реально в неё поступает. Зарядное устройство показывает свой выход. Между ними: потери преобразования (~10% по проводу, 30–40% беспроводно) и прямое потребление экрана и системы во время зарядки. Кроме того, телефон берёт лишь то, что согласовал протокол зарядки при текущем уровне батареи.</string>
+    <string name="peak_info_title">Пик здесь и в виджете</string>
+    <string name="peak_info_body">Эти пики сбрасываются каждый раз, когда вы отключаете, снова подключаете зарядку или меняете источник (например, с проводного на беспроводной) — они охватывают только текущий отрезок. Виджет на главном экране показывает отдельное значение «Пики за сегодня», охватывающее весь день.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">История зарядки, статистика и фоновая запись. Разовая покупка, навсегда.</string>
     <string name="pro_buy">Разблокировать</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">Средний</string>
     <string name="widget_name_l">Большой</string>
     <string name="widget_desc">Мощность батареи одним взглядом</string>
+    <string name="widget_today_peaks">Пики за сегодня</string>
     <string name="export_csv">Экспорт CSV</string>
     <string name="settings_title">Настройки</string>
     <string name="version_label">Версия %1$s</string>

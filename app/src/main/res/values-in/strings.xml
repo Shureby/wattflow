@@ -8,6 +8,7 @@
     <string name="source_wireless">Nirkabel</string>
     <string name="source_dock">Dok</string>
     <string name="source_on_battery">Pakai baterai</string>
+    <string name="source_mixed">Campuran</string>
 
     <string name="into_battery">masuk ke baterai</string>
     <string name="battery_drain">pemakaian baterai</string>
@@ -36,6 +37,8 @@
 
     <string name="info_title">Mengapa lebih rendah dari tampilan charger?</string>
     <string name="info_body">WattFlow mengukur daya sisi baterai — yang benar-benar masuk ke baterai. Charger menampilkan output-nya sendiri. Di antaranya: rugi konversi (~10% kabel, 30–40% nirkabel) dan konsumsi layar serta sistem saat mengisi daya. Selain itu, ponsel hanya menarik daya sesuai negosiasi protokol pada level baterai saat ini.</string>
+    <string name="peak_info_title">Puncak di sini vs. widget</string>
+    <string name="peak_info_body">Puncak ini akan direset setiap kali kamu mencabut, mencolokkan kembali, atau berganti sumber (misalnya dari kabel ke nirkabel) — hanya mencakup sesi saat ini. Widget layar utama menampilkan angka terpisah \"Puncak Hari Ini\" yang mencakup sepanjang hari.</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">Riwayat pengisian, statistik, dan perekaman latar belakang. Sekali beli, milik Anda selamanya.</string>
     <string name="pro_buy">Buka</string>
@@ -55,6 +58,7 @@
     <string name="widget_name_m">Sedang</string>
     <string name="widget_name_l">Besar</string>
     <string name="widget_desc">Daya baterai langsung sekilas</string>
+    <string name="widget_today_peaks">Puncak Hari Ini</string>
     <string name="export_csv">Ekspor CSV</string>
     <string name="settings_title">Setelan</string>
     <string name="version_label">Versi %1$s</string>
