@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.10] - 2026-07-20
+
+- Fixed: small/medium/large widget definitions were missing (or
+  inconsistent about) `minResizeWidth`/`minResizeHeight`, so resize
+  floors weren't declared the same way across all three sizes
+- Fixed: the small widget's preview image briefly carried a
+  placeholder temperature (99.9°C) left over from a caching test —
+  back to a realistic mock value
+
 ## [1.3.9] - 2026-07-20
 
 - Fixed: the small widget's picker-preview image (1.3.8) still used a

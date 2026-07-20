@@ -87,6 +87,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 - **1.3.9**: the small widget's picker-preview image now matches the
   medium/large ones — all three generated the same way instead of
   looking inconsistent next to each other
+- **1.3.10**: widget resize floors (`minResizeWidth`/`Height`) declared
+  consistently across all three sizes; small widget's preview mock
+  temperature fixed (was briefly 99.9°C — nobody's phone should get
+  that hot)
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 
