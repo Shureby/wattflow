@@ -77,6 +77,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 - **1.3.6**: a session cut short by the process being killed
   mid-recording is now recovered from a checkpoint and shown in
   History as interrupted, instead of silently vanishing
+- **1.3.7**: a recovered checkpoint whose battery level moved the wrong
+  way for its direction is discarded instead of recorded; any such
+  sessions already recorded are purged on update
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 

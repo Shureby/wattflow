@@ -109,7 +109,7 @@ interface ChargeSessionDao {
         ChargeSession::class, SessionSample::class, FullChargeEvent::class,
         BenchmarkResult::class,
     ],
-    version = 4,
+    version = 5,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -161,13 +161,30 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Drops sessions where the level moved the wrong way for their
+        // direction — a stale/corrupted checkpoint recovery artifact, not a
+        // real session (see SessionRecorder.recoverCheckpoint).
+        private val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                val badSessions = "(SELECT id FROM charge_sessions WHERE " +
+                    "(direction = 0 AND endLevel < startLevel - 1) OR " +
+                    "(direction = 1 AND endLevel > startLevel + 1))"
+                db.execSQL("DELETE FROM session_samples WHERE sessionId IN $badSessions")
+                db.execSQL(
+                    "DELETE FROM charge_sessions WHERE " +
+                        "(direction = 0 AND endLevel < startLevel - 1) OR " +
+                        "(direction = 1 AND endLevel > startLevel + 1)"
+                )
+            }
+        }
+
         @Volatile
         private var instance: AppDatabase? = null
 
         fun get(context: Context): AppDatabase = instance ?: synchronized(this) {
             instance ?: Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java, "wattflow.db"
-            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
                 .build().also { instance = it }
         }
     }

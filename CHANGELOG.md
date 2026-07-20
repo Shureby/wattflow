@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.7] - 2026-07-20
+
+- Fixed: a stale checkpoint recovered after a process kill (see 1.3.6)
+  could replay as a session whose battery level moved the wrong way for
+  its direction (e.g. a "charging" session that shows a level drop) —
+  such checkpoints are now discarded instead of recorded, and any
+  already-recorded sessions like this are purged on update
+
 ## [1.3.6] - 2026-07-20
 
 - A charge/discharge session interrupted by the process being killed

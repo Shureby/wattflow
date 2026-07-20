@@ -142,19 +142,29 @@ object SessionRecorder {
         if (startTs < 0) return
         val lastTs = prefs.getLong("lastTs", startTs)
         val sampleCount = prefs.getInt("sampleCount", 0)
-        if (lastTs - startTs >= MIN_SESSION_MS && sampleCount > 0) {
-            val startLevel = prefs.getInt("startLevel", 0)
+        val startLevel = prefs.getInt("startLevel", 0)
+        val endLevel = prefs.getInt("lastLevel", startLevel)
+        val direction = prefs.getInt("direction", DIRECTION_CHARGE)
+        // A stale/corrupted checkpoint (e.g. battery level jumping while the
+        // process was dead) can replay as a session whose level moves the
+        // wrong way for its direction — discard rather than record garbage.
+        val plausible = if (direction == DIRECTION_CHARGE) {
+            endLevel >= startLevel - 1
+        } else {
+            endLevel <= startLevel + 1
+        }
+        if (lastTs - startTs >= MIN_SESSION_MS && sampleCount > 0 && plausible) {
             val session = ChargeSession(
                 startTs = startTs,
                 endTs = lastTs,
                 startLevel = startLevel,
-                endLevel = prefs.getInt("lastLevel", startLevel),
+                endLevel = endLevel,
                 plugged = prefs.getInt("plugged", 0),
                 avgWatts = (prefs.getString("wattSum", "0")?.toDoubleOrNull() ?: 0.0) /
                     sampleCount,
                 peakWatts = prefs.getString("peakW", "0")?.toDoubleOrNull() ?: 0.0,
                 energyWh = prefs.getString("energyWh", "0")?.toDoubleOrNull() ?: 0.0,
-                direction = prefs.getInt("direction", DIRECTION_CHARGE),
+                direction = direction,
                 interrupted = true,
             )
             val dao = AppDatabase.get(context).sessionDao()
