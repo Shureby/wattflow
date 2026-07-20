@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.9] - 2026-07-20
+
+- Fixed: the small widget's picker-preview image (1.3.8) still used a
+  hand-mocked-up-elsewhere asset while the medium/large ones were
+  regenerated to match — now all three are produced the same way, so
+  they no longer look inconsistent side by side
+
 ## [1.3.8] - 2026-07-20
 
 - Fixed: a merged History session spanning a source change (e.g. wired

@@ -84,6 +84,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
   "Mixed" instead of guessing; Peak In/Out gets an ⓘ on the Live tab
   and a "Today's Peaks" header on the widget to clarify it's two
   different scopes (current streak vs. today), not a bug
+- **1.3.9**: the small widget's picker-preview image now matches the
+  medium/large ones — all three generated the same way instead of
+  looking inconsistent next to each other
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
 
