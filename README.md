@@ -58,6 +58,12 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.5
 
+- **1.5.3**: Battery health trend rebuilt — baseline is the running max
+  of non-anomalous readings, not the first-ever one; outlier detection
+  is now rate-of-change based (MAD) so a long calendar gap isn't judged
+  as harshly as a short one; a big same-direction jump asks "did you
+  replace your battery?" instead of guessing; excluded readings stay
+  visible (struck through, explained), never deleted
 - **1.5.2**: Energy ledger rebuilt — daily in/out shown as a signed % of
   a full charge instead of raw Wh, with a `→` that flips sides for in
   vs out; a day over 100% gets a tappable ⓘ breaking down the sessions

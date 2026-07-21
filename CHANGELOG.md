@@ -1,5 +1,31 @@
 # Changelog
 
+## [1.5.3] - 2026-07-22
+
+- Battery health trend redesigned: baseline is now the running max of
+  non-anomalous readings (not the first-ever reading), so a later
+  reading that's higher than an earlier one no longer looks like the
+  battery is impossibly healing itself
+- Outlier detection uses a rate-of-change-from-baseline modified
+  z-score (MAD-based) over the last 7 readings, so a long calendar gap
+  isn't judged by the same tolerance as a short one — a real drop over
+  many months reads as normal, not a false anomaly
+- A same-direction jump of 5%+ versus the immediately preceding reading,
+  while that reading is still the most recent one, prompts an inline
+  "did you replace your battery?" question instead of guessing; once
+  newer data exists the point is no longer asked about and defaults to
+  excluded
+- Excluded readings stay visible (struck through, with an explanation),
+  never deleted — only skipped from the baseline/trend math
+- Today's headline falls back to the last trusted reading if today's
+  own value is itself flagged, instead of showing an alarming swing
+  caused by one noisy reading
+- Fewer than 7 readings so far shows every point as-is with detection
+  off, explained via a tappable ⓘ instead of repeating the same note on
+  every row
+- New shared semantic tag colors (success/info/warning) for readings
+  that don't fit the existing primary/error roles
+
 ## [1.5.2] - 2026-07-21
 
 - Energy ledger redesigned: daily in/out shown as a signed percentage of
