@@ -24,6 +24,12 @@
 
     <string name="tab_live">Live</string>
     <string name="tab_history">Verlauf</string>
+    <string name="tab_reports">Berichte</string>
+    <string name="reports_title">Berichte</string>
+    <string name="report_ledger_desc">Letzte 14 Tage</string>
+    <string name="report_sleep_desc">Letzte 7 Nächte</string>
+    <string name="report_health_desc">Baseline, Trend, Anomalien</string>
+    <string name="report_benchmark_desc">Gespeicherte Ergebnisse</string>
     <string name="monitor_toggle">Hintergrundaufzeichnung</string>
     <string name="notif_channel_name">Lademonitor</string>
     <string name="notif_waiting">Warte auf Ladegerät…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">Ergebnis speichern</string>
     <string name="bench_save_pro">Mit Pro Ladegeräte speichern und vergleichen</string>
     <string name="bench_saved_title">Gespeicherte Ergebnisse</string>
+    <string name="bench_results_empty">Noch keine gespeicherten Ergebnisse. Führe im Tab Live einen Benchmark aus und speichere ihn, um Ladegeräte hier zu vergleichen.</string>
     <string name="bench_unnamed">Unbenanntes Ladegerät</string>
     <string name="ledger_chip">Konto</string>
     <string name="ledger_title">Energiekonto — letzte 14 Tage</string>

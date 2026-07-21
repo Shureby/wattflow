@@ -24,6 +24,12 @@
 
     <string name="tab_live">En vivo</string>
     <string name="tab_history">Historial</string>
+    <string name="tab_reports">Informes</string>
+    <string name="reports_title">Informes</string>
+    <string name="report_ledger_desc">Últimos 14 días</string>
+    <string name="report_sleep_desc">Últimas 7 noches</string>
+    <string name="report_health_desc">Referencia, tendencia, anomalías</string>
+    <string name="report_benchmark_desc">Resultados guardados</string>
     <string name="monitor_toggle">Registro en segundo plano</string>
     <string name="notif_channel_name">Monitor de carga</string>
     <string name="notif_waiting">Esperando cargador…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">Guardar resultado</string>
     <string name="bench_save_pro">Guarda y compara cargadores con Pro</string>
     <string name="bench_saved_title">Resultados guardados</string>
+    <string name="bench_results_empty">Aún no hay resultados guardados. Ejecuta un test desde la pestaña En vivo y guárdalo para comparar cargadores aquí.</string>
     <string name="bench_unnamed">Cargador sin nombre</string>
     <string name="ledger_chip">Registro</string>
     <string name="ledger_title">Registro de energía — últimos 14 días</string>

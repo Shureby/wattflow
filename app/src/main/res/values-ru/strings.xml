@@ -24,6 +24,12 @@
 
     <string name="tab_live">Сейчас</string>
     <string name="tab_history">История</string>
+    <string name="tab_reports">Отчёты</string>
+    <string name="reports_title">Отчёты</string>
+    <string name="report_ledger_desc">Последние 14 дней</string>
+    <string name="report_sleep_desc">Последние 7 ночей</string>
+    <string name="report_health_desc">Базовый уровень, тренд, аномалии</string>
+    <string name="report_benchmark_desc">Сохранённые результаты</string>
     <string name="monitor_toggle">Фоновая запись</string>
     <string name="notif_channel_name">Монитор зарядки</string>
     <string name="notif_waiting">Ожидание зарядки…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">Сохранить результат</string>
     <string name="bench_save_pro">Сохраняйте и сравнивайте зарядки с Pro</string>
     <string name="bench_saved_title">Сохранённые результаты</string>
+    <string name="bench_results_empty">Пока нет сохранённых результатов. Запустите тест на вкладке «Сейчас» и сохраните его, чтобы сравнивать зарядные устройства здесь.</string>
     <string name="bench_unnamed">Зарядка без названия</string>
     <string name="ledger_chip">Журнал</string>
     <string name="ledger_title">Журнал энергии — последние 14 дней</string>

@@ -24,6 +24,12 @@
 
     <string name="tab_live">En direct</string>
     <string name="tab_history">Historique</string>
+    <string name="tab_reports">Rapports</string>
+    <string name="reports_title">Rapports</string>
+    <string name="report_ledger_desc">14 derniers jours</string>
+    <string name="report_sleep_desc">7 dernières nuits</string>
+    <string name="report_health_desc">Référence, tendance, anomalies</string>
+    <string name="report_benchmark_desc">Résultats enregistrés</string>
     <string name="monitor_toggle">Enregistrement en arrière-plan</string>
     <string name="notif_channel_name">Moniteur de charge</string>
     <string name="notif_waiting">En attente du chargeur…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">Enregistrer le résultat</string>
     <string name="bench_save_pro">Enregistrez et comparez les chargeurs avec Pro</string>
     <string name="bench_saved_title">Résultats enregistrés</string>
+    <string name="bench_results_empty">Aucun résultat enregistré pour l\'instant. Lancez un test depuis l\'onglet En direct et enregistrez-le pour comparer des chargeurs ici.</string>
     <string name="bench_unnamed">Chargeur sans nom</string>
     <string name="ledger_chip">Registre</string>
     <string name="ledger_title">Registre d’énergie — 14 derniers jours</string>

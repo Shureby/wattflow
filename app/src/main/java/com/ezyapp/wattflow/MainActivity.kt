@@ -177,6 +177,17 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                     onClick = { tab = 2 },
                     icon = {
                         Icon(
+                            painterResource(R.drawable.ic_tab_reports), null,
+                            modifier = Modifier.size(24.dp),
+                        )
+                    },
+                    label = { Text(stringResource(R.string.tab_reports)) },
+                )
+                NavigationBarItem(
+                    selected = tab == 3,
+                    onClick = { tab = 3 },
+                    icon = {
+                        Icon(
                             imageVector = Icons.Filled.Settings,
                             contentDescription = null,
                             modifier = Modifier.size(24.dp),
@@ -218,6 +229,7 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                     }
                 }
                 1 -> HistoryTab(viewModel)
+                2 -> ReportsTab(onLockedFeature = { showPaywall = true })
                 else -> SettingsScreen(onLockedFeature = { showPaywall = true })
             }
         }
@@ -1617,9 +1629,6 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
     val allSessions by viewModel.sessions.collectAsState()
     var direction by rememberSaveable { mutableIntStateOf(DIRECTION_CHARGE) }
     var detailSession by remember { mutableStateOf<DisplaySession?>(null) }
-    var showLedger by remember { mutableStateOf(false) }
-    var showSleep by remember { mutableStateOf(false) }
-    var showHealth by remember { mutableStateOf(false) }
     val rawMode = RawModePrefs.enabled(LocalContext.current)
     val sessions = mergeSessions(
         allSessions.filter { it.direction == direction },
@@ -1695,24 +1704,6 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
                         )
                     },
                 )
-                AssistChip(
-                    onClick = {
-                        if (isPro) showLedger = true else showPaywall = true
-                    },
-                    label = { Text(stringResource(R.string.ledger_chip)) },
-                )
-                AssistChip(
-                    onClick = {
-                        if (isPro) showSleep = true else showPaywall = true
-                    },
-                    label = { Text(stringResource(R.string.sleep_chip)) },
-                )
-                AssistChip(
-                    onClick = {
-                        if (isPro) showHealth = true else showPaywall = true
-                    },
-                    label = { Text(stringResource(R.string.health_chip)) },
-                )
             }
             Spacer(Modifier.height(12.dp))
         }
@@ -1782,24 +1773,98 @@ private fun HistoryTab(viewModel: ChargingViewModel) {
         }
     }
 
-    if (showLedger) {
-        EnergyLedgerDialog(onDismiss = { showLedger = false })
-    }
-
-    if (showSleep) {
-        SleepDrainDialog(onDismiss = { showSleep = false })
-    }
-
-    if (showHealth) {
-        HealthTrendDialog(onDismiss = { showHealth = false })
-    }
-
     detailSession?.let { session ->
         SessionDetailDialog(
             session = session,
             viewModel = viewModel,
             onDismiss = { detailSession = null },
         )
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Reports tab
+// ---------------------------------------------------------------------------
+
+@Composable
+private fun ReportsTab(onLockedFeature: () -> Unit) {
+    val isPro by Pro.isPro.collectAsState()
+    var showLedger by remember { mutableStateOf(false) }
+    var showSleep by remember { mutableStateOf(false) }
+    var showHealth by remember { mutableStateOf(false) }
+    var showBenchResults by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.reports_title),
+            style = MaterialTheme.typography.headlineSmall,
+        )
+        Spacer(Modifier.height(12.dp))
+        ReportRow(
+            title = stringResource(R.string.ledger_chip),
+            desc = stringResource(R.string.report_ledger_desc),
+            locked = !isPro,
+            onClick = { if (isPro) showLedger = true else onLockedFeature() },
+        )
+        ReportRow(
+            title = stringResource(R.string.sleep_chip),
+            desc = stringResource(R.string.report_sleep_desc),
+            locked = !isPro,
+            onClick = { if (isPro) showSleep = true else onLockedFeature() },
+        )
+        ReportRow(
+            title = stringResource(R.string.health_chip),
+            desc = stringResource(R.string.report_health_desc),
+            locked = !isPro,
+            onClick = { if (isPro) showHealth = true else onLockedFeature() },
+        )
+        ReportRow(
+            title = stringResource(R.string.bench_title),
+            desc = stringResource(R.string.report_benchmark_desc),
+            locked = !isPro,
+            onClick = { if (isPro) showBenchResults = true else onLockedFeature() },
+        )
+    }
+
+    if (showLedger) EnergyLedgerDialog(onDismiss = { showLedger = false })
+    if (showSleep) SleepDrainDialog(onDismiss = { showSleep = false })
+    if (showHealth) HealthTrendDialog(onDismiss = { showHealth = false })
+    if (showBenchResults) BenchmarkResultsDialog(onDismiss = { showBenchResults = false })
+}
+
+@Composable
+private fun ReportRow(title: String, desc: String, locked: Boolean, onClick: () -> Unit) {
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable(onClick = onClick)
+                .padding(vertical = 14.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(title, style = MaterialTheme.typography.titleMedium)
+                Text(
+                    desc,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            if (locked) {
+                Text(
+                    "🔒",
+                    modifier = Modifier.padding(start = 8.dp),
+                    style = MaterialTheme.typography.titleMedium,
+                )
+            }
+        }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
     }
 }
 

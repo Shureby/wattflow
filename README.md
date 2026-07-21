@@ -56,6 +56,15 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.6
+
+- **1.6.0**: Added a Reports tab (Live / History / Reports / Settings).
+  Energy Ledger, Sleep Drain, and Battery Health move there from
+  History's chip row, alongside a new view-only list of saved Charger
+  Benchmark results. History goes back to one job — filtering and
+  exporting sessions. Running a new benchmark still lives on Live.
+  Navigation-only change; no report's calculations changed
+
 ## What's New — v1.5
 
 - **1.5.3**: Battery health trend rebuilt — baseline is the running max

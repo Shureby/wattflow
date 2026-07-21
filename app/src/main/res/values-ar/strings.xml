@@ -24,6 +24,12 @@
 
     <string name="tab_live">مباشر</string>
     <string name="tab_history">السجل</string>
+    <string name="tab_reports">التقارير</string>
+    <string name="reports_title">التقارير</string>
+    <string name="report_ledger_desc">آخر 14 يومًا</string>
+    <string name="report_sleep_desc">آخر 7 ليالٍ</string>
+    <string name="report_health_desc">الأساس، الاتجاه، الحالات الشاذة</string>
+    <string name="report_benchmark_desc">النتائج المحفوظة</string>
     <string name="monitor_toggle">التسجيل في الخلفية</string>
     <string name="notif_channel_name">مراقب الشحن</string>
     <string name="notif_waiting">في انتظار الشاحن…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">حفظ النتيجة</string>
     <string name="bench_save_pro">احفظ وقارن الشواحن مع Pro</string>
     <string name="bench_saved_title">النتائج المحفوظة</string>
+    <string name="bench_results_empty">لا توجد نتائج محفوظة بعد. شغّل اختبارًا من تبويب مباشر واحفظه لمقارنة الشواحن هنا.</string>
     <string name="bench_unnamed">شاحن بلا اسم</string>
     <string name="ledger_chip">السجل</string>
     <string name="ledger_title">سجل الطاقة — آخر 14 يومًا</string>

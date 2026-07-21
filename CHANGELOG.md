@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.6.0] - 2026-07-22
+
+- Added a 4th bottom-nav tab, Reports, alongside Live/History/Settings.
+  Energy Ledger, Sleep Drain, and Battery Health — previously three
+  chips mixed in with History's filter/export controls — now live there
+  as a simple list, each unlocking the same dialog as before
+- History's top row now only has Charging/Discharging + CSV export —
+  back to one job (browsing and exporting the current filter) instead
+  of mixing in three unrelated report entry points
+- Charger benchmark's saved results move to Reports too, as a
+  view/delete-only list; running a new benchmark stays on the Live tab
+  where it's tied to the active charge
+- Locked (non-Pro) report rows show a 🔒 and open the existing paywall
+  on tap, same behavior as before, just relocated
+- No changes to any report's underlying calculations — this release is
+  navigation/IA only
+
 ## [1.5.3] - 2026-07-22
 
 - Battery health trend redesigned: baseline is now the running max of

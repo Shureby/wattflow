@@ -24,6 +24,12 @@
 
     <string name="tab_live">即時</string>
     <string name="tab_history">歷史</string>
+    <string name="tab_reports">報表</string>
+    <string name="reports_title">報表</string>
+    <string name="report_ledger_desc">最近14天</string>
+    <string name="report_sleep_desc">最近7晚</string>
+    <string name="report_health_desc">基準、趨勢、異常</string>
+    <string name="report_benchmark_desc">已儲存結果</string>
     <string name="monitor_toggle">背景記錄</string>
     <string name="notif_channel_name">充電監控</string>
     <string name="notif_waiting">等待充電…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">儲存結果</string>
     <string name="bench_save_pro">解鎖 Pro 以儲存並比較充電器</string>
     <string name="bench_saved_title">已儲存結果</string>
+    <string name="bench_results_empty">還沒有儲存的結果。在「即時」標籤頁執行一次測評並儲存，就能在這裡對比充電器了。</string>
     <string name="bench_unnamed">未命名充電器</string>
     <string name="ledger_chip">帳本</string>
     <string name="ledger_title">能量帳本——最近 14 天</string>

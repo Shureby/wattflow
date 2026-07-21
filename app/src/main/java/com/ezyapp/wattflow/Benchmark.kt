@@ -273,38 +273,7 @@ fun BenchmarkDialog(
                         text = stringResource(R.string.bench_saved_title),
                         style = MaterialTheme.typography.titleSmall,
                     )
-                    saved.forEachIndexed { i, b ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(vertical = 4.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Column(Modifier.weight(1f)) {
-                                Text(
-                                    text = (if (i == 0) "🏆 " else "") +
-                                        b.label.ifBlank {
-                                            stringResource(R.string.bench_unnamed)
-                                        },
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    fontWeight = if (i == 0) FontWeight.Bold else null,
-                                )
-                                Text(
-                                    text = String.format(
-                                        java.util.Locale.US,
-                                        "%.1f W avg • %.1f W peak • %.0f%%",
-                                        b.avgWatts, b.peakWatts, b.stabilityPct,
-                                    ),
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
-                            TextButton(
-                                onClick = { scope.launch { dao.deleteBenchmark(b.id) } }
-                            ) { Text("✕") }
-                        }
-                    }
+                    BenchmarkSavedList(saved) { id -> scope.launch { dao.deleteBenchmark(id) } }
                 }
             }
         },
@@ -338,6 +307,71 @@ fun BenchmarkDialog(
                 TextButton(onClick = onDismiss) {
                     Text(stringResource(android.R.string.cancel))
                 }
+            }
+        },
+    )
+}
+
+@Composable
+private fun BenchmarkSavedList(saved: List<BenchmarkResult>, onDelete: (Long) -> Unit) {
+    saved.forEachIndexed { i, b ->
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    text = (if (i == 0) "🏆 " else "") +
+                        b.label.ifBlank { stringResource(R.string.bench_unnamed) },
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = if (i == 0) FontWeight.Bold else null,
+                )
+                Text(
+                    text = String.format(
+                        java.util.Locale.US,
+                        "%.1f W avg • %.1f W peak • %.0f%%",
+                        b.avgWatts, b.peakWatts, b.stabilityPct,
+                    ),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            TextButton(onClick = { onDelete(b.id) }) { Text("✕") }
+        }
+    }
+}
+
+/** View-only saved-results list for the Reports tab -- running a new
+ * benchmark still lives on the Live tab, tied to the active charge. */
+@Composable
+fun BenchmarkResultsDialog(onDismiss: () -> Unit) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val dao = remember { AppDatabase.get(context).sessionDao() }
+    val saved by dao.benchmarks().collectAsState(initial = emptyList())
+
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.bench_saved_title)) },
+        text = {
+            Column(Modifier.verticalScroll(rememberScrollState())) {
+                if (saved.isEmpty()) {
+                    Text(
+                        text = stringResource(R.string.bench_results_empty),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                } else {
+                    BenchmarkSavedList(saved) { id -> scope.launch { dao.deleteBenchmark(id) } }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(android.R.string.ok))
             }
         },
     )

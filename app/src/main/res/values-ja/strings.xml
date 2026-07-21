@@ -24,6 +24,12 @@
 
     <string name="tab_live">ライブ</string>
     <string name="tab_history">履歴</string>
+    <string name="tab_reports">レポート</string>
+    <string name="reports_title">レポート</string>
+    <string name="report_ledger_desc">過去14日</string>
+    <string name="report_sleep_desc">過去7晩</string>
+    <string name="report_health_desc">基準、トレンド、異常</string>
+    <string name="report_benchmark_desc">保存済みの結果</string>
     <string name="monitor_toggle">バックグラウンド記録</string>
     <string name="notif_channel_name">充電モニター</string>
     <string name="notif_waiting">充電器を待機中…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">結果を保存</string>
     <string name="bench_save_pro">Pro で結果を保存して比較</string>
     <string name="bench_saved_title">保存済みの結果</string>
+    <string name="bench_results_empty">保存された結果はまだありません。ライブタブでベンチマークを実行して保存すると、ここで充電器を比較できます。</string>
     <string name="bench_unnamed">名称未設定の充電器</string>
     <string name="ledger_chip">台帳</string>
     <string name="ledger_title">エネルギー台帳 — 過去14日</string>

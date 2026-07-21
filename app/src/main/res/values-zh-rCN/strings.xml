@@ -24,6 +24,12 @@
 
     <string name="tab_live">实时</string>
     <string name="tab_history">历史</string>
+    <string name="tab_reports">报表</string>
+    <string name="reports_title">报表</string>
+    <string name="report_ledger_desc">最近14天</string>
+    <string name="report_sleep_desc">最近7晚</string>
+    <string name="report_health_desc">基准、趋势、异常</string>
+    <string name="report_benchmark_desc">已保存结果</string>
     <string name="monitor_toggle">后台记录</string>
     <string name="notif_channel_name">充电监控</string>
     <string name="notif_waiting">等待充电…</string>
@@ -104,6 +110,7 @@
     <string name="bench_save">保存结果</string>
     <string name="bench_save_pro">解锁 Pro 以保存并对比充电器</string>
     <string name="bench_saved_title">已保存结果</string>
+    <string name="bench_results_empty">还没有保存的结果。在"实时"标签页运行一次测评并保存，就能在这里对比充电器了。</string>
     <string name="bench_unnamed">未命名充电器</string>
     <string name="ledger_chip">账本</string>
     <string name="ledger_title">能量账本——最近 14 天</string>
