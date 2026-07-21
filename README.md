@@ -56,6 +56,16 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.5
+
+- **1.5.1**: Sleep drain report rebuilt — drain shown as a signed % of a
+  full charge instead of raw Wh; nights held on the charger get their
+  own card showing when it hit 100% and how long it stayed there, with
+  a battery-health tip past an hour; part-discharge/part-charge nights
+  show the charging portion as a time-stamped aside; coverage reads as
+  plain time with a ⓘ. Floating overlay now uses `+`/`−` instead of
+  `▲`/`▼`, matching the widget
+
 ## What's New — v1.4
 
 - **1.4.0**: targets Android 16 (API 36) — no visible changes, internal

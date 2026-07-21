@@ -33,6 +33,12 @@ data class ChargeSession(
     // by the OS/OEM, or crashed) instead of ending normally — the tail past
     // the last checkpoint is lost, so totals are a floor, not exact.
     val interrupted: Boolean = false,
+    // First sample where level read 100 during this (charge-direction)
+    // session, if any -- lets a "held at full" duration be computed
+    // exactly instead of guessed. Null for discharge sessions, sessions
+    // that never reached 100%, and anything recorded before this field
+    // existed (see estimateReachedFullTs's trickle-detection fallback).
+    val reachedFullTs: Long? = null,
 )
 
 /** Downsampled watts curve for one session (~1 point / 10 s). */
@@ -109,7 +115,7 @@ interface ChargeSessionDao {
         ChargeSession::class, SessionSample::class, FullChargeEvent::class,
         BenchmarkResult::class,
     ],
-    version = 5,
+    version = 6,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -178,13 +184,27 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Exact "reached 100%" timestamp for the Sleep Drain held-at-full
+        // card (v1.5.1) -- null for every pre-existing session, which is
+        // fine: those fall back to trickle-detection off the stored watts
+        // curve (see estimateReachedFullTs).
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE charge_sessions ADD COLUMN reachedFullTs INTEGER"
+                )
+            }
+        }
+
         @Volatile
         private var instance: AppDatabase? = null
 
         fun get(context: Context): AppDatabase = instance ?: synchronized(this) {
             instance ?: Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java, "wattflow.db"
-            ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+            ).addMigrations(
+                MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6
+            )
                 .build().also { instance = it }
         }
     }

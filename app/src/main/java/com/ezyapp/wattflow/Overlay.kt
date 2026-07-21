@@ -59,7 +59,7 @@ class OverlayController(private val context: Context) {
             val v = view ?: attach() ?: return@post
             v.text = String.format(
                 Locale.US,
-                if (sample.isCharging) "▲ %.1f W" else "▼ %.1f W",
+                if (sample.isCharging) "+%.1f W" else "−%.1f W",
                 abs(sample.watts),
             )
         }

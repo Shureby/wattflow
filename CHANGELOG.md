@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.5.1] - 2026-07-21
+
+- Sleep drain redesigned: nightly drain now shown as a percentage of a
+  full charge (once you've charged to 100% once) instead of raw Wh, with
+  a signed headline (`−20%`) and Wh/avg-W as subtext
+- Nights spent held on the charger get their own card, showing exactly
+  when 100% was reached and how long it stayed there — tracked live
+  going forward, or inferred from the stored charging curve for older
+  sessions (trickle-charge detection)
+- A battery-health tip appears when a night was spent at full for over
+  an hour, pointing at the existing Charge alert setting
+- Nights that were part discharge, part charging (unplugged/replugged
+  overnight) show the discharge story as normal, with a small aside
+  noting the charging portion's time range
+- Coverage line reads as plain time ("Tracked 6h 40m of 8h") with a ⓘ
+  explaining why a night might not be fully covered, instead of a bare
+  percentage
+- Fixed: the floating watts overlay showed `▲`/`▼` for charging/
+  discharging with no explanation — now uses `+`/`−`, matching the small
+  widget's existing convention
+
 ## [1.4.0] - 2026-07-21
 
 - Targets Android 16 (API 36): compileSdk/targetSdk 35 → 36, AGP 8.6.1 →

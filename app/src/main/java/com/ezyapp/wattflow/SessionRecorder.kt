@@ -39,6 +39,7 @@ object SessionRecorder {
         var sampleCount = 0
         var lastCurveTs = 0L
         var lastCheckpointTs = 0L
+        var reachedFullTs = 0L  // first sample where level read 100, 0 = not yet
         var corrected = false   // any sample had the dual-cell factor applied
         val curve = ArrayList<Pair<Long, Double>>()   // (ts, |watts|)
     }
@@ -98,6 +99,9 @@ object SessionRecorder {
         }
         a.lastTs = now
         a.lastLevel = sample.levelPercent
+        if (a.direction == DIRECTION_CHARGE && sample.levelPercent >= 100 && a.reachedFullTs == 0L) {
+            a.reachedFullTs = now
+        }
         if (sample.chargeCounterUah > 0) a.lastChargeCounter = sample.chargeCounterUah
         a.wattSum += magnitude
         a.sampleCount++
@@ -127,6 +131,7 @@ object SessionRecorder {
             .putString("energyWh", a.energyWh.toString())
             .putString("wattSum", a.wattSum.toString())
             .putInt("sampleCount", a.sampleCount)
+            .putLong("reachedFullTs", a.reachedFullTs)
             .apply()
     }
 
@@ -166,6 +171,7 @@ object SessionRecorder {
                 energyWh = prefs.getString("energyWh", "0")?.toDoubleOrNull() ?: 0.0,
                 direction = direction,
                 interrupted = true,
+                reachedFullTs = prefs.getLong("reachedFullTs", 0L).takeIf { it > 0 },
             )
             val dao = AppDatabase.get(context).sessionDao()
             ioScope.launch { dao.insert(session) }
@@ -196,6 +202,7 @@ object SessionRecorder {
             peakWatts = a.peakW,
             energyWh = a.energyWh,
             direction = a.direction,
+            reachedFullTs = a.reachedFullTs.takeIf { it > 0 },
         )
         val curve = a.curve.toList()
         val fullCharge = a.direction == DIRECTION_CHARGE && a.lastLevel >= 100
