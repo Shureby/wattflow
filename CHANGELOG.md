@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0] - 2026-07-21
+
+- Targets Android 16 (API 36): compileSdk/targetSdk 35 → 36, AGP 8.6.1 →
+  8.13.0, Gradle 8.9 → 8.13; Kotlin/KSP/Compose left untouched (not
+  required for the bump). No user-visible changes — internal testing
+  only this cycle, not pushed to the production track
+
 ## [1.3.10] - 2026-07-20
 
 - Fixed: small/medium/large widget definitions were missing (or

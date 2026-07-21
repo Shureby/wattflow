@@ -16,14 +16,14 @@ val keystoreProps = Properties().apply {
 
 android {
     namespace = "com.ezyapp.wattflow"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.ezyapp.wattflow"
         minSdk = 26
-        targetSdk = 35
-        versionCode = 23
-        versionName = "1.3.10"
+        targetSdk = 36
+        versionCode = 24
+        versionName = "1.4.0"
     }
 
     flavorDimensions += "dist"

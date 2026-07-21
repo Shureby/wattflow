@@ -56,6 +56,11 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.4
+
+- **1.4.0**: targets Android 16 (API 36) — no visible changes, internal
+  testing only this cycle
+
 ## What's New — v1.3
 
 - **Charger benchmark**: 60-second test grades your charger + cable
@@ -93,6 +98,7 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
   that hot)
 
 Full history in [CHANGELOG.md](CHANGELOG.md).
+
 
 ## FAQ
 
