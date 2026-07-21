@@ -325,23 +325,30 @@ private fun SleepNightRow(
             }
         }
 
+        val fullyTracked = n.trackedMs >= n.windowMs * 0.99
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
-                text = stringResource(
-                    R.string.sleep_coverage_line,
-                    formatDuration(n.trackedMs),
-                    formatDuration(n.windowMs),
-                ),
+                text = if (fullyTracked) {
+                    stringResource(R.string.sleep_coverage_full)
+                } else {
+                    stringResource(
+                        R.string.sleep_coverage_line,
+                        formatDuration(n.trackedMs),
+                        formatDuration(n.windowMs),
+                    )
+                },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            IconButton(onClick = onCoverageInfoClick, modifier = Modifier.size(22.dp)) {
-                Icon(
-                    imageVector = Icons.Filled.Info,
-                    contentDescription = stringResource(R.string.sleep_coverage_info_title),
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(14.dp),
-                )
+            if (!fullyTracked) {
+                IconButton(onClick = onCoverageInfoClick, modifier = Modifier.size(22.dp)) {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = stringResource(R.string.sleep_coverage_info_title),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(14.dp),
+                    )
+                }
             }
         }
     }

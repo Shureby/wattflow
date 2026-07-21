@@ -125,6 +125,7 @@
     <string name="sleep_title">استنزاف النوم — آخر 7 ليالٍ</string>
     <string name="sleep_intro">استهلاك البطارية، أو مدة بقاء الهاتف على الشاحن، بين 23:00 و07:00. تُظهر التغطية كم من كل ليلة تم تتبعه فعليًا.</string>
     <string name="sleep_coverage_line">تم تتبع %1$s من %2$s</string>
+    <string name="sleep_coverage_full">تم تتبع الليلة بأكملها</string>
     <string name="sleep_coverage_info_title">التغطية</string>
     <string name="sleep_coverage_info_body">يتتبع WattFlow الوقت فقط أثناء تشغيل التسجيل في الخلفية. تظهر الفجوات إذا كان متوقفًا، أو أعيد تشغيل الهاتف، أو توقف أخذ العينات لسبب آخر.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

@@ -125,6 +125,7 @@
     <string name="sleep_title">Ночной расход — последние 7 ночей</string>
     <string name="sleep_intro">Расход батареи или время на зарядке с 23:00 до 07:00. Покрытие показывает, какая часть ночи реально записана.</string>
     <string name="sleep_coverage_line">Записано %1$s из %2$s</string>
+    <string name="sleep_coverage_full">Записана вся ночь</string>
     <string name="sleep_coverage_info_title">Покрытие</string>
     <string name="sleep_coverage_info_body">WattFlow записывает время только пока работает фоновая запись. Пробелы появляются, если она была выключена, телефон перезагружался, или запись выборки остановилась по другой причине.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

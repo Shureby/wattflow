@@ -125,6 +125,7 @@
     <string name="sleep_title">Décharge nocturne — 7 dernières nuits</string>
     <string name="sleep_intro">Consommation de batterie, ou temps passé branché, entre 23 h et 7 h. La couverture indique la part de chaque nuit réellement enregistrée.</string>
     <string name="sleep_coverage_line">%1$s enregistrées sur %2$s</string>
+    <string name="sleep_coverage_full">Toute la nuit a été enregistrée</string>
     <string name="sleep_coverage_info_title">Couverture</string>
     <string name="sleep_coverage_info_body">WattFlow n’enregistre que le temps où l’enregistrement en arrière-plan tourne. Des trous apparaissent s’il était désactivé, si le téléphone a redémarré, ou si l’échantillonnage s’est arrêté pour une autre raison.</string>
     <string name="sleep_pct_headline">−%1$d %%</string>

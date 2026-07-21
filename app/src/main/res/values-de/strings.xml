@@ -125,6 +125,7 @@
     <string name="sleep_title">Nachtverbrauch — letzte 7 Nächte</string>
     <string name="sleep_intro">Akkuverbrauch oder Zeit am Ladegerät zwischen 23:00 und 07:00. Die Abdeckung zeigt, wie viel jeder Nacht tatsächlich erfasst wurde.</string>
     <string name="sleep_coverage_line">%1$s von %2$s erfasst</string>
+    <string name="sleep_coverage_full">Die ganze Nacht erfasst</string>
     <string name="sleep_coverage_info_title">Abdeckung</string>
     <string name="sleep_coverage_info_body">WattFlow erfasst nur Zeit, in der die Hintergrundaufzeichnung läuft. Lücken entstehen, wenn sie aus war, das Telefon neu gestartet ist oder die Erfassung aus anderem Grund pausierte.</string>
     <string name="sleep_pct_headline">−%1$d %%</string>

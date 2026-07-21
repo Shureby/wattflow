@@ -125,6 +125,7 @@
     <string name="sleep_title">睡眠中の消費 — 過去7晩</string>
     <string name="sleep_intro">23:00〜07:00 のバッテリー消費、または充電器に接続していた時間を表示します。カバー率は各夜のうち実際に記録できた割合です。</string>
     <string name="sleep_coverage_line">%2$s 中 %1$s を記録</string>
+    <string name="sleep_coverage_full">一晩通して記録済み</string>
     <string name="sleep_coverage_info_title">カバー率</string>
     <string name="sleep_coverage_info_body">WattFlowはバックグラウンド記録が動作している間のみ記録します。オフだったとき、端末が再起動したとき、その他の理由でサンプリングが止まったときに空白ができます。</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

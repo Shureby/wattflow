@@ -125,6 +125,7 @@
     <string name="sleep_title">수면 소모 — 최근 7일 밤</string>
     <string name="sleep_intro">23:00~07:00 사이 배터리 소모량 또는 충전기에 연결된 시간을 표시합니다. 커버리지는 각 밤 중 실제 기록된 비율을 나타냅니다.</string>
     <string name="sleep_coverage_line">%2$s 중 %1$s 기록됨</string>
+    <string name="sleep_coverage_full">밤새 전부 기록됨</string>
     <string name="sleep_coverage_info_title">커버리지</string>
     <string name="sleep_coverage_info_body">WattFlow는 백그라운드 기록이 실행 중일 때만 시간을 기록합니다. 꺼져 있었거나, 휴대폰이 재시작됐거나, 다른 이유로 샘플링이 멈추면 공백이 생깁니다.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

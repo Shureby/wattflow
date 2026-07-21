@@ -125,6 +125,7 @@
     <string name="sleep_title">睡眠耗電——最近 7 晚</string>
     <string name="sleep_intro">23:00 至 07:00 的電池消耗，或整夜插著充電的時長。覆蓋率表示每晚實際有記錄的時長比例。</string>
     <string name="sleep_coverage_line">已記錄 %2$s 中的 %1$s</string>
+    <string name="sleep_coverage_full">整晚都有記錄</string>
     <string name="sleep_coverage_info_title">覆蓋率</string>
     <string name="sleep_coverage_info_body">WattFlow只在背景記錄運行時才追蹤時間。如果記錄關閉過、手機重啟過，或者取樣因為其他原因暫停過，就會出現空白。</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

@@ -58,6 +58,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.6
 
+- **1.6.1**: Sleep drain's coverage line now says "Tracked the whole
+  night" once a night is within 1% of the full window, instead of a
+  minute-precise count that could look nitpicky over a few seconds
 - **1.6.0**: Added a Reports tab (Live / History / Reports / Settings).
   Energy Ledger, Sleep Drain, and Battery Health move there from
   History's chip row, alongside a new view-only list of saved Charger

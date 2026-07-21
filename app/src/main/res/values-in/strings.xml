@@ -125,6 +125,7 @@
     <string name="sleep_title">Pengurasan tidur — 7 malam terakhir</string>
     <string name="sleep_intro">Konsumsi baterai, atau waktu tersambung ke charger, antara 23.00 dan 07.00. Cakupan menunjukkan berapa banyak tiap malam yang benar-benar terekam.</string>
     <string name="sleep_coverage_line">%1$s tercatat dari %2$s</string>
+    <string name="sleep_coverage_full">Sepanjang malam tercatat</string>
     <string name="sleep_coverage_info_title">Cakupan</string>
     <string name="sleep_coverage_info_body">WattFlow hanya melacak waktu saat perekaman latar belakang berjalan. Celah muncul jika sedang nonaktif, ponsel restart, atau pengambilan sampel berhenti karena alasan lain.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

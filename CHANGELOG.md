@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1] - 2026-07-22
+
+- Sleep drain: a night tracked to within 1% of the full 8-hour window
+  now reads "Tracked the whole night" instead of a minute-precise
+  count that could read as nitpicky over a gap of a few seconds
+  (`formatDuration` truncates to whole minutes, so even near-total
+  coverage could display as "7h 59m of 8h 0m"). The info icon is
+  hidden too, since there's nothing to explain once coverage is
+  effectively complete. Partial nights still show the precise count.
+
 ## [1.6.0] - 2026-07-22
 
 - Added a 4th bottom-nav tab, Reports, alongside Live/History/Settings.

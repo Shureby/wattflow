@@ -125,6 +125,7 @@
     <string name="sleep_title">Consumo noturno — últimas 7 noites</string>
     <string name="sleep_intro">Consumo de bateria, ou tempo conectado ao carregador, entre 23:00 e 07:00. A cobertura mostra quanto de cada noite foi realmente registrado.</string>
     <string name="sleep_coverage_line">%1$s registrado de %2$s</string>
+    <string name="sleep_coverage_full">A noite toda foi registrada</string>
     <string name="sleep_coverage_info_title">Cobertura</string>
     <string name="sleep_coverage_info_body">O WattFlow só registra o tempo em que a gravação em segundo plano está ativa. Lacunas aparecem se estava desativada, o telefone reiniciou, ou a amostragem parou por outro motivo.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

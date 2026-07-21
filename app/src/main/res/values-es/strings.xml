@@ -125,6 +125,7 @@
     <string name="sleep_title">Drenaje nocturno — últimas 7 noches</string>
     <string name="sleep_intro">Consumo de batería, o tiempo conectado al cargador, entre las 23:00 y las 07:00. La cobertura muestra cuánto de cada noche se registró realmente.</string>
     <string name="sleep_coverage_line">%1$s de %2$s registrado</string>
+    <string name="sleep_coverage_full">Se registró toda la noche</string>
     <string name="sleep_coverage_info_title">Cobertura</string>
     <string name="sleep_coverage_info_body">WattFlow solo registra el tiempo mientras la grabación en segundo plano está activa. Aparecen huecos si estaba desactivada, el teléfono se reinició, o el muestreo se pausó por otra razón.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>

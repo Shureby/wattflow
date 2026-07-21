@@ -130,6 +130,7 @@
     <string name="sleep_title">Sleep drain — last 7 nights</string>
     <string name="sleep_intro">Battery drain, or time held on the charger, between 23:00 and 07:00. Coverage shows how much of each night was actually tracked.</string>
     <string name="sleep_coverage_line">Tracked %1$s of %2$s</string>
+    <string name="sleep_coverage_full">Tracked the whole night</string>
     <string name="sleep_coverage_info_title">Coverage</string>
     <string name="sleep_coverage_info_body">WattFlow only tracks time while background recording is running. Gaps show up if it was off, the phone restarted, or sampling paused for some other reason.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
