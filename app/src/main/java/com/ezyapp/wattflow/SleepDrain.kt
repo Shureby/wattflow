@@ -303,7 +303,7 @@ private fun SleepNightRow(
                 )
                 if (capacityWh == null) {
                     Text(
-                        text = stringResource(R.string.sleep_wh_note),
+                        text = stringResource(R.string.no_baseline_note),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )

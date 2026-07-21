@@ -108,6 +108,12 @@
     <string name="ledger_chip">Журнал</string>
     <string name="ledger_title">Журнал энергии — последние 14 дней</string>
     <string name="ledger_empty">Нет сессий за последние 14 дней.</string>
+    <string name="ledger_net">Итог %1$s</string>
+    <string name="ledger_breakdown_in_title">Заряд свыше 100%</string>
+    <string name="ledger_breakdown_out_title">Разряд свыше 100%</string>
+    <string name="ledger_breakdown_in_multi_body">Фактически заряжено %1$d раз(а): %2$s, всего %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">Фактически разряжено %1$d раз(а): %2$s, всего %3$d%%</string>
+    <string name="ledger_breakdown_single_body">Эта единственная сессия превысила 100%% базового значения полной зарядки — возможно, сейчас это значение немного занижено. Оно пересчитывается при каждой зарядке до 100%.</string>
     <string name="sleep_chip">Сон</string>
     <string name="sleep_title">Ночной расход — последние 7 ночей</string>
     <string name="sleep_intro">Расход батареи или время на зарядке с 23:00 до 07:00. Покрытие показывает, какая часть ночи реально записана.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlow записывает время только пока работает фоновая запись. Пробелы появляются, если она была выключена, телефон перезагружался, или запись выборки остановилась по другой причине.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · ср. %2$s</string>
-    <string name="sleep_wh_note">Пока нет записи о полной зарядке — переключится на проценты, как только зарядите до 100%%.</string>
+    <string name="no_baseline_note">Пока нет записи о полной зарядке — переключится на проценты, как только зарядите до 100%%.</string>
     <string name="sleep_held_label">Оставался на зарядке</string>
     <string name="sleep_held_since">Зарядился в %1$s, продержался %2$s</string>
     <string name="sleep_held_tip">Оставался заряженным более часа — батарея изнашивается быстрее всего именно на 100%%. Настройки → %1$s могут напомнить отключить раньше.</string>

@@ -108,6 +108,12 @@
     <string name="ledger_chip">Konto</string>
     <string name="ledger_title">Energiekonto — letzte 14 Tage</string>
     <string name="ledger_empty">Keine Sitzungen in den letzten 14 Tagen.</string>
+    <string name="ledger_net">Netto %1$s</string>
+    <string name="ledger_breakdown_in_title">Über 100 % geladen</string>
+    <string name="ledger_breakdown_out_title">Über 100 % entladen</string>
+    <string name="ledger_breakdown_in_multi_body">Effektiv %1$d Mal geladen: %2$s, insgesamt %3$d %%</string>
+    <string name="ledger_breakdown_out_multi_body">Effektiv %1$d Mal entladen: %2$s, insgesamt %3$d %%</string>
+    <string name="ledger_breakdown_single_body">Diese eine Sitzung lag über 100 %% der Vollladungs-Baseline — die Baseline könnte gerade etwas niedrig sein. Sie wird bei jeder Ladung auf 100 % neu kalibriert.</string>
     <string name="sleep_chip">Schlaf</string>
     <string name="sleep_title">Nachtverbrauch — letzte 7 Nächte</string>
     <string name="sleep_intro">Akkuverbrauch oder Zeit am Ladegerät zwischen 23:00 und 07:00. Die Abdeckung zeigt, wie viel jeder Nacht tatsächlich erfasst wurde.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlow erfasst nur Zeit, in der die Hintergrundaufzeichnung läuft. Lücken entstehen, wenn sie aus war, das Telefon neu gestartet ist oder die Erfassung aus anderem Grund pausierte.</string>
     <string name="sleep_pct_headline">−%1$d %%</string>
     <string name="sleep_substats">%1$s · ø %2$s</string>
-    <string name="sleep_wh_note">Noch kein Vollladungs-Datensatz — wechselt automatisch zu Prozent, sobald einmal auf 100 %% geladen wurde.</string>
+    <string name="no_baseline_note">Noch kein Vollladungs-Datensatz — wechselt automatisch zu Prozent, sobald einmal auf 100 %% geladen wurde.</string>
     <string name="sleep_held_label">Am Ladegerät belassen</string>
     <string name="sleep_held_since">Um %1$s voll geladen, %2$s gehalten</string>
     <string name="sleep_held_tip">Über eine Stunde voll geladen geblieben — der Akku altert bei 100%% am schnellsten. Einstellungen → %1$s kann rechtzeitig erinnern.</string>

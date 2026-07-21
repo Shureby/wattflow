@@ -108,6 +108,12 @@
     <string name="ledger_chip">Buku</string>
     <string name="ledger_title">Buku energi — 14 hari terakhir</string>
     <string name="ledger_empty">Tidak ada sesi dalam 14 hari terakhir.</string>
+    <string name="ledger_net">Bersih %1$s</string>
+    <string name="ledger_breakdown_in_title">Terisi lebih dari 100%</string>
+    <string name="ledger_breakdown_out_title">Terkuras lebih dari 100%</string>
+    <string name="ledger_breakdown_in_multi_body">Efektif terisi %1$d kali: %2$s, totalnya %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">Efektif terkuras %1$d kali: %2$s, totalnya %3$d%%</string>
+    <string name="ledger_breakdown_single_body">Sesi tunggal ini melebihi 100%% dari baseline pengisian penuh — baseline itu mungkin sedikit rendah saat ini. Baseline akan dikalibrasi ulang setiap kali kamu mengisi hingga 100%.</string>
     <string name="sleep_chip">Tidur</string>
     <string name="sleep_title">Pengurasan tidur — 7 malam terakhir</string>
     <string name="sleep_intro">Konsumsi baterai, atau waktu tersambung ke charger, antara 23.00 dan 07.00. Cakupan menunjukkan berapa banyak tiap malam yang benar-benar terekam.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlow hanya melacak waktu saat perekaman latar belakang berjalan. Celah muncul jika sedang nonaktif, ponsel restart, atau pengambilan sampel berhenti karena alasan lain.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · rata-rata %2$s</string>
-    <string name="sleep_wh_note">Belum ada catatan pengisian penuh — ini akan otomatis berubah jadi persentase setelah kamu mengisi hingga 100%.</string>
+    <string name="no_baseline_note">Belum ada catatan pengisian penuh — ini akan otomatis berubah jadi persentase setelah kamu mengisi hingga 100%.</string>
     <string name="sleep_held_label">Tetap tersambung ke charger</string>
     <string name="sleep_held_since">Terisi penuh pukul %1$s, bertahan %2$s</string>
     <string name="sleep_held_tip">Tetap penuh lebih dari satu jam — baterai paling cepat aus tepat di 100%%. Setelan → %1$s bisa mengingatkanmu untuk mencabut lebih awal.</string>

@@ -108,6 +108,12 @@
     <string name="ledger_chip">السجل</string>
     <string name="ledger_title">سجل الطاقة — آخر 14 يومًا</string>
     <string name="ledger_empty">لا جلسات مسجلة في آخر 14 يومًا.</string>
+    <string name="ledger_net">الصافي %1$s</string>
+    <string name="ledger_breakdown_in_title">شحن يتجاوز 100%</string>
+    <string name="ledger_breakdown_out_title">تفريغ يتجاوز 100%</string>
+    <string name="ledger_breakdown_in_multi_body">شُحن فعليًا %1$d مرات: %2$s، بإجمالي %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">فُرِّغ فعليًا %1$d مرات: %2$s، بإجمالي %3$d%%</string>
+    <string name="ledger_breakdown_single_body">هذه الجلسة الواحدة تجاوزت 100%% من خط أساس الشحن الكامل — قد يكون خط الأساس منخفضًا بعض الشيء حاليًا. يُعاد معايرته في كل مرة تشحن فيها إلى 100%.</string>
     <string name="sleep_chip">النوم</string>
     <string name="sleep_title">استنزاف النوم — آخر 7 ليالٍ</string>
     <string name="sleep_intro">استهلاك البطارية، أو مدة بقاء الهاتف على الشاحن، بين 23:00 و07:00. تُظهر التغطية كم من كل ليلة تم تتبعه فعليًا.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">يتتبع WattFlow الوقت فقط أثناء تشغيل التسجيل في الخلفية. تظهر الفجوات إذا كان متوقفًا، أو أعيد تشغيل الهاتف، أو توقف أخذ العينات لسبب آخر.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · بمعدل %2$s</string>
-    <string name="sleep_wh_note">لا يوجد سجل شحن كامل بعد — سيتحول هذا إلى نسبة مئوية بمجرد الشحن إلى 100%.</string>
+    <string name="no_baseline_note">لا يوجد سجل شحن كامل بعد — سيتحول هذا إلى نسبة مئوية بمجرد الشحن إلى 100%.</string>
     <string name="sleep_held_label">بقي على الشاحن</string>
     <string name="sleep_held_since">اكتمل الشحن في %1$s، استمر %2$s</string>
     <string name="sleep_held_tip">بقي ممتلئًا لأكثر من ساعة — تتآكل البطارية أسرع عند 100%%. الإعدادات ← %1$s يمكن أن يذكّرك بالفصل قبل ذلك.</string>

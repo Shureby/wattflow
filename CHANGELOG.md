@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.5.2] - 2026-07-21
+
+- Energy ledger redesigned: daily in/out shown as a signed percentage of
+  a full charge instead of raw Wh (same baseline as Sleep Drain), with
+  the same `→` arrow — prefix for in, suffix for out — instead of the
+  old backwards `↓`/`↑` pairing
+- A day whose in or out total exceeds 100% (multiple charge/discharge
+  cycles) gets a tappable ⓘ breaking down the real per-session
+  percentages that add up to it; sessions that round to 0% are left out
+  of the list (they don't change the total either way); a single
+  session alone above 100% gets an explanation instead of a redundant
+  one-item list — the full-charge baseline behind the estimate may just
+  be a bit low right now
+- In/out/net columns are now equal-width and consistently aligned
+  (previously ragged, width tracked content length); in/out colored to
+  match the existing charge/discharge convention used in History
+- Fixed: a History session row with identical start/end level (e.g. a
+  brief discharge blip) could be colored as if it were a charge, because
+  the color was picked from the level delta instead of the session's
+  actual direction
+
 ## [1.5.1] - 2026-07-21
 
 - Sleep drain redesigned: nightly drain now shown as a percentage of a

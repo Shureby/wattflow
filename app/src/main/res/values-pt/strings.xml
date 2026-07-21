@@ -108,6 +108,12 @@
     <string name="ledger_chip">Registro</string>
     <string name="ledger_title">Registro de energia — últimos 14 dias</string>
     <string name="ledger_empty">Sem sessões nos últimos 14 dias.</string>
+    <string name="ledger_net">Líquido %1$s</string>
+    <string name="ledger_breakdown_in_title">Carregado acima de 100%</string>
+    <string name="ledger_breakdown_out_title">Descarregado acima de 100%</string>
+    <string name="ledger_breakdown_in_multi_body">Efetivamente carregado %1$d vezes: %2$s, totalizando %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">Efetivamente descarregado %1$d vezes: %2$s, totalizando %3$d%%</string>
+    <string name="ledger_breakdown_single_body">Esta única sessão ultrapassou 100%% da referência de carga completa — essa referência pode estar um pouco baixa agora. Ela é recalibrada toda vez que você carrega até 100%.</string>
     <string name="sleep_chip">Sono</string>
     <string name="sleep_title">Consumo noturno — últimas 7 noites</string>
     <string name="sleep_intro">Consumo de bateria, ou tempo conectado ao carregador, entre 23:00 e 07:00. A cobertura mostra quanto de cada noite foi realmente registrado.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">O WattFlow só registra o tempo em que a gravação em segundo plano está ativa. Lacunas aparecem se estava desativada, o telefone reiniciou, ou a amostragem parou por outro motivo.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · média %2$s</string>
-    <string name="sleep_wh_note">Ainda não há registro de carga completa — isso muda para porcentagem assim que você carregar até 100%.</string>
+    <string name="no_baseline_note">Ainda não há registro de carga completa — isso muda para porcentagem assim que você carregar até 100%.</string>
     <string name="sleep_held_label">Conectado ao carregador</string>
     <string name="sleep_held_since">Carregado às %1$s, mantido por %2$s</string>
     <string name="sleep_held_tip">Ficou em 100%% por mais de uma hora — a bateria desgasta mais rápido bem nos 100%%. Configurações → %1$s pode lembrá-lo de desconectar antes.</string>

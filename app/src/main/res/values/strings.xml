@@ -113,6 +113,12 @@
     <string name="ledger_chip">Ledger</string>
     <string name="ledger_title">Energy ledger — last 14 days</string>
     <string name="ledger_empty">No sessions recorded in the last 14 days.</string>
+    <string name="ledger_net">Net %1$s</string>
+    <string name="ledger_breakdown_in_title">Charged over 100%</string>
+    <string name="ledger_breakdown_out_title">Discharged over 100%</string>
+    <string name="ledger_breakdown_in_multi_body">Effectively charged %1$d times: %2$s, totaling %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">Effectively discharged %1$d times: %2$s, totaling %3$d%%</string>
+    <string name="ledger_breakdown_single_body">This one session came out above 100%% of the full-charge baseline — that baseline may be a bit low right now. It recalibrates every time you charge to 100%.</string>
     <string name="sleep_chip">Sleep</string>
     <string name="sleep_title">Sleep drain — last 7 nights</string>
     <string name="sleep_intro">Battery drain, or time held on the charger, between 23:00 and 07:00. Coverage shows how much of each night was actually tracked.</string>
@@ -121,7 +127,7 @@
     <string name="sleep_coverage_info_body">WattFlow only tracks time while background recording is running. Gaps show up if it was off, the phone restarted, or sampling paused for some other reason.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · avg %2$s</string>
-    <string name="sleep_wh_note">No full-charge record yet — this switches to percentage once you charge to 100%.</string>
+    <string name="no_baseline_note">No full-charge record yet — this switches to percentage once you charge to 100%.</string>
     <string name="sleep_held_label">Held on charger</string>
     <string name="sleep_held_since">Charged at %1$s, held for %2$s</string>
     <string name="sleep_held_tip">Stayed at full for over an hour — battery wears fastest right at 100%%. Settings → %1$s can remind you to unplug sooner.</string>

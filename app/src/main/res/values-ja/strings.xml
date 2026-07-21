@@ -108,6 +108,12 @@
     <string name="ledger_chip">台帳</string>
     <string name="ledger_title">エネルギー台帳 — 過去14日</string>
     <string name="ledger_empty">過去14日間の記録はありません。</string>
+    <string name="ledger_net">純増減 %1$s</string>
+    <string name="ledger_breakdown_in_title">100%を超えて充電</string>
+    <string name="ledger_breakdown_out_title">100%を超えて放電</string>
+    <string name="ledger_breakdown_in_multi_body">実質 %1$d 回充電：%2$s、合計 %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">実質 %1$d 回放電：%2$s、合計 %3$d%%</string>
+    <string name="ledger_breakdown_single_body">この1回のセッションだけで満充電基準の100%%を超えました — 現在その基準が少し低い可能性があります。100%まで充電するたびに再調整されます。</string>
     <string name="sleep_chip">睡眠</string>
     <string name="sleep_title">睡眠中の消費 — 過去7晩</string>
     <string name="sleep_intro">23:00〜07:00 のバッテリー消費、または充電器に接続していた時間を表示します。カバー率は各夜のうち実際に記録できた割合です。</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlowはバックグラウンド記録が動作している間のみ記録します。オフだったとき、端末が再起動したとき、その他の理由でサンプリングが止まったときに空白ができます。</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · 平均 %2$s</string>
-    <string name="sleep_wh_note">まだ満充電の記録がありません — 一度100%%まで充電すると自動的にパーセント表示に切り替わります。</string>
+    <string name="no_baseline_note">まだ満充電の記録がありません — 一度100%%まで充電すると自動的にパーセント表示に切り替わります。</string>
     <string name="sleep_held_label">充電器に接続したまま</string>
     <string name="sleep_held_since">%1$s に満充電、%2$s 維持</string>
     <string name="sleep_held_tip">満充電のまま1時間以上経過 — バッテリーは100%%の状態が最も劣化しやすいです。設定 → %1$s で早めに外すよう通知できます。</string>

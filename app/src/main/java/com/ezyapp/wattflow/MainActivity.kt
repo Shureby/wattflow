@@ -1986,7 +1986,6 @@ private fun WeekChart(sessions: List<DisplaySession>, modifier: Modifier = Modif
 
 @Composable
 private fun SessionRow(session: DisplaySession, onClick: () -> Unit) {
-    val delta = session.endLevel - session.startLevel
     Column(modifier = Modifier
         .fillMaxWidth()
         .clickable(onClick = onClick)
@@ -2003,7 +2002,7 @@ private fun SessionRow(session: DisplaySession, onClick: () -> Unit) {
             Text(
                 text = "${session.startLevel}% → ${session.endLevel}%",
                 style = MaterialTheme.typography.titleSmall,
-                color = if (delta >= 0) {
+                color = if (session.direction == DIRECTION_CHARGE) {
                     MaterialTheme.colorScheme.primary
                 } else {
                     MaterialTheme.colorScheme.error

@@ -108,6 +108,12 @@
     <string name="ledger_chip">장부</string>
     <string name="ledger_title">에너지 장부 — 최근 14일</string>
     <string name="ledger_empty">최근 14일간 기록이 없습니다.</string>
+    <string name="ledger_net">순증감 %1$s</string>
+    <string name="ledger_breakdown_in_title">100% 초과 충전</string>
+    <string name="ledger_breakdown_out_title">100% 초과 방전</string>
+    <string name="ledger_breakdown_in_multi_body">실질적으로 %1$d회 충전: %2$s, 합계 %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">실질적으로 %1$d회 방전: %2$s, 합계 %3$d%%</string>
+    <string name="ledger_breakdown_single_body">이 한 번의 세션만으로 완충 기준의 100%%를 넘었습니다 — 지금 기준이 약간 낮을 수 있습니다. 100%까지 충전할 때마다 다시 보정됩니다.</string>
     <string name="sleep_chip">수면</string>
     <string name="sleep_title">수면 소모 — 최근 7일 밤</string>
     <string name="sleep_intro">23:00~07:00 사이 배터리 소모량 또는 충전기에 연결된 시간을 표시합니다. 커버리지는 각 밤 중 실제 기록된 비율을 나타냅니다.</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlow는 백그라운드 기록이 실행 중일 때만 시간을 기록합니다. 꺼져 있었거나, 휴대폰이 재시작됐거나, 다른 이유로 샘플링이 멈추면 공백이 생깁니다.</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · 평균 %2$s</string>
-    <string name="sleep_wh_note">아직 완충 기록이 없습니다 — 100%%까지 충전하면 자동으로 퍼센트로 전환됩니다.</string>
+    <string name="no_baseline_note">아직 완충 기록이 없습니다 — 100%%까지 충전하면 자동으로 퍼센트로 전환됩니다.</string>
     <string name="sleep_held_label">충전기에 연결된 상태</string>
     <string name="sleep_held_since">%1$s에 완충, %2$s 유지</string>
     <string name="sleep_held_tip">완충 상태로 1시간 넘게 유지됨 — 배터리는 100%%일 때 가장 빨리 소모됩니다. 설정 → %1$s로 미리 알림을 받을 수 있습니다.</string>

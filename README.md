@@ -58,6 +58,13 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.5
 
+- **1.5.2**: Energy ledger rebuilt — daily in/out shown as a signed % of
+  a full charge instead of raw Wh, with a `→` that flips sides for in
+  vs out; a day over 100% gets a tappable ⓘ breaking down the sessions
+  behind it (tiny 0%-rounding ones left out); columns are now aligned
+  and colored to match History's existing charge/discharge convention.
+  Also fixed a History bug where a same-level session could show the
+  wrong color
 - **1.5.1**: Sleep drain report rebuilt — drain shown as a signed % of a
   full charge instead of raw Wh; nights held on the charger get their
   own card showing when it hit 100% and how long it stayed there, with

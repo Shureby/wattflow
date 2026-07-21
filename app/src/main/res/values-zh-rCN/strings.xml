@@ -108,6 +108,12 @@
     <string name="ledger_chip">账本</string>
     <string name="ledger_title">能量账本——最近 14 天</string>
     <string name="ledger_empty">最近 14 天没有记录。</string>
+    <string name="ledger_net">净额 %1$s</string>
+    <string name="ledger_breakdown_in_title">充电超过100%</string>
+    <string name="ledger_breakdown_out_title">放电超过100%</string>
+    <string name="ledger_breakdown_in_multi_body">实际充电 %1$d 次：%2$s，合计 %3$d%%</string>
+    <string name="ledger_breakdown_out_multi_body">实际放电 %1$d 次：%2$s，合计 %3$d%%</string>
+    <string name="ledger_breakdown_single_body">这一笔单独就超过了满充基准的100%%——这个基准现在可能偏低。每次充满100%都会重新校准。</string>
     <string name="sleep_chip">睡眠</string>
     <string name="sleep_title">睡眠耗电——最近 7 晚</string>
     <string name="sleep_intro">23:00 至 07:00 的电池消耗，或整夜插着充电的时长。覆盖率表示每晚实际有记录的时长比例。</string>
@@ -116,7 +122,7 @@
     <string name="sleep_coverage_info_body">WattFlow只在后台记录运行时才追踪时间。如果记录关闭过、手机重启过，或者采样因为别的原因暂停过，就会出现空白。</string>
     <string name="sleep_pct_headline">−%1$d%%</string>
     <string name="sleep_substats">%1$s · 平均 %2$s</string>
-    <string name="sleep_wh_note">还没有满充记录——充满一次电后会自动切换成百分比。</string>
+    <string name="no_baseline_note">还没有满充记录——充满一次电后会自动切换成百分比。</string>
     <string name="sleep_held_label">整夜插着充电</string>
     <string name="sleep_held_since">%1$s 充满，维持了 %2$s</string>
     <string name="sleep_held_tip">满电状态维持超过一小时——电池在100%%时磨损最快。设置→%1$s 可以提醒你早点拔线。</string>
