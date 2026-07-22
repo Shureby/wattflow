@@ -26,8 +26,8 @@ import kotlin.math.abs
 /**
  * Home screen widget, responsive to launcher resize:
  *  - S (2x1): watts + level/temp
- *  - M (4x1): + source, ETA, today's peaks
- *  - L (4x2): + 7-day charged-energy mini chart
+ *  - M (4x1 or smaller): + source, ETA, today's peaks
+ *  - L (4x2 or smaller): + 7-day charged-energy mini chart
  * Android 12+ picks the layout via a SizeF -> RemoteViews map; older versions
  * pick it from the widget options in [onAppWidgetOptionsChanged].
  *
@@ -67,9 +67,16 @@ open class WattWidgetProvider : AppWidgetProvider() {
         private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
         // dp thresholds matching the SizeF map below. WIDE_DP matches the
-        // 4x1 widget's minResizeWidth so a user-shrunk 3x1 still renders the
-        // M layout instead of falling back to S.
+        // 4x1 widget's minResizeWidth so a user-shrunk widget still renders
+        // the M/L layout instead of falling back to S. ROOMY_DP picks between
+        // short ("P-In") and full ("Peak In") peak labels within that same
+        // M/L layout — it never affects which layout is chosen, only label
+        // length, so misjudging it just over/under-abbreviates text rather
+        // than showing the wrong content. Measured on a real device: default
+        // M/L placements land around 260dp (need the short labels) and a
+        // manually-grown widget around 356dp (full labels fit).
         private const val WIDE_DP = 170
+        private const val ROOMY_DP = 300
         private const val TALL_DP = 100
 
         /** Throttled: at most one refresh per 5 s. */
@@ -116,8 +123,12 @@ open class WattWidgetProvider : AppWidgetProvider() {
                             SizeF(110f, 40f) to
                                 build(context, R.layout.widget_watt, sample, peaks, null),
                             SizeF(WIDE_DP.toFloat(), 40f) to
+                                build(context, R.layout.widget_watt_m, sample, peaks, null, compact = true),
+                            SizeF(ROOMY_DP.toFloat(), 40f) to
                                 build(context, R.layout.widget_watt_m, sample, peaks, null),
                             SizeF(WIDE_DP.toFloat(), TALL_DP.toFloat()) to
+                                build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = true),
+                            SizeF(ROOMY_DP.toFloat(), TALL_DP.toFloat()) to
                                 build(context, R.layout.widget_watt_l, sample, peaks, chart),
                         )
                     )
@@ -125,11 +136,12 @@ open class WattWidgetProvider : AppWidgetProvider() {
                     val opts = manager.getAppWidgetOptions(id)
                     val w = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)
                     val h = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
+                    val compact = w < ROOMY_DP
                     when {
                         w >= WIDE_DP && h >= TALL_DP ->
-                            build(context, R.layout.widget_watt_l, sample, peaks, chart)
+                            build(context, R.layout.widget_watt_l, sample, peaks, chart, compact)
                         w >= WIDE_DP ->
-                            build(context, R.layout.widget_watt_m, sample, peaks, null)
+                            build(context, R.layout.widget_watt_m, sample, peaks, null, compact)
                         else ->
                             build(context, R.layout.widget_watt, sample, peaks, null)
                     }
@@ -144,6 +156,7 @@ open class WattWidgetProvider : AppWidgetProvider() {
             sample: BatterySample,
             peaks: Pair<Double, Double>,
             chart: Bitmap?,
+            compact: Boolean = false,
         ): RemoteViews {
             // Resource strings must follow the in-app language choice.
             val context = LocalePrefs.wrap(rawContext)
@@ -180,8 +193,14 @@ open class WattWidgetProvider : AppWidgetProvider() {
                     R.id.widget_line2,
                     String.format(
                         Locale.US, "%s %.1f W • %s %.1f W",
-                        context.getString(R.string.stat_peak_in), peaks.first,
-                        context.getString(R.string.stat_peak_out), peaks.second,
+                        context.getString(
+                            if (compact) R.string.widget_peak_in_short else R.string.stat_peak_in
+                        ),
+                        peaks.first,
+                        context.getString(
+                            if (compact) R.string.widget_peak_out_short else R.string.stat_peak_out
+                        ),
+                        peaks.second,
                     ),
                 )
             }
@@ -260,7 +279,7 @@ open class WattWidgetProvider : AppWidgetProvider() {
             }
 
             canvas.drawText(
-                context.getString(R.string.history_last7),
+                context.getString(R.string.widget_last7_wh),
                 w / 14f, 12 * density,
                 Paint(labelPaint).apply { textAlign = Paint.Align.LEFT },
             )

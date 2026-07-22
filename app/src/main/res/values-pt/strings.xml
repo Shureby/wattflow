@@ -18,6 +18,8 @@
     <string name="stat_temp">Temp</string>
     <string name="stat_peak_in">Pico entrada</string>
     <string name="stat_peak_out">Pico saída</string>
+    <string name="widget_peak_in_short">P. ent.</string>
+    <string name="widget_peak_out_short">P. saída</string>
 
     <string name="language_title">Idioma</string>
     <string name="language_system">Padrão do sistema</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Energia</string>
     <string name="history_avg_power">Potência média</string>
     <string name="history_last7">Últimos 7 dias</string>
+    <string name="widget_last7_wh">Últimos 7 dias (Wh)</string>
     <string name="label_avg">méd</string>
     <string name="label_peak">pico</string>
 

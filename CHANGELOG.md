@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.7.2] - 2026-07-22
+
+- Fixed the Medium/Large home screen widgets clipping text mid-character
+  at narrower resized widths — `widget_line1` (source/ETA) and the
+  "Today's Peaks" header now ellipsize properly instead of hard-cutting
+  a character, and both peak-value lines got a smaller text size that
+  no longer clips even at the narrowest legal width
+- Added a "P-In"/"P-Out" abbreviated label for the peak-values line when
+  the widget is at its default (narrower) placement size, switching to
+  the full "Peak In"/"Peak Out" once resized wider — avoids the numbers
+  getting clipped at the common default size
+- The Large widget's 7-day bar chart now has a title ("Last 7 days (Wh)")
+  so the bar heights have a stated unit instead of being unlabeled
+
 ## [1.7.1] - 2026-07-22
 
 - Fixed the Live tab's stats row (Voltage/Current/Temp/Peak In/Peak Out)

@@ -18,6 +18,8 @@
     <string name="stat_temp">Темп.</string>
     <string name="stat_peak_in">Пик входа</string>
     <string name="stat_peak_out">Пик выхода</string>
+    <string name="widget_peak_in_short">Пик вх.</string>
+    <string name="widget_peak_out_short">Пик вых.</string>
 
     <string name="language_title">Язык</string>
     <string name="language_system">Системный по умолчанию</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Энергия</string>
     <string name="history_avg_power">Средняя мощность</string>
     <string name="history_last7">Последние 7 дней</string>
+    <string name="widget_last7_wh">Последние 7 дней (Wh)</string>
     <string name="label_avg">средн</string>
     <string name="label_peak">пик</string>
 

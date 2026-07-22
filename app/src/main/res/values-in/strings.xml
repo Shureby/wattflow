@@ -18,6 +18,8 @@
     <string name="stat_temp">Suhu</string>
     <string name="stat_peak_in">Puncak masuk</string>
     <string name="stat_peak_out">Puncak keluar</string>
+    <string name="widget_peak_in_short">Pk. masuk</string>
+    <string name="widget_peak_out_short">Pk. keluar</string>
 
     <string name="language_title">Bahasa</string>
     <string name="language_system">Bawaan sistem</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Energi</string>
     <string name="history_avg_power">Daya rata-rata</string>
     <string name="history_last7">7 hari terakhir</string>
+    <string name="widget_last7_wh">7 hari terakhir (Wh)</string>
     <string name="label_avg">rata</string>
     <string name="label_peak">puncak</string>
 

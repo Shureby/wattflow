@@ -18,6 +18,8 @@
     <string name="stat_temp">الحرارة</string>
     <string name="stat_peak_in">ذروة الدخل</string>
     <string name="stat_peak_out">ذروة الخرج</string>
+    <string name="widget_peak_in_short">ذ. دخل</string>
+    <string name="widget_peak_out_short">ذ. خرج</string>
 
     <string name="language_title">اللغة</string>
     <string name="language_system">افتراضي النظام</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">الطاقة</string>
     <string name="history_avg_power">متوسط القدرة</string>
     <string name="history_last7">آخر 7 أيام</string>
+    <string name="widget_last7_wh">آخر 7 أيام (Wh)</string>
     <string name="label_avg">متوسط</string>
     <string name="label_peak">ذروة</string>
 

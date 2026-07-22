@@ -18,6 +18,8 @@
     <string name="stat_temp">Temp</string>
     <string name="stat_peak_in">Peak In</string>
     <string name="stat_peak_out">Peak Out</string>
+    <string name="widget_peak_in_short">P-In</string>
+    <string name="widget_peak_out_short">P-Out</string>
 
     <string name="language_title">Language</string>
     <string name="language_system">System default</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Energy</string>
     <string name="history_avg_power">Avg power</string>
     <string name="history_last7">Last 7 days</string>
+    <string name="widget_last7_wh">Last 7 days (Wh)</string>
     <string name="label_avg">avg</string>
     <string name="label_peak">peak</string>
     <!-- Recording stopped because the process was killed mid-session, not

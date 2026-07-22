@@ -18,6 +18,8 @@
     <string name="stat_temp">Temp</string>
     <string name="stat_peak_in">Pic entrée</string>
     <string name="stat_peak_out">Pic sortie</string>
+    <string name="widget_peak_in_short">P. ent.</string>
+    <string name="widget_peak_out_short">P. sort.</string>
 
     <string name="language_title">Langue</string>
     <string name="language_system">Par défaut du système</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Énergie</string>
     <string name="history_avg_power">Puissance moy.</string>
     <string name="history_last7">7 derniers jours</string>
+    <string name="widget_last7_wh">7 derniers jours (Wh)</string>
     <string name="label_avg">moy</string>
     <string name="label_peak">pic</string>
 

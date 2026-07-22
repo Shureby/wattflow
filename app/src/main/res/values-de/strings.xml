@@ -18,6 +18,8 @@
     <string name="stat_temp">Temp.</string>
     <string name="stat_peak_in">Spitze rein</string>
     <string name="stat_peak_out">Spitze raus</string>
+    <string name="widget_peak_in_short">Sp.-Ein</string>
+    <string name="widget_peak_out_short">Sp.-Aus</string>
 
     <string name="language_title">Sprache</string>
     <string name="language_system">Systemstandard</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">Energie</string>
     <string name="history_avg_power">Ø Leistung</string>
     <string name="history_last7">Letzte 7 Tage</string>
+    <string name="widget_last7_wh">Letzte 7 Tage (Wh)</string>
     <string name="label_avg">Ø</string>
     <string name="label_peak">max</string>
 

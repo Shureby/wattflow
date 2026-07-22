@@ -44,8 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#EDE9FE"
-            android:textSize="12sp"
+            android:textSize="11sp"
             android:maxLines="1"
+            android:ellipsize="end"
             android:text="" />
 
         <TextView
@@ -56,6 +57,7 @@
             android:textColor="#A78BFA"
             android:textSize="10sp"
             android:maxLines="1"
+            android:ellipsize="end"
             android:text="" />
 
         <TextView
@@ -63,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#A78BFA"
-            android:textSize="11sp"
+            android:textSize="10sp"
             android:maxLines="1"
             android:ellipsize="end"
             android:text="" />

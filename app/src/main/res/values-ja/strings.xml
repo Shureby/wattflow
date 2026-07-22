@@ -18,6 +18,8 @@
     <string name="stat_temp">温度</string>
     <string name="stat_peak_in">最大入力</string>
     <string name="stat_peak_out">最大出力</string>
+    <string name="widget_peak_in_short">最大入</string>
+    <string name="widget_peak_out_short">最大出</string>
 
     <string name="language_title">言語</string>
     <string name="language_system">システムに従う</string>
@@ -37,6 +39,7 @@
     <string name="history_total_energy">総電力量</string>
     <string name="history_avg_power">平均電力</string>
     <string name="history_last7">過去7日間</string>
+    <string name="widget_last7_wh">過去7日間（Wh）</string>
     <string name="label_avg">平均</string>
     <string name="label_peak">最大</string>
 

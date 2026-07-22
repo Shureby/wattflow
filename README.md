@@ -58,6 +58,11 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.7
 
+- **1.7.2**: Home screen widgets no longer clip text mid-character at
+  narrower resized widths; the peak-values line abbreviates to "P-In"/
+  "P-Out" at the widget's default size and switches to the full
+  "Peak In"/"Peak Out" once resized wider; the Large widget's 7-day
+  chart now has a title stating its unit (Wh)
 - **1.7.1**: Fixed the Live tab's stats row breaking into garbled text
   at window widths just above the Compact→Medium breakpoint in
   landscape — mainly hit on Chromebook's freeform-resizable windows,
