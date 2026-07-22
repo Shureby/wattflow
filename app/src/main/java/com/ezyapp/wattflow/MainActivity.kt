@@ -28,6 +28,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -35,6 +36,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
@@ -52,6 +58,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
@@ -62,6 +70,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -111,21 +122,39 @@ class MainActivity : ComponentActivity() {
         super.attachBaseContext(LocalePrefs.wrap(newBase))
     }
 
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Pro.init(applicationContext)
         setContent {
             val colorScheme =
                 if (isSystemInDarkTheme()) darkColorScheme() else lightColorScheme()
+            val windowSizeClass = calculateWindowSizeClass(this)
             MaterialTheme(colorScheme = colorScheme) {
-                ChargingScreen()
+                ChargingScreen(windowWidthSizeClass = windowSizeClass.widthSizeClass)
             }
         }
     }
 }
 
+private data class NavItem(val index: Int, val label: String, val icon: @Composable () -> Unit)
+
+/** Caps content width and centers it on medium/expanded screens so rows
+ * and cards don't stretch edge-to-edge into unreadable full-width lines;
+ * a no-op wrapper on compact (phone) width since fillMaxSize() already
+ * fits within the cap there. */
 @Composable
-fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
+private fun WideScreenContainer(content: @Composable () -> Unit) {
+    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
+        Box(Modifier.widthIn(max = 640.dp).fillMaxHeight()) { content() }
+    }
+}
+
+@Composable
+fun ChargingScreen(
+    viewModel: ChargingViewModel = viewModel(),
+    windowWidthSizeClass: WindowWidthSizeClass = WindowWidthSizeClass.Compact,
+) {
     val state by viewModel.uiState.collectAsState()
     val sample = state.sample
     var showPaywall by remember { mutableStateOf(false) }
@@ -147,57 +176,21 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
         }
     }
 
-    Scaffold(
-        bottomBar = {
-            NavigationBar {
-                NavigationBarItem(
-                    selected = tab == 0,
-                    onClick = { tab = 0 },
-                    icon = {
-                        Icon(
-                            painterResource(R.drawable.ic_stat_bolt), null,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    },
-                    label = { Text(stringResource(R.string.tab_live)) },
-                )
-                NavigationBarItem(
-                    selected = tab == 1,
-                    onClick = { tab = 1 },
-                    icon = {
-                        Icon(
-                            painterResource(R.drawable.ic_tab_history), null,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    },
-                    label = { Text(stringResource(R.string.tab_history)) },
-                )
-                NavigationBarItem(
-                    selected = tab == 2,
-                    onClick = { tab = 2 },
-                    icon = {
-                        Icon(
-                            painterResource(R.drawable.ic_tab_reports), null,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    },
-                    label = { Text(stringResource(R.string.tab_reports)) },
-                )
-                NavigationBarItem(
-                    selected = tab == 3,
-                    onClick = { tab = 3 },
-                    icon = {
-                        Icon(
-                            imageVector = Icons.Filled.Settings,
-                            contentDescription = null,
-                            modifier = Modifier.size(24.dp),
-                        )
-                    },
-                    label = { Text(stringResource(R.string.settings_title)) },
-                )
-            }
+    val navItems = listOf(
+        NavItem(0, stringResource(R.string.tab_live)) {
+            Icon(painterResource(R.drawable.ic_stat_bolt), null, Modifier.size(24.dp))
         },
-    ) { innerPadding ->
+        NavItem(1, stringResource(R.string.tab_history)) {
+            Icon(painterResource(R.drawable.ic_tab_history), null, Modifier.size(24.dp))
+        },
+        NavItem(2, stringResource(R.string.tab_reports)) {
+            Icon(painterResource(R.drawable.ic_tab_reports), null, Modifier.size(24.dp))
+        },
+        NavItem(3, stringResource(R.string.settings_title)) {
+            Icon(Icons.Filled.Settings, null, Modifier.size(24.dp))
+        },
+    )
+    val mainContent: @Composable (PaddingValues) -> Unit = { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -228,10 +221,52 @@ fun ChargingScreen(viewModel: ChargingViewModel = viewModel()) {
                         }
                     }
                 }
-                1 -> HistoryTab(viewModel)
-                2 -> ReportsTab(onLockedFeature = { showPaywall = true })
+                1 -> WideScreenContainer { HistoryTab(viewModel) }
+                2 -> WideScreenContainer { ReportsTab(onLockedFeature = { showPaywall = true }) }
                 else -> SettingsScreen(onLockedFeature = { showPaywall = true })
             }
+        }
+    }
+
+    if (windowWidthSizeClass == WindowWidthSizeClass.Compact) {
+        Scaffold(
+            bottomBar = {
+                NavigationBar {
+                    navItems.forEach { item ->
+                        NavigationBarItem(
+                            selected = tab == item.index,
+                            onClick = { tab = item.index },
+                            icon = item.icon,
+                            label = { Text(item.label) },
+                        )
+                    }
+                }
+            },
+        ) { innerPadding -> mainContent(innerPadding) }
+    } else {
+        // Medium/expanded width (tablets, in either orientation): a side
+        // rail reads better than a bottom bar stretched across the extra
+        // width, and matches Material's own large-screen guidance.
+        Row(Modifier.fillMaxSize()) {
+            NavigationRail {
+                navItems.forEach { item ->
+                    NavigationRailItem(
+                        selected = tab == item.index,
+                        onClick = { tab = item.index },
+                        icon = item.icon,
+                        label = { Text(item.label) },
+                    )
+                }
+            }
+            Box(
+                Modifier
+                    .weight(1f)
+                    .windowInsetsPadding(
+                        WindowInsets.safeDrawing.only(
+                            WindowInsetsSides.Top + WindowInsetsSides.End + WindowInsetsSides.Bottom
+                        )
+                    ),
+            ) { mainContent(PaddingValues(0.dp)) }
         }
     }
 
@@ -283,92 +318,82 @@ private fun SettingsScreen(onLockedFeature: () -> Unit) {
         }.getOrNull() ?: "?"
     }
 
-    Scaffold { innerPadding ->
-        Column(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+    ) {
+        Row(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = 16.dp),
+                .fillMaxWidth()
+                .clickable { showLanguageDialog = true }
+                .padding(vertical = 14.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                text = stringResource(R.string.settings_title),
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(top = 8.dp),
+                text = stringResource(R.string.language_title),
+                style = MaterialTheme.typography.bodyLarge,
             )
-            Spacer(Modifier.height(8.dp))
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { showLanguageDialog = true }
-                    .padding(vertical = 14.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                Text(
-                    text = stringResource(R.string.language_title),
-                    style = MaterialTheme.typography.bodyLarge,
-                )
-                Text(
-                    text = currentLanguageName,
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-            }
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(6.dp))
-            MonitorToggle(onLockedFeature)
-            Spacer(Modifier.height(6.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(6.dp))
-            OverlayToggle(onLockedFeature)
-            Spacer(Modifier.height(6.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(6.dp))
-            AlertsCard(onLockedFeature)
-            Spacer(Modifier.height(6.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(6.dp))
-            DualCellSection()
-            Spacer(Modifier.height(6.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(6.dp))
-            GeekSection()
-            Spacer(Modifier.height(6.dp))
-            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-
-            Spacer(Modifier.height(16.dp))
             Text(
-                text = stringResource(R.string.version_label, versionName),
-                style = MaterialTheme.typography.bodyMedium,
+                text = currentLanguageName,
+                style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(vertical = 6.dp),
             )
-            Text(
-                text = "GitHub",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .clickable { uriHandler.openUri("https://github.com/Shureby/wattflow") }
-                    .padding(vertical = 6.dp),
-            )
-            Text(
-                text = stringResource(R.string.privacy_policy),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .clickable {
-                        uriHandler.openUri("https://shureby.github.io/wattflow/privacy.html")
-                    }
-                    .padding(vertical = 6.dp),
-            )
-            Spacer(Modifier.height(24.dp))
         }
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        MonitorToggle(onLockedFeature)
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        OverlayToggle(onLockedFeature)
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        AlertsCard(onLockedFeature)
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        DualCellSection()
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        GeekSection()
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(16.dp))
+        Text(
+            text = stringResource(R.string.version_label, versionName),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(vertical = 6.dp),
+        )
+        Text(
+            text = "GitHub",
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .clickable { uriHandler.openUri("https://github.com/Shureby/wattflow") }
+                .padding(vertical = 6.dp),
+        )
+        Text(
+            text = stringResource(R.string.privacy_policy),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier
+                .clickable {
+                    uriHandler.openUri("https://shureby.github.io/wattflow/privacy.html")
+                }
+                .padding(vertical = 6.dp),
+        )
+        Spacer(Modifier.height(24.dp))
     }
 
     if (showLanguageDialog) {
@@ -1800,11 +1825,6 @@ private fun ReportsTab(onLockedFeature: () -> Unit) {
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp, vertical = 8.dp),
     ) {
-        Text(
-            text = stringResource(R.string.reports_title),
-            style = MaterialTheme.typography.headlineSmall,
-        )
-        Spacer(Modifier.height(12.dp))
         ReportRow(
             title = stringResource(R.string.ledger_chip),
             desc = stringResource(R.string.report_ledger_desc),

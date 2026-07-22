@@ -25,7 +25,6 @@
     <string name="tab_live">Langsung</string>
     <string name="tab_history">Riwayat</string>
     <string name="tab_reports">Laporan</string>
-    <string name="reports_title">Laporan</string>
     <string name="report_ledger_desc">14 hari terakhir</string>
     <string name="report_sleep_desc">7 malam terakhir</string>
     <string name="report_health_desc">Baseline, tren, anomali</string>

@@ -25,7 +25,6 @@
     <string name="tab_live">ライブ</string>
     <string name="tab_history">履歴</string>
     <string name="tab_reports">レポート</string>
-    <string name="reports_title">レポート</string>
     <string name="report_ledger_desc">過去14日</string>
     <string name="report_sleep_desc">過去7晩</string>
     <string name="report_health_desc">基準、トレンド、異常</string>

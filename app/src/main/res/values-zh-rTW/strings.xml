@@ -25,7 +25,6 @@
     <string name="tab_live">即時</string>
     <string name="tab_history">歷史</string>
     <string name="tab_reports">報表</string>
-    <string name="reports_title">報表</string>
     <string name="report_ledger_desc">最近14天</string>
     <string name="report_sleep_desc">最近7晚</string>
     <string name="report_health_desc">基準、趨勢、異常</string>

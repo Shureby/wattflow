@@ -25,7 +25,6 @@
     <string name="tab_live">Ao vivo</string>
     <string name="tab_history">Histórico</string>
     <string name="tab_reports">Relatórios</string>
-    <string name="reports_title">Relatórios</string>
     <string name="report_ledger_desc">Últimos 14 dias</string>
     <string name="report_sleep_desc">Últimas 7 noites</string>
     <string name="report_health_desc">Referência, tendência, anomalias</string>

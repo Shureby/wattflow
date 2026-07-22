@@ -25,7 +25,6 @@
     <string name="tab_live">مباشر</string>
     <string name="tab_history">السجل</string>
     <string name="tab_reports">التقارير</string>
-    <string name="reports_title">التقارير</string>
     <string name="report_ledger_desc">آخر 14 يومًا</string>
     <string name="report_sleep_desc">آخر 7 ليالٍ</string>
     <string name="report_health_desc">الأساس، الاتجاه، الحالات الشاذة</string>

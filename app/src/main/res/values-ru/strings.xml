@@ -25,7 +25,6 @@
     <string name="tab_live">Сейчас</string>
     <string name="tab_history">История</string>
     <string name="tab_reports">Отчёты</string>
-    <string name="reports_title">Отчёты</string>
     <string name="report_ledger_desc">Последние 14 дней</string>
     <string name="report_sleep_desc">Последние 7 ночей</string>
     <string name="report_health_desc">Базовый уровень, тренд, аномалии</string>

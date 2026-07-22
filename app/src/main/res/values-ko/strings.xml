@@ -25,7 +25,6 @@
     <string name="tab_live">실시간</string>
     <string name="tab_history">기록</string>
     <string name="tab_reports">리포트</string>
-    <string name="reports_title">리포트</string>
     <string name="report_ledger_desc">최근 14일</string>
     <string name="report_sleep_desc">최근 7일 밤</string>
     <string name="report_health_desc">기준선, 추세, 이상</string>
