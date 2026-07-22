@@ -1467,16 +1467,18 @@ private fun DrawScope.drawOnBatteryVisual(
 
 // ---------------------------------------------------------------------------
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun StatsRow(sample: BatterySample, peakInWatts: Double, peakOutWatts: Double) {
     var showPeakInfo by remember { mutableStateOf(false) }
     Box(modifier = Modifier.fillMaxWidth()) {
         Card(modifier = Modifier.fillMaxWidth()) {
-            Row(
+            FlowRow(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 StatItem(
                     stringResource(R.string.stat_voltage),
@@ -1535,11 +1537,13 @@ private fun StatItem(label: String, value: String) {
             text = value,
             style = MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.SemiBold,
+            maxLines = 1,
         )
         Text(
             text = label,
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1,
         )
     }
 }

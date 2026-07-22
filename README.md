@@ -58,6 +58,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.7
 
+- **1.7.1**: Fixed the Live tab's stats row breaking into garbled text
+  at window widths just above the Compact→Medium breakpoint in
+  landscape — mainly hit on Chromebook's freeform-resizable windows,
+  not any fixed phone/tablet size
 - **1.7.0**: Large-screen adaptation for tablets and foldables. Navigation
   switches from a bottom bar to a side rail at tablet widths, in either
   orientation; History and Reports no longer stretch edge-to-edge on

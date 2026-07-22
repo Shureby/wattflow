@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.7.1] - 2026-07-22
+
+- Fixed the Live tab's stats row (Voltage/Current/Temp/Peak In/Peak Out)
+  breaking into garbled, overlapping text at window widths just above
+  the Compact→Medium breakpoint in landscape — the two-pane layout's
+  stats column can be too narrow for all 5 items on one line right
+  where the nav rail appears, mainly hit on freeform-resizable windows
+  (Chromebook) rather than any fixed phone/tablet size. `StatsRow` now
+  wraps cleanly onto a second line (`FlowRow`) instead of splitting
+  words mid-item
+
 ## [1.7.0] - 2026-07-22
 
 - Large-screen adaptation: navigation now follows `WindowWidthSizeClass`
