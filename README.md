@@ -56,6 +56,15 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.7
+
+- **1.7.0**: Large-screen adaptation for tablets and foldables. Navigation
+  switches from a bottom bar to a side rail at tablet widths, in either
+  orientation; History and Reports no longer stretch edge-to-edge on
+  wide screens; a status-bar overlap bug and a Settings tab layout bug
+  found during this pass are fixed too; Live tab content centers
+  vertically on tall screens instead of sticking to the top
+
 ## What's New — v1.6
 
 - **1.6.1**: Sleep drain's coverage line now says "Tracked the whole

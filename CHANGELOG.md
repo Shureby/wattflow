@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.7.0] - 2026-07-22
+
+- Large-screen adaptation: navigation now follows `WindowWidthSizeClass`
+  instead of always being a bottom bar — tablets and foldables at
+  Medium/Expanded width get a side `NavigationRail` in either
+  orientation, phones keep the bottom `NavigationBar`
+- History and Reports content is capped to 640dp and centered on wide
+  screens, instead of filter chips and list rows stretching edge-to-edge
+  into a mostly-empty full-width line
+- Fixed the rail layout drawing its top content under the status bar in
+  landscape — it bypassed `Scaffold` entirely and passed a zero inset,
+  so the stats card collided with the status/cutout area
+- Fixed Settings nesting its own `Scaffold` inside the already-padded
+  content area, double-applying the top inset and sitting visibly lower
+  than every other tab
+- Dropped the in-page "Reports"/"Settings" titles for consistency with
+  History and Live, which never had one — the nav already labels the
+  current tab
+- Live tab content is now vertically centered on tall viewports instead
+  of sticking to the top with empty space below; the power graph grows
+  from 160dp to 260dp in the landscape two-pane layout, where the stats
+  column has the headroom to make a taller chart useful
+
 ## [1.6.1] - 2026-07-22
 
 - Sleep drain: a night tracked to within 1% of the full 8-hour window
