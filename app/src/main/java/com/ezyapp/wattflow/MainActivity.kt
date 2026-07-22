@@ -104,6 +104,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -205,6 +206,7 @@ fun ChargingScreen(
                             .verticalScroll(rememberScrollState())
                             .padding(horizontal = 24.dp)
                             .padding(top = 16.dp, bottom = 24.dp),
+                        verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally,
                     ) {
                         if (sample == null) {
@@ -682,7 +684,7 @@ private fun ChargingContent(sample: BatterySample, state: ChargingUiState) {
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                StatsPane(sample, state)
+                StatsPane(sample, state, chartHeight = 260.dp)
             }
         }
     } else {
@@ -787,7 +789,7 @@ private fun VisualPane(
 }
 
 @Composable
-private fun StatsPane(sample: BatterySample, state: ChargingUiState) {
+private fun StatsPane(sample: BatterySample, state: ChargingUiState, chartHeight: Dp = 160.dp) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -804,7 +806,7 @@ private fun StatsPane(sample: BatterySample, state: ChargingUiState) {
             history = state.history,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(160.dp),
+                .height(chartHeight),
         )
     }
 }
