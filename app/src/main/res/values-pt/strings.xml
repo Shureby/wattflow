@@ -78,6 +78,10 @@
     <string name="doze_row">Amostragem em segundo plano sem interrupções</string>
     <string name="doze_info_body">Isenta o WattFlow da otimização de bateria para que a amostragem não pause com a tela apagada. O registro fica mais completo, ao custo de consumo em espera um pouco maior (~0,5-1% por hora). Em MIUI/HyperOS talvez seja preciso permitir o início automático.</string>
     <string name="doze_denied_note">O WattFlow funciona bem sem essa permissão — períodos de tela apagada podem ficar sem amostras, exibidos como segmentos separados no modo estrito.</string>
+    <string name="autostart_row">Permissão de início automático</string>
+    <string name="autostart_info_body">Separado da otimização de bateria acima: alguns fabricantes (Xiaomi/HyperOS, Huawei, Oppo, vivo e similares) adicionam seu próprio bloqueio de início automático, que pode parar o registro em segundo plano mesmo depois de isentar o WattFlow da otimização de bateria. O WattFlow não tem como verificar se isso já foi concedido — se o registro continuar com lacunas à noite mesmo com os dois ativados, abra isto e permita o início automático.</string>
+    <string name="autostart_manual_tip">Abra o app Configurações do telefone, encontre o WattFlow em Aplicativos e ative a permissão "Início automático".</string>
+    <string name="autostart_nag_body">O registro em segundo plano está ativo há algumas noites, mas o WattFlow não encontrou dados durante a noite. Seu fabricante provavelmente bloqueia a inicialização do WattFlow em segundo plano — veja a configuração "Permissão de início automático" acima.</string>
     <string name="status_granted">Permitido</string>
     <string name="status_not_granted">Não permitido</string>
     <string name="free_history_banner">Só registra enquanto você usa o app — desbloqueie o Pro para gravação completa em segundo plano.</string>

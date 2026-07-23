@@ -78,6 +78,10 @@
     <string name="doze_row">Mesures en arrière-plan sans interruption</string>
     <string name="doze_info_body">"Exempte WattFlow des optimisations de batterie pour que les mesures ne soient pas suspendues écran éteint. Enregistrement plus complet, au prix d'une veille légèrement plus gourmande (~0,5-1% par heure). Sur MIUI/HyperOS, un démarrage automatique peut aussi être requis."</string>
     <string name="doze_denied_note">WattFlow fonctionne bien sans cette autorisation — les périodes écran éteint peuvent manquer de mesures, affichées comme segments séparés en mode strict.</string>
+    <string name="autostart_row">Autorisation de démarrage automatique</string>
+    <string name="autostart_info_body">"Distinct des optimisations de batterie ci-dessus : certains fabricants (Xiaomi/HyperOS, Huawei, Oppo, vivo et similaires) ajoutent leur propre blocage du démarrage automatique, qui peut arrêter l'enregistrement en arrière-plan même après avoir exempté WattFlow des optimisations de batterie. WattFlow ne peut pas vérifier si c'est déjà accordé — si l'enregistrement garde des trous la nuit malgré les deux réglages activés, ouvrez ceci et autorisez le démarrage automatique."</string>
+    <string name="autostart_manual_tip">"Ouvrez les Paramètres du téléphone, trouvez WattFlow dans Applications, puis activez l'autorisation « Démarrage automatique »."</string>
+    <string name="autostart_nag_body">"L'enregistrement en arrière-plan est actif depuis plusieurs nuits, mais WattFlow n'a trouvé aucune donnée nocturne. Le fabricant de votre téléphone bloque probablement le démarrage en arrière-plan de WattFlow — vérifiez le réglage « Autorisation de démarrage automatique » ci-dessus."</string>
     <string name="status_granted">Autorisé</string>
     <string name="status_not_granted">Non autorisé</string>
     <string name="free_history_banner">"N'enregistre que pendant l'utilisation de l'app — débloquez Pro pour un enregistrement complet en arrière-plan."</string>

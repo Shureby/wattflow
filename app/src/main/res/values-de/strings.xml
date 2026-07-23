@@ -78,6 +78,10 @@
     <string name="doze_row">Unterbrechungsfreie Hintergrundmessung</string>
     <string name="doze_info_body">Nimmt WattFlow von der Akku-Optimierung aus, damit die Messung bei ausgeschaltetem Display nicht pausiert. Vollständigere Aufzeichnung, dafür etwas höherer Standby-Verbrauch (~0,5-1% pro Stunde). Auf MIUI/HyperOS muss ggf. auch Autostart erlaubt werden.</string>
     <string name="doze_denied_note">WattFlow funktioniert auch ohne diese Berechtigung — bei ausgeschaltetem Display können Messlücken entstehen, im strikten Modus als separate Segmente sichtbar.</string>
+    <string name="autostart_row">Autostart-Berechtigung</string>
+    <string name="autostart_info_body">Getrennt von der Akku-Optimierung oben: Manche Hersteller (Xiaomi/HyperOS, Huawei, Oppo, vivo u.ä.) blockieren den Autostart zusätzlich auf eigene Faust — selbst wenn WattFlow von der Akku-Optimierung ausgenommen ist, kann die Hintergrundaufzeichnung dadurch trotzdem gestoppt werden. WattFlow kann nicht prüfen, ob das bereits erlaubt ist — wenn nachts trotz beider Einstellungen Lücken bleiben, hier öffnen und Autostart erlauben.</string>
+    <string name="autostart_manual_tip">Öffne die Einstellungen-App deines Telefons, suche WattFlow unter Apps und aktiviere dort die Berechtigung „Autostart“.</string>
+    <string name="autostart_nag_body">Die Hintergrundaufzeichnung ist seit einigen Nächten aktiv, aber WattFlow hat über Nacht keine Daten gefunden. Dein Telefonhersteller blockiert vermutlich den Hintergrundstart von WattFlow — sieh dir oben die Einstellung „Autostart-Berechtigung“ an.</string>
     <string name="status_granted">Erlaubt</string>
     <string name="status_not_granted">Nicht erlaubt</string>
     <string name="free_history_banner">Zeichnet nur bei geöffneter App auf — Pro schaltet vollständige Hintergrundaufzeichnung frei.</string>

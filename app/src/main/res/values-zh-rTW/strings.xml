@@ -78,6 +78,10 @@
     <string name="doze_row">背景取樣不中斷</string>
     <string name="doze_info_body">將 WattFlow 加入電池最佳化白名單，熄屏時背景取樣不被暫停，記錄更完整，代價是待機耗電略增（約每小時 0.5-1%）。小米/HyperOS 等系統可能還需在系統設定中允許自啟動。</string>
     <string name="doze_denied_note">沒有此權限也能正常使用 — 熄屏期間可能出現短暫取樣缺口，嚴格分段模式下會如實顯示為多段。</string>
+    <string name="autostart_row">自啟動權限</string>
+    <string name="autostart_info_body">跟上面的電池最佳化白名單是兩回事：小米/HyperOS、華為、OPPO、vivo 等廠商還有一層自建的自啟動攔截，就算已經把 WattFlow 加入電池最佳化白名單，背景記錄也可能被它攔下來。這項權限 WattFlow 沒辦法查詢是否已經授予——如果兩項都開了，晚上記錄還是斷斷續續，點開這裡手動允許自啟動。</string>
+    <string name="autostart_manual_tip">打開手機的設定App，在應用程式清單裡找到 WattFlow，找到「自啟動」或「自動啟動」權限並開啟。</string>
+    <string name="autostart_nag_body">背景記錄已經開了好幾個晚上，但 WattFlow 整晚都沒採集到資料。你手機廠商大概率攔截了 WattFlow 的背景自啟動——去看看上面的「自啟動權限」設定。</string>
     <string name="status_granted">已允許</string>
     <string name="status_not_granted">未允許</string>
     <string name="free_history_banner">僅記錄 app 使用期間的資料 — 解鎖 Pro 獲得背景完整記錄。</string>

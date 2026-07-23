@@ -310,6 +310,13 @@ private fun SettingsScreen(onLockedFeature: () -> Unit) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
     var showLanguageDialog by remember { mutableStateOf(false) }
+    var showAutostartNag by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (AutostartNag.shouldShow(context)) {
+            AutostartNag.markShownNow(context)
+            showAutostartNag = true
+        }
+    }
 
     val currentTag = LocalePrefs.get(context)
     val currentLanguageName = SUPPORTED_LANGUAGES.firstOrNull { it.first == currentTag }
@@ -407,6 +414,19 @@ private fun SettingsScreen(onLockedFeature: () -> Unit) {
                 (context as? ComponentActivity)?.recreate()
             },
             onDismiss = { showLanguageDialog = false },
+        )
+    }
+
+    if (showAutostartNag) {
+        AlertDialog(
+            onDismissRequest = { showAutostartNag = false },
+            title = { Text(stringResource(R.string.autostart_row)) },
+            text = { Text(stringResource(R.string.autostart_nag_body)) },
+            confirmButton = {
+                TextButton(onClick = { showAutostartNag = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
         )
     }
 }
@@ -1183,6 +1203,7 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
         // recording completeness; raw sessions is a pure display toggle.
         if (wanted && isPro) {
             DozeExemptionRow()
+            AutostartRow()
         }
     }
 

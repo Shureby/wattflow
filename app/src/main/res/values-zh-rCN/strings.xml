@@ -78,6 +78,10 @@
     <string name="doze_row">后台采样不中断</string>
     <string name="doze_info_body">将 WattFlow 加入电池优化白名单，息屏时后台采样不被暂停，记录更完整，代价是待机耗电略增（约每小时 0.5-1%）。小米/HyperOS 等系统可能还需在系统设置中允许自启动。</string>
     <string name="doze_denied_note">没有此权限也能正常使用 — 息屏期间可能出现短暂采样缺口，严格分段模式下会如实显示为多段。</string>
+    <string name="autostart_row">自启动权限</string>
+    <string name="autostart_info_body">跟上面的电池优化白名单是两回事：小米/HyperOS、华为、OPPO、vivo 等厂商还有一层自建的自启动拦截，就算已经把 WattFlow 加入电池优化白名单，后台记录也可能被它拦下来。这项权限 WattFlow 没法查询是否已经授予——如果两项都开了，晚上记录还是断断续续，点开这里手动允许自启动。</string>
+    <string name="autostart_manual_tip">打开手机的设置App，在应用列表里找到 WattFlow，找到"自启动"或"自动启动"权限并打开。</string>
+    <string name="autostart_nag_body">后台记录已经开了好几个晚上，但 WattFlow 整晚都没采集到数据。你手机厂商大概率拦截了 WattFlow 的后台自启动——去看看上面的"自启动权限"设置。</string>
     <string name="status_granted">已允许</string>
     <string name="status_not_granted">未允许</string>
     <string name="free_history_banner">仅记录 app 使用期间的数据 — 解锁 Pro 获得后台完整记录。</string>

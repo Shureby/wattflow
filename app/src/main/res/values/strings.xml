@@ -83,6 +83,10 @@
     <string name="doze_row">Uninterrupted background sampling</string>
     <string name="doze_info_body">Exempts WattFlow from battery optimization so background sampling is not paused while the screen is off. Recording becomes more complete, at the cost of slightly higher standby drain (~0.5-1% per hour). On MIUI/HyperOS and similar systems you may also need to allow autostart in system settings.</string>
     <string name="doze_denied_note">WattFlow works fine without this permission — screen-off periods may briefly lack samples, shown as separate segments in raw mode.</string>
+    <string name="autostart_row">Autostart permission</string>
+    <string name="autostart_info_body">Separate from battery optimization above: some phone makers (Xiaomi/HyperOS, Huawei, Oppo, vivo, and similar) add their own autostart block that can still stop background recording even after you\'ve exempted WattFlow from battery optimization. There\'s no way for WattFlow to check whether this is already granted — if recording keeps gaps overnight despite both being on, open this and allow autostart.</string>
+    <string name="autostart_manual_tip">Open your phone\'s Settings app, find WattFlow under Apps, and look for an "Autostart" or "Auto-launch" permission to enable.</string>
+    <string name="autostart_nag_body">Background recording has been on for a few nights but WattFlow found no data overnight. Your phone maker likely blocks WattFlow from starting up in the background — check the "Autostart permission" setting above.</string>
     <string name="status_granted">Allowed</string>
     <string name="status_not_granted">Not allowed</string>
     <string name="free_history_banner">Only records while you use the app — unlock Pro for complete background recording.</string>

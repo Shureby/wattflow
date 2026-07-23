@@ -78,6 +78,10 @@
     <string name="doze_row">백그라운드 샘플링 중단 없음</string>
     <string name="doze_info_body">WattFlow를 배터리 최적화에서 제외하여 화면이 꺼져도 샘플링이 중단되지 않습니다. 기록이 더 완전해지지만 대기 전력 소모가 약간 늘어납니다(시간당 약 0.5-1%). MIUI/HyperOS에서는 자동 시작 허용도 필요할 수 있습니다.</string>
     <string name="doze_denied_note">이 권한 없이도 잘 작동합니다 — 화면 꺼짐 구간에 샘플이 부족할 수 있으며 엄격 모드에서 별도 세그먼트로 표시됩니다.</string>
+    <string name="autostart_row">자동 시작 권한</string>
+    <string name="autostart_info_body">위의 배터리 최적화와는 별개입니다. 샤오미/HyperOS, 화웨이, OPPO, vivo 등 일부 제조사는 자체 자동 시작 차단 기능이 있어 배터리 최적화에서 WattFlow를 제외해도 백그라운드 기록이 중단될 수 있습니다. 이미 허용되었는지 WattFlow에서 확인할 방법은 없습니다 — 둘 다 켜져 있는데도 밤사이 기록에 공백이 계속되면 여기를 열어 자동 시작을 허용하세요.</string>
+    <string name="autostart_manual_tip">휴대폰 설정 앱을 열고 앱 목록에서 WattFlow를 찾아 "자동 시작" 권한을 활성화하세요.</string>
+    <string name="autostart_nag_body">백그라운드 기록을 며칠째 켜두었지만 WattFlow가 밤사이 데이터를 찾지 못했습니다. 제조사가 WattFlow의 백그라운드 시작을 차단하고 있을 가능성이 높습니다 — 위의 "자동 시작 권한" 설정을 확인하세요.</string>
     <string name="status_granted">허용됨</string>
     <string name="status_not_granted">허용 안 됨</string>
     <string name="free_history_banner">앱 사용 중에만 기록 — Pro를 해제하면 백그라운드 완전 기록.</string>

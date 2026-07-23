@@ -56,6 +56,16 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.8
+
+- **1.8.0**: Added an "Autostart permission" setting for phones with
+  aggressive background-process management (Xiaomi/HyperOS, Huawei,
+  Oppo, vivo, and similar) — these OEMs block background app startup on
+  top of standard battery-optimization exemption, which can silently
+  stop overnight recording. Opens the manufacturer's autostart screen
+  directly where known, with a one-time note if recording keeps missing
+  nights despite both settings being on
+
 ## What's New — v1.7
 
 - **1.7.2**: Home screen widgets no longer clip text mid-character at

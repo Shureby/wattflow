@@ -22,8 +22,8 @@ android {
         applicationId = "com.ezyapp.wattflow"
         minSdk = 26
         targetSdk = 36
-        versionCode = 37
-        versionName = "1.7.2"
+        versionCode = 38
+        versionName = "1.8.0"
     }
 
     flavorDimensions += "dist"

@@ -78,6 +78,10 @@
     <string name="doze_row">バックグラウンド サンプリングを中断しない</string>
     <string name="doze_info_body">WattFlow を電池の最適化から除外し、画面オフ中もサンプリングを止めません。記録はより完全になりますが、待機時消費がわずかに増えます（1 時間あたり約 0.5-1%）。MIUI/HyperOS では自動起動の許可も必要な場合があります。</string>
     <string name="doze_denied_note">この権限がなくても問題なく使えます — 画面オフ中はサンプルが欠けることがあり、厳密モードでは別々のセグメントとして表示されます。</string>
+    <string name="autostart_row">自動起動の許可</string>
+    <string name="autostart_info_body">上のバッテリー最適化とは別の設定です。Xiaomi/HyperOS、Huawei、OPPO、vivo などの一部メーカーは独自の自動起動ブロックを持っており、バッテリー最適化を除外していてもバックグラウンド記録が止まることがあります。この許可が既に付与されているかどうかを WattFlow 側で確認する方法はありません — 両方オンにしても夜間の記録に抜けが続く場合は、ここを開いて自動起動を許可してください。</string>
+    <string name="autostart_manual_tip">端末の設定アプリを開き、アプリ一覧から WattFlow を探して、「自動起動」または「バックグラウンドでの自動起動」の許可を有効にしてください。</string>
+    <string name="autostart_nag_body">バックグラウンド記録は数日前からオンになっていますが、夜間のデータが見つかりませんでした。お使いの端末メーカーが WattFlow のバックグラウンド起動をブロックしている可能性があります — 上の「自動起動の許可」を確認してください。</string>
     <string name="status_granted">許可済み</string>
     <string name="status_not_granted">未許可</string>
     <string name="free_history_banner">アプリ使用中のみ記録 — Pro でバックグラウンド完全記録を解除。</string>

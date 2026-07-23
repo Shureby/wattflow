@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.8.0] - 2026-07-23
+
+- Added an "Autostart permission" row in Background Recording settings,
+  aimed at Android skins with aggressive background-process management
+  (Xiaomi/HyperOS, Huawei, Oppo, vivo, and similar) — these add their own
+  autostart block on top of stock battery-optimization exemption, which
+  can silently stop overnight recording even when everything else is
+  configured correctly. Opens the manufacturer's autostart manager
+  directly where a verified path exists (Xiaomi/HyperOS); points to the
+  right settings screen manually elsewhere
+- If background recording and battery-optimization exemption are both
+  on but several consecutive nights still show no data (and the phone
+  wasn't simply powered off), WattFlow now shows a one-time note
+  pointing at the new Autostart setting — shown at most once, not a
+  recurring nag
+
 ## [1.7.2] - 2026-07-22
 
 - Fixed the Medium/Large home screen widgets clipping text mid-character

@@ -78,6 +78,10 @@
     <string name="doze_row">Pengambilan sampel latar belakang tanpa gangguan</string>
     <string name="doze_info_body">Mengecualikan WattFlow dari optimalisasi baterai agar pengambilan sampel tidak dijeda saat layar mati. Perekaman lebih lengkap dengan konsumsi siaga sedikit lebih tinggi (~0,5-1% per jam). Di MIUI/HyperOS mungkin perlu mengizinkan mulai otomatis.</string>
     <string name="doze_denied_note">WattFlow tetap berfungsi tanpa izin ini — periode layar mati mungkin kekurangan sampel dan tampil sebagai segmen terpisah dalam mode ketat.</string>
+    <string name="autostart_row">Izin mulai otomatis</string>
+    <string name="autostart_info_body">Terpisah dari optimalisasi baterai di atas: beberapa produsen (Xiaomi/HyperOS, Huawei, Oppo, vivo, dan sejenisnya) menambahkan pemblokiran mulai otomatis mereka sendiri, yang tetap bisa menghentikan perekaman latar belakang meski WattFlow sudah dikecualikan dari optimalisasi baterai. WattFlow tidak bisa memeriksa apakah izin ini sudah diberikan — jika perekaman masih bolong di malam hari meski keduanya sudah aktif, buka ini dan izinkan mulai otomatis.</string>
+    <string name="autostart_manual_tip">Buka aplikasi Setelan ponsel, cari WattFlow di Aplikasi, lalu aktifkan izin "Mulai otomatis".</string>
+    <string name="autostart_nag_body">Perekaman latar belakang sudah aktif beberapa malam, tapi WattFlow tidak menemukan data semalaman. Produsen ponsel Anda kemungkinan memblokir WattFlow agar tidak berjalan di latar belakang — periksa pengaturan "Izin mulai otomatis" di atas.</string>
     <string name="status_granted">Diizinkan</string>
     <string name="status_not_granted">Tidak diizinkan</string>
     <string name="free_history_banner">Hanya merekam saat aplikasi digunakan — buka Pro untuk perekaman latar belakang lengkap.</string>
