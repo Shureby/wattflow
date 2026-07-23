@@ -988,10 +988,16 @@ private fun AlertsCard(onLockedFeature: () -> Unit) {
     var chargeTh by remember { mutableIntStateOf(AlertPrefs.chargeThreshold(context)) }
     var lowTh by remember { mutableIntStateOf(AlertPrefs.lowThreshold(context)) }
     var showHealthInfo by remember { mutableStateOf(false) }
+    var showPermissionRationale by remember { mutableStateOf(false) }
     val isPro by Pro.isPro.collectAsState()
     val permissionLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { }
+
+    fun needsNotificationPermission() = Build.VERSION.SDK_INT >= 33 &&
+        context.checkSelfPermission(
+            android.Manifest.permission.POST_NOTIFICATIONS
+        ) != PackageManager.PERMISSION_GRANTED
 
     Column(modifier = Modifier.fillMaxWidth()) {
         Row(
@@ -1021,16 +1027,8 @@ private fun AlertsCard(onLockedFeature: () -> Unit) {
                 onCheckedChange = { on ->
                     enabled = on
                     AlertPrefs.setEnabled(context, on)
-                    if (on) {
-                        val needsPermission = Build.VERSION.SDK_INT >= 33 &&
-                                context.checkSelfPermission(
-                                    android.Manifest.permission.POST_NOTIFICATIONS
-                                ) != PackageManager.PERMISSION_GRANTED
-                        if (needsPermission) {
-                            permissionLauncher.launch(
-                                android.Manifest.permission.POST_NOTIFICATIONS
-                            )
-                        }
+                    if (on && needsNotificationPermission()) {
+                        showPermissionRationale = true
                     }
                 },
             )
@@ -1061,6 +1059,25 @@ private fun AlertsCard(onLockedFeature: () -> Unit) {
                 onLocked = onLockedFeature,
             )
         }
+    }
+
+    if (showPermissionRationale) {
+        AlertDialog(
+            onDismissRequest = {
+                showPermissionRationale = false
+                permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+            },
+            title = { Text(stringResource(R.string.alerts_toggle)) },
+            text = { Text(stringResource(R.string.alerts_permission_rationale)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showPermissionRationale = false
+                    permissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
+                }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
     }
 
     if (showHealthInfo) {

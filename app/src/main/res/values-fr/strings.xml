@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s avant la charge complète</string>
     <string name="eta_left">≈ %1$s restant</string>
     <string name="alerts_toggle">Alertes batterie</string>
+    <string name="alerts_permission_rationale">"Les alertes batterie sont envoyées sous forme de notification lorsque votre seuil de charge ou de batterie faible est atteint — Android exige l'autorisation de notifications pour cela. Contrairement à l'enregistrement en arrière-plan, les alertes n'ont pas de solution de repli : sans autorisation, elles n'apparaîtront pas du tout."</string>
     <string name="alert_charge_label">Alerte de charge</string>
     <string name="alert_low_label">Alerte batterie faible</string>
     <string name="alerts_channel_name">Alertes batterie</string>

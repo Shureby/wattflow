@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.1] - 2026-07-23
+
+- Turning on Battery alerts now explains upfront why it needs
+  notification permission before Android's system prompt appears —
+  previously the raw permission dialog just showed up with no context,
+  unlike Background recording which already explained itself. Alerts
+  have no fallback like recording does: without the permission granted,
+  they simply never fire
+
 ## [1.8.0] - 2026-07-23
 
 - Added an "Autostart permission" row in Background Recording settings,

@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s до полной</string>
     <string name="eta_left">≈ осталось %1$s</string>
     <string name="alerts_toggle">Оповещения батареи</string>
+    <string name="alerts_permission_rationale">Оповещения о батарее приходят в виде уведомления при достижении порога заряда или низкого заряда — для этого Android требует разрешение на уведомления. В отличие от фоновой записи, у оповещений нет запасного варианта: без разрешения они вообще не появятся.</string>
     <string name="alert_charge_label">Оповещение о заряде</string>
     <string name="alert_low_label">Оповещение о низком заряде</string>
     <string name="alerts_channel_name">Оповещения батареи</string>

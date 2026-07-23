@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s 充满</string>
     <string name="eta_left">≈ 还能用 %1$s</string>
     <string name="alerts_toggle">电池提醒</string>
+    <string name="alerts_permission_rationale">电量提醒是通过通知投递的——达到充满/低电量阈值时弹一条通知，Android 要求先授予通知权限。跟后台记录不一样，提醒没有备用方案：没有这个权限，提醒完全不会出现。</string>
     <string name="alert_charge_label">充电提醒</string>
     <string name="alert_low_label">低电量提醒</string>
     <string name="alerts_channel_name">电池提醒</string>

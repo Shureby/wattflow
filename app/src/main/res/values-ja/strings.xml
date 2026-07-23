@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ 満充電まで %1$s</string>
     <string name="eta_left">≈ 残り %1$s</string>
     <string name="alerts_toggle">バッテリー通知</string>
+    <string name="alerts_permission_rationale">バッテリーアラートは、充電/低残量のしきい値を超えたときに通知として届きます — 表示には Android の通知権限が必要です。バックグラウンド記録と違い、アラートには代替手段がありません。権限がないとアラートはまったく表示されません。</string>
     <string name="alert_charge_label">充電通知</string>
     <string name="alert_low_label">低残量通知</string>
     <string name="alerts_channel_name">バッテリー通知</string>

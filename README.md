@@ -58,6 +58,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.8
 
+- **1.8.1**: Turning on Battery alerts now explains why notification
+  permission is needed before Android's system prompt appears, matching
+  Background recording's existing rationale dialog — alerts have no
+  fallback, so without the permission they simply never fire
 - **1.8.0**: Added an "Autostart permission" setting for phones with
   aggressive background-process management (Xiaomi/HyperOS, Huawei,
   Oppo, vivo, and similar) — these OEMs block background app startup on

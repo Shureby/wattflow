@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s bis voll</string>
     <string name="eta_left">≈ %1$s übrig</string>
     <string name="alerts_toggle">Akku-Benachrichtigungen</string>
+    <string name="alerts_permission_rationale">Akku-Benachrichtigungen werden als Benachrichtigung zugestellt, wenn dein Lade- oder Niedrigstand-Schwellenwert erreicht wird — dafür verlangt Android die Benachrichtigungsberechtigung. Anders als bei der Hintergrundaufzeichnung gibt es hier keinen Ausweichweg: Ohne die Berechtigung erscheinen die Benachrichtigungen überhaupt nicht.</string>
     <string name="alert_charge_label">Lade-Alarm</string>
     <string name="alert_low_label">Alarm bei niedrigem Akku</string>
     <string name="alerts_channel_name">Akku-Benachrichtigungen</string>

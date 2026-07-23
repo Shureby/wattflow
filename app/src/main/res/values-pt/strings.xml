@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s até encher</string>
     <string name="eta_left">≈ %1$s restante</string>
     <string name="alerts_toggle">Alertas de bateria</string>
+    <string name="alerts_permission_rationale">Os alertas de bateria são entregues como notificação quando o limite de carga ou bateria fraca é atingido — o Android exige a permissão de notificações para isso. Diferente da gravação em segundo plano, os alertas não têm alternativa: sem a permissão, eles simplesmente não aparecerão.</string>
     <string name="alert_charge_label">Alerta de carga</string>
     <string name="alert_low_label">Alerta de bateria fraca</string>
     <string name="alerts_channel_name">Alertas de bateria</string>

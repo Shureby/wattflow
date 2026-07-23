@@ -58,6 +58,7 @@
     <string name="eta_to_full">≈ %1$s to full</string>
     <string name="eta_left">≈ %1$s left</string>
     <string name="alerts_toggle">Battery alerts</string>
+    <string name="alerts_permission_rationale">Battery alerts are delivered as a notification when your charge or low-battery threshold is crossed — Android requires notification permission for this. Unlike background recording, alerts have no fallback: without the permission, they won\'t appear at all.</string>
     <string name="alert_charge_label">Charge alert</string>
     <string name="alert_low_label">Low battery alert</string>
     <string name="alerts_channel_name">Battery alerts</string>

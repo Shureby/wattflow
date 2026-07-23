@@ -55,6 +55,7 @@
     <string name="eta_to_full">≈ %1$s 充滿</string>
     <string name="eta_left">≈ 還能用 %1$s</string>
     <string name="alerts_toggle">電池提醒</string>
+    <string name="alerts_permission_rationale">電量提醒是透過通知投遞的——達到充滿/低電量閾值時彈一條通知，Android 要求先授予通知權限。跟背景記錄不一樣，提醒沒有備用方案：沒有這個權限，提醒完全不會出現。</string>
     <string name="alert_charge_label">充電提醒</string>
     <string name="alert_low_label">低電量提醒</string>
     <string name="alerts_channel_name">電池提醒</string>
