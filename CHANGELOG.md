@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.8.2] - 2026-07-23
+
+- Renamed "Charger benchmark" to "Charging benchmark" and reworded its
+  explanation: the charger and cable both affect the grade, and either
+  one alone can bottleneck the result — swapping just the cable with
+  the same charger can change the grade. Also notes that some phones
+  only reach their fastest charging speed with the screen off, so a
+  lower grade may reflect that limit rather than the setup itself
+
 ## [1.8.1] - 2026-07-23
 
 - Turning on Battery alerts now explains upfront why it needs

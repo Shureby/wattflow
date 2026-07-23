@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">電子郵件</string>
     <string name="overlay_toggle">懸浮功率窗</string>
     <string name="overlay_toggle_hint">背景記錄開啟時，在其他應用上方顯示可拖曳的即時功率小窗。需要「顯示在其他應用上層」權限——這是 WattFlow 唯一的可選權限。</string>
-    <string name="bench_open">⚡ 充電器測評</string>
-    <string name="bench_title">充電器測評</string>
-    <string name="bench_intro">對目前充電器+線材組合進行 60 秒測量並評級。為確保結果可比：電量區間相近、螢幕常亮、手機靜置。</string>
+    <string name="bench_open">⚡ 充電測評</string>
+    <string name="bench_title">充電測評</string>
+    <string name="bench_intro">對目前充電組合進行 60 秒測量並評級。充電器和傳輸線都會影響結果——任何一個「拖後腿」都會拉低整體表現，同一個充電器換條線，評級也可能不一樣。部分手機只有在熄屏時才會進入最高速充電，這裡測出評級偏低，可能只是這個限制，不代表充電組合本身不行。為確保結果可比：電量區間相近、螢幕常亮、手機靜置。</string>
     <string name="bench_plug_first">請先插入充電器。</string>
     <string name="bench_running">測量中……剩餘 %1$d 秒。請保持手機靜置。</string>
     <string name="bench_aborted">測試已停止——充電中斷。</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">穩定性</string>
     <string name="bench_name_hint">充電器名稱（例如 65W 氮化鎵 + 編織線）</string>
     <string name="bench_save">儲存結果</string>
-    <string name="bench_save_pro">解鎖 Pro 以儲存並比較充電器</string>
+    <string name="bench_save_pro">解鎖 Pro 以儲存並比較充電組合</string>
     <string name="bench_saved_title">已儲存結果</string>
-    <string name="bench_results_empty">還沒有儲存的結果。在「即時」標籤頁執行一次測評並儲存，就能在這裡對比充電器了。</string>
-    <string name="bench_unnamed">未命名充電器</string>
+    <string name="bench_results_empty">還沒有儲存的結果。在「即時」標籤頁執行一次測評並儲存，就能在這裡對比充電組合了。</string>
+    <string name="bench_unnamed">未命名組合</string>
     <string name="ledger_chip">帳本</string>
     <string name="ledger_title">能量帳本——最近 14 天</string>
     <string name="ledger_empty">最近 14 天沒有記錄。</string>

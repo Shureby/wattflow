@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">メール</string>
     <string name="overlay_toggle">フローティング表示</string>
     <string name="overlay_toggle_hint">バックグラウンド記録中に、他のアプリの上にドラッグ可能なワット数ピルを表示します。「他のアプリの上に表示」権限が必要です。WattFlow が求める唯一のオプション権限です。</string>
-    <string name="bench_open">⚡ 充電器ベンチマーク</string>
-    <string name="bench_title">充電器ベンチマーク</string>
-    <string name="bench_intro">この充電器＋ケーブルの組み合わせを60秒間測定して評価します。比較可能な結果のために：同じ電池残量帯、画面オン、端末は操作しないでください。</string>
+    <string name="bench_open">⚡ 充電ベンチマーク</string>
+    <string name="bench_title">充電ベンチマーク</string>
+    <string name="bench_intro">この充電構成を60秒間測定して評価します。充電器とケーブルの両方が結果に影響します — どちらか一方がボトルネックになるだけで、同じ充電器でもケーブルを変えると評価が変わることがあります。端末によっては画面オフのときだけ最速充電になるため、ここでの評価が低くても充電構成自体の問題とは限りません。比較可能な結果のために：同じ電池残量帯、画面オン、端末は操作しないでください。</string>
     <string name="bench_plug_first">充電器を接続すると開始できます。</string>
     <string name="bench_running">測定中… 残り %1$d 秒。端末を操作しないでください。</string>
     <string name="bench_aborted">テスト中断 — 充電が中断されました。</string>
@@ -117,8 +117,8 @@
     <string name="bench_save">結果を保存</string>
     <string name="bench_save_pro">Pro で結果を保存して比較</string>
     <string name="bench_saved_title">保存済みの結果</string>
-    <string name="bench_results_empty">保存された結果はまだありません。ライブタブでベンチマークを実行して保存すると、ここで充電器を比較できます。</string>
-    <string name="bench_unnamed">名称未設定の充電器</string>
+    <string name="bench_results_empty">保存された結果はまだありません。ライブタブでベンチマークを実行して保存すると、ここで充電構成を比較できます。</string>
+    <string name="bench_unnamed">名称未設定の構成</string>
     <string name="ledger_chip">台帳</string>
     <string name="ledger_title">エネルギー台帳 — 過去14日</string>
     <string name="ledger_empty">過去14日間の記録はありません。</string>

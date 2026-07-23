@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">E-mail</string>
     <string name="overlay_toggle">Superposition des watts</string>
     <string name="overlay_toggle_hint">Pastille déplaçable affichant les watts en direct par-dessus les autres applis quand l’enregistrement en arrière-plan est actif. Nécessite la permission d’affichage par-dessus — la seule permission optionnelle demandée par WattFlow.</string>
-    <string name="bench_open">⚡ Test du chargeur</string>
-    <string name="bench_title">Test du chargeur</string>
-    <string name="bench_intro">Mesure ce couple chargeur + câble pendant 60 secondes et lui attribue une note. Pour des résultats comparables : même plage de batterie, écran allumé, téléphone au repos.</string>
+    <string name="bench_open">⚡ Test de charge</string>
+    <string name="bench_title">Test de charge</string>
+    <string name="bench_intro">"Mesure cette configuration de charge pendant 60 secondes et lui attribue une note. Le chargeur et le câble comptent tous les deux — l'un seul en goulot d'étranglement suffit à faire baisser la note, et changer juste le câble avec le même chargeur peut changer le résultat. Certains téléphones n'atteignent leur vitesse de charge maximale qu'écran éteint : une note plus basse ici peut donc refléter cette limite plutôt que la configuration elle-même. Pour des résultats comparables : même plage de batterie, écran allumé, téléphone au repos."</string>
     <string name="bench_plug_first">Branchez un chargeur pour commencer.</string>
     <string name="bench_running">Mesure en cours… %1$d s restantes. Laissez le téléphone au repos.</string>
     <string name="bench_aborted">Test arrêté — la charge a été interrompue.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">Stabilité</string>
     <string name="bench_name_hint">Nom du chargeur (ex. GaN 65W + câble tressé)</string>
     <string name="bench_save">Enregistrer le résultat</string>
-    <string name="bench_save_pro">Enregistrez et comparez les chargeurs avec Pro</string>
+    <string name="bench_save_pro">Enregistrez et comparez les configurations de charge avec Pro</string>
     <string name="bench_saved_title">Résultats enregistrés</string>
-    <string name="bench_results_empty">Aucun résultat enregistré pour l\'instant. Lancez un test depuis l\'onglet En direct et enregistrez-le pour comparer des chargeurs ici.</string>
-    <string name="bench_unnamed">Chargeur sans nom</string>
+    <string name="bench_results_empty">Aucun résultat enregistré pour l\'instant. Lancez un test depuis l\'onglet En direct et enregistrez-le pour comparer des configurations ici.</string>
+    <string name="bench_unnamed">Configuration sans nom</string>
     <string name="ledger_chip">Registre</string>
     <string name="ledger_title">Registre d’énergie — 14 derniers jours</string>
     <string name="ledger_empty">Aucune session sur les 14 derniers jours.</string>

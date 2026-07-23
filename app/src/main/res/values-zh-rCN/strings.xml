@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">电子邮件</string>
     <string name="overlay_toggle">悬浮功率窗</string>
     <string name="overlay_toggle_hint">后台记录开启时，在其他应用上方显示可拖动的实时功率小窗。需要「显示在其他应用上层」权限——这是 WattFlow 唯一的可选权限。</string>
-    <string name="bench_open">⚡ 充电器测评</string>
-    <string name="bench_title">充电器测评</string>
-    <string name="bench_intro">对当前充电器+线缆组合进行 60 秒测量并评级。为保证结果可比：电量区间相近、屏幕常亮、手机静置。</string>
+    <string name="bench_open">⚡ 充电测评</string>
+    <string name="bench_title">充电测评</string>
+    <string name="bench_intro">对当前充电组合进行 60 秒测量并评级。充电器和数据线都会影响结果——任何一个"拖后腿"都会拉低整体表现，同一个充电器换根线，评级也可能不一样。部分手机只有在息屏时才会进入最高速充电，这里测出评级偏低，可能只是这个限制，不代表充电组合本身不行。为保证结果可比：电量区间相近、屏幕常亮、手机静置。</string>
     <string name="bench_plug_first">请先插入充电器。</string>
     <string name="bench_running">测量中……剩余 %1$d 秒。请保持手机静置。</string>
     <string name="bench_aborted">测试已停止——充电中断。</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">稳定性</string>
     <string name="bench_name_hint">充电器名称（例如 65W 氮化镓 + 编织线）</string>
     <string name="bench_save">保存结果</string>
-    <string name="bench_save_pro">解锁 Pro 以保存并对比充电器</string>
+    <string name="bench_save_pro">解锁 Pro 以保存并对比充电组合</string>
     <string name="bench_saved_title">已保存结果</string>
-    <string name="bench_results_empty">还没有保存的结果。在"实时"标签页运行一次测评并保存，就能在这里对比充电器了。</string>
-    <string name="bench_unnamed">未命名充电器</string>
+    <string name="bench_results_empty">还没有保存的结果。在"实时"标签页运行一次测评并保存，就能在这里对比充电组合了。</string>
+    <string name="bench_unnamed">未命名组合</string>
     <string name="ledger_chip">账本</string>
     <string name="ledger_title">能量账本——最近 14 天</string>
     <string name="ledger_empty">最近 14 天没有记录。</string>

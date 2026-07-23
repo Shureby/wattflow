@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">E-mail</string>
     <string name="overlay_toggle">Sobreposição de watts</string>
     <string name="overlay_toggle_hint">Pílula arrastável com watts ao vivo sobre outros apps enquanto a gravação em segundo plano está ativa. Requer a permissão de exibir sobre outros apps — a única permissão opcional que o WattFlow pede.</string>
-    <string name="bench_open">⚡ Teste de carregador</string>
-    <string name="bench_title">Teste de carregador</string>
-    <string name="bench_intro">Mede esta combinação de carregador + cabo por 60 segundos e atribui uma nota. Para resultados comparáveis: mesma faixa de bateria, tela ligada, telefone em repouso.</string>
+    <string name="bench_open">⚡ Teste de carregamento</string>
+    <string name="bench_title">Teste de carregamento</string>
+    <string name="bench_intro">Mede esta configuração de carregamento por 60 segundos e atribui uma nota. O carregador e o cabo importam igualmente — só um dos dois já ser o gargalo já derruba a nota, e trocar apenas o cabo com o mesmo carregador pode mudar o resultado. Alguns celulares só atingem a velocidade máxima de carregamento com a tela apagada, então uma nota mais baixa aqui pode refletir esse limite, não a configuração em si. Para resultados comparáveis: mesma faixa de bateria, tela ligada, telefone em repouso.</string>
     <string name="bench_plug_first">Conecte um carregador para começar.</string>
     <string name="bench_running">Medindo… faltam %1$d s. Mantenha o telefone em repouso.</string>
     <string name="bench_aborted">Teste interrompido — o carregamento parou.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">Estabilidade</string>
     <string name="bench_name_hint">Nome do carregador (ex.: GaN 65W + cabo trançado)</string>
     <string name="bench_save">Salvar resultado</string>
-    <string name="bench_save_pro">Salve e compare carregadores com o Pro</string>
+    <string name="bench_save_pro">Salve e compare configurações de carregamento com o Pro</string>
     <string name="bench_saved_title">Resultados salvos</string>
-    <string name="bench_results_empty">Ainda não há resultados salvos. Execute um teste na aba Ao vivo e salve para comparar carregadores aqui.</string>
-    <string name="bench_unnamed">Carregador sem nome</string>
+    <string name="bench_results_empty">Ainda não há resultados salvos. Execute um teste na aba Ao vivo e salve para comparar configurações aqui.</string>
+    <string name="bench_unnamed">Configuração sem nome</string>
     <string name="ledger_chip">Registro</string>
     <string name="ledger_title">Registro de energia — últimos 14 dias</string>
     <string name="ledger_empty">Sem sessões nos últimos 14 dias.</string>

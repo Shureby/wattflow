@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">البريد الإلكتروني</string>
     <string name="overlay_toggle">نافذة الواط العائمة</string>
     <string name="overlay_toggle_hint">شريط قابل للسحب يعرض الواط المباشر فوق التطبيقات الأخرى أثناء تشغيل التسجيل في الخلفية. يتطلب إذن العرض فوق التطبيقات — الإذن الاختياري الوحيد الذي يطلبه WattFlow.</string>
-    <string name="bench_open">⚡ اختبار الشاحن</string>
-    <string name="bench_title">اختبار الشاحن</string>
-    <string name="bench_intro">يقيس هذا الشاحن مع الكابل لمدة 60 ثانية ويمنحه تقييمًا. لنتائج قابلة للمقارنة: نفس نطاق البطارية، الشاشة مضاءة، الهاتف خامل.</string>
+    <string name="bench_open">⚡ اختبار الشحن</string>
+    <string name="bench_title">اختبار الشحن</string>
+    <string name="bench_intro">يقيس إعداد الشحن هذا لمدة 60 ثانية ويمنحه تقييمًا. الشاحن والكابل كلاهما مؤثر — أيّ منهما بمفرده قد يكون عنق الزجاجة، وتغيير الكابل فقط مع نفس الشاحن قد يغيّر النتيجة. بعض الهواتف لا تصل لأقصى سرعة شحن إلا والشاشة مطفأة، فقد يعكس التقييم المنخفض هنا هذا القيد وليس الإعداد نفسه. لنتائج قابلة للمقارنة: نفس نطاق البطارية، الشاشة مضاءة، الهاتف خامل.</string>
     <string name="bench_plug_first">وصّل شاحنًا للبدء.</string>
     <string name="bench_running">جارٍ القياس… %1$d ث متبقية. أبقِ الهاتف خاملًا.</string>
     <string name="bench_aborted">توقف الاختبار — انقطع الشحن.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">الاستقرار</string>
     <string name="bench_name_hint">اسم الشاحن (مثال: GaN 65W مع كابل مضفور)</string>
     <string name="bench_save">حفظ النتيجة</string>
-    <string name="bench_save_pro">احفظ وقارن الشواحن مع Pro</string>
+    <string name="bench_save_pro">احفظ وقارن إعدادات الشحن مع Pro</string>
     <string name="bench_saved_title">النتائج المحفوظة</string>
-    <string name="bench_results_empty">لا توجد نتائج محفوظة بعد. شغّل اختبارًا من تبويب مباشر واحفظه لمقارنة الشواحن هنا.</string>
-    <string name="bench_unnamed">شاحن بلا اسم</string>
+    <string name="bench_results_empty">لا توجد نتائج محفوظة بعد. شغّل اختبارًا من تبويب مباشر واحفظه لمقارنة إعدادات الشحن هنا.</string>
+    <string name="bench_unnamed">إعداد بلا اسم</string>
     <string name="ledger_chip">السجل</string>
     <string name="ledger_title">سجل الطاقة — آخر 14 يومًا</string>
     <string name="ledger_empty">لا جلسات مسجلة في آخر 14 يومًا.</string>

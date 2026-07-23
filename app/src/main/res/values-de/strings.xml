@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">E-Mail</string>
     <string name="overlay_toggle">Schwebendes Watt-Overlay</string>
     <string name="overlay_toggle_hint">Verschiebbare Pille mit Live-Watt über anderen Apps, solange die Hintergrundaufzeichnung läuft. Braucht die Berechtigung zum Anzeigen über anderen Apps — die einzige optionale Berechtigung von WattFlow.</string>
-    <string name="bench_open">⚡ Ladegerät-Benchmark</string>
-    <string name="bench_title">Ladegerät-Benchmark</string>
-    <string name="bench_intro">Misst diese Ladegerät-Kabel-Kombination 60 Sekunden lang und benotet sie. Für vergleichbare Ergebnisse: gleicher Akkubereich, Bildschirm an, Telefon nicht benutzen.</string>
+    <string name="bench_open">⚡ Lade-Benchmark</string>
+    <string name="bench_title">Lade-Benchmark</string>
+    <string name="bench_intro">Misst diesen Lade-Aufbau 60 Sekunden lang und benotet ihn. Ladegerät und Kabel beeinflussen beide das Ergebnis — schon eines von beiden als Flaschenhals kann die Note drücken, und ein Kabelwechsel bei gleichem Ladegerät kann die Note ändern. Manche Telefone erreichen ihre höchste Ladegeschwindigkeit nur bei ausgeschaltetem Display — eine niedrigere Note hier kann also an dieser Grenze liegen, nicht am Aufbau selbst. Für vergleichbare Ergebnisse: gleicher Akkubereich, Bildschirm an, Telefon nicht benutzen.</string>
     <string name="bench_plug_first">Zum Starten ein Ladegerät anschließen.</string>
     <string name="bench_running">Messung läuft… noch %1$d s. Telefon nicht benutzen.</string>
     <string name="bench_aborted">Test abgebrochen — Ladevorgang unterbrochen.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">Stabilität</string>
     <string name="bench_name_hint">Name des Ladegeräts (z. B. 65W GaN + Textilkabel)</string>
     <string name="bench_save">Ergebnis speichern</string>
-    <string name="bench_save_pro">Mit Pro Ladegeräte speichern und vergleichen</string>
+    <string name="bench_save_pro">Mit Pro Lade-Aufbauten speichern und vergleichen</string>
     <string name="bench_saved_title">Gespeicherte Ergebnisse</string>
-    <string name="bench_results_empty">Noch keine gespeicherten Ergebnisse. Führe im Tab Live einen Benchmark aus und speichere ihn, um Ladegeräte hier zu vergleichen.</string>
-    <string name="bench_unnamed">Unbenanntes Ladegerät</string>
+    <string name="bench_results_empty">Noch keine gespeicherten Ergebnisse. Führe im Tab Live einen Benchmark aus und speichere ihn, um Lade-Aufbauten hier zu vergleichen.</string>
+    <string name="bench_unnamed">Unbenannter Aufbau</string>
     <string name="ledger_chip">Konto</string>
     <string name="ledger_title">Energiekonto — letzte 14 Tage</string>
     <string name="ledger_empty">Keine Sitzungen in den letzten 14 Tagen.</string>

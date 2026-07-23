@@ -58,6 +58,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.8
 
+- **1.8.2**: Renamed "Charger benchmark" to "Charging benchmark" and
+  clarified that charger and cable both affect the grade — swapping
+  just the cable with the same charger can change the result, and some
+  phones only hit their fastest speed with the screen off
 - **1.8.1**: Turning on Battery alerts now explains why notification
   permission is needed before Android's system prompt appears, matching
   Background recording's existing rationale dialog — alerts have no

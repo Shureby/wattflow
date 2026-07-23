@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">Email</string>
     <string name="overlay_toggle">Overlay watt mengambang</string>
     <string name="overlay_toggle_hint">Pil watt langsung yang dapat digeser di atas aplikasi lain saat perekaman latar belakang aktif. Perlu izin tampil di atas aplikasi — satu-satunya izin opsional yang diminta WattFlow.</string>
-    <string name="bench_open">⚡ Uji charger</string>
-    <string name="bench_title">Uji charger</string>
-    <string name="bench_intro">Mengukur kombinasi charger + kabel ini selama 60 detik dan memberi nilai. Agar hasil sebanding: rentang baterai sama, layar menyala, ponsel tidak dipakai.</string>
+    <string name="bench_open">⚡ Uji pengisian daya</string>
+    <string name="bench_title">Uji pengisian daya</string>
+    <string name="bench_intro">Mengukur konfigurasi pengisian daya ini selama 60 detik dan memberi nilai. Charger dan kabel sama-sama berpengaruh — salah satunya saja jadi penghambat sudah bisa menurunkan nilai, dan mengganti kabel saja dengan charger yang sama bisa mengubah hasilnya. Sebagian ponsel hanya mencapai kecepatan pengisian tercepat saat layar mati, jadi nilai yang lebih rendah di sini mungkin mencerminkan batasan itu, bukan konfigurasinya. Agar hasil sebanding: rentang baterai sama, layar menyala, ponsel tidak dipakai.</string>
     <string name="bench_plug_first">Colokkan charger untuk mulai.</string>
     <string name="bench_running">Mengukur… %1$d dtk tersisa. Biarkan ponsel diam.</string>
     <string name="bench_aborted">Uji dihentikan — pengisian terputus.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">Stabilitas</string>
     <string name="bench_name_hint">Nama charger (mis. GaN 65W + kabel kepang)</string>
     <string name="bench_save">Simpan hasil</string>
-    <string name="bench_save_pro">Simpan dan bandingkan charger dengan Pro</string>
+    <string name="bench_save_pro">Simpan dan bandingkan konfigurasi pengisian daya dengan Pro</string>
     <string name="bench_saved_title">Hasil tersimpan</string>
-    <string name="bench_results_empty">Belum ada hasil tersimpan. Jalankan benchmark dari tab Langsung dan simpan untuk membandingkan charger di sini.</string>
-    <string name="bench_unnamed">Charger tanpa nama</string>
+    <string name="bench_results_empty">Belum ada hasil tersimpan. Jalankan benchmark dari tab Langsung dan simpan untuk membandingkan konfigurasi di sini.</string>
+    <string name="bench_unnamed">Konfigurasi tanpa nama</string>
     <string name="ledger_chip">Buku</string>
     <string name="ledger_title">Buku energi — 14 hari terakhir</string>
     <string name="ledger_empty">Tidak ada sesi dalam 14 hari terakhir.</string>

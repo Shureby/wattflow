@@ -104,9 +104,9 @@
     <string name="dual_cell_report_email">이메일</string>
     <string name="overlay_toggle">플로팅 와트 오버레이</string>
     <string name="overlay_toggle_hint">백그라운드 기록 중 다른 앱 위에 드래그 가능한 실시간 와트 필을 표시합니다. 다른 앱 위에 표시 권한이 필요하며, WattFlow가 요청하는 유일한 선택 권한입니다.</string>
-    <string name="bench_open">⚡ 충전기 벤치마크</string>
-    <string name="bench_title">충전기 벤치마크</string>
-    <string name="bench_intro">이 충전기+케이블 조합을 60초간 측정하고 등급을 매깁니다. 비교 가능한 결과를 위해: 비슷한 배터리 구간, 화면 켜짐, 기기 미사용 상태를 유지하세요.</string>
+    <string name="bench_open">⚡ 충전 벤치마크</string>
+    <string name="bench_title">충전 벤치마크</string>
+    <string name="bench_intro">이 충전 구성을 60초간 측정하고 등급을 매깁니다. 충전기와 케이블 모두 결과에 영향을 줍니다 — 둘 중 하나만 병목이어도 등급이 낮아지며, 같은 충전기라도 케이블만 바꾸면 등급이 달라질 수 있습니다. 일부 기기는 화면이 꺼져 있을 때만 최고 속도로 충전되므로, 여기서 등급이 낮게 나와도 충전 구성 자체의 문제가 아닐 수 있습니다. 비교 가능한 결과를 위해: 비슷한 배터리 구간, 화면 켜짐, 기기 미사용 상태를 유지하세요.</string>
     <string name="bench_plug_first">시작하려면 충전기를 연결하세요.</string>
     <string name="bench_running">측정 중… %1$d초 남음. 기기를 사용하지 마세요.</string>
     <string name="bench_aborted">테스트 중단 — 충전이 끊겼습니다.</string>
@@ -115,10 +115,10 @@
     <string name="bench_stability">안정성</string>
     <string name="bench_name_hint">충전기 이름(예: 65W GaN + 직조 케이블)</string>
     <string name="bench_save">결과 저장</string>
-    <string name="bench_save_pro">Pro로 충전기 저장·비교</string>
+    <string name="bench_save_pro">Pro로 충전 구성 저장·비교</string>
     <string name="bench_saved_title">저장된 결과</string>
-    <string name="bench_results_empty">저장된 결과가 아직 없습니다. 실시간 탭에서 벤치마크를 실행하고 저장하면 여기서 충전기를 비교할 수 있습니다.</string>
-    <string name="bench_unnamed">이름 없는 충전기</string>
+    <string name="bench_results_empty">저장된 결과가 아직 없습니다. 실시간 탭에서 벤치마크를 실행하고 저장하면 여기서 충전 구성을 비교할 수 있습니다.</string>
+    <string name="bench_unnamed">이름 없는 구성</string>
     <string name="ledger_chip">장부</string>
     <string name="ledger_title">에너지 장부 — 최근 14일</string>
     <string name="ledger_empty">최근 14일간 기록이 없습니다.</string>
