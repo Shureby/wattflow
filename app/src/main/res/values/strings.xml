@@ -109,8 +109,8 @@
     <string name="dual_cell_report_email">Email</string>
     <string name="overlay_toggle">Floating watts overlay</string>
     <string name="overlay_toggle_hint">Draggable live-watts pill over other apps while background recording is on. Needs the display-over-apps permission — the only optional permission WattFlow ever asks for.</string>
-    <string name="bench_open">⚡ Charging benchmark</string>
-    <string name="bench_title">Charging benchmark</string>
+    <string name="bench_open">⚡ Charging Benchmark</string>
+    <string name="bench_title">Charging Benchmark</string>
     <string name="bench_intro">Measures this charging setup for 60 seconds and grades it. Charger and cable both matter — either one alone can bottleneck the other, so swapping just the cable can change the grade with the same charger. Some phones only reach their fastest charging speed with the screen off, so a lower grade here may reflect that limit rather than the setup itself. For comparable results: same battery level range, screen on, phone idle.</string>
     <string name="bench_plug_first">Plug in a charger to start.</string>
     <string name="bench_running">Measuring… %1$d s left. Keep the phone idle.</string>
@@ -124,6 +124,7 @@
     <string name="bench_saved_title">Saved results</string>
     <string name="bench_results_empty">No saved results yet. Run a benchmark from the Live tab and save it to compare setups here.</string>
     <string name="bench_unnamed">Unnamed setup</string>
+    <string name="bench_view_saved">View saved results (%1$d)</string>
     <string name="ledger_chip">Ledger</string>
     <string name="ledger_title">Energy ledger — last 14 days</string>
     <string name="ledger_empty">No sessions recorded in the last 14 days.</string>

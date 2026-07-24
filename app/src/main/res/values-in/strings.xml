@@ -119,6 +119,7 @@
     <string name="bench_saved_title">Hasil tersimpan</string>
     <string name="bench_results_empty">Belum ada hasil tersimpan. Jalankan benchmark dari tab Langsung dan simpan untuk membandingkan konfigurasi di sini.</string>
     <string name="bench_unnamed">Konfigurasi tanpa nama</string>
+    <string name="bench_view_saved">Lihat hasil tersimpan (%1$d)</string>
     <string name="ledger_chip">Buku</string>
     <string name="ledger_title">Buku energi — 14 hari terakhir</string>
     <string name="ledger_empty">Tidak ada sesi dalam 14 hari terakhir.</string>

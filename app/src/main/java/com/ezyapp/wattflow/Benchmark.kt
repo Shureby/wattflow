@@ -117,6 +117,7 @@ fun BenchmarkDialog(
     var outcome by remember { mutableStateOf<BenchmarkOutcome?>(null) }
     var label by remember { mutableStateOf("") }
     var aborted by remember { mutableStateOf(false) }
+    var showResults by remember { mutableStateOf(false) }
 
     if (phase == BenchPhase.RUNNING) {
         LaunchedEffect(Unit) {
@@ -226,11 +227,15 @@ fun BenchmarkDialog(
                             TextButton(
                                 onClick = {
                                     val o2 = o
+                                    // Snapshot before launch: the coroutine runs after
+                                    // `label = ""` below, so reading the state inside
+                                    // it would always save a blank label.
+                                    val labelText = label.trim()
                                     scope.launch {
                                         dao.insertBenchmark(
                                             BenchmarkResult(
                                                 ts = System.currentTimeMillis(),
-                                                label = label.trim(),
+                                                label = labelText,
                                                 plugged = o2.plugged,
                                                 avgWatts = o2.avgWatts,
                                                 peakWatts = o2.peakWatts,
@@ -268,12 +273,9 @@ fun BenchmarkDialog(
                 if (saved.isNotEmpty() && phase != BenchPhase.RUNNING) {
                     Spacer(Modifier.height(12.dp))
                     HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-                    Spacer(Modifier.height(8.dp))
-                    Text(
-                        text = stringResource(R.string.bench_saved_title),
-                        style = MaterialTheme.typography.titleSmall,
-                    )
-                    BenchmarkSavedList(saved) { id -> scope.launch { dao.deleteBenchmark(id) } }
+                    TextButton(onClick = { showResults = true }) {
+                        Text(stringResource(R.string.bench_view_saved, saved.size))
+                    }
                 }
             }
         },
@@ -310,6 +312,8 @@ fun BenchmarkDialog(
             }
         },
     )
+
+    if (showResults) BenchmarkResultsDialog(onDismiss = { showResults = false })
 }
 
 @Composable

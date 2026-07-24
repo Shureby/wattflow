@@ -119,6 +119,7 @@
     <string name="bench_saved_title">Gespeicherte Ergebnisse</string>
     <string name="bench_results_empty">Noch keine gespeicherten Ergebnisse. Führe im Tab Live einen Benchmark aus und speichere ihn, um Lade-Aufbauten hier zu vergleichen.</string>
     <string name="bench_unnamed">Unbenannter Aufbau</string>
+    <string name="bench_view_saved">Gespeicherte Ergebnisse anzeigen (%1$d)</string>
     <string name="ledger_chip">Konto</string>
     <string name="ledger_title">Energiekonto — letzte 14 Tage</string>
     <string name="ledger_empty">Keine Sitzungen in den letzten 14 Tagen.</string>

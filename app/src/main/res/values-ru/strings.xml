@@ -119,6 +119,7 @@
     <string name="bench_saved_title">Сохранённые результаты</string>
     <string name="bench_results_empty">Пока нет сохранённых результатов. Запустите тест на вкладке «Сейчас» и сохраните его, чтобы сравнивать варианты зарядки здесь.</string>
     <string name="bench_unnamed">Вариант без названия</string>
+    <string name="bench_view_saved">Показать сохранённые результаты (%1$d)</string>
     <string name="ledger_chip">Журнал</string>
     <string name="ledger_title">Журнал энергии — последние 14 дней</string>
     <string name="ledger_empty">Нет сессий за последние 14 дней.</string>

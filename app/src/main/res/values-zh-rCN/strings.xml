@@ -119,6 +119,7 @@
     <string name="bench_saved_title">已保存结果</string>
     <string name="bench_results_empty">还没有保存的结果。在"实时"标签页运行一次测评并保存，就能在这里对比充电组合了。</string>
     <string name="bench_unnamed">未命名组合</string>
+    <string name="bench_view_saved">查看已保存结果 (%1$d)</string>
     <string name="ledger_chip">账本</string>
     <string name="ledger_title">能量账本——最近 14 天</string>
     <string name="ledger_empty">最近 14 天没有记录。</string>

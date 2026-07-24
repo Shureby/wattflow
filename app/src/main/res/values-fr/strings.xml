@@ -119,6 +119,7 @@
     <string name="bench_saved_title">Résultats enregistrés</string>
     <string name="bench_results_empty">Aucun résultat enregistré pour l\'instant. Lancez un test depuis l\'onglet En direct et enregistrez-le pour comparer des configurations ici.</string>
     <string name="bench_unnamed">Configuration sans nom</string>
+    <string name="bench_view_saved">Voir les résultats enregistrés (%1$d)</string>
     <string name="ledger_chip">Registre</string>
     <string name="ledger_title">Registre d’énergie — 14 derniers jours</string>
     <string name="ledger_empty">Aucune session sur les 14 derniers jours.</string>

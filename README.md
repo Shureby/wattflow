@@ -58,6 +58,11 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.8
 
+- **1.8.4**: Fixed saved benchmark results always showing "Unnamed
+  setup" — the typed name was cleared before the save completed.
+  The benchmark dialog now links to the saved-results view instead of
+  listing every result inline, and "Charging Benchmark" is capitalized
+  consistently
 - **1.8.3**: Fixed a bogus "less than 1 minute to full" reading on
   devices whose coulomb counter reports an implausibly tiny charge
   value (seen on an XREAL Air 2 Pro); the estimate is now hidden

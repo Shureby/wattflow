@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.8.4] - 2026-07-24
+
+- Fixed saved benchmark results always showing "Unnamed setup": the
+  name typed into the save field was cleared before the database write
+  ran, so the label was silently lost every time
+- The Charging Benchmark dialog no longer lists every saved result
+  inline (the list grew without limit); it now shows a "View saved
+  results" link that opens the same saved-results view as
+  Reports → Charging Benchmark
+- Capitalized "Charging Benchmark" consistently in the Live tab button,
+  dialog title, and Reports entry
+
 ## [1.8.3] - 2026-07-24
 
 - Fixed a bogus "less than 1 minute to full" reading on devices whose
