@@ -108,6 +108,7 @@
     <string name="bench_title">Uji pengisian daya</string>
     <string name="bench_intro">Mengukur konfigurasi pengisian daya ini selama 60 detik dan memberi nilai. Charger dan kabel sama-sama berpengaruh — salah satunya saja jadi penghambat sudah bisa menurunkan nilai, dan mengganti kabel saja dengan charger yang sama bisa mengubah hasilnya. Sebagian ponsel hanya mencapai kecepatan pengisian tercepat saat layar mati, jadi nilai yang lebih rendah di sini mungkin mencerminkan batasan itu, bukan konfigurasinya. Agar hasil sebanding: rentang baterai sama, layar menyala, ponsel tidak dipakai.</string>
     <string name="bench_plug_first">Colokkan charger untuk mulai.</string>
+    <string name="bench_screen_on_note">WattFlow menjaga layar tetap menyala selama 60 detik agar pengujian berjalan tanpa gangguan. Beberapa ponsel hanya mencapai kecepatan pengisian daya tercepat saat layar mati, jadi hasil ini mungkin lebih rendah dari puncak tersebut — tetapi tetap dapat dibandingkan antar-setup, karena setiap pengujian berjalan dalam kondisi layar menyala yang sama.</string>
     <string name="bench_running">Mengukur… %1$d dtk tersisa. Biarkan ponsel diam.</string>
     <string name="bench_aborted">Uji dihentikan — pengisian terputus.</string>
     <string name="bench_start">Mulai</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">Level</string>
     <string name="bench_grade_x_note">Nilai ditandai X: level baterai sudah tinggi saat pengujian, sehingga pengisian daya melambat secara alami mendekati penuh — ini bukan cerminan dari setup itu sendiri. Uji ulang di bawah ~90% untuk nilai yang lebih andal.</string>
     <string name="bench_compare_range_note">Nilai hanya bisa dibandingkan antar-setup yang diuji pada rentang level baterai yang mirip — setup bernilai A pada 20–23% belum tentu lebih baik daripada yang bernilai B pada 80–90%.</string>
-    <string name="bench_name_hint">Nama charger (mis. GaN 65W + kabel kepang)</string>
+    <string name="bench_charger_hint">Nama charger (mis. GaN 65W)</string>
+    <string name="bench_cable_hint">Kabel (opsional, mis. kabel USB-C kepang)</string>
+    <string name="bench_max_w_hint">Watt maks. klaim charger (opsional)</string>
+    <string name="bench_pct_of_claimed">≈%1$d%% dari klaim maksimum</string>
     <string name="bench_save">Simpan hasil</string>
     <string name="bench_save_pro">Simpan dan bandingkan konfigurasi pengisian daya dengan Pro</string>
     <string name="bench_saved_title">Hasil tersimpan</string>

@@ -108,6 +108,7 @@
     <string name="bench_title">Test de charge</string>
     <string name="bench_intro">"Mesure cette configuration de charge pendant 60 secondes et lui attribue une note. Le chargeur et le câble comptent tous les deux — l'un seul en goulot d'étranglement suffit à faire baisser la note, et changer juste le câble avec le même chargeur peut changer le résultat. Certains téléphones n'atteignent leur vitesse de charge maximale qu'écran éteint : une note plus basse ici peut donc refléter cette limite plutôt que la configuration elle-même. Pour des résultats comparables : même plage de batterie, écran allumé, téléphone au repos."</string>
     <string name="bench_plug_first">Branchez un chargeur pour commencer.</string>
+    <string name="bench_screen_on_note">WattFlow garde votre écran allumé pendant les 60 secondes pour que le test se déroule sans interruption. Certains téléphones n\'atteignent leur vitesse de charge maximale qu\'écran éteint, donc ce résultat peut être inférieur à ce pic — mais il reste comparable entre configurations, puisque chaque test se déroule dans la même condition (écran allumé).</string>
     <string name="bench_running">Mesure en cours… %1$d s restantes. Laissez le téléphone au repos.</string>
     <string name="bench_aborted">Test arrêté — la charge a été interrompue.</string>
     <string name="bench_start">Démarrer</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">Niveau</string>
     <string name="bench_grade_x_note">Note marquée X : le niveau de charge était déjà élevé, donc la charge ralentit naturellement près du plein — cela ne reflète pas la configuration elle-même. Retestez en dessous de ~90 % pour une note fiable.</string>
     <string name="bench_compare_range_note">Les notes ne sont comparables qu\'entre configurations testées sur des plages de niveau de charge similaires — une configuration notée A à 20–23 % n\'est pas forcément meilleure qu\'une notée B à 80–90 %.</string>
-    <string name="bench_name_hint">Nom du chargeur (ex. GaN 65W + câble tressé)</string>
+    <string name="bench_charger_hint">Nom du chargeur (ex. GaN 65W)</string>
+    <string name="bench_cable_hint">Câble (facultatif, ex. câble tressé USB-C)</string>
+    <string name="bench_max_w_hint">Watts max. annoncés du chargeur (facultatif)</string>
+    <string name="bench_pct_of_claimed">≈%1$d %% du maximum annoncé</string>
     <string name="bench_save">Enregistrer le résultat</string>
     <string name="bench_save_pro">Enregistrez et comparez les configurations de charge avec Pro</string>
     <string name="bench_saved_title">Résultats enregistrés</string>

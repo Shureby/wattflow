@@ -58,6 +58,12 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.8
 
+- **1.8.5**: Charging Benchmark now saves charger and cable as separate
+  fields instead of one combined name, plus an optional charger
+  claimed-max-watts field that shows an "≈N% of claimed max" figure
+  alongside the grade. Also fixed the test silently stalling for a
+  minute or more if the screen turned off mid-test on some phones — it
+  now keeps the screen on for its 60 seconds so it always completes
 - **1.8.4**: Fixed saved benchmark results always showing "Unnamed
   setup" — the typed name was cleared before the save completed.
   The benchmark dialog now links to the saved-results view instead of

@@ -1,5 +1,7 @@
 package com.ezyapp.wattflow
 
+import android.app.Activity
+import android.view.WindowManager
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.abs
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 // Above this end-of-run battery level, CV taper dominates the reading
@@ -117,6 +120,21 @@ object BenchmarkEngine {
 
 private enum class BenchPhase { IDLE, RUNNING, DONE }
 
+/** Screen-off during the run risks the OS freezing the app before the OEM's
+ * own screen-off charging speed can even be observed (confirmed on a Xiaomi
+ * device: the sampling loop can stall for 60s+ once the screen sleeps, wake
+ * locks and battery-optimization exemptions notwithstanding) -- so the test
+ * keeps the screen on for its duration instead of trying to survive it
+ * turning off. [bool] toggles [WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON].*/
+private fun keepScreenOn(context: android.content.Context, on: Boolean) {
+    val window = (context as? Activity)?.window ?: return
+    if (on) {
+        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    } else {
+        window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+    }
+}
+
 @Composable
 fun BenchmarkDialog(
     isCharging: Boolean,
@@ -133,15 +151,22 @@ fun BenchmarkDialog(
     var seconds by remember { mutableIntStateOf(0) }
     var liveWatts by remember { mutableDoubleStateOf(0.0) }
     var outcome by remember { mutableStateOf<BenchmarkOutcome?>(null) }
-    var label by remember { mutableStateOf("") }
+    var charger by remember { mutableStateOf("") }
+    var cable by remember { mutableStateOf("") }
+    var maxWText by remember { mutableStateOf("") }
     var aborted by remember { mutableStateOf(false) }
     var showResults by remember { mutableStateOf(false) }
 
     if (phase == BenchPhase.RUNNING) {
         LaunchedEffect(Unit) {
-            val result = BenchmarkEngine.run(BatteryReader(context)) { s, w ->
-                seconds = s
-                liveWatts = w
+            keepScreenOn(context, true)
+            val result = try {
+                BenchmarkEngine.run(BatteryReader(context)) { s, w ->
+                    seconds = s
+                    liveWatts = w
+                }
+            } finally {
+                keepScreenOn(context, false)
             }
             if (result == null) {
                 aborted = true
@@ -163,6 +188,12 @@ fun BenchmarkDialog(
                         Text(
                             text = stringResource(R.string.bench_intro),
                             style = MaterialTheme.typography.bodyMedium,
+                        )
+                        Spacer(Modifier.height(8.dp))
+                        Text(
+                            text = stringResource(R.string.bench_screen_on_note),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
                         if (aborted) {
                             Spacer(Modifier.height(8.dp))
@@ -247,25 +278,62 @@ fun BenchmarkDialog(
                         Spacer(Modifier.height(12.dp))
                         if (isPro) {
                             OutlinedTextField(
-                                value = label,
-                                onValueChange = { label = it },
-                                label = { Text(stringResource(R.string.bench_name_hint)) },
+                                value = charger,
+                                onValueChange = { charger = it },
+                                label = { Text(stringResource(R.string.bench_charger_hint)) },
                                 singleLine = true,
                                 modifier = Modifier.fillMaxWidth(),
                             )
+                            Spacer(Modifier.height(4.dp))
+                            OutlinedTextField(
+                                value = cable,
+                                onValueChange = { cable = it },
+                                label = { Text(stringResource(R.string.bench_cable_hint)) },
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                            Spacer(Modifier.height(4.dp))
+                            OutlinedTextField(
+                                value = maxWText,
+                                onValueChange = { v -> maxWText = v.filter { it.isDigit() } },
+                                label = { Text(stringResource(R.string.bench_max_w_hint)) },
+                                singleLine = true,
+                                modifier = Modifier.fillMaxWidth(),
+                            )
+                            maxWText.toIntOrNull()?.takeIf { it > 0 }?.let { claimedMaxW ->
+                                Text(
+                                    text = stringResource(
+                                        R.string.bench_pct_of_claimed,
+                                        (o.avgWatts / claimedMaxW * 100).roundToInt(),
+                                    ),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    modifier = Modifier.padding(top = 4.dp),
+                                )
+                            }
                             Spacer(Modifier.height(4.dp))
                             TextButton(
                                 onClick = {
                                     val o2 = o
                                     // Snapshot before launch: the coroutine runs after
-                                    // `label = ""` below, so reading the state inside
-                                    // it would always save a blank label.
-                                    val labelText = label.trim()
+                                    // the state clears below, so reading it inside the
+                                    // coroutine would always save blank values.
+                                    val chargerText = charger.trim()
+                                    val cableText = cable.trim()
+                                    val labelText = if (cableText.isBlank()) {
+                                        chargerText
+                                    } else {
+                                        "$chargerText + $cableText"
+                                    }
+                                    val maxW = maxWText.toIntOrNull()
                                     scope.launch {
                                         dao.insertBenchmark(
                                             BenchmarkResult(
                                                 ts = System.currentTimeMillis(),
                                                 label = labelText,
+                                                charger = chargerText.ifBlank { null },
+                                                cable = cableText.ifBlank { null },
+                                                chargerMaxW = maxW,
                                                 plugged = o2.plugged,
                                                 avgWatts = o2.avgWatts,
                                                 peakWatts = o2.peakWatts,
@@ -276,7 +344,9 @@ fun BenchmarkDialog(
                                         )
                                     }
                                     phase = BenchPhase.IDLE
-                                    label = ""
+                                    charger = ""
+                                    cable = ""
+                                    maxWText = ""
                                 }
                             ) { Text(stringResource(R.string.bench_save)) }
                         } else {
@@ -386,7 +456,12 @@ private fun BenchmarkSavedList(saved: List<BenchmarkResult>, onDelete: (Long) ->
                         java.util.Locale.US,
                         "%.1f W avg • %.1f W peak • %.0f%% stable",
                         b.avgWatts, b.peakWatts, b.stabilityPct,
-                    ),
+                    ) + (b.chargerMaxW?.let {
+                        String.format(
+                            java.util.Locale.US, " • ~%.0f%% of %dW",
+                            b.avgWatts / it * 100, it,
+                        )
+                    } ?: ""),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )

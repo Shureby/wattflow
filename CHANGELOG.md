@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.8.5] - 2026-07-25
+
+- Charging Benchmark now records charger and cable as separate fields
+  (instead of one freeform name), plus an optional charger claimed-max-
+  watts field. When a claimed max is entered, results show an extra
+  "≈N% of claimed max" figure alongside the existing grade
+- Fixed the benchmark test silently stalling for a minute or more if
+  the screen turned off mid-test on some phones (confirmed on a Xiaomi
+  device — the OS could freeze the app before the 60 seconds finished,
+  even with battery-optimization and autostart exemptions granted). The
+  test now keeps the screen on for its 60-second duration so it always
+  completes without interruption
+
 ## [1.8.4] - 2026-07-24
 
 - Fixed saved benchmark results always showing "Unnamed setup": the

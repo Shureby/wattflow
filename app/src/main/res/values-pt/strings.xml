@@ -108,6 +108,7 @@
     <string name="bench_title">Teste de carregamento</string>
     <string name="bench_intro">Mede esta configuração de carregamento por 60 segundos e atribui uma nota. O carregador e o cabo importam igualmente — só um dos dois já ser o gargalo já derruba a nota, e trocar apenas o cabo com o mesmo carregador pode mudar o resultado. Alguns celulares só atingem a velocidade máxima de carregamento com a tela apagada, então uma nota mais baixa aqui pode refletir esse limite, não a configuração em si. Para resultados comparáveis: mesma faixa de bateria, tela ligada, telefone em repouso.</string>
     <string name="bench_plug_first">Conecte um carregador para começar.</string>
+    <string name="bench_screen_on_note">O WattFlow mantém a tela ligada durante os 60 segundos para que o teste seja executado sem interrupções. Alguns telefones só atingem a velocidade máxima de carregamento com a tela desligada, então este resultado pode ser menor que esse pico — mas é comparável entre configurações, já que todo teste roda na mesma condição de tela ligada.</string>
     <string name="bench_running">Medindo… faltam %1$d s. Mantenha o telefone em repouso.</string>
     <string name="bench_aborted">Teste interrompido — o carregamento parou.</string>
     <string name="bench_start">Iniciar</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">Nível</string>
     <string name="bench_grade_x_note">Nota marcada como X: o nível de carga já estava alto, então o carregamento desacelera naturalmente perto do máximo — isso não reflete a configuração em si. Teste novamente abaixo de ~90% para uma nota confiável.</string>
     <string name="bench_compare_range_note">As notas só são comparáveis entre configurações testadas em faixas de nível de carga semelhantes — uma configuração com nota A a 20–23% não é necessariamente melhor que uma com nota B a 80–90%.</string>
-    <string name="bench_name_hint">Nome do carregador (ex.: GaN 65W + cabo trançado)</string>
+    <string name="bench_charger_hint">Nome do carregador (ex.: GaN 65W)</string>
+    <string name="bench_cable_hint">Cabo (opcional, ex.: cabo trançado USB-C)</string>
+    <string name="bench_max_w_hint">Watts máx. declarados do carregador (opcional)</string>
+    <string name="bench_pct_of_claimed">≈%1$d%% do máximo declarado</string>
     <string name="bench_save">Salvar resultado</string>
     <string name="bench_save_pro">Salve e compare configurações de carregamento com o Pro</string>
     <string name="bench_saved_title">Resultados salvos</string>

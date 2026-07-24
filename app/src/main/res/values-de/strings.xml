@@ -108,6 +108,7 @@
     <string name="bench_title">Lade-Benchmark</string>
     <string name="bench_intro">Misst diesen Lade-Aufbau 60 Sekunden lang und benotet ihn. Ladegerät und Kabel beeinflussen beide das Ergebnis — schon eines von beiden als Flaschenhals kann die Note drücken, und ein Kabelwechsel bei gleichem Ladegerät kann die Note ändern. Manche Telefone erreichen ihre höchste Ladegeschwindigkeit nur bei ausgeschaltetem Display — eine niedrigere Note hier kann also an dieser Grenze liegen, nicht am Aufbau selbst. Für vergleichbare Ergebnisse: gleicher Akkubereich, Bildschirm an, Telefon nicht benutzen.</string>
     <string name="bench_plug_first">Zum Starten ein Ladegerät anschließen.</string>
+    <string name="bench_screen_on_note">WattFlow hält deinen Bildschirm für die 60 Sekunden an, damit der Test ohne Unterbrechung laufen kann. Manche Handys erreichen ihre schnellste Ladegeschwindigkeit nur mit ausgeschaltetem Bildschirm, daher kann dieses Ergebnis niedriger als dieses Maximum ausfallen — es ist aber zwischen Setups vergleichbar, da jeder Test unter derselben Bedingung (Bildschirm an) läuft.</string>
     <string name="bench_running">Messung läuft… noch %1$d s. Telefon nicht benutzen.</string>
     <string name="bench_aborted">Test abgebrochen — Ladevorgang unterbrochen.</string>
     <string name="bench_start">Start</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">Ladestand</string>
     <string name="bench_grade_x_note">Note als X markiert: Der Ladestand war bereits hoch, daher verlangsamt sich das Laden nahe der vollen Ladung natürlicherweise — das sagt nichts über das Setup selbst aus. Für eine verlässliche Note unter ~90 % erneut testen.</string>
     <string name="bench_compare_range_note">Noten sind nur zwischen Setups vergleichbar, die in ähnlichen Ladestand-Bereichen getestet wurden — ein Setup mit Note A bei 20–23 % ist nicht zwangsläufig besser als eines mit Note B bei 80–90 %.</string>
-    <string name="bench_name_hint">Name des Ladegeräts (z. B. 65W GaN + Textilkabel)</string>
+    <string name="bench_charger_hint">Name des Ladegeräts (z. B. 65W GaN)</string>
+    <string name="bench_cable_hint">Kabel (optional, z. B. geflochtenes USB-C-Kabel)</string>
+    <string name="bench_max_w_hint">Vom Ladegerät angegebene max. Watt (optional)</string>
+    <string name="bench_pct_of_claimed">≈%1$d %% des angegebenen Maximums</string>
     <string name="bench_save">Ergebnis speichern</string>
     <string name="bench_save_pro">Mit Pro Lade-Aufbauten speichern und vergleichen</string>
     <string name="bench_saved_title">Gespeicherte Ergebnisse</string>

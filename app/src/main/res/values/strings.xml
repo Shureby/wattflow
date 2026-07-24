@@ -113,6 +113,7 @@
     <string name="bench_title">Charging Benchmark</string>
     <string name="bench_intro">Measures this charging setup for 60 seconds and grades it. Charger and cable both matter — either one alone can bottleneck the other, so swapping just the cable can change the grade with the same charger. Some phones only reach their fastest charging speed with the screen off, so a lower grade here may reflect that limit rather than the setup itself. For comparable results: same battery level range, screen on, phone idle.</string>
     <string name="bench_plug_first">Plug in a charger to start.</string>
+    <string name="bench_screen_on_note">WattFlow keeps your screen on for the 60 seconds so the test can run without interruption. Some phones only reach their fastest charging speed with the screen off, so this result may read lower than that peak — but it\'s comparable across setups, since every test runs under the same screen-on condition.</string>
     <string name="bench_running">Measuring… %1$d s left. Keep the phone idle.</string>
     <string name="bench_aborted">Test stopped — charging was interrupted.</string>
     <string name="bench_start">Start</string>
@@ -121,7 +122,10 @@
     <string name="bench_level">Level</string>
     <string name="bench_grade_x_note">Grade marked X: charge level was already high, so charging naturally slows near full — this doesn\'t reflect the setup itself. Retest below ~90% for a reliable grade.</string>
     <string name="bench_compare_range_note">Grades are only comparable across setups tested at similar charge-level ranges — a setup graded A at 20–23% isn\'t necessarily better than one graded B at 80–90%.</string>
-    <string name="bench_name_hint">Charger name (e.g. 65W GaN + braided cable)</string>
+    <string name="bench_charger_hint">Charger name (e.g. 65W GaN)</string>
+    <string name="bench_cable_hint">Cable (optional, e.g. braided USB-C)</string>
+    <string name="bench_max_w_hint">Charger\'s claimed max watts (optional)</string>
+    <string name="bench_pct_of_claimed">≈%1$d%% of claimed max</string>
     <string name="bench_save">Save result</string>
     <string name="bench_save_pro">Save and compare charging setups with Pro</string>
     <string name="bench_saved_title">Saved results</string>

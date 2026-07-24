@@ -55,7 +55,13 @@ data class SessionSample(
 data class BenchmarkResult(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val ts: Long,
-    val label: String,         // user-given charger name, may be blank
+    val label: String,         // charger+cable combined for display, may be blank
+    // Split identity, added in v7 (1.8.5) -- null on rows saved before the
+    // split, since the old freeform label can't be reliably parsed back
+    // into these two parts.
+    val charger: String? = null,
+    val cable: String? = null,
+    val chargerMaxW: Int? = null, // optional user-claimed rated wattage
     val plugged: Int,          // BatteryManager.BATTERY_PLUGGED_* during the run
     val avgWatts: Double,
     val peakWatts: Double,
@@ -115,7 +121,7 @@ interface ChargeSessionDao {
         ChargeSession::class, SessionSample::class, FullChargeEvent::class,
         BenchmarkResult::class,
     ],
-    version = 6,
+    version = 7,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -196,6 +202,18 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
+        // Splits the freeform benchmark label into charger + cable identity
+        // plus an optional claimed max wattage (v1.8.5) -- old rows keep
+        // charger/cable NULL since their combined label text can't be
+        // reliably parsed back apart; label itself is untouched.
+        private val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE benchmark_results ADD COLUMN charger TEXT")
+                db.execSQL("ALTER TABLE benchmark_results ADD COLUMN cable TEXT")
+                db.execSQL("ALTER TABLE benchmark_results ADD COLUMN chargerMaxW INTEGER")
+            }
+        }
+
         @Volatile
         private var instance: AppDatabase? = null
 
@@ -203,7 +221,8 @@ abstract class AppDatabase : RoomDatabase() {
             instance ?: Room.databaseBuilder(
                 context.applicationContext, AppDatabase::class.java, "wattflow.db"
             ).addMigrations(
-                MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6
+                MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6,
+                MIGRATION_6_7,
             )
                 .build().also { instance = it }
         }

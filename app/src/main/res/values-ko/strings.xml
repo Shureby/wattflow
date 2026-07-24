@@ -108,6 +108,7 @@
     <string name="bench_title">충전 벤치마크</string>
     <string name="bench_intro">이 충전 구성을 60초간 측정하고 등급을 매깁니다. 충전기와 케이블 모두 결과에 영향을 줍니다 — 둘 중 하나만 병목이어도 등급이 낮아지며, 같은 충전기라도 케이블만 바꾸면 등급이 달라질 수 있습니다. 일부 기기는 화면이 꺼져 있을 때만 최고 속도로 충전되므로, 여기서 등급이 낮게 나와도 충전 구성 자체의 문제가 아닐 수 있습니다. 비교 가능한 결과를 위해: 비슷한 배터리 구간, 화면 켜짐, 기기 미사용 상태를 유지하세요.</string>
     <string name="bench_plug_first">시작하려면 충전기를 연결하세요.</string>
+    <string name="bench_screen_on_note">WattFlow는 테스트가 중단 없이 진행되도록 60초 동안 화면을 켜진 상태로 유지합니다. 일부 기기는 화면이 꺼졌을 때만 최고 충전 속도에 도달하므로 이 결과가 그 최대치보다 낮게 나올 수 있습니다 — 하지만 모든 테스트가 동일한 화면 켜짐 조건에서 실행되므로 조합 간 비교에는 문제없습니다.</string>
     <string name="bench_running">측정 중… %1$d초 남음. 기기를 사용하지 마세요.</string>
     <string name="bench_aborted">테스트 중단 — 충전이 끊겼습니다.</string>
     <string name="bench_start">시작</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">레벨</string>
     <string name="bench_grade_x_note">등급이 X로 표시됨: 측정 시점에 배터리 레벨이 이미 높아 완충에 가까워지며 충전 속도가 자연스럽게 느려진 것으로, 이 조합 자체의 성능을 반영하지 않습니다. 신뢰할 수 있는 등급을 얻으려면 약 90% 미만에서 다시 테스트하세요.</string>
     <string name="bench_compare_range_note">등급은 비슷한 배터리 레벨 구간에서 테스트한 조합끼리만 비교할 수 있습니다 — 20–23%에서 A등급을 받은 조합이 80–90%에서 B등급을 받은 조합보다 반드시 더 나은 것은 아닙니다.</string>
-    <string name="bench_name_hint">충전기 이름(예: 65W GaN + 직조 케이블)</string>
+    <string name="bench_charger_hint">충전기 이름(예: 65W GaN)</string>
+    <string name="bench_cable_hint">케이블(선택 사항, 예: 직조 USB-C 케이블)</string>
+    <string name="bench_max_w_hint">충전기 공칭 최대 와트(선택 사항)</string>
+    <string name="bench_pct_of_claimed">공칭 최대값의 약 %1$d%%</string>
     <string name="bench_save">결과 저장</string>
     <string name="bench_save_pro">Pro로 충전 구성 저장·비교</string>
     <string name="bench_saved_title">저장된 결과</string>

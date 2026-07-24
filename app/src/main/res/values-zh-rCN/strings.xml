@@ -108,6 +108,7 @@
     <string name="bench_title">充电测评</string>
     <string name="bench_intro">对当前充电组合进行 60 秒测量并评级。充电器和数据线都会影响结果——任何一个"拖后腿"都会拉低整体表现，同一个充电器换根线，评级也可能不一样。部分手机只有在息屏时才会进入最高速充电，这里测出评级偏低，可能只是这个限制，不代表充电组合本身不行。为保证结果可比：电量区间相近、屏幕常亮、手机静置。</string>
     <string name="bench_plug_first">请先插入充电器。</string>
+    <string name="bench_screen_on_note">测试的60秒内WattFlow会让屏幕保持常亮，确保测试不被打断。部分手机只有在息屏时才能跑到最高充电速度，因此这个结果可能低于那个峰值——但由于所有测试都在同样的亮屏条件下进行，不同组合之间的结果仍然可以互相比较。</string>
     <string name="bench_running">测量中……剩余 %1$d 秒。请保持手机静置。</string>
     <string name="bench_aborted">测试已停止——充电中断。</string>
     <string name="bench_start">开始</string>
@@ -116,7 +117,10 @@
     <string name="bench_level">电量</string>
     <string name="bench_grade_x_note">评级标为X：测试时电量已较高，接近满电时充电速度自然放缓，这不代表这套充电组合本身的实力。建议在电量90%以下重新测试以获得可靠评级。</string>
     <string name="bench_compare_range_note">评级只有在电量区间相近时才可比——20–23%电量测出A，不代表一定比80–90%电量测出B的组合更好。</string>
-    <string name="bench_name_hint">充电器名称（例如 65W 氮化镓 + 编织线）</string>
+    <string name="bench_charger_hint">充电器名称（例如 65W 氮化镓）</string>
+    <string name="bench_cable_hint">数据线（可选，例如编织USB-C线）</string>
+    <string name="bench_max_w_hint">充电器标称最大瓦数（可选）</string>
+    <string name="bench_pct_of_claimed">约为标称最大值的%1$d%%</string>
     <string name="bench_save">保存结果</string>
     <string name="bench_save_pro">解锁 Pro 以保存并对比充电组合</string>
     <string name="bench_saved_title">已保存结果</string>
