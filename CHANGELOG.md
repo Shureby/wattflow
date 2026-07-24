@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.8.3] - 2026-07-24
+
+- Fixed a bogus "less than 1 minute to full" reading on devices whose
+  coulomb counter reports an implausibly tiny charge value (seen on an
+  XREAL Air 2 Pro reporting ~0.004 Ah at 100% battery). The time-to-full
+  estimate is now hidden instead of showing a nonsense countdown when
+  the implied full battery capacity is below a realistic floor
+
 ## [1.8.2] - 2026-07-23
 
 - Renamed "Charger benchmark" to "Charging benchmark" and reworded its

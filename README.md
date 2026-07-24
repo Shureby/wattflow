@@ -58,6 +58,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v1.8
 
+- **1.8.3**: Fixed a bogus "less than 1 minute to full" reading on
+  devices whose coulomb counter reports an implausibly tiny charge
+  value (seen on an XREAL Air 2 Pro); the estimate is now hidden
+  instead of showing a nonsense countdown
 - **1.8.2**: Renamed "Charger benchmark" to "Charging benchmark" and
   clarified that charger and cable both affect the grade — swapping
   just the cable with the same charger can change the result, and some

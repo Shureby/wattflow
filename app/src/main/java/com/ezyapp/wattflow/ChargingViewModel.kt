@@ -103,18 +103,26 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
     }
 }
 
+// Some devices (seen on an XREAL Air 2 Pro) report an implausibly tiny
+// charge counter — e.g. 4128 µAh (0.004 Ah) at 100% battery. No real
+// phone/tablet/wearable has a full capacity this small; treat it as an
+// unreliable coulomb counter rather than compute a nonsense ETA from it.
+private const val MIN_PLAUSIBLE_FULL_AH = 0.1
+
 /**
  * Charging: time until full, from the coulomb counter and level-implied
  * full capacity. Discharging: time until empty. Null when the device has
- * no coulomb counter or the estimate would be nonsense.
+ * no coulomb counter, or the counter looks unreliable, or the estimate
+ * would be nonsense.
  */
 internal fun batteryEtaMinutes(s: BatterySample, avgA: Double): Int? {
     if (s.chargeCounterUah <= 0 || avgA < 0.01 || s.levelPercent !in 1..100) return null
     val remainAh = s.chargeCounterUah / 1_000_000.0
+    val impliedFullAh = remainAh * 100.0 / s.levelPercent
+    if (impliedFullAh < MIN_PLAUSIBLE_FULL_AH) return null
     val hours = if (s.isCharging) {
         if (s.levelPercent >= 100) return null
-        val fullAh = remainAh * 100.0 / s.levelPercent
-        (fullAh - remainAh) / avgA
+        (impliedFullAh - remainAh) / avgA
     } else {
         remainAh / avgA
     }
