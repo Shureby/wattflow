@@ -113,6 +113,9 @@
     <string name="bench_start">開始</string>
     <string name="bench_again">もう一度</string>
     <string name="bench_stability">安定性</string>
+    <string name="bench_level">レベル</string>
+    <string name="bench_grade_x_note">評価はXマーク: 測定時点で充電レベルがすでに高く、満充電に近づくと充電速度が自然に落ちるため — これは組み合わせ自体の性能を反映していません。信頼できる評価を得るには90%未満で再測定してください。</string>
+    <string name="bench_compare_range_note">評価は同程度の充電レベル範囲でテストした組み合わせ同士でのみ比較できます — 20–23%でA評価だった組み合わせが、80–90%でB評価だった組み合わせより優れているとは限りません。</string>
     <string name="bench_name_hint">充電器名（例：65W GaN + 編組ケーブル）</string>
     <string name="bench_save">結果を保存</string>
     <string name="bench_save_pro">Pro で結果を保存して比較</string>

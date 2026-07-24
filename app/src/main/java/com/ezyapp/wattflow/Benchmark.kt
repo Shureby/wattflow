@@ -1,5 +1,6 @@
 package com.ezyapp.wattflow
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -38,6 +39,26 @@ import kotlinx.coroutines.launch
 import kotlin.math.abs
 import kotlin.math.sqrt
 
+// Above this end-of-run battery level, CV taper dominates the reading
+// regardless of charger/cable quality (confirmed against a real 100 W
+// charge log: grade only drops out of "A" around 93%+ on that device),
+// so the grade is marked inconclusive instead of misleadingly low.
+private const val GRADE_X_LEVEL = 90
+
+/**
+ * A-F, absolute battery-side watts scale; "X" (inconclusive) when
+ * [endLevel] is high enough that charge-curve taper -- not the setup --
+ * explains a low reading.
+ */
+fun benchmarkGrade(avgWatts: Double, endLevel: Int): String = when {
+    endLevel >= GRADE_X_LEVEL -> "X"
+    avgWatts >= 25 -> "A"
+    avgWatts >= 15 -> "B"
+    avgWatts >= 8 -> "C"
+    avgWatts >= 3 -> "D"
+    else -> "F"
+}
+
 /** Result of one finished benchmark run, before any save. */
 data class BenchmarkOutcome(
     val avgWatts: Double,
@@ -47,16 +68,13 @@ data class BenchmarkOutcome(
     val startLevel: Int,
     val endLevel: Int,
 ) {
-    /** A-F, absolute battery-side watts scale. */
-    val grade: String
-        get() = when {
-            avgWatts >= 25 -> "A"
-            avgWatts >= 15 -> "B"
-            avgWatts >= 8 -> "C"
-            avgWatts >= 3 -> "D"
-            else -> "F"
-        }
+    val grade: String get() = benchmarkGrade(avgWatts, endLevel)
 }
+
+val BenchmarkResult.grade: String get() = benchmarkGrade(avgWatts, endLevel)
+
+private fun levelRangeText(start: Int, end: Int): String =
+    if (start == end) "$start%" else "$start%–$end%"
 
 object BenchmarkEngine {
     const val DURATION_S = 60
@@ -212,7 +230,19 @@ fun BenchmarkDialog(
                                     stringResource(R.string.bench_stability),
                                     String.format(java.util.Locale.US, "%.0f%%", o.stabilityPct),
                                 )
+                                BenchStat(
+                                    stringResource(R.string.bench_level),
+                                    levelRangeText(o.startLevel, o.endLevel),
+                                )
                             }
+                        }
+                        if (o.grade == "X") {
+                            Spacer(Modifier.height(8.dp))
+                            Text(
+                                text = stringResource(R.string.bench_grade_x_note),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
                         }
                         Spacer(Modifier.height(12.dp))
                         if (isPro) {
@@ -318,6 +348,19 @@ fun BenchmarkDialog(
 
 @Composable
 private fun BenchmarkSavedList(saved: List<BenchmarkResult>, onDelete: (Long) -> Unit) {
+    var showXInfo by remember { mutableStateOf(false) }
+    // avgWatts alone isn't a meaningful contest between two X-graded (inconclusive)
+    // results, so the trophy skips them and goes to the best real grade instead.
+    val trophyIndex = saved.indexOfFirst { it.grade != "X" }
+
+    if (saved.size >= 2) {
+        Text(
+            text = stringResource(R.string.bench_compare_range_note),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(bottom = 8.dp),
+        )
+    }
     saved.forEachIndexed { i, b ->
         Row(
             modifier = Modifier
@@ -328,15 +371,20 @@ private fun BenchmarkSavedList(saved: List<BenchmarkResult>, onDelete: (Long) ->
         ) {
             Column(Modifier.weight(1f)) {
                 Text(
-                    text = (if (i == 0) "🏆 " else "") +
+                    text = (if (i == trophyIndex) "🏆 " else "") + b.grade +
+                        (if (b.grade == "X") " ⓘ" else "") +
+                        " (@${levelRangeText(b.startLevel, b.endLevel)}) · " +
                         b.label.ifBlank { stringResource(R.string.bench_unnamed) },
                     style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = if (i == 0) FontWeight.Bold else null,
+                    fontWeight = if (i == trophyIndex) FontWeight.Bold else null,
+                    modifier = if (b.grade == "X") {
+                        Modifier.clickable { showXInfo = true }
+                    } else Modifier,
                 )
                 Text(
                     text = String.format(
                         java.util.Locale.US,
-                        "%.1f W avg • %.1f W peak • %.0f%%",
+                        "%.1f W avg • %.1f W peak • %.0f%% stable",
                         b.avgWatts, b.peakWatts, b.stabilityPct,
                     ),
                     style = MaterialTheme.typography.bodySmall,
@@ -345,6 +393,18 @@ private fun BenchmarkSavedList(saved: List<BenchmarkResult>, onDelete: (Long) ->
             }
             TextButton(onClick = { onDelete(b.id) }) { Text("✕") }
         }
+    }
+
+    if (showXInfo) {
+        AlertDialog(
+            onDismissRequest = { showXInfo = false },
+            text = { Text(stringResource(R.string.bench_grade_x_note)) },
+            confirmButton = {
+                TextButton(onClick = { showXInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
     }
 }
 

@@ -113,6 +113,9 @@
     <string name="bench_start">Iniciar</string>
     <string name="bench_again">Testar de novo</string>
     <string name="bench_stability">Estabilidade</string>
+    <string name="bench_level">Nível</string>
+    <string name="bench_grade_x_note">Nota marcada como X: o nível de carga já estava alto, então o carregamento desacelera naturalmente perto do máximo — isso não reflete a configuração em si. Teste novamente abaixo de ~90% para uma nota confiável.</string>
+    <string name="bench_compare_range_note">As notas só são comparáveis entre configurações testadas em faixas de nível de carga semelhantes — uma configuração com nota A a 20–23% não é necessariamente melhor que uma com nota B a 80–90%.</string>
     <string name="bench_name_hint">Nome do carregador (ex.: GaN 65W + cabo trançado)</string>
     <string name="bench_save">Salvar resultado</string>
     <string name="bench_save_pro">Salve e compare configurações de carregamento com o Pro</string>

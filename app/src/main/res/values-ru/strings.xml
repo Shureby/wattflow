@@ -113,6 +113,9 @@
     <string name="bench_start">Старт</string>
     <string name="bench_again">Повторить</string>
     <string name="bench_stability">Стабильность</string>
+    <string name="bench_level">Уровень</string>
+    <string name="bench_grade_x_note">Оценка помечена как X: уровень заряда уже был высоким, поэтому зарядка естественно замедляется ближе к полной — это не отражает возможности самой связки. Повторите тест при заряде ниже ~90% для достоверной оценки.</string>
+    <string name="bench_compare_range_note">Оценки сравнимы только между связками, протестированными в похожих диапазонах уровня заряда — оценка A при 20–23% не обязательно лучше оценки B при 80–90%.</string>
     <string name="bench_name_hint">Название зарядки (напр. GaN 65 Вт + плетёный кабель)</string>
     <string name="bench_save">Сохранить результат</string>
     <string name="bench_save_pro">Сохраняйте и сравнивайте варианты зарядки с Pro</string>

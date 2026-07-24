@@ -113,6 +113,9 @@
     <string name="bench_start">ابدأ</string>
     <string name="bench_again">اختبر مجددًا</string>
     <string name="bench_stability">الاستقرار</string>
+    <string name="bench_level">المستوى</string>
+    <string name="bench_grade_x_note">تم وضع علامة X على التقييم: كان مستوى الشحن مرتفعًا بالفعل، لذا يتباطأ الشحن بشكل طبيعي قرب الامتلاء — وهذا لا يعكس الإعداد نفسه. أعد الاختبار عند مستوى أقل من ~90% للحصول على تقييم موثوق.</string>
+    <string name="bench_compare_range_note">التقييمات قابلة للمقارنة فقط بين الإعدادات التي تم اختبارها ضمن نطاقات مستوى شحن متشابهة — إعداد حصل على تقييم A عند 20–23% ليس بالضرورة أفضل من إعداد حصل على تقييم B عند 80–90%.</string>
     <string name="bench_name_hint">اسم الشاحن (مثال: GaN 65W مع كابل مضفور)</string>
     <string name="bench_save">حفظ النتيجة</string>
     <string name="bench_save_pro">احفظ وقارن إعدادات الشحن مع Pro</string>

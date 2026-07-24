@@ -113,6 +113,9 @@
     <string name="bench_start">Start</string>
     <string name="bench_again">Erneut testen</string>
     <string name="bench_stability">Stabilität</string>
+    <string name="bench_level">Ladestand</string>
+    <string name="bench_grade_x_note">Note als X markiert: Der Ladestand war bereits hoch, daher verlangsamt sich das Laden nahe der vollen Ladung natürlicherweise — das sagt nichts über das Setup selbst aus. Für eine verlässliche Note unter ~90 % erneut testen.</string>
+    <string name="bench_compare_range_note">Noten sind nur zwischen Setups vergleichbar, die in ähnlichen Ladestand-Bereichen getestet wurden — ein Setup mit Note A bei 20–23 % ist nicht zwangsläufig besser als eines mit Note B bei 80–90 %.</string>
     <string name="bench_name_hint">Name des Ladegeräts (z. B. 65W GaN + Textilkabel)</string>
     <string name="bench_save">Ergebnis speichern</string>
     <string name="bench_save_pro">Mit Pro Lade-Aufbauten speichern und vergleichen</string>

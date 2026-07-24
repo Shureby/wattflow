@@ -11,6 +11,18 @@
   Reports → Charging Benchmark
 - Capitalized "Charging Benchmark" consistently in the Live tab button,
   dialog title, and Reports entry
+- Grades near a full charge were misleading — the same charger/cable
+  reads far fewer watts at 95%+ battery purely from normal charge-curve
+  taper, not a worse setup. Saved and live results now show the tested
+  charge-level range, and the grade becomes "X" (inconclusive, with a
+  ⓘ explaining why) when the run ends at 90%+ battery instead of a
+  falsely low letter grade
+- Added a note to the saved-results list that grades are only
+  comparable between setups tested at similar charge-level ranges
+- The 🏆 on the best saved result no longer lands on an "X"-graded
+  (inconclusive) entry just because its raw wattage happened to be
+  higher than another inconclusive one — it now goes to the best
+  result that actually has a real A-F grade
 
 ## [1.8.3] - 2026-07-24
 

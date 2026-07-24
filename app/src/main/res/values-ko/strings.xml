@@ -113,6 +113,9 @@
     <string name="bench_start">시작</string>
     <string name="bench_again">다시 테스트</string>
     <string name="bench_stability">안정성</string>
+    <string name="bench_level">레벨</string>
+    <string name="bench_grade_x_note">등급이 X로 표시됨: 측정 시점에 배터리 레벨이 이미 높아 완충에 가까워지며 충전 속도가 자연스럽게 느려진 것으로, 이 조합 자체의 성능을 반영하지 않습니다. 신뢰할 수 있는 등급을 얻으려면 약 90% 미만에서 다시 테스트하세요.</string>
+    <string name="bench_compare_range_note">등급은 비슷한 배터리 레벨 구간에서 테스트한 조합끼리만 비교할 수 있습니다 — 20–23%에서 A등급을 받은 조합이 80–90%에서 B등급을 받은 조합보다 반드시 더 나은 것은 아닙니다.</string>
     <string name="bench_name_hint">충전기 이름(예: 65W GaN + 직조 케이블)</string>
     <string name="bench_save">결과 저장</string>
     <string name="bench_save_pro">Pro로 충전 구성 저장·비교</string>

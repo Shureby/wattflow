@@ -113,6 +113,9 @@
     <string name="bench_start">開始</string>
     <string name="bench_again">再測一次</string>
     <string name="bench_stability">穩定性</string>
+    <string name="bench_level">電量</string>
+    <string name="bench_grade_x_note">評級標為X：測試時電量已較高，接近滿電時充電速度自然放緩，這不代表這套充電組合本身的實力。建議在電量90%以下重新測試以取得可靠評級。</string>
+    <string name="bench_compare_range_note">評級只有在電量區間相近時才可比——20–23%電量測出A，不代表一定比80–90%電量測出B的組合更好。</string>
     <string name="bench_name_hint">充電器名稱（例如 65W 氮化鎵 + 編織線）</string>
     <string name="bench_save">儲存結果</string>
     <string name="bench_save_pro">解鎖 Pro 以儲存並比較充電組合</string>

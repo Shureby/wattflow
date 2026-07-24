@@ -113,6 +113,9 @@
     <string name="bench_start">Démarrer</string>
     <string name="bench_again">Retester</string>
     <string name="bench_stability">Stabilité</string>
+    <string name="bench_level">Niveau</string>
+    <string name="bench_grade_x_note">Note marquée X : le niveau de charge était déjà élevé, donc la charge ralentit naturellement près du plein — cela ne reflète pas la configuration elle-même. Retestez en dessous de ~90 % pour une note fiable.</string>
+    <string name="bench_compare_range_note">Les notes ne sont comparables qu\'entre configurations testées sur des plages de niveau de charge similaires — une configuration notée A à 20–23 % n\'est pas forcément meilleure qu\'une notée B à 80–90 %.</string>
     <string name="bench_name_hint">Nom du chargeur (ex. GaN 65W + câble tressé)</string>
     <string name="bench_save">Enregistrer le résultat</string>
     <string name="bench_save_pro">Enregistrez et comparez les configurations de charge avec Pro</string>

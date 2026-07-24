@@ -113,6 +113,9 @@
     <string name="bench_start">Mulai</string>
     <string name="bench_again">Uji lagi</string>
     <string name="bench_stability">Stabilitas</string>
+    <string name="bench_level">Level</string>
+    <string name="bench_grade_x_note">Nilai ditandai X: level baterai sudah tinggi saat pengujian, sehingga pengisian daya melambat secara alami mendekati penuh — ini bukan cerminan dari setup itu sendiri. Uji ulang di bawah ~90% untuk nilai yang lebih andal.</string>
+    <string name="bench_compare_range_note">Nilai hanya bisa dibandingkan antar-setup yang diuji pada rentang level baterai yang mirip — setup bernilai A pada 20–23% belum tentu lebih baik daripada yang bernilai B pada 80–90%.</string>
     <string name="bench_name_hint">Nama charger (mis. GaN 65W + kabel kepang)</string>
     <string name="bench_save">Simpan hasil</string>
     <string name="bench_save_pro">Simpan dan bandingkan konfigurasi pengisian daya dengan Pro</string>

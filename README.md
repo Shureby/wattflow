@@ -62,7 +62,13 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
   setup" — the typed name was cleared before the save completed.
   The benchmark dialog now links to the saved-results view instead of
   listing every result inline, and "Charging Benchmark" is capitalized
-  consistently
+  consistently. Grades near a full charge were misleading (the same
+  setup reads far fewer watts near 100% purely from normal charge
+  taper) — results now show the tested charge-level range and grade
+  "X" (inconclusive) instead of a falsely low letter when the run ends
+  at 90%+ battery, with a note that grades are only comparable across
+  similar charge-level ranges, and the 🏆 no longer lands on an
+  inconclusive result
 - **1.8.3**: Fixed a bogus "less than 1 minute to full" reading on
   devices whose coulomb counter reports an implausibly tiny charge
   value (seen on an XREAL Air 2 Pro); the estimate is now hidden
