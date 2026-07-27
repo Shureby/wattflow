@@ -7,8 +7,7 @@ import android.os.BatteryManager
 import kotlin.math.abs
 
 data class BatterySample(
-    val watts: Double,          // dual-cell corrected when DualCell.active
-    val rawWatts: Double,       // as computed from the fuel gauge, uncorrected
+    val watts: Double,
     val voltageV: Double,
     val currentA: Double,
     val plugged: Int,          // BatteryManager.BATTERY_PLUGGED_* or 0 when on battery
@@ -53,10 +52,8 @@ class BatteryReader(private val context: Context) {
         val chargeCounterUah =
             if (rawCounter == Int.MIN_VALUE || rawCounter <= 0) -1L else rawCounter.toLong()
 
-        val rawWatts = voltageV * currentA
         return BatterySample(
-            watts = rawWatts * DualCell.factor(context),
-            rawWatts = rawWatts,
+            watts = voltageV * currentA,
             voltageV = voltageV,
             currentA = currentA,
             plugged = plugged,

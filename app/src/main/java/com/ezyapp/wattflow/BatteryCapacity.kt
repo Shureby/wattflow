@@ -8,10 +8,10 @@ package com.ezyapp.wattflow
  * event exists.
  *
  * Deliberately Wh-based rather than mAh*voltage: energyWh already comes
- * from the same integrated V*A the rest of the app uses, so a device's
- * own systematic misreads (e.g. the dual-cell voltage bug) cancel out
- * when a later Wh figure is divided by this baseline, instead of
- * compounding through a second, independent measurement.
+ * from the same integrated V*A the rest of the app uses, so any systematic
+ * misread a device's fuel gauge has cancels out when a later Wh figure is
+ * divided by this baseline, instead of compounding through a second,
+ * independent measurement.
  */
 suspend fun estimateFullChargeCapacityWh(dao: ChargeSessionDao): Double? {
     val latest = dao.fullChargeHistory()

@@ -165,9 +165,6 @@ fun ChargingScreen(
     // Self-heal: if the user wants background recording but the service was
     // killed (install, swipe, vendor task manager), restart it on app open.
     val appContext = LocalContext.current.applicationContext
-    var showDualCellNotice by remember {
-        mutableStateOf(DualCell.noticePending(appContext))
-    }
     var showBenchmark by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(isPro) {
         if (isPro && MonitorPrefs.enabled(appContext) &&
@@ -225,7 +222,7 @@ fun ChargingScreen(
                 }
                 1 -> WideScreenContainer { HistoryTab(viewModel) }
                 2 -> WideScreenContainer { ReportsTab(onLockedFeature = { showPaywall = true }) }
-                else -> SettingsScreen(onLockedFeature = { showPaywall = true })
+                else -> SettingsScreen(sample = sample, onLockedFeature = { showPaywall = true })
             }
         }
     }
@@ -285,28 +282,10 @@ fun ChargingScreen(
         )
     }
 
-    if (showDualCellNotice) {
-        AlertDialog(
-            onDismissRequest = {
-                showDualCellNotice = false
-                DualCell.clearNotice(appContext)
-            },
-            title = { Text(stringResource(R.string.dual_cell_notice_title)) },
-            text = { Text(stringResource(R.string.dual_cell_notice_body)) },
-            confirmButton = {
-                TextButton(
-                    onClick = {
-                        showDualCellNotice = false
-                        DualCell.clearNotice(appContext)
-                    }
-                ) { Text(stringResource(android.R.string.ok)) }
-            },
-        )
-    }
 }
 
 @Composable
-private fun SettingsScreen(onLockedFeature: () -> Unit) {
+private fun SettingsScreen(sample: BatterySample?, onLockedFeature: () -> Unit) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
     var showLanguageDialog by remember { mutableStateOf(false) }
@@ -368,7 +347,7 @@ private fun SettingsScreen(onLockedFeature: () -> Unit) {
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
         Spacer(Modifier.height(6.dp))
-        DualCellSection()
+        ReportIssueSection(sample)
         Spacer(Modifier.height(6.dp))
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
@@ -489,107 +468,64 @@ private fun OverlayToggle(onLockedFeature: () -> Unit) {
 }
 
 @Composable
-private fun DualCellSection() {
-    val context = LocalContext.current
-    var enabled by remember { mutableStateOf(DualCell.enabled(context)) }
+private fun ReportIssueSection(sample: BatterySample?) {
     var showDialog by remember { mutableStateOf(false) }
-    val detected = remember { DualCell.detected(context) }
 
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { showDialog = true }
             .padding(vertical = 14.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
-            text = stringResource(R.string.dual_cell_title),
+            text = stringResource(R.string.report_issue_title),
             style = MaterialTheme.typography.bodyLarge,
-        )
-        Text(
-            text = stringResource(
-                if (enabled) R.string.dual_cell_x2_on else R.string.dual_cell_x2_off
-            ),
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
     }
 
     if (showDialog) {
-        DualCellDialog(
-            enabled = enabled,
-            detected = detected,
-            onToggle = { on ->
-                enabled = on
-                DualCell.setEnabled(context, on)
-            },
-            onDismiss = { showDialog = false },
-        )
+        ReportIssueDialog(sample = sample, onDismiss = { showDialog = false })
     }
 }
 
 @Composable
-private fun DualCellDialog(
-    enabled: Boolean,
-    detected: Boolean,
-    onToggle: (Boolean) -> Unit,
-    onDismiss: () -> Unit,
-) {
+private fun ReportIssueDialog(sample: BatterySample?, onDismiss: () -> Unit) {
     val context = LocalContext.current
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text(stringResource(R.string.dual_cell_title)) },
+        title = { Text(stringResource(R.string.report_issue_title)) },
         text = {
             Column {
                 Text(
-                    text = stringResource(R.string.dual_cell_info),
+                    text = stringResource(R.string.report_issue_body),
                     style = MaterialTheme.typography.bodyMedium,
-                )
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = stringResource(
-                        R.string.dual_cell_likely,
-                        stringResource(
-                            if (detected) R.string.dual_cell_detected_yes
-                            else R.string.dual_cell_detected_no
-                        ),
-                    ),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.primary,
                 )
                 Spacer(Modifier.height(4.dp))
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    Text(
-                        text = stringResource(R.string.dual_cell_x2_switch),
-                        style = MaterialTheme.typography.bodyLarge,
-                    )
-                    Switch(checked = enabled, onCheckedChange = onToggle)
-                }
-                Spacer(Modifier.height(8.dp))
                 Text(
-                    text = stringResource(R.string.dual_cell_report),
-                    style = MaterialTheme.typography.bodyMedium,
+                    text = stringResource(R.string.report_issue_public_note),
+                    style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
+                Spacer(Modifier.height(8.dp))
                 Row {
                     TextButton(
                         onClick = {
                             runCatching {
-                                context.startActivity(DualCell.gitHubReportIntent(context))
+                                context.startActivity(
+                                    ReportIssue.gitHubReportIntent(context, sample)
+                                )
                             }
                         }
-                    ) { Text(stringResource(R.string.dual_cell_report_github)) }
+                    ) { Text(stringResource(R.string.report_issue_github)) }
                     TextButton(
                         onClick = {
                             runCatching {
-                                context.startActivity(DualCell.emailReportIntent(context))
+                                context.startActivity(
+                                    ReportIssue.emailReportIntent(context, sample)
+                                )
                             }
                         }
-                    ) { Text(stringResource(R.string.dual_cell_report_email)) }
+                    ) { Text(stringResource(R.string.report_issue_email)) }
                 }
             }
         },

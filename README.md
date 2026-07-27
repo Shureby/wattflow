@@ -56,6 +56,19 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.9
+
+- **1.9.0**: Removed the dual-cell (2S) detection and manual ×2 wattage
+  correction — real-hardware testing with an independent USB power meter
+  across three devices, including one confirmed dual-cell phone, found
+  no under-reporting at any charging power, so the correction could only
+  ever have made a reading wrong. "Report your device" is now a general
+  "Report an inaccurate reading," pre-filled with your WattFlow version,
+  live wattage/voltage/current/battery %, and optional fields for an
+  independent meter reading, charger/cable specs, and screen state —
+  enough for an actual comparison. Privacy policy updated to list what a
+  report may include and to note GitHub reports are public
+
 ## What's New — v1.8
 
 - **1.8.5**: Charging Benchmark now saves charger and cable as separate

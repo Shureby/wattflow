@@ -1,0 +1,110 @@
+name: Inaccurate reading report
+description: Report charging watts that look wrong for your device/charger
+title: "Inaccurate reading: <manufacturer> <model>"
+labels: ["inaccurate-reading"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        WattFlow pre-fills the fields below from your device — nothing is
+        sent until you review and submit. This issue is **public** on
+        GitHub; use the in-app "Email" option instead if you'd rather
+        report privately. Every field past App version is optional, but
+        the more you fill in the more useful this report is.
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: Manufacturer, model and device codename
+      placeholder: "Xiaomi 2602EPTC0G (warhol)"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Android version
+      placeholder: "16 (SDK 36)"
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: WattFlow version
+      placeholder: "1.9.0 (FOSS)"
+    validations:
+      required: true
+  - type: input
+    id: charge-counter
+    attributes:
+      label: Charge counter (µAh)
+      placeholder: "3542000"
+  - type: input
+    id: live-reading
+    attributes:
+      label: WattFlow's live reading when this happened
+      placeholder: "39.5 W (4.23 V x 9.3 A), 27% battery"
+  - type: input
+    id: meter-reading
+    attributes:
+      label: "Optional: independent USB power meter reading, same moment"
+      description: The single most useful field — without an independent ground truth we can't tell a real bug from a normal charge-curve taper
+      placeholder: "45 W (18.5 V x 2.4 A)"
+  - type: input
+    id: charger-max-w
+    attributes:
+      label: "Optional: charger's rated max wattage"
+      placeholder: "120W"
+  - type: dropdown
+    id: original-charger
+    attributes:
+      label: "Optional: is this the phone's original/bundled charger and cable?"
+      options:
+        - "yes"
+        - "no"
+        - "not sure"
+  - type: input
+    id: cable-rating
+    attributes:
+      label: "Optional: cable rating, if known"
+      placeholder: "5A / 6A E-marked"
+  - type: dropdown
+    id: charge-mode
+    attributes:
+      label: "Optional: wired or wireless"
+      options:
+        - wired
+        - wireless
+  - type: dropdown
+    id: screen-state
+    attributes:
+      label: "Optional: screen on or off while charging"
+      options:
+        - "on"
+        - "off"
+        - "mixed / not sure"
+  - type: input
+    id: thermal
+    attributes:
+      label: "Optional: was the phone warm, or charged repeatedly back-to-back recently?"
+  - type: input
+    id: battery-capacity
+    attributes:
+      label: "Optional: phone's rated battery capacity (mAh), if known"
+      placeholder: "5000"
+  - type: input
+    id: health-percent
+    attributes:
+      label: "Optional: Battery Health Trend %, from Reports -> Health in the app"
+  - type: dropdown
+    id: reproducibility
+    attributes:
+      label: "Optional: does this happen every time, or just once?"
+      options:
+        - "every time"
+        - "just once / rarely"
+        - "not sure"
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything else that helps judge the real power
