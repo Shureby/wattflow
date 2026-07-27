@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.10.0] - 2026-07-27
+
+- Added Charging Q&A to Reports: 14 common questions about charging
+  speed, cables, chargers, battery aging, and reading accuracy —
+  answered with real numbers from independent USB-meter testing across
+  multiple devices, wired and wireless
+- Includes a wattage-vs-battery-% chart comparing real measured
+  charging curves (solid line) against estimated charger/pad output
+  (dashed line) for four test setups. Tap to expand for the full
+  chart with a drag-to-inspect crosshair
+
 ## [1.9.0] - 2026-07-27
 
 - Removed the dual-cell (2S) detection and manual ×2 wattage correction.

@@ -56,6 +56,15 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v1.10
+
+- **1.10.0**: Added Charging Q&A to Reports — 14 common questions about
+  charging speed, cables, chargers, battery aging, and reading accuracy,
+  answered with real numbers from independent USB-meter testing across
+  multiple devices, wired and wireless. Includes a wattage-vs-battery-%
+  chart comparing real measured charging curves against estimated
+  charger/pad output, with a tap-to-expand view and a drag crosshair
+
 ## What's New — v1.9
 
 - **1.9.0**: Removed the dual-cell (2S) detection and manual ×2 wattage
