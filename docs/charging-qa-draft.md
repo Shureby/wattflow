@@ -14,8 +14,40 @@ the removed ×2 correction — that was always an internal engineering
 hypothesis, disproven and removed in v1.9.0, never something an end user
 needs to be told about or reassured against.
 
-Item 11 (wireless charging) has no real measured numbers yet — pending a
-17T Pro meter test. Fill in the bracketed placeholder once that's done.
+Item 11 (wireless charging) filled in 2026-07-27 with real numbers from a
+full 7%→100% wireless meter test on a 50W-wireless-capable test device
+(log `dualcell-data/17t-wireless.log` — filename kept for internal
+traceability only; never surface real device names in shipped copy or any
+publicly-shared chart/doc, see anonymization note below).
+Item 12 also updated with the system-load nuance that test surfaced.
+
+Illustrative chart (watts vs battery %, all four datasets overlaid) built
+from the real logs and published as a Claude Artifact for review:
+https://claude.ai/code/artifact/6d7f6872-b3e2-4a27-8794-0488ba66b2a8 —
+not yet embedded in the app; final in-app form (static bundled chart vs.
+live Compose Canvas reusing the existing Session Detail curve code) still
+to be decided.
+
+**Anonymization policy, set 2026-07-27 — user's explicit call, liability
+concern ("don't want to be sued"):** never name real phone models/brands
+in any shipped copy, published chart, or publicly-shared doc. Test devices
+are always referred to generically (device A/B/C, or by claimed spec
+class only, e.g. "a phone rated for 120W wired"). This applies to chart
+legends, tooltips, axis labels, and Q&A prose alike — anywhere this
+content could end up in front of a user or the public. Internal-only
+files (this doc's own status notes, `dualcell-data/*.log` filenames, this
+roadmap memory) can keep real device references for traceability, since
+those never ship or get shared.
+
+**Test device specs (internal reference only, per the policy above — do
+not carry these labels into shipped/shared content):**
+- Device A: 100W max wired / 50W max wireless
+- Device B: 120W max wired only
+- Device C: 120W max wired only
+- Charger used for all wired tests: an original 120W-max charger + its
+  matching original cable
+- Wireless charger: an original 55W-max wireless pad, itself powered by
+  the same 120W charger + original cable
 
 ---
 
@@ -65,11 +97,13 @@ USB功率计测的是"流进无线充电板"的电量,不是充电板对手机�
 
 无线场景的差距通常明显更大(30-45%甚至更多),而且会随线圈对齐精度、功率大小、散热状况明显波动——这些损耗大多变成热量,散在充电板和手机背壳上。
 
-具体数字先不写死——线圈耦合本身(对齐良好时)效率大约70-85%,但这只是链路中的一级,整条链路通常在55-70%区间(即30-45%损耗)。**【待17T Pro实测后填入具体数字】**
+**实测数据(一台标称50W无线充电的手机,7%→100%完整一轮):** 屏幕亮着时差距约37-42%(读数比约0.58-0.63),屏幕关闭后收窄到约28-34%(读数比约0.66-0.72)。这约6个百分点的差别,更可能是手机屏幕本身耗电(背光通常1-3W)从同一路输入功率里先分走一部分,而不是无线耦合效率本身随屏幕状态变化——App只读电池侧电流,不读整机总耗电,所以屏幕亮着时,一部分充电板送来的电还没到电池就被屏幕用掉了,差距自然显得更大。整条链路(直流转交流→线圈耦合→整流→充电管理)的实际效率大约在58-72%区间(即28-42%损耗),具体数字随屏幕状态、对齐、功率浮动。
 
 ## 12. 为什么用外部USB功率计量,读数总是比App显示的瓦数高一点?
 
 功率计测的是充电器/充电线这一端的电,App显示的是电池那一端实际收到的电,中间隔着线材电阻和手机内部电压转换,损耗是物理上必然存在的。我们在多台手机、多种功率下反复测过,这个差距稳定维持在10-20%,不会随功率升高而失控放大——这是判断"读数是否可信"的一个简单标准:差距应该是个小比例,不该是成倍的。
+
+这个差距其实是两部分加在一起:线材/转换损耗,加上手机屏幕、处理器等自身耗电——App只读电池那一端的电流,不读整机总耗电,所以屏幕亮着、后台跑着任务时,一部分电还没进电池就被手机自己用掉了,会让差距看起来比纯转换损耗更大一些(无线充电这一点更明显,见第11条)。
 
 ## 13. WattFlow的瓦数是怎么算出来的?精度极限在哪?
 

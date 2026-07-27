@@ -1798,6 +1798,7 @@ private fun ReportsTab(onLockedFeature: () -> Unit) {
     var showSleep by remember { mutableStateOf(false) }
     var showHealth by remember { mutableStateOf(false) }
     var showBenchResults by remember { mutableStateOf(false) }
+    var showQa by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -1829,16 +1830,30 @@ private fun ReportsTab(onLockedFeature: () -> Unit) {
             locked = !isPro,
             onClick = { if (isPro) showBenchResults = true else onLockedFeature() },
         )
+        ReportRow(
+            title = stringResource(R.string.qa_title),
+            desc = stringResource(R.string.qa_desc),
+            locked = false,
+            icon = Icons.Filled.Info,
+            onClick = { showQa = true },
+        )
     }
 
     if (showLedger) EnergyLedgerDialog(onDismiss = { showLedger = false })
     if (showSleep) SleepDrainDialog(onDismiss = { showSleep = false })
     if (showHealth) HealthTrendDialog(onDismiss = { showHealth = false })
     if (showBenchResults) BenchmarkResultsDialog(onDismiss = { showBenchResults = false })
+    if (showQa) ChargingQaDialog(onDismiss = { showQa = false })
 }
 
 @Composable
-private fun ReportRow(title: String, desc: String, locked: Boolean, onClick: () -> Unit) {
+private fun ReportRow(
+    title: String,
+    desc: String,
+    locked: Boolean,
+    onClick: () -> Unit,
+    icon: androidx.compose.ui.graphics.vector.ImageVector? = null,
+) {
     Column {
         Row(
             modifier = Modifier
@@ -1848,6 +1863,14 @@ private fun ReportRow(title: String, desc: String, locked: Boolean, onClick: () 
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            if (icon != null) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(end = 12.dp).size(22.dp),
+                )
+            }
             Column(Modifier.weight(1f)) {
                 Text(title, style = MaterialTheme.typography.titleMedium)
                 Text(
