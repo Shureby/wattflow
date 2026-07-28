@@ -48,7 +48,7 @@
     <string name="peak_info_title">这里的峰值 vs 小组件</string>
     <string name="peak_info_body">这里的峰值每次拔插充电线或切换充电方式（比如有线换无线）都会清零，只统计当前这一段。主屏幕小组件显示的是另一个"今日峰值"，统计的是一整天。</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">充电历史、统计与后台记录。一次性买断，永久有效。</string>
+    <string name="pro_desc">• 后台记录和悬浮功率窗\n• 自定义电池提醒阈值\n• 3 份详细报表——能量账本、睡眠耗电、Battery Health Trend\n• 保存并对比充电测评结果\n\n一次性买断，永久有效。</string>
     <string name="pro_buy">解锁</string>
     <string name="filter_charge">充电</string>
     <string name="filter_discharge">放电</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">关闭时仅在 app 打开期间记录。</string>
     <string name="geek_toggle">严格分段（极客）</string>
     <string name="geek_info_body">息屏省电会短暂中断采样。默认将间隔小于 5 分钟的同方向记录合并为一段，更符合对一次充电/放电的直觉。打开后按原始采样严格展示，每次超过 60 秒的中断都单独成段。</string>
+    <string name="widget_add_title">主屏幕小组件</string>
+    <string name="widget_add_hint">长按桌面空白处选择小组件，或者长按WattFlow图标点击小组件，即可手动添加。</string>
+    <string name="widget_try_direct">直接尝试</string>
+    <string name="widget_try_direct_info_body">如果系统弹出提示，请同意。如果没有反应，你的手机可能需要类似「桌面快捷方式」（小米/红米）的权限，或者其他品牌的类似设置——如果不确定在哪里找，可以搜索你的手机型号加「添加小组件权限」。</string>
+    <string name="widget_picker_permission_hint">部分手机需要额外权限才能这样添加。如果选择尺寸后没有反应，请改用上面的长按方法。</string>
+    <string name="widget_pin_failed_body">你的手机拒绝了这次请求——部分厂商需要"桌面快捷方式"之类的权限，App才能用这种方式添加小组件。你可以去设置里开启，或者直接长按桌面空白处，选择小组件，从里面添加WattFlow——这个方法总是有效。</string>
+    <string name="open_app_settings">打开App设置</string>
     <string name="doze_row">后台采样不中断</string>
     <string name="doze_info_body">将 WattFlow 加入电池优化白名单，息屏时后台采样不被暂停，记录更完整，代价是待机耗电略增（约每小时 0.5-1%）。小米/HyperOS 等系统可能还需在系统设置中允许自启动。</string>
     <string name="doze_denied_note">没有此权限也能正常使用 — 息屏期间可能出现短暂采样缺口，严格分段模式下会如实显示为多段。</string>

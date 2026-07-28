@@ -48,7 +48,7 @@
     <string name="peak_info_title">ここのピークとウィジェットの違い</string>
     <string name="peak_info_body">これらのピーク値は、ケーブルを抜く、差し直す、電源方式を切り替える（有線⇔ワイヤレスなど）たびにリセットされ、直近の連続区間のみを対象とします。ホーム画面のウィジェットは「本日のピーク」という別の数値で、1日全体を対象に表示します。</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">充電履歴、統計、バックグラウンド記録。買い切り、ずっと使えます。</string>
+    <string name="pro_desc">• バックグラウンド記録とフローティング表示\n• バッテリー通知のしきい値をカスタマイズ\n• 詳しいレポート3種 — エネルギー台帳、睡眠中の消費、Battery Health Trend\n• 充電ベンチマークの結果を保存・比較\n\n買い切り、ずっと使えます。</string>
     <string name="pro_buy">解除</string>
     <string name="filter_charge">充電</string>
     <string name="filter_discharge">放電</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">オフの場合、アプリを開いている間のみ記録されます。</string>
     <string name="geek_toggle">生セッション（厳密）</string>
     <string name="geek_info_body">画面オフの省電力によりサンプリングは一時中断されます。既定では 5 分未満の間隔で連続する同方向の記録を 1 つに結合します。オンにすると 60 秒を超える中断ごとに分割された生セグメントをそのまま表示します。</string>
+    <string name="widget_add_title">ホーム画面ウィジェット</string>
+    <string name="widget_add_hint">ホーム画面の空いている場所を長押しして「ウィジェット」を選ぶか、WattFlowのアイコンを長押しして「ウィジェット」をタップすると、手動で追加できます。</string>
+    <string name="widget_try_direct">直接試す</string>
+    <string name="widget_try_direct_info_body">システムからの確認が出たら許可してください。何も起きない場合、端末に「ホーム画面のショートカット」（Xiaomi/Redmi）のような許可、または他メーカーの同等の設定が必要な場合があります — 見つからない場合は端末の機種名と「ウィジェット追加 許可」で検索してください。</string>
+    <string name="widget_picker_permission_hint">一部の端末ではこの機能に追加の許可が必要です。サイズを選んでも何も起きない場合は、上記の長押しの方法をお試しください。</string>
+    <string name="widget_pin_failed_body">端末がリクエストを拒否しました — 一部のメーカーでは、アプリがこの方法でウィジェットを追加するために「ホーム画面のショートカット」のような許可が必要です。設定で有効にするか、ホーム画面の空いている場所を長押しして「ウィジェット」を選び、そこからWattFlowを追加してください — こちらは必ず使えます。</string>
+    <string name="open_app_settings">アプリの設定を開く</string>
     <string name="doze_row">バックグラウンド サンプリングを中断しない</string>
     <string name="doze_info_body">WattFlow を電池の最適化から除外し、画面オフ中もサンプリングを止めません。記録はより完全になりますが、待機時消費がわずかに増えます（1 時間あたり約 0.5-1%）。MIUI/HyperOS では自動起動の許可も必要な場合があります。</string>
     <string name="doze_denied_note">この権限がなくても問題なく使えます — 画面オフ中はサンプルが欠けることがあり、厳密モードでは別々のセグメントとして表示されます。</string>

@@ -48,7 +48,7 @@
     <string name="peak_info_title">Pic ici vs. dans le widget</string>
     <string name="peak_info_body">"Ces pics repartent à zéro à chaque débranchement, rebranchement ou changement de source (par ex. filaire vers sans fil) — ils ne couvrent que la séquence en cours. Le widget de l'écran d'accueil affiche un chiffre séparé, « Pics du jour », qui couvre toute la journée."</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">Historique de charge, statistiques et enregistrement en arrière-plan. Achat unique, à vous pour toujours.</string>
+    <string name="pro_desc">• Enregistrement en arrière-plan et superposition des watts flottante\n• Seuils d\'alertes batterie personnalisés\n• 3 rapports détaillés — Registre d\'énergie, Décharge nocturne, Tendance de santé de la batterie\n• Enregistrez et comparez les résultats du Test de charge\n\nAchat unique, à vous pour toujours.</string>
     <string name="pro_buy">Débloquer</string>
     <string name="filter_charge">Charge</string>
     <string name="filter_discharge">Décharge</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">"Désactivé, les sessions ne sont enregistrées que lorsque l'app est ouverte."</string>
     <string name="geek_toggle">Sessions brutes (strict)</string>
     <string name="geek_info_body">Écran éteint, le mode économie suspend brièvement les mesures. Par défaut, WattFlow fusionne les sessions de même direction séparées de moins de 5 minutes. Activez pour voir chaque segment brut tel que mesuré, découpé à chaque pause de plus de 60 secondes.</string>
+    <string name="widget_add_title">Widget d\'écran d\'accueil</string>
+    <string name="widget_add_hint">Restez appuyé sur un espace vide de l\'écran d\'accueil et choisissez Widgets, ou restez appuyé sur l\'icône WattFlow et touchez Widgets, pour en ajouter un manuellement.</string>
+    <string name="widget_try_direct">Essayer directement</string>
+    <string name="widget_try_direct_info_body">Acceptez toute demande système qui apparaît. Si rien ne se passe, votre téléphone a peut-être besoin d\'une permission comme « Raccourcis d\'écran d\'accueil » (Xiaomi/Redmi) ou un réglage équivalent chez d\'autres marques — recherchez votre modèle de téléphone avec « autorisation d\'ajout de widget » si vous ne savez pas où la trouver.</string>
+    <string name="widget_picker_permission_hint">Certains téléphones nécessitent une permission supplémentaire pour cela. Si rien ne se passe après avoir choisi une taille, utilisez la méthode de l\'appui long ci-dessus.</string>
+    <string name="widget_pin_failed_body">Votre téléphone a refusé la demande — certains fabricants exigent une permission comme « Raccourcis d\'écran d\'accueil » pour que les applications puissent ajouter des widgets de cette façon. Vous pouvez l\'activer dans les Réglages, ou simplement rester appuyé sur un espace vide de l\'écran d\'accueil, choisir Widgets, puis ajouter WattFlow depuis là — ça fonctionne toujours.</string>
+    <string name="open_app_settings">Ouvrir les réglages de l\'appli</string>
     <string name="doze_row">Mesures en arrière-plan sans interruption</string>
     <string name="doze_info_body">"Exempte WattFlow des optimisations de batterie pour que les mesures ne soient pas suspendues écran éteint. Enregistrement plus complet, au prix d'une veille légèrement plus gourmande (~0,5-1% par heure). Sur MIUI/HyperOS, un démarrage automatique peut aussi être requis."</string>
     <string name="doze_denied_note">WattFlow fonctionne bien sans cette autorisation — les périodes écran éteint peuvent manquer de mesures, affichées comme segments séparés en mode strict.</string>

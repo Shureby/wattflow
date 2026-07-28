@@ -1,5 +1,7 @@
 package com.ezyapp.wattflow
 
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.res.Configuration
 import android.content.Intent
@@ -356,6 +358,11 @@ private fun SettingsScreen(sample: BatterySample?, onLockedFeature: () -> Unit) 
         Spacer(Modifier.height(6.dp))
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
+        Spacer(Modifier.height(6.dp))
+        WidgetSection()
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
         Spacer(Modifier.height(16.dp))
         Text(
             text = stringResource(R.string.version_label, versionName),
@@ -438,10 +445,20 @@ private fun OverlayToggle(onLockedFeature: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = stringResource(R.string.overlay_toggle),
-                style = MaterialTheme.typography.bodyLarge,
-            )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.overlay_toggle),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                if (!isPro) {
+                    Text(
+                        text = " 🔒",
+                        modifier = Modifier
+                            .clickable(onClick = onLockedFeature)
+                            .padding(4.dp),
+                    )
+                }
+            }
             Text(
                 text = stringResource(R.string.overlay_toggle_hint),
                 style = MaterialTheme.typography.bodySmall,
@@ -821,6 +838,137 @@ private fun GeekSection() {
 }
 
 @Composable
+private fun WidgetSection() {
+    val context = LocalContext.current
+    val widgetManager = remember { AppWidgetManager.getInstance(context) }
+    val supported = remember { widgetManager.isRequestPinAppWidgetSupported }
+    var showPicker by remember { mutableStateOf(false) }
+    var showPinFailedTip by remember { mutableStateOf(false) }
+    var showTryDirectInfo by remember { mutableStateOf(false) }
+
+    fun pin(providerClass: Class<*>) {
+        val provider = ComponentName(context, providerClass)
+        val accepted = widgetManager.requestPinAppWidget(provider, null, null)
+        if (!accepted) showPinFailedTip = true
+    }
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = stringResource(R.string.widget_add_title),
+            style = MaterialTheme.typography.bodyLarge,
+        )
+        Text(
+            text = stringResource(R.string.widget_add_hint),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        if (supported) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(R.string.widget_try_direct),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .clickable { showPicker = true }
+                        .padding(top = 10.dp, bottom = 4.dp),
+                )
+                IconButton(
+                    onClick = { showTryDirectInfo = true },
+                    modifier = Modifier.size(28.dp),
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Info,
+                        contentDescription = stringResource(R.string.widget_try_direct),
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
+        }
+    }
+
+    if (showTryDirectInfo) {
+        AlertDialog(
+            onDismissRequest = { showTryDirectInfo = false },
+            title = { Text(stringResource(R.string.widget_try_direct)) },
+            text = { Text(stringResource(R.string.widget_try_direct_info_body)) },
+            confirmButton = {
+                TextButton(onClick = { showTryDirectInfo = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
+    }
+
+    if (showPicker) {
+        AlertDialog(
+            onDismissRequest = { showPicker = false },
+            title = { Text(stringResource(R.string.widget_add_title)) },
+            text = {
+                Column {
+                    Text(
+                        text = stringResource(R.string.widget_picker_permission_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.padding(bottom = 8.dp),
+                    )
+                    listOf(
+                        stringResource(R.string.widget_name_s) to WattWidgetProvider::class.java,
+                        stringResource(R.string.widget_name_m) to WattWidgetProviderMedium::class.java,
+                        stringResource(R.string.widget_name_l) to WattWidgetProviderLarge::class.java,
+                    ).forEach { (label, providerClass) ->
+                        Text(
+                            text = label,
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    pin(providerClass)
+                                    showPicker = false
+                                }
+                                .padding(vertical = 12.dp),
+                        )
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPicker = false }) {
+                    Text(stringResource(android.R.string.cancel))
+                }
+            },
+        )
+    }
+
+    if (showPinFailedTip) {
+        AlertDialog(
+            onDismissRequest = { showPinFailedTip = false },
+            title = { Text(stringResource(R.string.widget_add_title)) },
+            text = { Text(stringResource(R.string.widget_pin_failed_body)) },
+            confirmButton = {
+                TextButton(onClick = {
+                    showPinFailedTip = false
+                    runCatching {
+                        context.startActivity(
+                            Intent(
+                                android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                android.net.Uri.fromParts("package", context.packageName, null),
+                            )
+                        )
+                    }
+                }) {
+                    Text(stringResource(R.string.open_app_settings))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showPinFailedTip = false }) {
+                    Text(stringResource(android.R.string.ok))
+                }
+            },
+        )
+    }
+}
+
+@Composable
 private fun DozeExemptionRow() {
     val context = LocalContext.current
     val powerManager = remember {
@@ -1124,10 +1272,20 @@ private fun MonitorToggle(onLockedFeature: () -> Unit) {
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = stringResource(R.string.monitor_toggle),
-                    style = MaterialTheme.typography.bodyLarge,
-                )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = stringResource(R.string.monitor_toggle),
+                        style = MaterialTheme.typography.bodyLarge,
+                    )
+                    if (!isPro) {
+                        Text(
+                            text = " 🔒",
+                            modifier = Modifier
+                                .clickable(onClick = onLockedFeature)
+                                .padding(4.dp),
+                        )
+                    }
+                }
                 Text(
                     text = stringResource(R.string.monitor_toggle_hint),
                     style = MaterialTheme.typography.bodySmall,

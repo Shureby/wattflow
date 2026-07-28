@@ -48,7 +48,7 @@
     <string name="peak_info_title">這裡的峰值 vs 小工具</string>
     <string name="peak_info_body">這裡的峰值每次拔插充電線或切換充電方式（比如有線換無線）都會歸零，只統計目前這一段。主畫面小工具顯示的是另一個「今日峰值」，統計的是一整天。</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">充電歷史、統計與背景記錄。一次性買斷，永久有效。</string>
+    <string name="pro_desc">• 背景記錄和懸浮功率窗\n• 自訂電池提醒閾值\n• 3 份詳細報表——能量帳本、睡眠耗電、電池健康趨勢\n• 保存並比較充電測評結果\n\n一次性買斷，永久有效。</string>
     <string name="pro_buy">解鎖</string>
     <string name="filter_charge">充電</string>
     <string name="filter_discharge">放電</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">關閉時僅在 app 開啟期間記錄。</string>
     <string name="geek_toggle">嚴格分段（極客）</string>
     <string name="geek_info_body">熄屏省電會短暫中斷取樣。預設將間隔小於 5 分鐘的同方向記錄合併為一段，更符合對一次充電/放電的直覺。開啟後按原始取樣嚴格展示，每次超過 60 秒的中斷都單獨成段。</string>
+    <string name="widget_add_title">主畫面小工具</string>
+    <string name="widget_add_hint">長按桌面空白處選擇小工具，或者長按WattFlow圖示點擊小工具，即可手動加入。</string>
+    <string name="widget_try_direct">直接試試</string>
+    <string name="widget_try_direct_info_body">如果系統跳出提示，請同意。如果沒有反應，你的手機可能需要類似「桌面捷徑」（小米/紅米）的權限，或者其他品牌的類似設定——如果不確定在哪裡找，可以搜尋你的手機型號加「加入小工具權限」。</string>
+    <string name="widget_picker_permission_hint">部分手機需要額外權限才能這樣加入。如果選擇尺寸後沒有反應，請改用上面的長按方法。</string>
+    <string name="widget_pin_failed_body">你的手機拒絕了這次請求——部分廠商需要「桌面捷徑」之類的權限，App才能用這種方式加入小工具。你可以到設定裡開啟，或者直接長按桌面空白處，選擇小工具，從裡面加入WattFlow——這個方法一律有效。</string>
+    <string name="open_app_settings">開啟App設定</string>
     <string name="doze_row">背景取樣不中斷</string>
     <string name="doze_info_body">將 WattFlow 加入電池最佳化白名單，熄屏時背景取樣不被暫停，記錄更完整，代價是待機耗電略增（約每小時 0.5-1%）。小米/HyperOS 等系統可能還需在系統設定中允許自啟動。</string>
     <string name="doze_denied_note">沒有此權限也能正常使用 — 熄屏期間可能出現短暫取樣缺口，嚴格分段模式下會如實顯示為多段。</string>

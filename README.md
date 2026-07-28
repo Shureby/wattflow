@@ -1,7 +1,7 @@
 # ⚡ WattFlow
 
 [![Platform](https://img.shields.io/badge/platform-Android%208.0%2B-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.4-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/williamoz)
 
@@ -55,6 +55,17 @@ When your phone powers another device (reverse wireless charging, OTG), Android 
 English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia, Português, Français, 日本語, 한국어, Русский, Deutsch
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
+
+## What's New — v2.0
+
+- **2.0.0**: Toolchain upgrade (Kotlin 2.4.0, AGP 9.3.0, Compose BOM
+  2026.06.00, billing-ktx 9.1.0) to meet Google Play's Billing Library
+  floor deadline. Also: Background recording and Floating watts
+  overlay now show a lock icon before you tap them if you haven't
+  unlocked Pro, matching the rest of the app; the purchase prompt now
+  lists all current Pro features; added a "Home screen widget" row in
+  Settings with manual add instructions plus a one-tap "Try it
+  directly" button
 
 ## What's New — v1.10
 

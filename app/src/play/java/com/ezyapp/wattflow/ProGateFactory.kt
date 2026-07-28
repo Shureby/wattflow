@@ -94,9 +94,9 @@ object PlayProGate : ProGate, PurchasesUpdatedListener {
                 )
             )
             .build()
-        billingClient?.queryProductDetailsAsync(params) { result, detailsList ->
+        billingClient?.queryProductDetailsAsync(params) { result, queryResult ->
             if (result.responseCode == BillingClient.BillingResponseCode.OK) {
-                productDetails = detailsList.firstOrNull()
+                productDetails = queryResult.productDetailsList.firstOrNull()
                 _priceText.value =
                     productDetails?.oneTimePurchaseOfferDetails?.formattedPrice
             }

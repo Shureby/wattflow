@@ -48,7 +48,7 @@
     <string name="peak_info_title">Puncak di sini vs. widget</string>
     <string name="peak_info_body">Puncak ini akan direset setiap kali kamu mencabut, mencolokkan kembali, atau berganti sumber (misalnya dari kabel ke nirkabel) — hanya mencakup sesi saat ini. Widget layar utama menampilkan angka terpisah \"Puncak Hari Ini\" yang mencakup sepanjang hari.</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">Riwayat pengisian, statistik, dan perekaman latar belakang. Sekali beli, milik Anda selamanya.</string>
+    <string name="pro_desc">• Perekaman latar belakang &amp; overlay watt mengambang\n• Ambang batas peringatan baterai yang bisa disesuaikan\n• 3 laporan mendalam — Buku energi, Pengurasan tidur, Tren Kesehatan Baterai\n• Simpan &amp; bandingkan hasil Uji pengisian daya\n\nSekali beli, milik Anda selamanya.</string>
     <string name="pro_buy">Buka</string>
     <string name="filter_charge">Pengisian</string>
     <string name="filter_discharge">Pengosongan</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">Saat mati, sesi hanya direkam ketika aplikasi terbuka.</string>
     <string name="geek_toggle">Sesi mentah (ketat)</string>
     <string name="geek_info_body">Penghemat daya saat layar mati menjeda pengambilan sampel sejenak. Secara default, WattFlow menggabungkan sesi searah yang terpisah kurang dari 5 menit. Aktifkan untuk melihat setiap segmen mentah apa adanya, terbagi di setiap jeda lebih dari 60 detik.</string>
+    <string name="widget_add_title">Widget layar utama</string>
+    <string name="widget_add_hint">Tekan lama area kosong di layar utama dan pilih Widget, atau tekan lama ikon aplikasi WattFlow dan ketuk Widget, untuk menambahkannya secara manual.</string>
+    <string name="widget_try_direct">Coba langsung</string>
+    <string name="widget_try_direct_info_body">Setujui prompt sistem jika muncul. Jika tidak terjadi apa-apa, ponsel Anda mungkin butuh izin seperti \"Pintasan layar utama\" (Xiaomi/Redmi) atau pengaturan serupa di merek lain — cari model ponsel Anda plus \"izin tambah widget\" jika tidak yakin di mana menemukannya.</string>
+    <string name="widget_picker_permission_hint">Beberapa ponsel butuh izin tambahan agar ini berfungsi. Jika tidak terjadi apa-apa setelah memilih ukuran, gunakan cara tekan lama di atas.</string>
+    <string name="widget_pin_failed_body">Ponsel Anda menolak permintaan ini — beberapa produsen mewajibkan izin seperti "Pintasan layar utama" agar aplikasi bisa menambahkan widget dengan cara ini. Anda bisa mengaktifkannya di Pengaturan, atau cukup tekan lama area kosong di layar utama, pilih Widget, lalu tambahkan WattFlow dari sana — cara ini selalu berhasil.</string>
+    <string name="open_app_settings">Buka pengaturan aplikasi</string>
     <string name="doze_row">Pengambilan sampel latar belakang tanpa gangguan</string>
     <string name="doze_info_body">Mengecualikan WattFlow dari optimalisasi baterai agar pengambilan sampel tidak dijeda saat layar mati. Perekaman lebih lengkap dengan konsumsi siaga sedikit lebih tinggi (~0,5-1% per jam). Di MIUI/HyperOS mungkin perlu mengizinkan mulai otomatis.</string>
     <string name="doze_denied_note">WattFlow tetap berfungsi tanpa izin ini — periode layar mati mungkin kekurangan sampel dan tampil sebagai segmen terpisah dalam mode ketat.</string>

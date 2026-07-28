@@ -48,7 +48,7 @@
     <string name="peak_info_title">Spitzenwerte hier vs. im Widget</string>
     <string name="peak_info_body">Diese Spitzenwerte werden jedes Mal zurückgesetzt, wenn du das Ladekabel abziehst, wieder einsteckst oder die Quelle wechselst (z. B. kabelgebunden zu kabellos) — sie decken nur die aktuelle Phase ab. Das Home-Widget zeigt stattdessen eine separate Zahl \"Heutige Spitzenwerte\", die den ganzen Tag abdeckt.</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">Ladeverlauf, Statistiken und Hintergrundaufzeichnung. Einmalkauf, für immer.</string>
+    <string name="pro_desc">• Hintergrundaufzeichnung &amp; schwebendes Watt-Overlay\n• Eigene Schwellenwerte für Akku-Benachrichtigungen\n• 3 ausführliche Berichte — Energiekonto, Nachtverbrauch, Batterie-Gesundheitstrend\n• Lade-Benchmark-Ergebnisse speichern &amp; vergleichen\n\nEinmalkauf, für immer.</string>
     <string name="pro_buy">Freischalten</string>
     <string name="filter_charge">Laden</string>
     <string name="filter_discharge">Entladen</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">Wenn aus, werden Sitzungen nur bei geöffneter App aufgezeichnet.</string>
     <string name="geek_toggle">Rohsitzungen (strikt)</string>
     <string name="geek_info_body">Der Energiesparmodus bei ausgeschaltetem Display pausiert die Messung kurzzeitig. Standardmäßig verschmilzt WattFlow gleichgerichtete Sitzungen mit Lücken unter 5 Minuten. Aktivieren, um jedes Rohsegment exakt wie gemessen zu sehen, getrennt bei jeder Lücke über 60 Sekunden.</string>
+    <string name="widget_add_title">Startbildschirm-Widget</string>
+    <string name="widget_add_hint">Halten Sie eine leere Stelle auf dem Startbildschirm gedrückt und wählen Sie Widgets, oder halten Sie das WattFlow-Symbol gedrückt und tippen Sie auf Widgets, um eines manuell hinzuzufügen.</string>
+    <string name="widget_try_direct">Direkt ausprobieren</string>
+    <string name="widget_try_direct_info_body">Bestätige eine eventuelle Systemabfrage. Passiert nichts, braucht dein Smartphone womöglich eine Berechtigung wie \"Startbildschirm-Verknüpfungen\" (Xiaomi/Redmi) oder eine vergleichbare Einstellung bei anderen Marken — suche im Zweifel online nach deinem Handymodell und \"Widget-Berechtigung\".</string>
+    <string name="widget_picker_permission_hint">Manche Smartphones benötigen dafür eine zusätzliche Berechtigung. Passiert nach dem Antippen einer Größe nichts, nutzen Sie stattdessen die oben beschriebene Methode.</string>
+    <string name="widget_pin_failed_body">Dein Smartphone hat die Anfrage abgelehnt — manche Hersteller verlangen eine Berechtigung wie "Startbildschirm-Verknüpfungen" (oder ähnlich), damit Apps auf diese Weise Widgets hinzufügen dürfen. Du kannst sie in den Einstellungen aktivieren, oder einfach eine leere Stelle auf dem Startbildschirm gedrückt halten, Widgets wählen und WattFlow von dort hinzufügen — das funktioniert immer.</string>
+    <string name="open_app_settings">App-Einstellungen öffnen</string>
     <string name="doze_row">Unterbrechungsfreie Hintergrundmessung</string>
     <string name="doze_info_body">Nimmt WattFlow von der Akku-Optimierung aus, damit die Messung bei ausgeschaltetem Display nicht pausiert. Vollständigere Aufzeichnung, dafür etwas höherer Standby-Verbrauch (~0,5-1% pro Stunde). Auf MIUI/HyperOS muss ggf. auch Autostart erlaubt werden.</string>
     <string name="doze_denied_note">WattFlow funktioniert auch ohne diese Berechtigung — bei ausgeschaltetem Display können Messlücken entstehen, im strikten Modus als separate Segmente sichtbar.</string>

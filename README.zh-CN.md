@@ -1,7 +1,7 @@
 # ⚡ WattFlow
 
 [![Platform](https://img.shields.io/badge/platform-Android%208.0%2B-3DDC84?logo=android&logoColor=white)](https://developer.android.com)
-[![Kotlin](https://img.shields.io/badge/Kotlin-1.9-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
+[![Kotlin](https://img.shields.io/badge/Kotlin-2.4-7F52FF?logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
 **实时显示电池真实的充放电瓦数 — 有线无线都支持。**
@@ -45,6 +45,10 @@ Android 没有公开适配器侧功率 API, 这已是免 root 设备能给出的
 ### 反向充电
 
 手机给其他设备供电时 (无线反充、OTG), Android 不提供"反向充电"标志 — 本应用将其显示为电池放电, 瓦数准确。
+
+## 更新日志 — v2.0
+
+- **2.0.0**：升级技术栈（Kotlin 2.4.0、AGP 9.3.0、Compose BOM 2026.06.00、billing-ktx 9.1.0），以满足 Google Play 应用内购买库的版本要求。另外：未解锁 Pro 时，后台记录和悬浮功率窗在点击前就会显示锁图标，和其他地方保持一致；购买弹窗现在列出了全部 Pro 功能；设置里新增"主屏幕小组件"一项，附带手动添加说明和一键"直接尝试"按钮
 
 ## 更新日志 — v1.10
 

@@ -1,5 +1,25 @@
 # Changelog
 
+## [2.0.0] - 2026-07-28
+
+- Toolchain upgrade: Kotlin 1.9.22 → 2.4.0, AGP 8.13.0 → 9.3.0, Compose
+  BOM 2024.02.00 → 2026.06.00, Room 2.6.1 → 2.8.4, billing-ktx 7.1.1 →
+  9.1.0. Driven by Google Play's Billing Library floor deadline
+  (2026-08-31, min v8+). The AGP bump was forced, not a preference —
+  AGP 8.13's bundled R8 can't cleanly parse Kotlin 2.4/newer-Compose
+  metadata, confirmed by testing rather than assumed
+- Pro paywall: Background recording and Floating watts overlay now
+  show a 🔒 before you tap them, matching the existing pattern already
+  used on Reports and the alert-threshold sliders — previously these
+  two silently opened the purchase prompt with no hint beforehand. The
+  purchase prompt itself now lists all current Pro features (it
+  previously mentioned only 2 of the 7 things Pro actually unlocks)
+- New: "Home screen widget" row in Settings, with manual long-press
+  instructions (works on every phone) plus a "Try it directly" button
+  for a one-tap add (some phones need an extra permission for this
+  path specifically — the long-press instructions above it always work
+  regardless)
+
 ## [1.10.0] - 2026-07-27
 
 - Added Charging Q&A to Reports: 14 common questions about charging

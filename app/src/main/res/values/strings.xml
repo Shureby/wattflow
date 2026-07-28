@@ -51,7 +51,7 @@
     <string name="peak_info_title">Peak In/Out here vs. the widget</string>
     <string name="peak_info_body">These peaks reset every time you unplug, plug back in, or switch source (e.g. wired to wireless) — they cover only the current streak. The home screen widget shows a separate \"Today\'s Peaks\" figure that covers the whole day instead.</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">Charge history, statistics and background recording. One-time purchase, yours forever.</string>
+    <string name="pro_desc">• Background recording &amp; floating watts overlay\n• Custom battery alert thresholds\n• 3 in-depth reports — Energy Ledger, Sleep Drain, Battery Health Trend\n• Save &amp; compare Charging Benchmark results\n\nOne-time purchase, yours forever.</string>
     <string name="pro_buy">Unlock</string>
     <string name="filter_charge">Charging</string>
     <string name="filter_discharge">Discharging</string>
@@ -81,6 +81,13 @@
     <string name="monitor_toggle_hint">When off, sessions record only while the app is open.</string>
     <string name="geek_toggle">Raw sessions (strict)</string>
     <string name="geek_info_body">Screen-off power saving briefly pauses sampling. By default, WattFlow merges same-direction sessions separated by gaps under 5 minutes — closer to how you think about one charge or one drain. Turn this on to see every raw segment exactly as sampled, split at every gap over 60 seconds.</string>
+    <string name="widget_add_title">Home screen widget</string>
+    <string name="widget_add_hint">Long-press an empty spot on your home screen and choose Widgets, or long-press the WattFlow app icon and tap Widgets, to add one manually.</string>
+    <string name="widget_try_direct">Try it directly</string>
+    <string name="widget_try_direct_info_body">Approve any system prompt if one appears. If nothing happens, your phone may need a permission like \"Home screen shortcuts\" (Xiaomi/Redmi) or an equivalent setting on other brands — search your phone model plus \"add widget permission\" if you\'re not sure where to find it.</string>
+    <string name="widget_picker_permission_hint">Some phones need an extra permission for this to work. If nothing happens after you tap a size, use the long-press method above instead.</string>
+    <string name="widget_pin_failed_body">Your phone declined the request — some manufacturers require a "Home screen shortcuts" (or similar) permission for apps to add widgets this way. You can enable it in Settings, or just long-press an empty spot on your home screen, choose Widgets, and add WattFlow from there instead — that always works.</string>
+    <string name="open_app_settings">Open app settings</string>
     <string name="doze_row">Uninterrupted background sampling</string>
     <string name="doze_info_body">Exempts WattFlow from battery optimization so background sampling is not paused while the screen is off. Recording becomes more complete, at the cost of slightly higher standby drain (~0.5-1% per hour). On MIUI/HyperOS and similar systems you may also need to allow autostart in system settings.</string>
     <string name="doze_denied_note">WattFlow works fine without this permission — screen-off periods may briefly lack samples, shown as separate segments in raw mode.</string>

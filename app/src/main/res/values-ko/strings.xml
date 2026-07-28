@@ -48,7 +48,7 @@
     <string name="peak_info_title">여기 피크 vs 위젯</string>
     <string name="peak_info_body">이 피크 값은 케이블을 뽑거나 다시 꽂거나 전원 방식을 바꿀 때마다(예: 유선에서 무선으로) 초기화되며, 현재 구간만 반영합니다. 홈 화면 위젯은 하루 전체를 다루는 별도의 \"오늘의 피크\" 수치를 보여줍니다.</string>
     <string name="pro_title">WattFlow Pro</string>
-    <string name="pro_desc">충전 기록, 통계, 백그라운드 기록. 한 번 구매로 평생 사용.</string>
+    <string name="pro_desc">• 백그라운드 기록 및 플로팅 와트 오버레이\n• 배터리 알림 임계값 직접 설정\n• 심층 보고서 3종 — 에너지 장부, 수면 소모, 배터리 건강 추이\n• 충전 벤치마크 결과 저장 및 비교\n\n한 번 구매로 평생 사용.</string>
     <string name="pro_buy">잠금 해제</string>
     <string name="filter_charge">충전</string>
     <string name="filter_discharge">방전</string>
@@ -76,6 +76,13 @@
     <string name="monitor_toggle_hint">꺼져 있으면 앱이 열려 있는 동안에만 기록됩니다.</string>
     <string name="geek_toggle">원본 세션 (엄격)</string>
     <string name="geek_info_body">화면이 꺼지면 절전 기능이 샘플링을 잠시 중단합니다. 기본적으로 5분 미만 간격의 같은 방향 기록을 하나로 병합합니다. 켜면 60초 이상 중단될 때마다 나뉜 원본 세그먼트를 그대로 표시합니다.</string>
+    <string name="widget_add_title">홈 화면 위젯</string>
+    <string name="widget_add_hint">홈 화면의 빈 공간을 길게 눌러 위젯을 선택하거나, WattFlow 아이콘을 길게 눌러 위젯을 눌러 수동으로 추가하세요.</string>
+    <string name="widget_try_direct">직접 시도</string>
+    <string name="widget_try_direct_info_body">시스템 프롬프트가 나타나면 승인하세요. 아무 일도 일어나지 않으면, 휴대폰에 \"홈 화면 바로가기\"(샤오미/레드미)와 같은 권한이나 다른 브랜드의 비슷한 설정이 필요할 수 있습니다 — 어디서 찾아야 할지 모르겠다면 휴대폰 모델명과 \"위젯 추가 권한\"으로 검색해 보세요.</string>
+    <string name="widget_picker_permission_hint">일부 휴대폰은 이 기능에 추가 권한이 필요합니다. 크기를 선택해도 아무 일도 일어나지 않으면 위의 길게 누르는 방법을 사용하세요.</string>
+    <string name="widget_pin_failed_body">휴대폰이 요청을 거부했습니다 — 일부 제조사는 앱이 이 방식으로 위젯을 추가하려면 "홈 화면 바로가기"와 같은 권한이 필요합니다. 설정에서 활성화하거나, 홈 화면의 빈 공간을 길게 눌러 위젯을 선택한 뒤 거기서 WattFlow를 추가하세요 — 이 방법은 항상 작동합니다.</string>
+    <string name="open_app_settings">앱 설정 열기</string>
     <string name="doze_row">백그라운드 샘플링 중단 없음</string>
     <string name="doze_info_body">WattFlow를 배터리 최적화에서 제외하여 화면이 꺼져도 샘플링이 중단되지 않습니다. 기록이 더 완전해지지만 대기 전력 소모가 약간 늘어납니다(시간당 약 0.5-1%). MIUI/HyperOS에서는 자동 시작 허용도 필요할 수 있습니다.</string>
     <string name="doze_denied_note">이 권한 없이도 잘 작동합니다 — 화면 꺼짐 구간에 샘플이 부족할 수 있으며 엄격 모드에서 별도 세그먼트로 표시됩니다.</string>
