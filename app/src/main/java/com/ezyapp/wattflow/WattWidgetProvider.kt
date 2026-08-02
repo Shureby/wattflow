@@ -84,6 +84,11 @@ open class WattWidgetProvider : AppWidgetProvider() {
         private const val ROOMY_DP = 300
         private const val TALL_DP = 100
 
+        // widget_watt_l.xml's root padding (10dp each side) and the fixed
+        // stats-row block above the chart (two text lines + 8dp margin).
+        private const val ROOT_PADDING_DP = 20
+        private const val CHART_HEADER_DP = 72
+
         /** Throttled: at most one refresh per 5 s. */
         fun maybeUpdate(context: Context) {
             val now = System.currentTimeMillis()
@@ -106,9 +111,6 @@ open class WattWidgetProvider : AppWidgetProvider() {
 
             val sample = BatteryReader(context).read() ?: return
             val peaks = updateDailyPeaks(context, sample)
-            // Only the L picker entry's map/threshold can ever resolve to the
-            // chart layout, so only its presence needs the chart rendered.
-            val chart = if (lIds.isNotEmpty()) renderWeekChart(context) else null
 
             for (id in sIds) {
                 manager.updateAppWidget(id, build(context, R.layout.widget_watt, sample, peaks, null))
@@ -117,7 +119,7 @@ open class WattWidgetProvider : AppWidgetProvider() {
                 manager.updateAppWidget(id, mediumViews(context, manager, id, sample, peaks))
             }
             for (id in lIds) {
-                manager.updateAppWidget(id, largeViews(context, manager, id, sample, peaks, chart))
+                manager.updateAppWidget(id, largeViews(context, manager, id, sample, peaks))
             }
         }
 
@@ -142,26 +144,41 @@ open class WattWidgetProvider : AppWidgetProvider() {
             build(context, R.layout.widget_watt_m, sample, peaks, null, compact = w < ROOMY_DP)
         }
 
-        /** L's own map/threshold never falls back to S/M's smaller layouts. */
-        private fun largeViews(
+        /**
+         * L's own map/threshold never falls back to S/M's smaller layouts.
+         * The chart is rendered per-instance at that instance's own current
+         * box size, so a resized L widget gets a genuinely bigger chart
+         * instead of a fixed bitmap stretched to fill more room.
+         */
+        private suspend fun largeViews(
             context: Context,
             manager: AppWidgetManager,
             id: Int,
             sample: BatterySample,
             peaks: Pair<Double, Double>,
-            chart: Bitmap?,
-        ): RemoteViews = if (Build.VERSION.SDK_INT >= 31) {
-            RemoteViews(
-                mapOf(
-                    SizeF(WIDE_DP.toFloat(), TALL_DP.toFloat()) to
-                        build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = true),
-                    SizeF(ROOMY_DP.toFloat(), TALL_DP.toFloat()) to
-                        build(context, R.layout.widget_watt_l, sample, peaks, chart),
+        ): RemoteViews {
+            val opts = manager.getAppWidgetOptions(id)
+            val w = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH, ROOMY_DP)
+            val h = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT, TALL_DP)
+            // Subtract root padding + the stats row above the chart (~72dp)
+            // so the bitmap matches what's actually left for the ImageView;
+            // floored at the original design size, never smaller than before.
+            val chartWidthDp = (w - ROOT_PADDING_DP).coerceAtLeast(260)
+            val chartHeightDp = (h - CHART_HEADER_DP).coerceAtLeast(80)
+            val chart = renderWeekChart(context, chartWidthDp, chartHeightDp)
+
+            return if (Build.VERSION.SDK_INT >= 31) {
+                RemoteViews(
+                    mapOf(
+                        SizeF(WIDE_DP.toFloat(), TALL_DP.toFloat()) to
+                            build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = true),
+                        SizeF(ROOMY_DP.toFloat(), TALL_DP.toFloat()) to
+                            build(context, R.layout.widget_watt_l, sample, peaks, chart),
+                    )
                 )
-            )
-        } else {
-            val w = manager.getAppWidgetOptions(id).getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)
-            build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = w < ROOMY_DP)
+            } else {
+                build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = w < ROOMY_DP)
+            }
         }
 
         private fun build(
@@ -258,8 +275,18 @@ open class WattWidgetProvider : AppWidgetProvider() {
             return peakIn to peakOut
         }
 
-        /** Bar chart of charged Wh per day, last 7 days (today rightmost). */
-        private suspend fun renderWeekChart(rawContext: Context): Bitmap {
+        /**
+         * Bar chart of charged Wh per day, last 7 days (today rightmost).
+         * Rendered at the widget's own current box size (not a fixed
+         * bitmap) so growing the L widget actually yields a bigger, clearer
+         * chart via the layout's fitXY ImageView, instead of a fixed-size
+         * bitmap getting non-uniformly stretched to fill more room.
+         */
+        private suspend fun renderWeekChart(
+            rawContext: Context,
+            widthDp: Int = 300,
+            heightDp: Int = 80,
+        ): Bitmap {
             val context = LocalePrefs.wrap(rawContext)
             val dayMs = 86_400_000L
             val cal = Calendar.getInstance()
@@ -278,8 +305,8 @@ open class WattWidgetProvider : AppWidgetProvider() {
             }
 
             val density = context.resources.displayMetrics.density.coerceAtMost(2f)
-            val w = (300 * density).toInt()
-            val h = (80 * density).toInt()
+            val w = (widthDp * density).toInt()
+            val h = (heightDp * density).toInt()
             val bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(bmp)
 

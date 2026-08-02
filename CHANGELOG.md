@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.3] - 2026-08-02
+
+- Fixed the Small and Medium home screen widgets allowing a resize that
+  added nothing but blank space — Small is no longer resizable at all
+  (it has one fixed-size line of content), Medium is width-only up to
+  where its labels are already at full length
+- Fixed the Large widget's chart looking stretched/distorted when
+  resized — it's now rendered at each widget's own current size instead
+  of a fixed size scaled to fit, so resizing Large now genuinely gives a
+  bigger, clearer chart
+
 ## [2.0.2] - 2026-08-02
 
 - Fixed the S/M/L home screen widgets all rendering as the Large layout
