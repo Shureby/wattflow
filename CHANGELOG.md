@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.1] - 2026-08-02
+
+- Fixed implausible discharge/charge wattage spikes (e.g. 30-40W while on
+  battery) on devices whose driver reports small current readings
+  ambiguously — a genuinely small microamp reading (e.g. ~8mA idle drain)
+  could be misread as milliamps and inflated ~1000x. The device's real
+  current unit is now confirmed once from an unambiguous sample and
+  trusted from then on, plus a sanity cap rejects any remaining
+  implausible single-tick reading
+
 ## [2.0.0] - 2026-07-28
 
 - Toolchain upgrade: Kotlin 1.9.22 → 2.4.0, AGP 8.13.0 → 9.3.0, Compose

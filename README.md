@@ -58,6 +58,10 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v2.0
 
+- **2.0.1**: Fixed implausible discharge/charge wattage spikes on devices
+  whose driver reports small current readings ambiguously (a real ~8mA
+  idle drain could be misread as milliamps and inflated ~1000x into a
+  false 30-40W spike)
 - **2.0.0**: Toolchain upgrade (Kotlin 2.4.0, AGP 9.3.0, Compose BOM
   2026.06.00, billing-ktx 9.1.0) to meet Google Play's Billing Library
   floor deadline. Also: Background recording and Floating watts
