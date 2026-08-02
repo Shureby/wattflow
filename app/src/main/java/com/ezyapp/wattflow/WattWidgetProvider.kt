@@ -29,7 +29,12 @@ import kotlin.math.abs
  *  - M (4x1 or smaller): + source, ETA, today's peaks
  *  - L (4x2 or smaller): + 7-day charged-energy mini chart
  * Android 12+ picks the layout via a SizeF -> RemoteViews map; older versions
- * pick it from the widget options in [onAppWidgetOptionsChanged].
+ * pick it from the widget options in [onAppWidgetOptionsChanged]. Each
+ * picker entry's map/threshold check is capped to its own tier (S/M/L) —
+ * a widget never renders a bigger sibling's layout just because a launcher
+ * reports a larger box for it than another OEM would (seen on Samsung One
+ * UI: all three picker entries were resolving to the L layout, clipped to
+ * whatever box each one actually got).
  *
  * Refresh sources: system updatePeriod (~30 min), plug/unplug events, and
  * every sampling path via [maybeUpdate] — live while the app is open or the
@@ -94,60 +99,69 @@ open class WattWidgetProvider : AppWidgetProvider() {
 
         suspend fun updateNow(context: Context) {
             val manager = AppWidgetManager.getInstance(context)
-            // All picker entries share this implementation; collect every id.
-            val ids = listOf(
-                WattWidgetProvider::class.java,
-                WattWidgetProviderMedium::class.java,
-                WattWidgetProviderLarge::class.java,
-            ).flatMap { cls ->
-                manager.getAppWidgetIds(ComponentName(context, cls)).toList()
-            }.toIntArray()
-            if (ids.isEmpty()) return
+            val sIds = manager.getAppWidgetIds(ComponentName(context, WattWidgetProvider::class.java))
+            val mIds = manager.getAppWidgetIds(ComponentName(context, WattWidgetProviderMedium::class.java))
+            val lIds = manager.getAppWidgetIds(ComponentName(context, WattWidgetProviderLarge::class.java))
+            if (sIds.isEmpty() && mIds.isEmpty() && lIds.isEmpty()) return
 
             val sample = BatteryReader(context).read() ?: return
             val peaks = updateDailyPeaks(context, sample)
+            // Only the L picker entry's map/threshold can ever resolve to the
+            // chart layout, so only its presence needs the chart rendered.
+            val chart = if (lIds.isNotEmpty()) renderWeekChart(context) else null
 
-            // Chart only when some widget can show it: any pre-12 widget sized
-            // large, or any 12+ widget (its size map always carries L).
-            val needChart = Build.VERSION.SDK_INT >= 31 || ids.any { id ->
-                val opts = manager.getAppWidgetOptions(id)
-                opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH) >= WIDE_DP &&
-                    opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT) >= TALL_DP
+            for (id in sIds) {
+                manager.updateAppWidget(id, build(context, R.layout.widget_watt, sample, peaks, null))
             }
-            val chart = if (needChart) renderWeekChart(context) else null
+            for (id in mIds) {
+                manager.updateAppWidget(id, mediumViews(context, manager, id, sample, peaks))
+            }
+            for (id in lIds) {
+                manager.updateAppWidget(id, largeViews(context, manager, id, sample, peaks, chart))
+            }
+        }
 
-            for (id in ids) {
-                val views = if (Build.VERSION.SDK_INT >= 31) {
-                    RemoteViews(
-                        mapOf(
-                            SizeF(110f, 40f) to
-                                build(context, R.layout.widget_watt, sample, peaks, null),
-                            SizeF(WIDE_DP.toFloat(), 40f) to
-                                build(context, R.layout.widget_watt_m, sample, peaks, null, compact = true),
-                            SizeF(ROOMY_DP.toFloat(), 40f) to
-                                build(context, R.layout.widget_watt_m, sample, peaks, null),
-                            SizeF(WIDE_DP.toFloat(), TALL_DP.toFloat()) to
-                                build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = true),
-                            SizeF(ROOMY_DP.toFloat(), TALL_DP.toFloat()) to
-                                build(context, R.layout.widget_watt_l, sample, peaks, chart),
-                        )
-                    )
-                } else {
-                    val opts = manager.getAppWidgetOptions(id)
-                    val w = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)
-                    val h = opts.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT)
-                    val compact = w < ROOMY_DP
-                    when {
-                        w >= WIDE_DP && h >= TALL_DP ->
-                            build(context, R.layout.widget_watt_l, sample, peaks, chart, compact)
-                        w >= WIDE_DP ->
-                            build(context, R.layout.widget_watt_m, sample, peaks, null, compact)
-                        else ->
-                            build(context, R.layout.widget_watt, sample, peaks, null)
-                    }
-                }
-                manager.updateAppWidget(id, views)
-            }
+        /** M's own map/threshold never reaches into L's chart layout. */
+        private fun mediumViews(
+            context: Context,
+            manager: AppWidgetManager,
+            id: Int,
+            sample: BatterySample,
+            peaks: Pair<Double, Double>,
+        ): RemoteViews = if (Build.VERSION.SDK_INT >= 31) {
+            RemoteViews(
+                mapOf(
+                    SizeF(WIDE_DP.toFloat(), 40f) to
+                        build(context, R.layout.widget_watt_m, sample, peaks, null, compact = true),
+                    SizeF(ROOMY_DP.toFloat(), 40f) to
+                        build(context, R.layout.widget_watt_m, sample, peaks, null),
+                )
+            )
+        } else {
+            val w = manager.getAppWidgetOptions(id).getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)
+            build(context, R.layout.widget_watt_m, sample, peaks, null, compact = w < ROOMY_DP)
+        }
+
+        /** L's own map/threshold never falls back to S/M's smaller layouts. */
+        private fun largeViews(
+            context: Context,
+            manager: AppWidgetManager,
+            id: Int,
+            sample: BatterySample,
+            peaks: Pair<Double, Double>,
+            chart: Bitmap?,
+        ): RemoteViews = if (Build.VERSION.SDK_INT >= 31) {
+            RemoteViews(
+                mapOf(
+                    SizeF(WIDE_DP.toFloat(), TALL_DP.toFloat()) to
+                        build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = true),
+                    SizeF(ROOMY_DP.toFloat(), TALL_DP.toFloat()) to
+                        build(context, R.layout.widget_watt_l, sample, peaks, chart),
+                )
+            )
+        } else {
+            val w = manager.getAppWidgetOptions(id).getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH)
+            build(context, R.layout.widget_watt_l, sample, peaks, chart, compact = w < ROOMY_DP)
         }
 
         private fun build(

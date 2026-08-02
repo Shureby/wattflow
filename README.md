@@ -58,6 +58,9 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v2.0
 
+- **2.0.2**: Fixed the S/M/L home screen widgets sometimes all rendering
+  as the Large layout on some launchers, and widget picker previews
+  showing empty placeholders instead of the real preview images
 - **2.0.1**: Fixed implausible discharge/charge wattage spikes on devices
   whose driver reports small current readings ambiguously (a real ~8mA
   idle drain could be misread as milliamps and inflated ~1000x into a

@@ -12,6 +12,5 @@
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen"
     android:previewImage="@drawable/widget_preview_l"
-    android:previewLayout="@layout/widget_watt_l"
     android:initialLayout="@layout/widget_watt_l"
     android:description="@string/widget_desc" />

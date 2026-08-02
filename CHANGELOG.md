@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.2] - 2026-08-02
+
+- Fixed the S/M/L home screen widgets all rendering as the Large layout
+  (clipped to whatever box each one actually got) on some launchers —
+  each widget size now stays capped to its own layout instead of any of
+  them being able to grow into a bigger sibling's content
+- Fixed home screen widget picker previews showing empty placeholder
+  values ("-- W") instead of the real preview images on launchers that
+  prefer a live layout preview over the static preview image
+
 ## [2.0.1] - 2026-08-02
 
 - Fixed implausible discharge/charge wattage spikes (e.g. 30-40W while on
