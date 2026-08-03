@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.4] - 2026-08-03
+
+- The Large widget's "Last 7 days" chart now shows its own scale — the
+  peak day's value is printed next to the title, so the tallest bar
+  means something instead of just being "the biggest one this week"
+- Large widget is now width-only resizable, matching Medium — vertical
+  resize only made the same chart taller with no new information, since
+  the chart has no fixed scale to reveal more of
+
 ## [2.0.3] - 2026-08-02
 
 - Fixed the Small and Medium home screen widgets allowing a resize that

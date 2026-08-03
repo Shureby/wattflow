@@ -39,7 +39,7 @@
     <string name="history_total_energy">에너지</string>
     <string name="history_avg_power">평균 전력</string>
     <string name="history_last7">최근 7일</string>
-    <string name="widget_last7_wh">최근 7일 (Wh)</string>
+    <string name="widget_last7_wh">최근 7일 (Wh) · 최대 %1$.1f</string>
     <string name="label_avg">평균</string>
     <string name="label_peak">최대</string>
 

@@ -39,7 +39,7 @@
     <string name="history_total_energy">Énergie</string>
     <string name="history_avg_power">Puissance moy.</string>
     <string name="history_last7">7 derniers jours</string>
-    <string name="widget_last7_wh">7 derniers jours (Wh)</string>
+    <string name="widget_last7_wh">7 derniers jours (Wh) · max %1$.1f</string>
     <string name="label_avg">moy</string>
     <string name="label_peak">pic</string>
 

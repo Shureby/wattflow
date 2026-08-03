@@ -39,7 +39,7 @@
     <string name="history_total_energy">Энергия</string>
     <string name="history_avg_power">Средняя мощность</string>
     <string name="history_last7">Последние 7 дней</string>
-    <string name="widget_last7_wh">Последние 7 дней (Wh)</string>
+    <string name="widget_last7_wh">Последние 7 дней (Wh) · макс %1$.1f</string>
     <string name="label_avg">средн</string>
     <string name="label_peak">пик</string>
 

@@ -39,7 +39,7 @@
     <string name="history_total_energy">الطاقة</string>
     <string name="history_avg_power">متوسط القدرة</string>
     <string name="history_last7">آخر 7 أيام</string>
-    <string name="widget_last7_wh">آخر 7 أيام (Wh)</string>
+    <string name="widget_last7_wh">آخر 7 أيام (Wh) · أقصى %1$.1f</string>
     <string name="label_avg">متوسط</string>
     <string name="label_peak">ذروة</string>
 

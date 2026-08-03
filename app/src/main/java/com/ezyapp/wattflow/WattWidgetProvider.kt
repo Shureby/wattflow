@@ -319,8 +319,9 @@ open class WattWidgetProvider : AppWidgetProvider() {
                 color = 0xFFA78BFA.toInt()
             }
 
+            val realMaxWh = wh.max()
             canvas.drawText(
-                context.getString(R.string.widget_last7_wh),
+                String.format(Locale.US, context.getString(R.string.widget_last7_wh), realMaxWh),
                 w / 14f, 12 * density,
                 Paint(labelPaint).apply { textAlign = Paint.Align.LEFT },
             )
@@ -331,7 +332,7 @@ open class WattWidgetProvider : AppWidgetProvider() {
             val plotHeight = plotBottom - topArea
             val slot = w / 7f
             val barWidth = slot * 0.5f
-            val maxWh = wh.max().coerceAtLeast(0.001)
+            val maxWh = realMaxWh.coerceAtLeast(0.001)
             val narrowDay = SimpleDateFormat("EEEEE", Locale.getDefault())
 
             for (i in 0..6) {

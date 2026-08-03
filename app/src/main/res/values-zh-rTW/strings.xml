@@ -39,7 +39,7 @@
     <string name="history_total_energy">總電量</string>
     <string name="history_avg_power">平均功率</string>
     <string name="history_last7">最近 7 天</string>
-    <string name="widget_last7_wh">最近 7 天（Wh）</string>
+    <string name="widget_last7_wh">最近 7 天（Wh）· 峰值 %1$.1f</string>
     <string name="label_avg">平均</string>
     <string name="label_peak">峰值</string>
 

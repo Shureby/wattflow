@@ -39,7 +39,7 @@
     <string name="history_total_energy">Energy</string>
     <string name="history_avg_power">Avg power</string>
     <string name="history_last7">Last 7 days</string>
-    <string name="widget_last7_wh">Last 7 days (Wh)</string>
+    <string name="widget_last7_wh">Last 7 days (Wh) · max %1$.1f</string>
     <string name="label_avg">avg</string>
     <string name="label_peak">peak</string>
     <!-- Recording stopped because the process was killed mid-session, not

@@ -39,7 +39,7 @@
     <string name="history_total_energy">Energi</string>
     <string name="history_avg_power">Daya rata-rata</string>
     <string name="history_last7">7 hari terakhir</string>
-    <string name="widget_last7_wh">7 hari terakhir (Wh)</string>
+    <string name="widget_last7_wh">7 hari terakhir (Wh) · maks %1$.1f</string>
     <string name="label_avg">rata</string>
     <string name="label_peak">puncak</string>
 
