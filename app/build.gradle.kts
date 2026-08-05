@@ -23,8 +23,8 @@ android {
         applicationId = "com.ezyapp.wattflow"
         minSdk = 26
         targetSdk = 36
-        versionCode = 55
-        versionName = "2.0.4"
+        versionCode = 56
+        versionName = "2.0.5"
     }
 
     flavorDimensions += "dist"
@@ -61,6 +61,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -101,4 +102,7 @@ dependencies {
     ksp("androidx.room:room-compiler:2.8.4")
 
     "playImplementation"("com.android.billingclient:billing-ktx:9.1.0")
+    // Pin newer than the 1.1.0 that com.google.android.gms:play-services-base
+    // transitively pulls in — fixes Console's outdated-SDK flag.
+    "playImplementation"("androidx.fragment:fragment:1.8.9")
 }

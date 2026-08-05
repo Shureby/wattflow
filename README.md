@@ -58,6 +58,11 @@ Translations live in `app/src/main/res/values-*/strings.xml` — corrections and
 
 ## What's New — v2.0
 
+- **2.0.5**: Play flavor: pinned a current `androidx.fragment` version
+  instead of the outdated one pulled in transitively by Play Services
+  (Billing), and turned on resource shrinking alongside the existing
+  code shrinking — both were flagged as recommended technical-quality
+  improvements in Play Console, no user-visible change
 - **2.0.4**: Large widget's "Last 7 days" chart now shows the peak
   day's value so the tallest bar means something; Large is now
   width-only resizable like Medium, since vertical resize only made

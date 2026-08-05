@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.5] - 2026-08-05
+
+- Play flavor: pinned a current `androidx.fragment` version instead of the
+  outdated one pulled in transitively by Play Services (Billing), and turned
+  on resource shrinking alongside the existing code shrinking — both were
+  flagged as recommended technical-quality improvements in Play Console,
+  no user-visible change
+
 ## [2.0.4] - 2026-08-03
 
 - The Large widget's "Last 7 days" chart now shows its own scale — the
