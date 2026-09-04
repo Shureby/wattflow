@@ -46,7 +46,11 @@
     <string name="info_title">Mengapa lebih rendah dari tampilan charger?</string>
     <string name="info_body">WattFlow mengukur daya sisi baterai — yang benar-benar masuk ke baterai. Charger menampilkan output-nya sendiri. Di antaranya: rugi konversi (~10% kabel, 30–40% nirkabel) dan konsumsi layar serta sistem saat mengisi daya. Selain itu, ponsel hanya menarik daya sesuai negosiasi protokol pada level baterai saat ini.</string>
     <string name="peak_info_title">Puncak di sini vs. widget</string>
-    <string name="peak_info_body">Puncak ini akan direset setiap kali kamu mencabut, mencolokkan kembali, atau berganti sumber (misalnya dari kabel ke nirkabel) — hanya mencakup sesi saat ini. Widget layar utama menampilkan angka terpisah \"Puncak Hari Ini\" yang mencakup sepanjang hari.</string>
+    <string name="peak_info_body">Puncak ini akan direset setiap kali kamu mencabut, mencolokkan kembali, atau berganti sumber (misalnya dari kabel ke nirkabel) — hanya mencakup sesi saat ini. Aktifkan \"Simpan puncak sepanjang masa\" di Pengaturan untuk melacak angka terbaikmu, ditandai dengan 🏆 — angka ini tidak pernah reset otomatis. Widget layar utama menampilkan angka terpisah \"Puncak Hari Ini\" yang mencakup sepanjang hari.</string>
+    <string name="peak_alltime_toggle">Simpan puncak sepanjang masa</string>
+    <string name="peak_alltime_toggle_hint">Lacak Peak In/Out terbaikmu, bukan direset tiap sesi. Tidak pernah reset otomatis — reset manual di bawah.</string>
+    <string name="peak_alltime_best_so_far">Terbaik: masuk %1$.1f W · keluar %2$.1f W</string>
+    <string name="peak_alltime_reset">Reset</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Perekaman latar belakang &amp; overlay watt mengambang\n• Ambang batas peringatan baterai yang bisa disesuaikan\n• 3 laporan mendalam — Buku energi, Pengurasan tidur, Tren Kesehatan Baterai\n• Simpan &amp; bandingkan hasil Uji pengisian daya\n\nSekali beli, milik Anda selamanya.</string>
     <string name="pro_buy">Buka</string>

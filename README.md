@@ -56,6 +56,16 @@ English, 简体中文, 繁體中文, Español, العربية, Bahasa Indonesia,
 
 Translations live in `app/src/main/res/values-*/strings.xml` — corrections and new languages are welcome via PR.
 
+## What's New — v2.1
+
+- **2.1.0**: Fixed Peak In/Out on the Live tab — plugging in used to wipe
+  Peak Out back to 0 (and unplugging wiped Peak In); now each only resets
+  when a new streak of its own direction starts. Added an optional
+  "Keep all-time peak" setting to track your best-ever Peak In/Out
+  instead of resetting every streak (🏆, off by default, manual Reset
+  available). Also fixed the Live tab chart's peak label sometimes
+  showing a value left over from a streak that just ended
+
 ## What's New — v2.0
 
 - **2.0.5**: Play flavor: pinned a current `androidx.fragment` version

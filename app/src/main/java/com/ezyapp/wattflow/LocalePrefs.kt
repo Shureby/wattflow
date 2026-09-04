@@ -63,3 +63,46 @@ object RawModePrefs {
             .edit().putBoolean("raw_sessions", on).apply()
     }
 }
+
+/**
+ * Opt-in all-time best Peak In/Out. Off by default (peaks stay scoped to the
+ * current charge/discharge streak, see ChargingViewModel). On: never
+ * auto-resets, survives app restarts — only the user's manual Reset in
+ * Settings clears it.
+ */
+object PeakPrefs {
+    fun allTimeEnabled(context: Context): Boolean =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getBoolean("peak_alltime_enabled", false)
+
+    fun setAllTimeEnabled(context: Context, on: Boolean) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit().putBoolean("peak_alltime_enabled", on).apply()
+    }
+
+    fun allTimeIn(context: Context): Double =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getFloat("peak_alltime_in", 0f).toDouble()
+
+    fun allTimeOut(context: Context): Double =
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .getFloat("peak_alltime_out", 0f).toDouble()
+
+    fun setAllTimeIn(context: Context, value: Double) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit().putFloat("peak_alltime_in", value.toFloat()).apply()
+    }
+
+    fun setAllTimeOut(context: Context, value: Double) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit().putFloat("peak_alltime_out", value.toFloat()).apply()
+    }
+
+    fun reset(context: Context) {
+        context.getSharedPreferences("settings", Context.MODE_PRIVATE)
+            .edit()
+            .putFloat("peak_alltime_in", 0f)
+            .putFloat("peak_alltime_out", 0f)
+            .apply()
+    }
+}

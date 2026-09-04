@@ -46,7 +46,11 @@
     <string name="info_title">充電器の表示より低いのはなぜ？</string>
     <string name="info_body">WattFlow はバッテリー側の電力 — 実際にバッテリーへ入る分を測定します。充電器は自身の出力を表示します。その間には変換損失（有線約10%、ワイヤレス30–40%）と、充電中の画面やシステムの直接消費があります。また、スマホは現在の電池残量で充電プロトコルが交渉した分しか受け取りません。</string>
     <string name="peak_info_title">ここのピークとウィジェットの違い</string>
-    <string name="peak_info_body">これらのピーク値は、ケーブルを抜く、差し直す、電源方式を切り替える（有線⇔ワイヤレスなど）たびにリセットされ、直近の連続区間のみを対象とします。ホーム画面のウィジェットは「本日のピーク」という別の数値で、1日全体を対象に表示します。</string>
+    <string name="peak_info_body">これらのピーク値は、ケーブルを抜く、差し直す、電源方式を切り替える（有線⇔ワイヤレスなど）たびにリセットされ、直近の連続区間のみを対象とします。設定で「歴代ピークを保持」をオンにすると、代わりにこれまでの最高記録を🏆付きで記録します — こちらは自動リセットされません。ホーム画面のウィジェットは「本日のピーク」という別の数値で、1日全体を対象に表示します。</string>
+    <string name="peak_alltime_toggle">歴代ピークを保持</string>
+    <string name="peak_alltime_toggle_hint">区間ごとにリセットせず、これまでの最高ピークIn/Outを記録します。自動リセットはされません — 下から手動でリセットできます。</string>
+    <string name="peak_alltime_best_so_far">自己ベスト: 入力 %1$.1f W · 出力 %2$.1f W</string>
+    <string name="peak_alltime_reset">リセット</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• バックグラウンド記録とフローティング表示\n• バッテリー通知のしきい値をカスタマイズ\n• 詳しいレポート3種 — エネルギー台帳、睡眠中の消費、Battery Health Trend\n• 充電ベンチマークの結果を保存・比較\n\n買い切り、ずっと使えます。</string>
     <string name="pro_buy">解除</string>

@@ -46,7 +46,11 @@
     <string name="info_title">¿Por qué es menor que lo que indica el cargador?</string>
     <string name="info_body">WattFlow mide la potencia del lado de la batería — lo que realmente entra en ella. El cargador muestra su propia salida. Entre medias: pérdidas de conversión (~10% con cable, 30–40% inalámbrica) y el consumo directo de pantalla y sistema durante la carga. Además, el teléfono solo toma la potencia que negocia su protocolo según el nivel de batería actual.</string>
     <string name="peak_info_title">Pico aquí vs. en el widget</string>
-    <string name="peak_info_body">Estos picos se reinician cada vez que desconectas, vuelves a conectar o cambias de fuente (por ejemplo, de cable a inalámbrico) — solo cubren la racha actual. El widget de la pantalla de inicio muestra una cifra aparte, \"Picos de hoy\", que cubre todo el día.</string>
+    <string name="peak_info_body">Estos picos se reinician cada vez que desconectas, vuelves a conectar o cambias de fuente (por ejemplo, de cable a inalámbrico) — solo cubren la racha actual. Activa \"Mantener pico histórico\" en Ajustes para registrar tus mejores cifras de siempre, marcadas con un 🏆 — esas nunca se reinician automáticamente. El widget de la pantalla de inicio muestra una cifra aparte, \"Picos de hoy\", que cubre todo el día.</string>
+    <string name="peak_alltime_toggle">Mantener pico histórico</string>
+    <string name="peak_alltime_toggle_hint">Registra tu mejor Peak In/Out de siempre en lugar de reiniciarlo en cada racha. Nunca se reinicia automáticamente — reinicio manual abajo.</string>
+    <string name="peak_alltime_best_so_far">Mejor hasta ahora: entrada %1$.1f W · salida %2$.1f W</string>
+    <string name="peak_alltime_reset">Reiniciar</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Grabación en segundo plano y superposición de vatios flotante\n• Umbrales personalizados de alertas de batería\n• 3 informes detallados — Registro de energía, Drenaje nocturno, Tendencia de salud de la batería\n• Guarda y compara los resultados de la Prueba de carga\n\nPago único, tuyo para siempre.</string>
     <string name="pro_buy">Desbloquear</string>

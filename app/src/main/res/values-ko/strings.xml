@@ -46,7 +46,11 @@
     <string name="info_title">충전기 표시보다 낮은 이유는?</string>
     <string name="info_body">WattFlow는 배터리 측 전력 — 실제로 배터리에 들어가는 양을 측정합니다. 충전기는 자체 출력을 표시합니다. 그 사이에는 변환 손실(유선 약 10%, 무선 30–40%)과 충전 중 화면·시스템의 직접 소비가 있습니다. 또한 폰은 현재 배터리 잔량에서 충전 프로토콜이 협상한 만큼만 전력을 받습니다.</string>
     <string name="peak_info_title">여기 피크 vs 위젯</string>
-    <string name="peak_info_body">이 피크 값은 케이블을 뽑거나 다시 꽂거나 전원 방식을 바꿀 때마다(예: 유선에서 무선으로) 초기화되며, 현재 구간만 반영합니다. 홈 화면 위젯은 하루 전체를 다루는 별도의 \"오늘의 피크\" 수치를 보여줍니다.</string>
+    <string name="peak_info_body">이 피크 값은 케이블을 뽑거나 다시 꽂거나 전원 방식을 바꿀 때마다(예: 유선에서 무선으로) 초기화되며, 현재 구간만 반영합니다. 설정에서 \"역대 최고 피크 유지\"를 켜면 초기화 대신 역대 최고 기록을 추적하며, 🏆로 표시됩니다 — 이 값은 자동으로 초기화되지 않습니다. 홈 화면 위젯은 하루 전체를 다루는 별도의 \"오늘의 피크\" 수치를 보여줍니다.</string>
+    <string name="peak_alltime_toggle">역대 최고 피크 유지</string>
+    <string name="peak_alltime_toggle_hint">구간마다 초기화하는 대신 역대 최고 Peak In/Out을 기록합니다. 자동으로 초기화되지 않습니다 — 아래에서 수동으로 초기화하세요.</string>
+    <string name="peak_alltime_best_so_far">역대 최고: 입력 %1$.1f W · 출력 %2$.1f W</string>
+    <string name="peak_alltime_reset">초기화</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• 백그라운드 기록 및 플로팅 와트 오버레이\n• 배터리 알림 임계값 직접 설정\n• 심층 보고서 3종 — 에너지 장부, 수면 소모, 배터리 건강 추이\n• 충전 벤치마크 결과 저장 및 비교\n\n한 번 구매로 평생 사용.</string>
     <string name="pro_buy">잠금 해제</string>

@@ -49,7 +49,11 @@
     <string name="info_title">Why lower than the charger says?</string>
     <string name="info_body">WattFlow measures battery-side power — what actually enters the battery. Chargers display their own output. In between: conversion losses (~10% wired, 30–40% wireless) and the power your screen and system consume while charging. Phones also only draw what their charging protocol negotiates at the current battery level, no matter how powerful the charger is.</string>
     <string name="peak_info_title">Peak In/Out here vs. the widget</string>
-    <string name="peak_info_body">These peaks reset every time you unplug, plug back in, or switch source (e.g. wired to wireless) — they cover only the current streak. The home screen widget shows a separate \"Today\'s Peaks\" figure that covers the whole day instead.</string>
+    <string name="peak_info_body">These peaks reset every time you unplug, plug back in, or switch source (e.g. wired to wireless) — they cover only the current streak. Turn on \"Keep all-time peak\" in Settings to track your best-ever numbers instead, shown with a 🏆 — those never auto-reset. The home screen widget shows a separate \"Today\'s Peaks\" figure that covers the whole day instead.</string>
+    <string name="peak_alltime_toggle">Keep all-time peak</string>
+    <string name="peak_alltime_toggle_hint">Track your best-ever Peak In/Out instead of resetting each streak. Never auto-resets — reset manually below.</string>
+    <string name="peak_alltime_best_so_far">Best so far: In %1$.1f W · Out %2$.1f W</string>
+    <string name="peak_alltime_reset">Reset</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Background recording &amp; floating watts overlay\n• Custom battery alert thresholds\n• 3 in-depth reports — Energy Ledger, Sleep Drain, Battery Health Trend\n• Save &amp; compare Charging Benchmark results\n\nOne-time purchase, yours forever.</string>
     <string name="pro_buy">Unlock</string>

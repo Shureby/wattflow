@@ -75,19 +75,46 @@ class ChargingViewModel(app: Application) : AndroidViewModel(app) {
                     val absA = kotlin.math.abs(sample.currentA)
                     emaCurrentA = if (emaCurrentA == 0.0) absA
                     else 0.85 * emaCurrentA + 0.15 * absA
-                    // Power source changed (plug/unplug/swap): peaks belong to
-                    // the previous source — start fresh.
+                    // Power source changed (plug/unplug/swap): only the peak
+                    // belonging to the direction that just started resets —
+                    // the other direction's peak is untouched by this change.
                     val sourceChanged =
                         lastPlugged != Int.MIN_VALUE && sample.plugged != lastPlugged
+                    val enteringCharge = sourceChanged && sample.plugged != 0
+                    val enteringDischarge = sourceChanged && sample.plugged == 0
                     lastPlugged = sample.plugged
+                    val app = getApplication<Application>()
+                    val allTimeOn = PeakPrefs.allTimeEnabled(app)
                     _uiState.value = _uiState.value.let { s ->
-                        val peakIn = if (sourceChanged) 0.0 else s.peakInWatts
-                        val peakOut = if (sourceChanged) 0.0 else s.peakOutWatts
+                        val peakIn: Double
+                        val peakOut: Double
+                        if (allTimeOn) {
+                            // Never auto-resets — only the user's manual
+                            // Reset in Settings clears it. Derived from the
+                            // persisted value + the fresh sample only, NOT
+                            // s.peakInWatts/s.peakOutWatts — otherwise a
+                            // Reset() (which only clears PeakPrefs) gets
+                            // immediately re-derived back up from the still-
+                            // stale in-memory UI state on the very next tick.
+                            peakIn = maxOf(PeakPrefs.allTimeIn(app), sample.watts)
+                            peakOut = maxOf(PeakPrefs.allTimeOut(app), -sample.watts)
+                            if (peakIn > PeakPrefs.allTimeIn(app)) {
+                                PeakPrefs.setAllTimeIn(app, peakIn)
+                            }
+                            if (peakOut > PeakPrefs.allTimeOut(app)) {
+                                PeakPrefs.setAllTimeOut(app, peakOut)
+                            }
+                        } else {
+                            val basePeakIn = if (enteringCharge) 0.0 else s.peakInWatts
+                            val basePeakOut = if (enteringDischarge) 0.0 else s.peakOutWatts
+                            peakIn = maxOf(basePeakIn, sample.watts)
+                            peakOut = maxOf(basePeakOut, -sample.watts)
+                        }
                         s.copy(
                             sample = sample,
                             history = (s.history + sample.watts).takeLast(HISTORY_SIZE),
-                            peakInWatts = maxOf(peakIn, sample.watts),
-                            peakOutWatts = maxOf(peakOut, -sample.watts),
+                            peakInWatts = peakIn,
+                            peakOutWatts = peakOut,
                             etaMinutes = batteryEtaMinutes(sample, emaCurrentA),
                         )
                     }

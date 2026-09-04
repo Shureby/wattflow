@@ -224,7 +224,12 @@ fun ChargingScreen(
                 }
                 1 -> WideScreenContainer { HistoryTab(viewModel) }
                 2 -> WideScreenContainer { ReportsTab(onLockedFeature = { showPaywall = true }) }
-                else -> SettingsScreen(sample = sample, onLockedFeature = { showPaywall = true })
+                else -> SettingsScreen(
+                    sample = sample,
+                    livePeakIn = state.peakInWatts,
+                    livePeakOut = state.peakOutWatts,
+                    onLockedFeature = { showPaywall = true },
+                )
             }
         }
     }
@@ -287,7 +292,12 @@ fun ChargingScreen(
 }
 
 @Composable
-private fun SettingsScreen(sample: BatterySample?, onLockedFeature: () -> Unit) {
+private fun SettingsScreen(
+    sample: BatterySample?,
+    livePeakIn: Double,
+    livePeakOut: Double,
+    onLockedFeature: () -> Unit,
+) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
     var showLanguageDialog by remember { mutableStateOf(false) }
@@ -340,6 +350,11 @@ private fun SettingsScreen(sample: BatterySample?, onLockedFeature: () -> Unit) 
 
         Spacer(Modifier.height(6.dp))
         OverlayToggle(onLockedFeature)
+        Spacer(Modifier.height(6.dp))
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(6.dp))
+        PeakAllTimeSection(livePeakIn, livePeakOut)
         Spacer(Modifier.height(6.dp))
         HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
 
@@ -481,6 +496,75 @@ private fun OverlayToggle(onLockedFeature: () -> Unit) {
                 }
             },
         )
+    }
+}
+
+@Composable
+private fun PeakAllTimeSection(livePeakIn: Double, livePeakOut: Double) {
+    val context = LocalContext.current
+    var enabled by remember { mutableStateOf(PeakPrefs.allTimeEnabled(context)) }
+    // Read fresh every recomposition rather than caching in remembered state
+    // — the ViewModel keeps writing new records to PeakPrefs in the
+    // background while this screen is open (all-time mode ON), and this
+    // screen already recomposes every ~1s riding the same tick that drives
+    // the Live tab, so a plain read stays correct without extra plumbing.
+    // (A remembered copy went stale here during testing: it doesn't observe
+    // background writes, so Reset's local reset got silently overwritten by
+    // a background write matching the bug this feature exists to see.)
+    val bestIn = PeakPrefs.allTimeIn(context)
+    val bestOut = PeakPrefs.allTimeOut(context)
+
+    Column(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.peak_alltime_toggle),
+                    style = MaterialTheme.typography.bodyLarge,
+                )
+                Text(
+                    text = stringResource(R.string.peak_alltime_toggle_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Switch(
+                checked = enabled,
+                onCheckedChange = { on ->
+                    enabled = on
+                    PeakPrefs.setAllTimeEnabled(context, on)
+                    if (on) {
+                        // Never drop below whatever record already exists —
+                        // seed with the higher of the persisted and live value.
+                        PeakPrefs.setAllTimeIn(context, maxOf(bestIn, livePeakIn))
+                        PeakPrefs.setAllTimeOut(context, maxOf(bestOut, livePeakOut))
+                    }
+                },
+            )
+        }
+        // Shown regardless of the switch state — the record stays visible
+        // and resettable even while tracking is turned off.
+        if (bestIn > 0.0 || bestOut > 0.0) {
+            Text(
+                text = String.format(
+                    Locale.US,
+                    stringResource(R.string.peak_alltime_best_so_far),
+                    bestIn,
+                    bestOut,
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            TextButton(
+                onClick = { PeakPrefs.reset(context) },
+                contentPadding = PaddingValues(0.dp),
+            ) {
+                Text(stringResource(R.string.peak_alltime_reset))
+            }
+        }
     }
 }
 
@@ -1603,6 +1687,11 @@ private fun DrawScope.drawOnBatteryVisual(
 @Composable
 private fun StatsRow(sample: BatterySample, peakInWatts: Double, peakOutWatts: Double) {
     var showPeakInfo by remember { mutableStateOf(false) }
+    val context = LocalContext.current
+    // Re-read on every recomposition (this row already recomposes every
+    // second with the live sample) so flipping the Settings toggle reflects
+    // here without extra plumbing.
+    val allTimeOn = PeakPrefs.allTimeEnabled(context)
     Box(modifier = Modifier.fillMaxWidth()) {
         Card(modifier = Modifier.fillMaxWidth()) {
             FlowRow(
@@ -1634,18 +1723,24 @@ private fun StatsRow(sample: BatterySample, peakInWatts: Double, peakOutWatts: D
                 )
             }
         }
-        IconButton(
-            onClick = { showPeakInfo = true },
-            modifier = Modifier
-                .align(Alignment.TopEnd)
-                .size(22.dp),
+        Row(
+            modifier = Modifier.align(Alignment.TopEnd),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(
-                imageVector = Icons.Filled.Info,
-                contentDescription = stringResource(R.string.peak_info_title),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.size(14.dp),
-            )
+            if (allTimeOn) {
+                Text(text = "🏆", fontSize = 14.sp)
+            }
+            IconButton(
+                onClick = { showPeakInfo = true },
+                modifier = Modifier.size(22.dp),
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = stringResource(R.string.peak_info_title),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(14.dp),
+                )
+            }
         }
     }
     if (showPeakInfo) {
@@ -1727,8 +1822,21 @@ private fun PowerGraph(history: List<Double>, modifier: Modifier = Modifier) {
                 style = Stroke(width = 3.dp.toPx()),
             )
 
-            // Annotate the extreme point (peak magnitude, either direction).
-            val peakIdx = history.indices.maxByOrNull { abs(history[it]) } ?: return@Canvas
+            // Annotate the extreme point within the CURRENT streak only — not
+            // just the current sign, since two same-signed streaks can both
+            // sit inside this rolling window with an opposite-signed streak
+            // between them (discharge, then a brief charge, then discharge
+            // again all within 60s) and a plain sign filter would wrongly
+            // resurface the earlier streak's value. Walk back from the most
+            // recent sample to where the sign last flipped (same
+            // current-streak scoping as the Peak In/Out stat above).
+            val chargingNow = history.last() >= 0
+            var streakStart = history.lastIndex
+            while (streakStart > 0 && (history[streakStart - 1] >= 0) == chargingNow) {
+                streakStart--
+            }
+            val peakIdx = (streakStart..history.lastIndex)
+                .maxByOrNull { abs(history[it]) } ?: return@Canvas
             annotatePeak(
                 textMeasurer, points[peakIdx], abs(history[peakIdx]),
                 lineColor, labelColor, bgColor = chartBg,

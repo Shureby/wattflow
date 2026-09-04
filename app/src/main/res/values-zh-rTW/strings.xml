@@ -46,7 +46,11 @@
     <string name="info_title">為什麼比充電器顯示的低？</string>
     <string name="info_body">WattFlow 測量的是電池側功率 — 真正進入電池的部分。充電器顯示的是它自己的輸出。中間隔著轉換損耗（有線約 10%，無線 30–40%）和充電時螢幕、系統的直接耗電。另外，手機只按目前電量下充電協議協商的檔位取電，充電器再強也不會多充。</string>
     <string name="peak_info_title">這裡的峰值 vs 小工具</string>
-    <string name="peak_info_body">這裡的峰值每次拔插充電線或切換充電方式（比如有線換無線）都會歸零，只統計目前這一段。主畫面小工具顯示的是另一個「今日峰值」，統計的是一整天。</string>
+    <string name="peak_info_body">這裡的峰值每次拔插充電線或切換充電方式（比如有線換無線）都會歸零，只統計目前這一段。在設定中開啟「保留歷史最高峰值」即可改為追蹤你的歷史最佳數值，以 🏆 標示——這些數值永遠不會自動歸零。主畫面小工具顯示的是另一個「今日峰值」，統計的是一整天。</string>
+    <string name="peak_alltime_toggle">保留歷史最高峰值</string>
+    <string name="peak_alltime_toggle_hint">追蹤你有史以來最高的 Peak In/Out，而不是每段就歸零。永遠不會自動歸零，可在下方手動重設。</string>
+    <string name="peak_alltime_best_so_far">歷史最高：進 %1$.1f W · 出 %2$.1f W</string>
+    <string name="peak_alltime_reset">重設</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• 背景記錄和懸浮功率窗\n• 自訂電池提醒閾值\n• 3 份詳細報表——能量帳本、睡眠耗電、電池健康趨勢\n• 保存並比較充電測評結果\n\n一次性買斷，永久有效。</string>
     <string name="pro_buy">解鎖</string>

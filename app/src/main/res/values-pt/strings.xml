@@ -46,7 +46,11 @@
     <string name="info_title">Por que é menor do que o carregador mostra?</string>
     <string name="info_body">O WattFlow mede a potência do lado da bateria — o que realmente entra nela. O carregador mostra a própria saída. No meio: perdas de conversão (~10% com fio, 30–40% sem fio) e o consumo direto de tela e sistema durante a carga. Além disso, o telefone só puxa o que o protocolo de carga negocia no nível de bateria atual.</string>
     <string name="peak_info_title">Pico aqui vs. no widget</string>
-    <string name="peak_info_body">Esses picos são reiniciados sempre que você desconecta, reconecta ou troca de fonte (por exemplo, de cabo para sem fio) — cobrem apenas o trecho atual. O widget da tela inicial mostra um número separado, \"Picos de hoje\", que cobre o dia inteiro.</string>
+    <string name="peak_info_body">Esses picos são reiniciados sempre que você desconecta, reconecta ou troca de fonte (por exemplo, de cabo para sem fio) — cobrem apenas o trecho atual. Ative \"Manter pico histórico\" nas Configurações para registrar seus melhores números de todos os tempos, marcados com um 🏆 — esses nunca reiniciam automaticamente. O widget da tela inicial mostra um número separado, \"Picos de hoje\", que cobre o dia inteiro.</string>
+    <string name="peak_alltime_toggle">Manter pico histórico</string>
+    <string name="peak_alltime_toggle_hint">Registra seu melhor Peak In/Out de todos os tempos, em vez de reiniciar a cada trecho. Nunca reinicia automaticamente — reinício manual abaixo.</string>
+    <string name="peak_alltime_best_so_far">Melhor até agora: entrada %1$.1f W · saída %2$.1f W</string>
+    <string name="peak_alltime_reset">Reiniciar</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Gravação em segundo plano e sobreposição de watts flutuante\n• Limites personalizados de alertas de bateria\n• 3 relatórios detalhados — Registro de energia, Consumo noturno, Tendência de Saúde da Bateria\n• Salve e compare os resultados do Teste de carregamento\n\nCompra única, seu para sempre.</string>
     <string name="pro_buy">Desbloquear</string>

@@ -46,7 +46,11 @@
     <string name="info_title">Pourquoi moins que ce qu\'affiche le chargeur ?</string>
     <string name="info_body">WattFlow mesure la puissance côté batterie — ce qui y entre réellement. Le chargeur affiche sa propre sortie. Entre les deux : pertes de conversion (~10 % filaire, 30–40 % sans fil) et la consommation directe de l\'écran et du système pendant la charge. De plus, le téléphone ne tire que ce que son protocole négocie selon le niveau de batterie actuel.</string>
     <string name="peak_info_title">Pic ici vs. dans le widget</string>
-    <string name="peak_info_body">"Ces pics repartent à zéro à chaque débranchement, rebranchement ou changement de source (par ex. filaire vers sans fil) — ils ne couvrent que la séquence en cours. Le widget de l'écran d'accueil affiche un chiffre séparé, « Pics du jour », qui couvre toute la journée."</string>
+    <string name="peak_info_body">"Ces pics repartent à zéro à chaque débranchement, rebranchement ou changement de source (par ex. filaire vers sans fil) — ils ne couvrent que la séquence en cours. Activez « Conserver le pic absolu » dans les Réglages pour suivre vos meilleurs chiffres à la place, indiqués par un 🏆 — ceux-là ne se réinitialisent jamais automatiquement. Le widget de l'écran d'accueil affiche un chiffre séparé, « Pics du jour », qui couvre toute la journée."</string>
+    <string name="peak_alltime_toggle">Conserver le pic absolu</string>
+    <string name="peak_alltime_toggle_hint">Suivez vos meilleurs pics In/Out au lieu de les réinitialiser à chaque séquence. Ne se réinitialise jamais automatiquement — réinitialisation manuelle ci-dessous.</string>
+    <string name="peak_alltime_best_so_far">Meilleur : entrée %1$.1f W · sortie %2$.1f W</string>
+    <string name="peak_alltime_reset">Réinitialiser</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Enregistrement en arrière-plan et superposition des watts flottante\n• Seuils d\'alertes batterie personnalisés\n• 3 rapports détaillés — Registre d\'énergie, Décharge nocturne, Tendance de santé de la batterie\n• Enregistrez et comparez les résultats du Test de charge\n\nAchat unique, à vous pour toujours.</string>
     <string name="pro_buy">Débloquer</string>

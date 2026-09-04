@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.1.0] - 2026-09-04
+
+- Fixed Peak In/Out on the Live tab: plugging in used to wipe your Peak Out
+  back to 0 (and unplugging wiped Peak In) — now each only resets when a
+  new streak of its own direction starts, so the other one sticks around
+- New optional "Keep all-time peak" setting — track your best-ever Peak
+  In/Out instead of resetting every streak, marked with a 🏆. Off by
+  default; turn it on in Settings, with a manual Reset available any time
+- Fixed the Live tab chart's peak label sometimes showing a value left
+  over from a streak that just ended, instead of the current one
+
 ## [2.0.5] - 2026-08-05
 
 - Play flavor: pinned a current `androidx.fragment` version instead of the

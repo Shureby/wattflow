@@ -46,7 +46,11 @@
     <string name="info_title">Warum niedriger als am Ladegerät angezeigt?</string>
     <string name="info_body">WattFlow misst die Leistung auf Akkuseite — was tatsächlich in den Akku fließt. Das Ladegerät zeigt seine eigene Ausgabe. Dazwischen: Wandlungsverluste (~10 % kabelgebunden, 30–40 % kabellos) und der direkte Verbrauch von Display und System beim Laden. Zudem zieht das Handy nur, was das Ladeprotokoll beim aktuellen Akkustand aushandelt.</string>
     <string name="peak_info_title">Spitzenwerte hier vs. im Widget</string>
-    <string name="peak_info_body">Diese Spitzenwerte werden jedes Mal zurückgesetzt, wenn du das Ladekabel abziehst, wieder einsteckst oder die Quelle wechselst (z. B. kabelgebunden zu kabellos) — sie decken nur die aktuelle Phase ab. Das Home-Widget zeigt stattdessen eine separate Zahl \"Heutige Spitzenwerte\", die den ganzen Tag abdeckt.</string>
+    <string name="peak_info_body">Diese Spitzenwerte werden jedes Mal zurückgesetzt, wenn du das Ladekabel abziehst, wieder einsteckst oder die Quelle wechselst (z. B. kabelgebunden zu kabellos) — sie decken nur die aktuelle Phase ab. Aktiviere \"Allzeit-Spitzenwert behalten\" in den Einstellungen, um stattdessen deine besten je erreichten Werte zu verfolgen, markiert mit einem 🏆 — diese werden nie automatisch zurückgesetzt. Das Home-Widget zeigt stattdessen eine separate Zahl \"Heutige Spitzenwerte\", die den ganzen Tag abdeckt.</string>
+    <string name="peak_alltime_toggle">Allzeit-Spitzenwert behalten</string>
+    <string name="peak_alltime_toggle_hint">Verfolgt deine besten je erreichten Peak-In/Out-Werte, statt bei jeder Phase zurückzusetzen. Wird nie automatisch zurückgesetzt — unten manuell zurücksetzen.</string>
+    <string name="peak_alltime_best_so_far">Bisher bester Wert: rein %1$.1f W · raus %2$.1f W</string>
+    <string name="peak_alltime_reset">Zurücksetzen</string>
     <string name="pro_title">WattFlow Pro</string>
     <string name="pro_desc">• Hintergrundaufzeichnung &amp; schwebendes Watt-Overlay\n• Eigene Schwellenwerte für Akku-Benachrichtigungen\n• 3 ausführliche Berichte — Energiekonto, Nachtverbrauch, Batterie-Gesundheitstrend\n• Lade-Benchmark-Ergebnisse speichern &amp; vergleichen\n\nEinmalkauf, für immer.</string>
     <string name="pro_buy">Freischalten</string>
